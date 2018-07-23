@@ -19,6 +19,18 @@ class ArticlesRepository extends ServiceEntityRepository
         parent::__construct($registry, Articles::class);
     }
 
+    public function last5Articles(): array
+    {
+        //on récupère l'objet pdo qui permet de se connecter à la base => le résultat du try catch
+        $connexion = $this->getEntityManager()->getConnection();
+        $sql = 'SELECT * FROM articles ORDER BY id DESC LIMIT 5';
+        $select = $connexion->prepare($sql);
+        $select->execute();
+        //on renvoie un tableau de tableau
+        return $select->fetchAll();
+
+    }
+
 //    /**
 //     * @return Articles[] Returns an array of Articles objects
 //     */

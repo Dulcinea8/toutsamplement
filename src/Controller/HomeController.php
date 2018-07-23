@@ -26,10 +26,10 @@ class HomeController extends Controller
     {
 
         $repositoryArtistes = $this->getDoctrine()->getRepository(Artistes::class);
-        $artistes = $repositoryArtistes->findAll();
+        $artistes = $repositoryArtistes->last5Artistes();
 
         $repositoryArticles = $this->getDoctrine()->getRepository(Articles::class);
-        $articles = $repositoryArticles->findAll();
+        $articles = $repositoryArticles->last5Articles();
 
         // $repositorySamples = $this->getDoctrine()->getRepository(Sample::class);
         // $samples = $repositorySamples->findAll();
