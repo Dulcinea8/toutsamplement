@@ -29,7 +29,7 @@
 
 
                 {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
-                    <a class="navbar-brand" href=""> |  Connexion / Inscription | </a>
+                    <a class="navbar-brand" href="{{ path('login') }}"> |  Connexion / Inscription | </a>
                 {% endif %}
 
             {# l'element du menu n'apparaitra que si l'utilisateur est connecté #}
@@ -48,11 +48,19 @@
             <input class="mr-1" placeholder="Titre / Artiste"></input>
         </nav>
 
+<<<<<<< HEAD
 
 
     </header>
     <h1 class="text-center">{% block titlepage %}{% endblock %}</h1>
     <div class="font d-flex justify-content-center">
+=======
+        
+
+    </header>
+    <h1 class="text-center">{% block titlepage %}{% endblock %}</h1>
+    <div class="font container justify-content-center">
+>>>>>>> master
 
         {% block content %}{% endblock %}
 
