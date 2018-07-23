@@ -6,7 +6,10 @@
 {% block content %}
 <h1>Contact</h1>
 
-	Formulaire de contact içi
+	{{ form_start(form) }}
+	{{ form_widget(form) }}
+	{{ form_end(form) }}
+
 
 {% endblock %}
 {% endblock %}
