@@ -9,7 +9,7 @@ security:
 
 
     encoders: #on lui indique comment encoder les mdp
-          App\Entity\User : bcrypt
+          App\Entity\Users : bcrypt
     firewalls: #va nous permetre de definir les pages acceccible aux utilisateurs connectés
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/

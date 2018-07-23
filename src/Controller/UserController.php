@@ -51,7 +51,7 @@ class UserController extends Controller
             $entityManager->persist($user);
             $entityManager->flush();
 
-            $this->addFlash('success', 'vous êtes bien inscrit, vous pouvez vous connecter');
+            $this->addFlash('success', 'Vous êtes bien inscrit, Vous pouvez vous connecter');
 
             //renvoi sur le login
             return $this->redirectToRoute('login');
