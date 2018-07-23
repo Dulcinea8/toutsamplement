@@ -17,41 +17,64 @@
 
     <header class="container-fluid p-5">
 
-        <nav class="text-center">
-            <a class="navbar-brand" href="{{ path('accueil')}}"> | Accueil |</a>
-            <a class="navbar-brand" href="{{ path('all-articles')}}"> | Articles |</a>
-            <a class="navbar-brand" href=""> | Samples |</a>
-            <a class="navbar-brand" href=""> | Inserer |</a>
-            <a class="navbar-brand" href="{{ path('contact')}}"> | Contact |</a>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
+            <a class="navbar-brand" href="{{ asset('images/logo4.png') }}"><img src="{{ asset('images/Logo4_ico.ico') }}"></a>
 
-            {# l'element du menu n'apparaitra que si l'utilisateur est connecté #}
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link"href="{{ path('accueil')}}"> Accueil <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('all-articles')}}"> Articles</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Samples</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Insérer</a>
+                    </li>
+                    <li class="nav-item">
+                        {# l'element du menu n'apparaitra que si l'utilisateur est connecté #}
+                        {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+                            <a class="nav-link" href="{{ path('login') }}"> Connexion / Inscription </a>
+                        {% endif %}
+                    </li>
+                    <li class="nav-item">
+                        {# l'element du menu n'apparaitra que si l'utilisateur est connecté #}
+                        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                            <a class="navbar-brand" href="{{ path('logout') }}"> Deconnexion </a>
+                            <a class="navbar-brand" href=""> Profil </a>
+                        {% endif %}
+                    </li>
+                    <li class="nav-item">
+                        {# l'element du menu n'apparaitra que si l'utilisateur est connecté et a le role admin #}
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <a class="navbar-brand" href=""> |  Administrateur | </a>
+                        {% endif %}
+                    </li>
+                </ul>
+            </div>
 
-                {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
-                    <a class="navbar-brand" href="{{ path('login') }}"> |  Connexion / Inscription | </a>
-                {% endif %}
+            <form class="form-inline">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Search</span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Track or Artist" aria-label="Username" aria-describedby="basic-addon1">
+                </div>
+            </form>
 
-            {# l'element du menu n'apparaitra que si l'utilisateur est connecté #}
-
-                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                    <a class="navbar-brand" href="{{ path('logout') }}"> |  Deconnexion | </a>
-                    <a class="navbar-brand" href=""> |  Profil | </a>
-                {% endif %}
-
-            {# l'element du menu n'apparaitra que si l'utilisateur est connecté et a le role admin #}
-
-                {% if is_granted('ROLE_ADMIN') %}
-                     <a class="navbar-brand" href="{{ path('admin') }}"> |  Administrateur | </a>
-                {% endif %}
-
-            <input class="mr-1" placeholder="Titre / Artiste"></input>
         </nav>
 
-
-        
-
     </header>
+
+
     <h1 class="text-center">{% block titlepage %}{% endblock %}</h1>
     <div class="font container justify-content-center">
 
@@ -61,10 +84,16 @@
 
     <footer class="container-fluid">
 
-        <p>Conditions d'utilisation</p>
-        <i class="fab fa-twitter-square"></i>
-        <i class="fab fa-facebook-square"></i>
-        <i class="fab fa-instagram"></i>
+        <div class="mt-5 d-flex justify-content-between">
+
+            <a class="text-danger" href="{{ path('cgu')}}">Conditions d'utilisation</a>
+            <div class="">
+                <i class="mr-2 text-danger fab fa-twitter-square fa-lg"></i>
+                <i class="mr-2 text-danger fab fa-facebook-square fa-lg"></i>
+                <i class="mr-2 text-danger fab fa-instagram fa-lg"></i>
+            </div>
+
+        </div>
 
     </footer>
 

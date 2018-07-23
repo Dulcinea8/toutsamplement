@@ -42,7 +42,7 @@ table {
     border-spacing: 0;
 }
 
-header {
+.header {
     background-image: url("../images/header.jpg");
     background-repeat: no-repeat;
     background-size: 100%;
@@ -52,7 +52,7 @@ header {
 
 footer {
     background-image: url("../images/footer.jpg");
-    position:absolute;
+    position:fixed;
     bottom:0;
     left:0;
     height: 7em;
