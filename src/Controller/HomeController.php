@@ -25,11 +25,4 @@ class HomeController extends Controller
         return $this->render('home/index.html.twig');
     }
 
-    /**
-     * @Route("/contact", name="contact")
-     */
-    public function contact()
-    {
-        return $this->render('contact.html.twig');
-    }
 }
