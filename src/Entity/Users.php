@@ -91,7 +91,7 @@ class Users implements UserInterface, \Serializable
 
 
     /**
-     * @ORM\Column(type="string", length=191, nullable=true)
+     * @param mixed
      */
     private $plainPassword;
 
