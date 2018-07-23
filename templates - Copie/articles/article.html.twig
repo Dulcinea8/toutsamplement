@@ -1,0 +1,18 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Détail article{% endblock %}
+
+
+{% block content %}
+
+    {% block titlepage %}{{ article.title }}{% endblock %}
+
+    <article class="container text-center alert alert-info">
+        {{ article.content }}
+
+    </article>
+
+
+    
+    
+{% endblock %}
