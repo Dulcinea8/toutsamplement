@@ -85,9 +85,10 @@ class Users implements UserInterface, \Serializable
     private $bio;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(name = "role", type="array")
      */
     private $role;
+
 
     /**
      * @ORM\Column(type="string", length=191, nullable=true)
@@ -265,12 +266,12 @@ class Users implements UserInterface, \Serializable
         return $this;
     }
 
-    public function getRole(): ?string
+    public function getRole(): ?array
     {
         return $this->role;
     }
 
-    public function setRole(string $role): self
+    public function setRole(array $role): self
     {
         $this->role = $role;
 

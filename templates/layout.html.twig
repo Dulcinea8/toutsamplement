@@ -17,11 +17,15 @@
 
     <header class="container-fluid p-5">
 
+<<<<<<< HEAD
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
             <a class="navbar-brand" href="{{ asset('images/logo4.png') }}"><img src="{{ asset('images/Logo4_ico.ico') }}"></a>
+
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
@@ -45,7 +49,7 @@
                     <li class="nav-item">
                         {# l'element du menu n'apparaitra que si l'utilisateur est connecté #}
                         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                            <a class="navbar-brand" href=""> Deconnexion </a>
+                            <a class="navbar-brand" href="{{ path('logout') }}"> Deconnexion </a>
                             <a class="navbar-brand" href=""> Profil </a>
                         {% endif %}
                     </li>
@@ -66,6 +70,7 @@
                     <input type="text" class="form-control" placeholder="Track or Artist" aria-label="Username" aria-describedby="basic-addon1">
                 </div>
             </form>
+
         </nav>
 
     </header>
