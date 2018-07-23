@@ -1,0 +1,20 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Formulaire d'inscription{% endblock %}
+
+{% block titlepage %}S'enregistrer{% endblock %}
+
+{% block content %}
+
+    {# pour afficher tous type de messages #}
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="alert alert-{{ label }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+    {{ form_start(form) }} {# permet de créer la balise <form>  #}
+    {{ form_widget(form) }}  {# permet de créer les champs #}
+    {{ form_end(form) }} {# va fermer la balise #}
+{% endblock %}
