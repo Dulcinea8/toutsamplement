@@ -15,10 +15,11 @@
 
 <body class="container-fluid">
 
-    <header class="container-fluid">
+    <header class="container-fluid p-5">
 
         <nav class="text-center">
             <a class="navbar-brand" href="{{ path('accueil')}}"> | Accueil |</a>
+            <a class="navbar-brand" href="{{ path('all-articles')}}"> | Articles |</a>
             <a class="navbar-brand" href=""> | Samples |</a>
             <a class="navbar-brand" href=""> | Inserer |</a>
             <a class="navbar-brand" href="{{ path('contact')}}"> | Contact |</a>
@@ -44,13 +45,13 @@
                      <a class="navbar-brand" href=""> |  Administrateur | </a>
                 {% endif %}
 
-            <input placeholder="Titre / Artiste"></input>
+            <input class="mr-1" placeholder="Titre / Artiste"></input>
         </nav>
 
-        <h1 class="text-center">{% block titlepage %}{% endblock %}</h1>
+
 
     </header>
-
+    <h1 class="text-center">{% block titlepage %}{% endblock %}</h1>
     <div class="font d-flex justify-content-center">
 
         {% block content %}{% endblock %}
