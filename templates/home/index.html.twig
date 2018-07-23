@@ -29,14 +29,32 @@
         </div>
 
         <!--DERNIERS ARTISTE -->
-        <h3>Derniers Artistes</h3>
+        <div>
+            <h3>Derniers Artistes</h3>
+                <div class="d-flex">
+                    {% for artiste in artistes%}
+                        <a href="#"><article class="border p-3 m-3">{{artiste.nom}}</article></a>
+                    {%endfor%}
+                </div>
+        </div>
 
         <!--DERNIERS SAMPLES -->
-        <h3>Derniers Samples</h3>
+        <div>
+            <h3>Derniers Samples</h3>
+            <div class="d-flex">
+                
+            </div>
+        </div>
 
         <!--DERNIERS ARTICLES -->
-
-        <h3>Derniers Articles</h3>
+        <div>
+            <h3>Derniers Articles</h3>
+                <div class="d-flex">
+                    {% for article in articles%}
+                        <article>{{article.titre}}</article>
+                    {%endfor%}
+                </div>
+        </div>
 
 
     </div>

@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use App\Entity\Artistes;
+use App\Entity\Articles;
 
 class HomeController extends Controller
 {
@@ -22,7 +24,17 @@ class HomeController extends Controller
      */
     public function accueil()
     {
-        return $this->render('home/index.html.twig');
+
+        $repositoryArtistes = $this->getDoctrine()->getRepository(Artistes::class);
+        $artistes = $repositoryArtistes->findAll();
+
+        $repositoryArticles = $this->getDoctrine()->getRepository(Articles::class);
+        $articles = $repositoryArticles->findAll();
+
+        // $repositorySamples = $this->getDoctrine()->getRepository(Sample::class);
+        // $samples = $repositorySamples->findAll();
+
+        return $this->render('home/index.html.twig', array('artistes'=>$artistes, 'articles'=>$articles));
     }
 
 }
