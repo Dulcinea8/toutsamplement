@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+
     <link rel="icon" href="{{ asset('image/logo.png') }}">
 
     <title>{% block title %}{% endblock %}</title>
@@ -12,27 +13,29 @@
 <body class="container">
 
     <nav class="text-center">
-        <a class="navbar-brand" href="{{ path('#')}}"> | Acceuil |</a>
+        <a class="navbar-brand" href="{{ path('accueil')}}"> | Acceuil |</a>
+        {#
         <a class="navbar-brand" href="{{ path('#')}}"> | Samples |</a>
         <a class="navbar-brand" href="{{ path('#')}}"> | Inserer |</a>
         <a class="navbar-brand" href="{{ path('#')}}"> | Contact |</a>
 
-        {# l'element du menu n'apparaitra que si l'utilisateur est connecté #}
+        {# l'element du menu n'apparaitra que si l'utilisateur est connecté
         {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
             <a class="navbar-brand" href="{{ path('#')}}"> |  Connexion | </a>
             <a class="navbar-brand" href="{{ path('#')}}"> | Inscription | </a>
         {% endif %}
 
-        {# l'element du menu n'apparaitra que si l'utilisateur est connecté #}
+        {# l'element du menu n'apparaitra que si l'utilisateur est connecté
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
             <a class="navbar-brand" href="{{ path('#')}}"> |  Deconnexion | </a>
             <a class="navbar-brand" href="{{ path('#')}}"> |  Profil | </a>
         {% endif %}
 
-        {# l'element du menu n'apparaitra que si l'utilisateur est connecté et a le role admin #}
+        {# l'element du menu n'apparaitra que si l'utilisateur est connecté et a le role admin
         {% if is_granted('ROLE_ADMIN') %}
              <a class="navbar-brand" href="{{ path('#')}}"> |  Zoooone Administrateur | </a>
         {% endif %}
+        #}
     </nav>
 
     <h1 class="text-center">{% block titlepage %}{% endblock %}</h1>
