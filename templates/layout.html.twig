@@ -35,14 +35,14 @@
             {# l'element du menu n'apparaitra que si l'utilisateur est connecté #}
 
                 {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                    <a class="navbar-brand" href=""> |  Deconnexion | </a>
+                    <a class="navbar-brand" href="{{ path('logout') }}"> |  Deconnexion | </a>
                     <a class="navbar-brand" href=""> |  Profil | </a>
                 {% endif %}
 
             {# l'element du menu n'apparaitra que si l'utilisateur est connecté et a le role admin #}
 
                 {% if is_granted('ROLE_ADMIN') %}
-                     <a class="navbar-brand" href=""> |  Administrateur | </a>
+                     <a class="navbar-brand" href="{{ path('admin') }}"> |  Administrateur | </a>
                 {% endif %}
 
             <input class="mr-1" placeholder="Titre / Artiste"></input>
