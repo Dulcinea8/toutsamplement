@@ -5,11 +5,12 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UsersRepository")
  */
-class Users
+class Users implements UserInterface, \Serializable
 {
     /**
      * @ORM\Id()
@@ -87,6 +88,11 @@ class Users
      * @ORM\Column(type="string", length=255)
      */
     private $role;
+
+    /**
+     * @ORM\Column(type="string", length=191, nullable=true)
+     */
+    private $plainPassword;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Comments", mappedBy="iduser", orphanRemoval=true)
@@ -271,18 +277,30 @@ class Users
         return $this;
     }
 
+    public function getPlainPassword(): ?string
+    {
+        return $this->plainPassword;
+    }
+
+    public function setPlainPassword(?string $plainPassword): self
+    {
+        $this->plainPassword = $plainPassword;
+
+        return $this;
+    }
+
     /**
      * @return Collection|Comments[]
      */
     public function getUser(): Collection
     {
-        return $this->user;
+        return $this->comments;
     }
 
     public function addUser(Comments $user): self
     {
-        if (!$this->user->contains($user)) {
-            $this->user[] = $user;
+        if (!$this->comments->contains($user)) {
+            $this->comments[] = $user;
             $user->setIduser($this);
         }
 
@@ -291,8 +309,8 @@ class Users
 
     public function removeUser(Comments $user): self
     {
-        if ($this->user->contains($user)) {
-            $this->user->removeElement($user);
+        if ($this->comments->contains($user)) {
+            $this->comments->removeElement($user);
             // set the owning side to null (unless already changed)
             if ($user->getIduser() === $this) {
                 $user->setIduser(null);
@@ -301,4 +319,50 @@ class Users
 
         return $this;
     }
+
+
+
+    //méthodes de UserInterface à implementer
+    public function eraseCredentials()
+    {
+        //par mesure de securite on va effacer le mdp en clair
+        $this->plainPassword=null;
+
+    }
+    public function getSalt()
+    {
+        //ON va utiliser l'encoder bcrypt de Symfony
+        // qui va lui meme gerer le salt
+        // on est quand meme obligé d'ecrire cette methode car on imprement l'interface UserInterface
+        return null;
+    }
+
+    public function serialize(){
+        return serialize(array(
+            $this->id,
+            $this->username,
+            $this->password,
+            //see section on salt below
+            // $this->>salt
+        ));
+    }
+
+    public function unserialize($serialized){
+        list(
+            $this->id,
+            $this->username,
+            $this->password,
+            //see section on salt below
+            // $this->>salt
+            )= unserialize($serialized,['allowed_classes'=>false]);
+    }
+
+    public function getRoles()
+    {
+        //pour l'instant, on met les roles en dur: user par défaut
+        return array('ROLE_USER');
+    }
+
+
+
 }

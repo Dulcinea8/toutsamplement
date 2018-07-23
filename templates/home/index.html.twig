@@ -1,16 +1,44 @@
-{% extends 'base.html.twig' %}
+{% extends 'layout.html.twig' %}
 
-{% block title %}!{% endblock %}
 
-{% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+{% block title %}TOUTSAMPLEMENT{% endblock %}
 
-<div class="example-wrapper">
-    <h1></h1>
+
+{% block content %}
+<br>
+<br>
+<div class="container">
+
+    <!-- PRESENTATION de toutsamplement-->
+    <div class="row">
+        <div class="col-md-6 col-6">
+            <p>Le site “Tout samplement” est une base de données communautaire et gratuite qui recense les plus célèbres samples de Hip Hop, de Rock, de Pop, et d’Electro, issus de productions d’artistes professionels ou amateurs pouvant faire découvrir leur travail.  Ce site est une réponse aussi bien pour ceux qui souhaitent aller plus loin dans la découverte de l'histoire de la musique, ou de leurs artistes ou morceaux favoris en découvrant les échantillons musicaux et beats utilisés, que pour les beatmakers amateurs qui enrichissent la base de donnée grace à leur production personnelle. Et n’oublions pas tous les passionnés en quête du sample original qui permettent de développer cette banque d’information, en y partageant leur investigations musicales.
+            </p>
+            <p>
+                Vous l’avez compris vos contributions, à tous les niveaux sont necessaire pour l’évolution du site. Le principe de cette communauté est de mettre la base à jour au gré de vos découvertes, de vos productions.
+            </p>
+        </div>
+
+        <div class="col-md-6 col-6">
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe width="560" height="315" class="embed-responsive-item" src="https://www.youtube.com/embed/rJThPCQ3Oro" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!--DERNIERS ARTISTE -->
+    <h3>Derniers Artistes</h3>
+
+    <!--DERNIERS SAMPLES -->
+    <h3>Derniers Samples</h3>
+
+    <!--DERNIERS ARTICLES -->
+
+    <h3>Derniers Articles</h3>
 
 
 </div>
+
 {% endblock %}

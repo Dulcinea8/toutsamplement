@@ -1,15 +1,33 @@
 security:
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
-        in_memory: { memory: ~ }
-    firewalls:
+            mon_user_provider:
+              entity:
+                class: App\Entity\Users
+                property: username #la propriété utilisée pour le login
+            #in_memory: { memory: ~ } #memory veut dire en dur: pas viable
+
+
+    encoders: #on lui indique comment encoder les mdp
+          App\Entity\User : bcrypt
+    firewalls: #va nous permetre de definir les pages acceccible aux utilisateurs connectés
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
             anonymous: true
 
+            form_login:
+                login_path: login  #le formulaire est dispo à /login
+                check_path: login  #on fait le traitement sur /login
             # activate different ways to authenticate
+
+            #pour se déconnecter
+            logout:
+                path:   /logout
+                target:   /
+                #chemin utilisé pour se déconnecter
+                #chemin de redirection quand c'est fait
 
             # http_basic: true
             # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate

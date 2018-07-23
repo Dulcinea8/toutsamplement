@@ -1,0 +1,21 @@
+header {
+    background-image: url("../images/header.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    position:relative;
+    width:100%;
+}
+
+footer {
+    background-image: url("../images/footer.jpg");
+    position:absolute;
+    bottom:0;
+    left:0;
+}
+
+body {
+    background-image: url("../images/body.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
