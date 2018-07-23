@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -85,6 +87,16 @@ class Users
      * @ORM\Column(type="string", length=255)
      */
     private $role;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Comments", mappedBy="iduser", orphanRemoval=true)
+     */
+    private $comments;
+
+    public function __construct()
+    {
+        $this->user = new ArrayCollection();
+    }
 
     public function getId()
     {
@@ -255,6 +267,37 @@ class Users
     public function setRole(string $role): self
     {
         $this->role = $role;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Comments[]
+     */
+    public function getUser(): Collection
+    {
+        return $this->user;
+    }
+
+    public function addUser(Comments $user): self
+    {
+        if (!$this->user->contains($user)) {
+            $this->user[] = $user;
+            $user->setIduser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUser(Comments $user): self
+    {
+        if ($this->user->contains($user)) {
+            $this->user->removeElement($user);
+            // set the owning side to null (unless already changed)
+            if ($user->getIduser() === $this) {
+                $user->setIduser(null);
+            }
+        }
 
         return $this;
     }

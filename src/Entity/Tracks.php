@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -40,6 +42,16 @@ class Tracks
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $date_publi;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Comments", mappedBy="idtrack")
+     */
+    private $comments;
+
+    public function __construct()
+    {
+        $this->comments = new ArrayCollection();
+    }
 
     public function getId()
     {
@@ -102,6 +114,37 @@ class Tracks
     public function setDatePubli(?\DateTimeInterface $date_publi): self
     {
         $this->date_publi = $date_publi;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Comments[]
+     */
+    public function getComments(): Collection
+    {
+        return $this->comments;
+    }
+
+    public function addComment(Comments $comment): self
+    {
+        if (!$this->comments->contains($comment)) {
+            $this->comments[] = $comment;
+            $comment->setIdtrack($this);
+        }
+
+        return $this;
+    }
+
+    public function removeComment(Comments $comment): self
+    {
+        if ($this->comments->contains($comment)) {
+            $this->comments->removeElement($comment);
+            // set the owning side to null (unless already changed)
+            if ($comment->getIdtrack() === $this) {
+                $comment->setIdtrack(null);
+            }
+        }
 
         return $this;
     }
