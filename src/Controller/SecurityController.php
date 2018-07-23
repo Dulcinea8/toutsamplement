@@ -24,4 +24,14 @@ class SecurityController extends Controller
             'error'  => $error
         ]);
     }
+
+    /**
+     * @Route("/cgu", name="cgu")
+     */
+    public function cgu()
+    {
+        return $this->render('security/index.html.twig', [
+            'controller_name' => 'SecurityController',
+        ]);
+    }
 }
