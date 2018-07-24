@@ -11,21 +11,32 @@
 
     <article class="container text-center alert alert-info">
 
-        {{ article.content }}
-        <hr>
+        Publié par :
+            <a>{{ article.auteurid.username }}</a>
+
+        le
+            {{ article.datepubli|date('d/m/Y') }}
+
+        <br>
+        <div class="mt-3">
+            <a class="btn btn-warning" href="{{ path('modifier-article', {id: article.id} ) }}">Modifier</a>
+            <a class="btn btn-warning" href="{{ path('supprimer-article', {id: article.id} ) }}">Delete</a>
+        </div>
+        <br>
+
         {% if article.image %}
             <img class="img-fluid" src="{{ asset(image_directory ~ article.image) }}"  alt=""/>
         {% endif %}
+        <hr>
+        {{ article.content }}
 
-    Publié par : 
 
-        <a>{{ article.auteurid.username }}</a>
+        <hr>
+        {% if article.video %}
+        <iframe width="560" height="315" src="{{ asset(video_directory ~ article.video) }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        {% endif %}
 
-    le
-    {{ article.datepubli|date('d/m/Y H:i:s') }}
-    <br>
-        <a class="btn btn-warning" href="">Modifier</a>
-        <a class="btn btn-warning" href="">Delete</a>
+
 
    
     </article>

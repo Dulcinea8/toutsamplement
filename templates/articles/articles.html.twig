@@ -21,10 +21,11 @@
                     pour acceder au titre artcile.title #}
                     <article class="container text-center">
 
-                        {{ article.titre }} :
+                        {{ article.titre }}  <a class="btn btn-info ml-5 "href="{{ path('detail-article', {id: article.id} ) }}">+++ info +++</a>
                         <hr>
-                        {{ article.content|raw }}
+                        {{ article.content }}
                         <hr>
+
                         {% if article.image %}
                             <img class="img-fluid" src="{{ asset(image_directory ~ article.image) }}"  alt=""/>
                         {% endif %}
@@ -35,7 +36,6 @@
                         {% endif %}
 
 
-                        <a class="btn btn-info ml-5 "href="{{ path('detail-article', {id: article.id} ) }}">+++ info +++</a>
                         <hr class="bg-danger">
 
                     </article>

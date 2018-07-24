@@ -1,0 +1,23 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Modifier article{% endblock %}
+
+{% block titlepage %}Modifier article{% endblock %}
+
+{% block content %}
+
+    {{ form_start(form)}} {# permet de creer la balise <form> #}
+
+        {{ form_label(form.titre, 'Titre de l\'article', {'label_attr' : {'class' : 'ma-classe'}})}}
+
+            {{ form_errors(form.titre)}}
+
+    {{ form_widget(form.titre, {'attr': {'class' : 'form-control-lg', 'placeholder': 'saisir un titre'}})}}
+
+        <div class="autre-classe">
+            {{ form_row(form.content, {'label' : 'Contenu de l\'article', 'attr':{'class' : 'form-control-lg', 'placeholder': 'A votre avis'}})}}
+        </div>
+
+    {{ form_end(form)}} {# va fermer la balise <form> #}
+
+{% endblock %}
