@@ -19,6 +19,20 @@ class ResetPassRepository extends ServiceEntityRepository
         parent::__construct($registry, ResetPass::class);
     }
 
+    /*
+     requete pour chercher le token et l'id dans ma bdd
+     */
+    public function searcheToken(string $token, int $idUser)
+    {
+        $querybuilder = $this->createQueryBuilder('r')
+            ->andWhere('r.token = :token','r.user_id = :userId')
+            ->setParameter('token', $token)
+            ->setParameter('userId',$idUser)
+            ->getQuery();
+        return $querybuilder->execute();
+    }
+
+
 //    /**
 //     * @return ResetPass[] Returns an array of ResetPass objects
 //     */

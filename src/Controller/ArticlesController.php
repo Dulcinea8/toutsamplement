@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Form\ArticlesType;
 use App\Service\FileUploader;
 use App\Entity\Articles;
+use App\Entity\Users;
 use Symfony\Component\HttpFoundation\Request;
 
 use Symfony\Component\Routing\Annotation\Route;
@@ -38,7 +39,6 @@ class ArticlesController extends Controller
     }
 
 
-
     /**
      * @Route("/article/{id}", name="detail-article", requirements={"id"="[0-9]+"})
      */
@@ -52,7 +52,7 @@ class ArticlesController extends Controller
                 throw $this->createNotFoundException('No article found for id' .$id);
             }
 
-        return $this->render('article/detail.html.twig',  array('article'=>$article));
+        return $this->render('articles/detailarticle.html.twig',  array('article'=>$article));
 
     }
 

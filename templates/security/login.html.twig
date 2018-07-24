@@ -4,7 +4,7 @@
 
 {% block content %}
 
-    {#affichage des messages d'erreurs le cas échéant #}
+    {#affichage des messages d'erreurs le cas échéant#}
     {% if error %}
         <div>
             {{ error.messageKey|trans(error.messageData, 'security') }}
