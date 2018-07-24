@@ -53,6 +53,10 @@ class Articles
      */
     private $image;
 
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $video;
 
     public function __construct()
     {
@@ -111,6 +115,17 @@ class Articles
         return $this;
     }
 
+    public function getVideo()
+    {
+        return $this->video;
+    }
+    public function setVideo($video)
+    {
+        $this->video = $video;
+
+        return $this;
+    }
+
     public function getAuteurId(): ?Users
     {
         return $this->auteur;
@@ -152,5 +167,4 @@ class Articles
 
         return $this;
     }
-
 }

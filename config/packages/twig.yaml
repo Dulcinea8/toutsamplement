@@ -5,3 +5,4 @@ twig:
     form_themes: ['bootstrap_4_layout.html.twig']
     globals:
       image_directory: 'uploads/images/'
+      video_directory: 'https://www.youtube.com/embed/'
