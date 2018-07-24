@@ -23,10 +23,7 @@ class Artistes
      */
     private $nom;
 
-    /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    private $user;
+    
 
     /**
      * @ORM\Column(type="string", length=100)
@@ -42,6 +39,11 @@ class Artistes
      * @ORM\OneToMany(targetEntity="App\Entity\Albums", mappedBy="idartiste", orphanRemoval=true)
      */
     private $albums;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Users")
+     */
+    private $user;
 
     public function __construct()
     {
@@ -65,17 +67,6 @@ class Artistes
         return $this;
     }
 
-    public function getUser(): ?string
-    {
-        return $this->user;
-    }
-
-    public function setUser(?string $user): self
-    {
-        $this->user = $user;
-
-        return $this;
-    }
 
     public function getGenre(): ?string
     {
@@ -128,6 +119,18 @@ class Artistes
                 $album->setIdartiste(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getUser(): ?Users
+    {
+        return $this->user;
+    }
+
+    public function setUser(?Users $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }
