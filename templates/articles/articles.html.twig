@@ -23,7 +23,7 @@
 
                         {{ article.titre }} :
                         <hr>
-                        {{ article.content }}
+                        {{ article.content|raw }}
                         <hr>
                         {% if article.image %}
                             <img class="img-fluid" src="{{ asset(image_directory ~ article.image) }}"  alt=""/>
