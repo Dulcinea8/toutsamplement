@@ -6,6 +6,7 @@ use App\Form\ArticlesType;
 use App\Service\FileUploader;
 use App\Entity\Articles;
 use Symfony\Component\HttpFoundation\Request;
+
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -57,7 +58,7 @@ class ArticlesController extends Controller
 
 
     /**
-     * @Route("/article/ajouter/", name="add-article")
+     * @Route("/articles/ajout", name="add-article")
      */
     public function addArticle(Request $request, FileUploader $uploader)
     {
@@ -90,7 +91,6 @@ class ArticlesController extends Controller
             $article->setImage($fileName);
 
             //l'utilisateur connecté est l'auteur de l'article
-            $article->setUser($this->getUser());
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($article);
@@ -101,7 +101,7 @@ class ArticlesController extends Controller
             return $this->redirectToRoute('all-articles');
         }
 
-        return $this->render('ajouter/addarticle.html.twig', array('form' => $form->createView()));
+        return $this->render('articles/addarticle.html.twig', array('form' => $form->createView()));
     }
 
 

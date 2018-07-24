@@ -116,7 +116,7 @@ class Articles
     }
     public function setAuteurId(Users $auteur): self
     {
-        $this->Auteur = $auteur;
+        $this->auteur = $auteur;
 
         return $this;
     }

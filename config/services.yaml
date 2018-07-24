@@ -5,7 +5,7 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: 'en'
-    articles_images_directory: '%kernel.project_dir%/public/uploads/images'
+    articles_image_directory: '%kernel.project_dir%/public/uploads/images'
 
 services:
     # default configuration for services in *this* file
@@ -36,4 +36,4 @@ services:
         # On indique a symfony lors de l'instanciation qu'il doit passer un argument
         arguments:
             # on fait reference a notre parametre créé plus haut
-            $directory: '%articles_images_directory%'
+            $directory: '%articles_image_directory%'
