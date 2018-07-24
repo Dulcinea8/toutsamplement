@@ -8,11 +8,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class InsertionController extends Controller
 {
     /**
-     * @Route("/insertion", name="insertion")
+     * @Route("/inserer", name="inserer")
      */
     public function index()
     {
-        return $this->render('insertion/index.html.twig', [
+        return $this->render('insertion/inserer.html.twig', [
             'controller_name' => 'InsertionController',
         ]);
     }

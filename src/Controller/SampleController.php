@@ -22,5 +22,6 @@ class SampleController extends Controller
             'controller_name' => 'SampleController',
         ]);
     }
-    
+
+   
 }
