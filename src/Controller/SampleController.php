@@ -42,14 +42,14 @@ class SampleController extends Controller
     	$formAlSampleur = $this->createForm(InsererAlbumType::class, $albumSampleur);
     	$formTrSampleur = $this->createForm(InsererTrackType::class, $trackSampleur);
 
-    	return $this->render('sample/inserer.html.twig',
-                                array('formArSample' => $formArSample->createview(),
-                            			'formAlSample'=>$formAlSample->createview(),
-                            			'formTrSample'=>$formTrSample->createview(),
-                            			'formArSampleur' => $formArSampleur->createview(),
-                            			'formAlSampleur'=>$formAlSampleur->createview(),
-                            			'formTrSampleur'=>$formTrSampleur->createview()
-                            		)
+    	return $this->render('sample/inserer.html.twig'
+                              //   array('formArSample' => $formArSample->createview(),
+                            		// 	'formAlSample'=>$formAlSample->createview(),
+                            		// 	'formTrSample'=>$formTrSample->createview(),
+                            		// 	'formArSampleur' => $formArSampleur->createview(),
+                            		// 	'formAlSampleur'=>$formAlSampleur->createview(),
+                            		// 	'formTrSampleur'=>$formTrSampleur->createview()
+                            		// )
             );
     }
 }
