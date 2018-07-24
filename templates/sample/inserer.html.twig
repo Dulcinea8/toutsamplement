@@ -1,0 +1,54 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Contact{% endblock %}
+
+{% block content %}
+<h1>Inserer</h1>
+	
+	<h4 class="text-center">Le samplé</h4>
+<div class="row justify-content-center">
+	<div class="col-3 border-right">
+		{{ form_start(formArSample) }}
+		{{ form_widget(formArSample) }}
+		{{ form_end(formArSample) }}
+	</div>
+	<div class="col-3 border-right">
+		{{ form_start(formAlSample) }}
+		{{ form_widget(formAlSample) }}
+		{{ form_end(formAlSample) }}
+	</div>
+	<div class="col-3">
+		{{ form_start(formTrSample) }}
+		{{ form_widget(formTrSample) }}
+		{{ form_end(formTrSample) }}
+	</div>
+</div>
+<hr>
+
+<h4 class="text-center">Le sampleur</h4>
+<div class="row justify-content-center">
+	<div class="col-3 border-right">
+		{{ form_start(formArSampleur) }}
+		{{ form_widget(formArSampleur) }}
+		{{ form_end(formArSampleur) }}
+	</div>
+	<div class="col-3 border-right">
+		{{ form_start(formAlSampleur) }}
+		{{ form_widget(formAlSampleur) }}
+		{{ form_end(formAlSampleur) }}
+	</div>
+	<div class="col-3">
+		{{ form_start(formTrSampleur) }}
+		{{ form_widget(formTrSampleur) }}
+		{{ form_end(formTrSampleur) }}
+	</div>
+</div>
+{% endblock %}
+
+{% block js %}
+<script>
+	$('#inserer_artiste_nom').on('keydown', function(){
+		
+	})
+</script>
+{% endblock %}
