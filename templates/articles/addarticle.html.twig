@@ -1,0 +1,31 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Ajout article{% endblock %}
+
+{% block titlepage %}Ajouter un article{% endblock %}
+
+{% block content %}
+
+    {{ form_start(form)}}
+
+    <div class="alert alert-info">
+
+
+        {{ form_label(form.titre, 'Titre de l\'article', {'label_attr' : {'class' : 'ma-classe'}})}}
+
+        {{ form_errors(form.titre)}}
+
+        {{ form_widget(form.titre, {'attr': {'class' : 'form-control-lg ', 'placeholder': 'Saisir un titre'}})}}
+
+
+        {{ form_row(form.content, {'label' : 'Contenu de l\'article', 'attr':{'class' : 'form-control-lg', 'placeholder': 'Saisir votre article'}})}}
+
+        {{ form_row(form.image, {'label' : 'Contenu de l\'article', 'attr':{'class' : 'bg-warning form-control-lg', 'placeholder': 'Saisir votre article'}})}}
+
+
+
+    </div>
+
+    {{ form_end(form)}}
+
+{% endblock %}

@@ -39,23 +39,32 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Insérer</a>
                     </li>
-                    <li class="nav-item">
+
                         {# l'element du menu n'apparaitra que si l'utilisateur est connecté #}
                         {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
-                            <a class="nav-link" href="{{ path('login') }}"> Connexion / Inscription </a>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('login') }}"> Connexion / Inscription </a>
+                            </li>
                         {% endif %}
-                    </li>
-                    <li class="nav-item">
+
+
                         {# l'element du menu n'apparaitra que si l'utilisateur est connecté #}
                         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                            <a class="navbar-brand" href="{{ path('logout') }}"> Deconnexion </a>
-                            <a class="navbar-brand" href=""> Profil </a>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('logout') }}"> Deconnexion </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('add-article') }}"> Ajouter un article </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="">Profil </a>
+                            </li>
                         {% endif %}
-                    </li>
+
                     <li class="nav-item">
                         {# l'element du menu n'apparaitra que si l'utilisateur est connecté et a le role admin #}
                         {% if is_granted('ROLE_ADMIN') %}
-                            <a class="navbar-brand" href=""> |  Administrateur | </a>
+                            <a class="nav-link" href=""> |  Administrateur | </a>
                         {% endif %}
                     </li>
                 </ul>

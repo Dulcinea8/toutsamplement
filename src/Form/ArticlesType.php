@@ -16,9 +16,9 @@ class ArticlesType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title', TextType::class,  array('label' => 'Saisir le titre'))
+            ->add('titre', TextType::class,  array('label' => 'Saisir le titre'))
             ->add('content', TextType::class,  array('label' => 'Saisir le contenu'))
-            ->add('author', EntityType::class,
+            ->add('auteur_id', EntityType::class,
                 //on va se baser sur l'entité user
                 array('class' => Users::class,
                     //on choisi la propriété de l'entité a afficher dans la liste

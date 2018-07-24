@@ -39,7 +39,7 @@ class ArticlesController extends Controller
 
 
     /**
-     * @Route("/article/", name="detail-article", requirements={"id"="[0-9]+"})
+     * @Route("/article/{id}", name="detail-article", requirements={"id"="[0-9]+"})
      */
     public function detail($id){
 
@@ -57,7 +57,7 @@ class ArticlesController extends Controller
 
 
     /**
-     * @Route("/article/ajouter", name="ajouter-article")
+     * @Route("/article/ajouter/", name="add-article")
      */
     public function addArticle(Request $request, FileUploader $uploader)
     {
@@ -101,7 +101,7 @@ class ArticlesController extends Controller
             return $this->redirectToRoute('all-articles');
         }
 
-        return $this->render('article/addarticle.html.twig', array('form' => $form->createView()));
+        return $this->render('ajouter/addarticle.html.twig', array('form' => $form->createView()));
     }
 
 
