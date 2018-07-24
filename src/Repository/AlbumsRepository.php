@@ -19,6 +19,15 @@ class AlbumsRepository extends ServiceEntityRepository
         parent::__construct($registry, Albums::class);
     }
 
+
+    public function findAlbumByNom($nom){
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.nom = :nom')
+            ->setParameter('nom', $nom)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
 //    /**
 //     * @return Albums[] Returns an array of Albums objects
 //     */

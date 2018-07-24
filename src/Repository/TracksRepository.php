@@ -19,6 +19,15 @@ class TracksRepository extends ServiceEntityRepository
         parent::__construct($registry, Tracks::class);
     }
 
+    public function findTrackByTitre($titre){
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.titre = :titre')
+            ->setParameter('titre', $titre)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
+
 //    /**
 //     * @return Tracks[] Returns an array of Tracks objects
 //     */
