@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -38,6 +39,17 @@ class Articles
      */
     private $comments;
 
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $date_publi;
+
+    /**
+     * @ORM\Column(type="string")
+     * @Assert\Image(maxSize="1000k")
+     */
+    private $image;
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
@@ -68,6 +80,29 @@ class Articles
     public function setContent(string $content): self
     {
         $this->content = $content;
+
+        return $this;
+    }
+
+    public function getDatePubli(): ?\DateTimeInterface
+    {
+        return $this->date_publi;
+    }
+
+    public function setDatePubli(?\DateTimeInterface $date_publi): self
+    {
+        $this->date_publi = $date_publi;
+
+        return $this;
+    }
+
+    public function getImage()
+    {
+        return $this->image;
+    }
+    public function setImage($image)
+    {
+        $this->image = $image;
 
         return $this;
     }
