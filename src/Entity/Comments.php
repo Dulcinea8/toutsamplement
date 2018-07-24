@@ -29,7 +29,7 @@ class Comments
     private $idtrack;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Users", inversedBy="user")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Users", inversedBy="comments")
      * @ORM\JoinColumn(nullable=true)
      */
     private $iduser;

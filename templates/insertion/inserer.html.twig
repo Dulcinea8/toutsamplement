@@ -5,6 +5,8 @@
 {% block content %}
 <h1>Inserer</h1>
 
+{% if msg %}{{msg}}{%endif%}
+
 <form method="POST" action="/inserer" id="ajout">
 		<h4 class="text-center">Le samplé</h4>
 	<div class="row justify-content-center ">
