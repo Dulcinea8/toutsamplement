@@ -125,31 +125,7 @@ class TestData extends Fixture
 
         
 
-
-
-        // $sample->setIdartiste_id($this->getReference('2Pac'));
-    
-
-            $articles=[
-            ['titre'=>'', 'content'=>'', 'auteur_id'=>'', 'date_publi'=>'', 'image'=>''],
-
-        ];
-        
-
-        foreach($articles as $article) { 
-            $test= new Articles();
-            $test->setTitre($article['titre']);
-            $test->setContent($article['content']);
-            $test->setAuteurId($article['auteur_id']);
-            $test->setDatePubli(new \DateTime($track['date_publi']));
-            $test->setImage($article['image']);
-            $manager->persist($test);
-
-        }
-        $manager->flush();
- 
-
-            $users=[
+$users=[
             ['username'=>'Tooty', 'nom'=>'Lemarchand', 'prenom'=>'Julien', 'email'=>'jl.julienlemarchand@gmail.com', 'password'=>'Julien83', 'avatar'=>null, 'date_inscription'=>'2018-07-23', 'score'=>3, 'facebook'=>null, 'soundcloud'=>null, 'bandcamp'=>null, 'site_web'=>null, 'bio'=>null, 'role'=>['ROLE_ADMIN']],
             ['username'=>'Fellez', 'nom'=>'Marchand', 'prenom'=>'Benjamin', 'email'=>'bejimarch@gmail.com', 'password'=>'Error404', 'avatar'=>'https://f4.bcbits.com/img/a1813742944_16.jpg', 'date_inscription'=>'2018-07-20', 'score'=>1, 'facebook'=>'https://www.facebook.com/FellezBdx/', 'soundcloud'=>'https://soundcloud.com/ben-march-1', 'bandcamp'=>'https://err404.bandcamp.com/album/larbre-et-la-pirogue', 'site_web'=>null, 'bio'=>null, 'role'=>['ROLE_USER']],
             ['username'=>'Aoced', 'nom'=>'Arnaudet', 'prenom'=>'Cédric', 'email'=>'aoced33@gmail.com', 'password'=>'Araratbx33', 'avatar'=>'https://i.vimeocdn.com/portrait/17533011_300x300', 'date_inscription'=>'2018-07-21', 'score'=>3, 'facebook'=>null, 'soundcloud'=>'https://soundcloud.com/robin-master', 'bandcamp'=>null, 'site_web'=>null, 'bio'=>null, 'role'=>['ROLE_ADMIN']]
@@ -165,7 +141,7 @@ class TestData extends Fixture
             $test->setEmail($user['email']);
             $test->setPassword($user['password']);
             $test->setAvatar($user['avatar']);
-            $test->setDateinscription($user['date_inscription']);
+            $test->setDateinscription(new \DateTime($user['date_inscription']));
             $test->setScore($user['score']);
             $test->setFacebook($user['facebook']);
             $test->setSoundcloud($user['soundcloud']);
@@ -177,6 +153,30 @@ class TestData extends Fixture
 
         }
         $manager->flush();
+
+        // $sample->setIdartiste_id($this->getReference('2Pac'));
+    
+
+            $articles=[
+           
+
+        ];
+        
+
+        foreach($articles as $article) { 
+            $test= new Articles();
+            $test->setTitre($article['titre']);
+            $test->setContent($article['content']);
+            $test->setAuteurId($article['auteur_id']);
+            $test->setDatePubli(new \DateTime($article['date_publi']));
+            $test->setImage($article['image']);
+            $manager->persist($test);
+
+        }
+        $manager->flush();
+ 
+
+            
 
     }     
 }
