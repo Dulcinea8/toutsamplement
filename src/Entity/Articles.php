@@ -53,10 +53,6 @@ class Articles
      */
     private $image;
 
-    /**
-     * @ORM\Column(type="datetime", nullable=true)
-     */
-    private $date_publi;
 
     public function __construct()
     {
