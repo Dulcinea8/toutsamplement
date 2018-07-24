@@ -7,21 +7,36 @@
 
 <form>
 		<h4 class="text-center">Le samplé</h4>
-	<div class="row justify-content-center">
+	<div class="row justify-content-center ">
 		<div class="col-3 border-right">
-			<label>Artiste :</label>
-			<input type="text" name="artiste"><br>
-			<label>Genre :</label><br>
-			<input type="select" name="genre">
+			<div class="form-group">
+				<label for="artisteSample">Artiste :</label>
+				<input type="text" name="artisteSample" id="artisteSample" class="form-control">
+			</div>
+			<div class="form-group">
+				<label for="genreSample">Genre :</label>
+				<input type="select" name="genreSample" id="genreSample" class="form-control">
+			</div>
 		</div>
-		<div class="col-3 border-right">
-			<input type="text" name="album">
-			<input type="date" name="date">
-			<input type="url" name="pochette">
+		<div class="col-3 border-right text-left">
+			<div class="form-group">
+				<label for="albumSample">Album :</label>
+				<input type="text" name="albumSample" id="albumSample" class="form-control">
+			</div>
+			<div class="form-group">
+				<label for="dateSample">Date de sortie:</label>
+				<input type="date" name="dateSample" id="dateSample" class="form-control">
+			</div>
+			<div class="form-group">
+				<label for="pochetteSample">Pochette :</label>
+				<input type="url" name="pochetteSample" id="pochetteSample" class="form-control">
+			</div>
 		</div>
 		<div class="col-3">
-			<input type="text" name="titre">
-			<input type="url" name="lien">
+			<label>Titre :</label>
+			<input type="text" name="titreSample" class="form-control">
+			<label>Lien :</label>
+			<input type="url" name="lienSample" class="form-control">
 		</div>
 	</div>
 	<hr>
@@ -29,19 +44,41 @@
 	<h4 class="text-center">Le sampleur</h4>
 	<div class="row justify-content-center">
 		<div class="col-3 border-right">
-			<input type="text" name="artiste">
-			<input type="select" name="genre">
+			<div class="form-group">
+				<label for="artisteSampleur">Artiste :</label>
+				<input type="text" name="artisteSampleur" id="artisteSampleur" class="form-control">
+			</div>
+			<div class="form-group">
+				<label for="genreSampleur">Genre :</label>
+				<input type="select" name="genreSampleur" id="genreSampleur" class="form-control">
+			</div>
 		</div>
-		<div class="col-3 border-right">
-			<input type="text" name="album">
-			<input type="date" name="date">
-			<input type="url" name="pochette">
+		<div class="col-3 border-right text-left">
+			<div class="form-group">
+				<label for="albumSampleur">Album :</label>
+				<input type="text" name="albumSampleur" id="albumSampleur" class="form-control">
+			</div>
+			<div class="form-group">
+				<label for="dateSampleur">Date de sortie:</label>
+				<input type="date" name="dateSampleur" id="dateSampleur" class="form-control">
+			</div>
+			<div class="form-group">
+				<label for="pochetteSampleur">Pochette :</label>
+				<input type="url" name="pochetteSampleur" id="pochetteSampleur" class="form-control">
+			</div>
 		</div>
 		<div class="col-3">
-			<input type="text" name="titre">
-			<input type="url" name="lien">
+			<label>Titre :</label>
+			<input type="text" name="titreSample" class="form-control">
+			<label>Lien :</label>
+			<input type="url" name="lienSample" class="form-control">
 		</div>
 	</div>
+	<hr>
+	<div class="row justify-content-center">
+		<button type="submit" class="btn btn-primary">Envoyer</button>		
+	</div>
+
 </form>
 {% endblock %}
 
