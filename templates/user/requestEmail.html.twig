@@ -1,6 +1,6 @@
 {% extends 'layout.html.twig' %}
 
-{% block title %}Login {% endblock %}
+{% block title %}Mot de passe Oublié {% endblock %}
 
 {% block content %}
 
@@ -29,7 +29,7 @@
                 <form action="{{ path('reset-password') }}" method="post">
                     <div class="form-group">
                         <label for="email">Email*</label>
-                        <input type="email" id="email" name="email" class="form-control" placeholder="email">
+                        <input required type="email" id="email" name="email" class="form-control" placeholder="email">
                     </div>
 
                     <button type="submit" class="btn btn-primary btn-lg btn-block">Envoyer</button>
