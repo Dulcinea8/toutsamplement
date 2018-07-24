@@ -1,0 +1,36 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Fiche article{% endblock %}
+
+{% block titlepage %}{{ article.titre }}{% endblock %}
+
+{% block content %}
+
+
+    {# a chaque tour de boucle, opn recupere articles qui ici est un objet pour acceder au titre artcile.title #}
+
+    <article class="container text-center alert alert-info">
+
+        {{ article.content }}
+        <hr>
+        {% if article.image %}
+            <img class="img-fluid" src="{{ asset(image_directory ~ article.image) }}"  alt=""/>
+        {% endif %}
+
+    Publié par : 
+
+        <a>{{ article.auteurid.username }}</a>
+
+    le
+    {{ article.datepubli|date('d/m/Y H:i:s') }}
+    <br>
+        <a class="btn btn-warning" href="">Modifier</a>
+        <a class="btn btn-warning" href="">Delete</a>
+
+   
+    </article>
+
+
+    
+    
+{% endblock %}

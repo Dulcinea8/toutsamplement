@@ -29,7 +29,9 @@
                             <img class="img-fluid" src="{{ asset(image_directory ~ article.image) }}"  alt=""/>
                         {% endif %}
                         <hr>
-                        <a class="btn btn-info ml-5 "href="">Plus d'info +++</a>
+                        <iframe width="560" height="315" src="{{ asset(video_directory ~ article.video) }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+                        <a class="btn btn-info ml-5 "href="{{ path('detail-article', {id: article.id} ) }}">+++ info +++</a>
                         <hr class="bg-danger">
 
                     </article>

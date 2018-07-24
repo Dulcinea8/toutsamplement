@@ -53,6 +53,11 @@ class Articles
      */
     private $image;
 
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $video;
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
@@ -106,6 +111,17 @@ class Articles
     public function setImage($image)
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    public function getVideo()
+    {
+        return $this->video;
+    }
+    public function setVideo($video)
+    {
+        $this->video = $video;
 
         return $this;
     }
