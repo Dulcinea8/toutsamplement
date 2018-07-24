@@ -19,6 +19,19 @@ class UsersRepository extends ServiceEntityRepository
         parent::__construct($registry, Users::class);
     }
 
+
+    /*
+     requete pour chercher l'email dans la basse de données
+     */
+    public function searcheEmail(string $email)
+    {
+        $querybuilder = $this->createQueryBuilder('u')
+            ->andWhere('u.email = :email')
+            ->setParameter('email', $email)
+            ->getQuery();
+        return $querybuilder->execute();
+    }
+
 //    /**
 //     * @return Users[] Returns an array of Users objects
 //     */
@@ -47,4 +60,5 @@ class UsersRepository extends ServiceEntityRepository
         ;
     }
     */
+
 }
