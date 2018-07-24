@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use App\Entity\Users;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -29,14 +31,27 @@ class Articles
     private $content;
 
     /**
-    * @ORM\ManyToOne(targetEntity="App\Entity\Users", inversedBy="articles")
-    */
-    private $auteur;
-
-    /**
      * @ORM\OneToMany(targetEntity="App\Entity\Comments", mappedBy="idarticle", orphanRemoval=true)
      */
     private $comments;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $date_publi;
+
+    /**
+     * cette propriété fait reference à l'entite Users
+     * il s'agit d'une relation ManyToOne
+     * @ORM\ManyToOne(targetEntity="App\Entity\Users", inversedBy="articles")
+     */
+    private $auteur;
+
+    /**
+     * @ORM\Column(type="string")
+     * @Assert\Image(maxSize="1000k")
+     */
+    private $image;
 
     public function __construct()
     {
@@ -68,6 +83,40 @@ class Articles
     public function setContent(string $content): self
     {
         $this->content = $content;
+
+        return $this;
+    }
+
+    public function getDatePubli(): ?\DateTimeInterface
+    {
+        return $this->date_publi;
+    }
+
+    public function setDatePubli(?\DateTimeInterface $date_publi): self
+    {
+        $this->date_publi = $date_publi;
+
+        return $this;
+    }
+
+    public function getImage()
+    {
+        return $this->image;
+    }
+    public function setImage($image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    public function getAuteurId(): ?Users
+    {
+        return $this->auteur;
+    }
+    public function setAuteurId(Users $auteur): self
+    {
+        $this->Auteur = $auteur;
 
         return $this;
     }

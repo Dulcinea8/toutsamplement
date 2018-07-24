@@ -6,9 +6,14 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UsersRepository")
+ * @ORM\Table(name="users")
+ * @UniqueEntity(fields="email", message="Email déjà pris")
+ * @UniqueEntity(fields="username", message="Username déjà pris")
  */
 class Users implements UserInterface, \Serializable
 {
@@ -20,27 +25,34 @@ class Users implements UserInterface, \Serializable
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, unique=true)
+     * @Assert\NotBlank()
      */
     private $username;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $nom;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $prenom;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, unique=true)
+     * @Assert\NotBlank()
+     * @Assert\Email()
+     *
      */
     private $email;
 
     /**
      * @ORM\Column(type="string", length=255)
+     *
      */
     private $password;
 
@@ -92,6 +104,7 @@ class Users implements UserInterface, \Serializable
 
     /**
      * @param mixed
+     * @Assert\Regex(pattern = "/(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{6,}/", message= "le mot de passe doit contenir au moins 6 caracteres et au moins une lettre mayuscule, une minuscule et un chiffre" )
      */
     private $plainPassword;
 

@@ -14,7 +14,12 @@
             </div>
         {% endfor %}
     {% endfor %}
-    {{ form_start(form) }} {# permet de créer la balise <form>  #}
-    {{ form_widget(form) }}  {# permet de créer les champs #}
-    {{ form_end(form) }} {# va fermer la balise #}
+
+
+            {{ form_start(form) }} {# permet de créer la balise <form>  #}
+            {{ form_widget(form) }}  {# permet de créer les champs #}
+            {{ form_end(form) }} {# va fermer la balise #}
+
+
+
 {% endblock %}

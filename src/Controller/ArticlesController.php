@@ -2,7 +2,10 @@
 
 namespace App\Controller;
 
+use App\Form\ArticlesType;
+use App\Service\FileUploader;
 use App\Entity\Articles;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -36,7 +39,7 @@ class ArticlesController extends Controller
 
 
     /**
-     * @Route("/article/", name="detail-article", requirements={"id"="[0-9]+"})
+     * @Route("/article/{id}", name="detail-article", requirements={"id"="[0-9]+"})
      */
     public function detail($id){
 
@@ -53,7 +56,53 @@ class ArticlesController extends Controller
     }
 
 
+    /**
+     * @Route("/article/ajouter/", name="add-article")
+     */
+    public function addArticle(Request $request, FileUploader $uploader)
+    {
+        //seul les users peuvent inserer un article
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
+        $article = new Articles();
+
+        //je place en parametre l'objet article a mon formulaire
+        $form = $this->createForm(ArticlesType::class, $article);
+
+        //je vais demander a mon objet form de gerer les donnees envoyées par l'utilisateur
+        $form->handleRequest($request);
+
+        //je vais faire le traitement d'ajout si le formulaire a etet envoyé et s'il est valide
+        if($form->isSubmitted() && $form->isvalid()){
+
+            //form->getData() contient les données envoyées
+            //ici on charge le formulaire de remplir notre objet categorie avec les données
+            $article = $form->getData();
+            $article->setDatePubli(new \DateTime(date('Y-m-d H:i:s')));
+
+            //ceci va contenir l'image envoyée
+            $file = $article->getImage();
+
+            $fileName = $uploader->upload($file);
+
+            //on met a jour la propriété image, qui doit contenir le nom du fichier et pas le fichier lui meme
+            //pour pouvoir persister l'article
+            $article->setImage($fileName);
+
+            //l'utilisateur connecté est l'auteur de l'article
+            $article->setUser($this->getUser());
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($article);
+            $entityManager->flush();
+
+            $this->addFlash('info', 'L\'article a bien été enregistré');
+
+            return $this->redirectToRoute('all-articles');
+        }
+
+        return $this->render('ajouter/addarticle.html.twig', array('form' => $form->createView()));
+    }
 
 
 
