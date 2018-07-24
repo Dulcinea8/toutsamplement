@@ -8,15 +8,14 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20180724094048 extends AbstractMigration
+final class Version20180724132025 extends AbstractMigration
 {
     public function up(Schema $schema) : void
     {
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('CREATE UNIQUE INDEX UNIQ_1483A5E9F85E0677 ON users (username)');
-        $this->addSql('CREATE UNIQUE INDEX UNIQ_1483A5E9E7927C74 ON users (email)');
+        $this->addSql('ALTER TABLE articles CHANGE video video VARCHAR(255) DEFAULT NULL');
     }
 
     public function down(Schema $schema) : void
@@ -24,7 +23,6 @@ final class Version20180724094048 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('DROP INDEX UNIQ_1483A5E9F85E0677 ON users');
-        $this->addSql('DROP INDEX UNIQ_1483A5E9E7927C74 ON users');
+        $this->addSql('ALTER TABLE articles CHANGE video video VARCHAR(255) NOT NULL COLLATE utf8mb4_unicode_ci');
     }
 }

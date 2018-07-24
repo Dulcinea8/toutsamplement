@@ -8,7 +8,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20180724115936 extends AbstractMigration
+final class Version20180724131725 extends AbstractMigration
 {
     public function up(Schema $schema) : void
     {
@@ -17,9 +17,10 @@ final class Version20180724115936 extends AbstractMigration
 
         $this->addSql('CREATE TABLE reset_pass (id INT AUTO_INCREMENT NOT NULL, user_id INT NOT NULL, token VARCHAR(255) NOT NULL, INDEX IDX_395710FCA76ED395 (user_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
         $this->addSql('ALTER TABLE reset_pass ADD CONSTRAINT FK_395710FCA76ED395 FOREIGN KEY (user_id) REFERENCES users (id)');
-        $this->addSql('ALTER TABLE articles ADD date_publi DATETIME DEFAULT NULL, ADD image VARCHAR(255) NOT NULL');
-        $this->addSql('ALTER TABLE tracks CHANGE lien lien VARCHAR(255) DEFAULT NULL');
-        $this->addSql('ALTER TABLE users CHANGE role role LONGTEXT NOT NULL COMMENT \'(DC2Type:array)\'');
+        $this->addSql('ALTER TABLE articles ADD video VARCHAR(255) NOT NULL');
+        $this->addSql('ALTER TABLE users CHANGE username username VARCHAR(80) NOT NULL, CHANGE email email VARCHAR(80) NOT NULL');
+        $this->addSql('CREATE UNIQUE INDEX UNIQ_1483A5E9F85E0677 ON users (username)');
+        $this->addSql('CREATE UNIQUE INDEX UNIQ_1483A5E9E7927C74 ON users (email)');
     }
 
     public function down(Schema $schema) : void
@@ -28,8 +29,9 @@ final class Version20180724115936 extends AbstractMigration
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
         $this->addSql('DROP TABLE reset_pass');
-        $this->addSql('ALTER TABLE articles DROP date_publi, DROP image');
-        $this->addSql('ALTER TABLE tracks CHANGE lien lien VARCHAR(255) NOT NULL COLLATE utf8mb4_unicode_ci');
-        $this->addSql('ALTER TABLE users CHANGE role role VARCHAR(255) NOT NULL COLLATE utf8mb4_unicode_ci');
+        $this->addSql('ALTER TABLE articles DROP video');
+        $this->addSql('DROP INDEX UNIQ_1483A5E9F85E0677 ON users');
+        $this->addSql('DROP INDEX UNIQ_1483A5E9E7927C74 ON users');
+        $this->addSql('ALTER TABLE users CHANGE username username VARCHAR(255) NOT NULL COLLATE utf8mb4_unicode_ci, CHANGE email email VARCHAR(255) NOT NULL COLLATE utf8mb4_unicode_ci');
     }
 }
