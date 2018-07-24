@@ -61,6 +61,18 @@ class UserController extends Controller
         return $this->render('user/register.html.twig', array('form' => $form->createView()) );
     }
 
+    /**
+     * @Route("/profil", name="profil")
+     */
+    public function profil(){
+        $user = $this->getUser();
+        dump($user);
+        $profil = $this->getDoctrine()->getRepository(User::class)->find($user->getId());
+        dump($profil);
+
+        return $this->render('user/profil.html.twig' );
+    }
+
 
 
 
