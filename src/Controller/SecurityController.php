@@ -7,6 +7,7 @@ use App\Entity\Users;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController extends Controller
@@ -50,7 +51,7 @@ class SecurityController extends Controller
 
             $repository=$this->getDoctrine()->getRepository(Users::class);
             $user=$repository->searcheEmail($email);
-            dump($user);
+            //dump($user);
             if($user){
                 //l'email existe
                 $resetPass = new ResetPass();
@@ -64,7 +65,8 @@ class SecurityController extends Controller
                 $entityManager->persist($resetPass);
                 $entityManager->flush();
 
-                $id_user = $resetPass->setUser($user['0']);
+                $id_user = $user['0']->getId(); // avec getId je recupere l'element
+                dump($id_user);
                 $message = (new \Swift_Message('Reset Mot de Passe'))
                     ->setFrom('contact.toutsamplement@gmail.com')
                     ->setTo($email)
@@ -80,13 +82,11 @@ class SecurityController extends Controller
                 if ($mailer->send($message)) {
                     $this->addFlash('success', "L'email a bien été envoyé !");
                 }else{
-                    $this->addFlash('error',"Erreur lors de l'envoi de l'email veuillez verifier votre adresse email.");
+                    $this->addFlash('danger',"Erreur lors de l'envoi de l'email veuillez verifier votre adresse email.");
                 }
             }else{
-                $this->addFlash('error',"Ton email n'existe pas dons notre base de données.");
+                $this->addFlash('danger',"Ton email n'existe pas dons notre base de données.");
             }
-        }else{
-            $this->addFlash('error',"Email manquante!.");
         }
 
 
@@ -100,5 +100,50 @@ class SecurityController extends Controller
     {
         $token = $request->query->get('token', 0);
         $id_user = $request->query->get('iduser', 0);
+        if($token && $id_user){
+            //verifier que le token et le user id existe dans ma bdd
+            $repository=$this->getDoctrine()->getRepository(ResetPass::class);
+            $resetPassword=$repository->searcheToken($token,$id_user);
+            if(!$resetPassword){
+                //token et id incorrects donc redirectionner
+                $this->addFlash('danger',"Error!! parametres invalides");
+                return $this->redirectToRoute('reset-password');
+            }
+        }else{
+            $this->addFlash('error',"ERROR!!");
+        }
+        return $this->render('security/newPassword.html.twig', array('idUser'=>$id_user) );
+    }
+
+    /**
+     * @Route("/ResetPasswordOk", name="reset-password-ok")
+     */
+    public function modifPassword(Request $request, UserPasswordEncoderInterface $encoder)
+    {
+        //ici je vais faire la modification de mot de passe
+        $password = $request->request->get('password', 0);
+        //metre en cript le mdp
+
+        $idUser = $request->request->get('idUser');
+        $user = $this->getDoctrine()->getRepository(Users::class )->find($idUser);
+        if($user){
+            $mdpEncoded = $encoder->encodePassword($user, $password);
+        }
+
+        if($password){
+            $repository=$this->getDoctrine()->getRepository(Users::class);
+            $user=$repository->find($idUser);
+
+            if($user){
+                $user->setpassword($mdpEncoded);
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->persist($user);
+                $entityManager->flush();
+                $this->addFlash('success', "Mot de passe modifié !");
+            }else{
+                $this->addFlash('danger',"Le mot de passe n'a pa pu être modifié");
+            }
+        }
+        return $this->render('security/motDePasseModifie.html.twig');
     }
 }

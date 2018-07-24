@@ -32,6 +32,14 @@ class ArtistesRepository extends ServiceEntityRepository
         return $select->fetchAll();
 
     }
+    public function findArtisteByNom($nom){
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.nom = :nom')
+            ->setParameter('nom', $nom)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
 
 //    /**
 //     * @return Artistes[] Returns an array of Artistes objects

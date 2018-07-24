@@ -5,7 +5,7 @@
 {% block content %}
 <h1>Inserer</h1>
 
-<form>
+<form method="POST" action="/inserer" id="ajout">
 		<h4 class="text-center">Le samplé</h4>
 	<div class="row justify-content-center ">
 		<div class="col-3 border-right">
@@ -69,9 +69,9 @@
 		</div>
 		<div class="col-3">
 			<label>Titre :</label>
-			<input type="text" name="titreSample" class="form-control">
+			<input type="text" name="titreSampleur" class="form-control">
 			<label>Lien :</label>
-			<input type="url" name="lienSample" class="form-control">
+			<input type="url" name="lienSampleur" class="form-control">
 		</div>
 	</div>
 	<hr>
@@ -84,6 +84,21 @@
 
 {% block js %}
 <script>
-	
+	$('#artisteSample').on('keydown', function(){
+		console.log($('#ajout').serialize());
+
+		$.ajax({
+			url: ,
+			dataType: "html",
+			data:$('#ajout').serialize(),
+			timeout: 3000,
+			success:function(data){
+
+			},
+			error: function(e){
+				console.log(error.responseText);
+			}
+		})
+	})
 </script>
 {% endblock %}
