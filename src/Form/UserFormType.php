@@ -22,9 +22,9 @@ class UserFormType extends AbstractType
             ->add('prenom', TextType::class, array('label' => 'Prenom'))
             ->add('nom', TextType::class, array('label' => 'Nom'))
             ->add('email',EmailType::class, array('label' => 'Email'))
-            ->add('plainPassword', RepeatedType::class, array('type' => PasswordType::class, 'invalid_message' => 'les mdp ne sont pas identiques', 'first_options' => ['label' => 'mot de passe'],
+            ->add('plainPassword', RepeatedType::class, array('type' => PasswordType::class, 'help' => 'le mot de passe doit être 6 caracteres et au moins une majuscules, une minuscule et un chiffre','invalid_message' => 'les mdp ne sont pas identiques', 'first_options' => ['label' => 'mot de passe'],
                 'second_options' => ['label' => 'répétez le mot de passe'] ))
-            ->add ('ajouter', SubmitType::class, array ('label'=> 'Se enregistrer', 'attr' => ['class'=> 'btn btn-primary']));
+            ->add ('ajouter', SubmitType::class, array ('label'=> 'Valider', 'attr' => ['class'=> 'btn btn-primary']));
         ;
     }
 

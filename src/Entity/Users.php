@@ -25,7 +25,7 @@ class Users implements UserInterface, \Serializable
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255, unique=true)
+     * @ORM\Column(type="string", length=80, unique=true)
      * @Assert\NotBlank()
      */
     private $username;
@@ -43,7 +43,7 @@ class Users implements UserInterface, \Serializable
     private $prenom;
 
     /**
-     * @ORM\Column(type="string", length=255, unique=true)
+     * @ORM\Column(type="string", length=80, unique=true)
      * @Assert\NotBlank()
      * @Assert\Email()
      *
