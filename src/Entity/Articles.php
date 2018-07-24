@@ -156,15 +156,5 @@ class Articles
 
         return $this;
     }
-    public function getDatePubli(): ?\DateTimeInterface
-    {
-        return $this->date_publi;
-    }
 
-    public function setDatePubli(?\DateTimeInterface $date_publi): self
-    {
-        $this->date_publi = $date_publi;
-
-        return $this;
-    }
 }
