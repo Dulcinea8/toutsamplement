@@ -88,11 +88,9 @@ class InsertionController extends Controller
     			$trackSampleur= $repositoryAlbums->findAlbumByNom($request->request->get('titreSampleur'));
     		}
 
-    		if ($entityManager->flush()) {
-    			$msg='<div class="alert alert-success">Merci pour votre contribution ! Elle sera examinée par un admin avant validation</div>';
-    		}else{
-    			$msg='<div class="alert alert-warning">Erreur lors de l\'envoi de votre contribution.</div>';
-    		}
+    		$entityManager->flush();
+    			$msg='Merci pour votre contribution ! Elle sera examinée par un admin avant validation';
+    		
             
 
     	}

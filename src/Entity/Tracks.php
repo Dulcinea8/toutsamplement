@@ -48,9 +48,18 @@ class Tracks
      */
     private $comments;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Relations", mappedBy="sampleur", orphanRemoval=true)
+     */
+    private $relations;
+
+
+    
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
+        $this->relations = new ArrayCollection();
     }
 
     public function getId()
@@ -81,6 +90,9 @@ class Tracks
 
         return $this;
     }
+
+
+
 
     public function getTitre(): ?string
     {
@@ -148,4 +160,37 @@ class Tracks
 
         return $this;
     }
+
+    /**
+     * @return Collection|Relations[]
+     */
+    public function getRelations(): Collection
+    {
+        return $this->relations;
+    }
+
+    public function addRelation(Relations $relation): self
+    {
+        if (!$this->relations->contains($relation)) {
+            $this->relations[] = $relation;
+            $relation->setSampleur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRelation(Relations $relation): self
+    {
+        if ($this->relations->contains($relation)) {
+            $this->relations->removeElement($relation);
+            // set the owning side to null (unless already changed)
+            if ($relation->getSampleur() === $this) {
+                $relation->setSampleur(null);
+            }
+        }
+
+        return $this;
+    }
+
+
 }

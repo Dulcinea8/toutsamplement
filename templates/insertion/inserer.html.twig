@@ -1,11 +1,11 @@
 {% extends 'layout.html.twig' %}
 
-{% block title %}Contact{% endblock %}
+{% block title %}Insérer{% endblock %}
 
 {% block content %}
 <h1>Inserer</h1>
 
-{% if msg %}{{msg}}{%endif%}
+{% if msg %}<div class="alert alert-success">{{msg}}</div>{%endif%}
 
 <form method="POST" action="/inserer" id="ajout">
 		<h4 class="text-center">Le samplé</h4>
