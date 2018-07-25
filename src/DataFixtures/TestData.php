@@ -79,7 +79,9 @@ class TestData extends Fixture
             ['nom'=>'Fellez', 'user'=>$this->getReference('Fellez'), 'genre'=>'Hip-Hop', 'article'=>null],
             ['nom'=>'Cortex', 'user'=>null, 'genre'=>'Electro', 'article'=>null],
             ['nom'=>'Aoced', 'user'=>$this->getReference('Aoced'), 'genre'=>'Electro', 'article'=>null],
-            ['nom'=>'Depeche Mode', 'user'=>null, 'genre'=>'Pop', 'article'=>null]
+            ['nom'=>'Depeche Mode', 'user'=>null, 'genre'=>'Pop', 'article'=>null],
+            ['nom'=>'Busy P', 'user'=>null, 'genre'=>'Electro', 'article'=>null],
+            ['nom'=>'Vladimir Cosma', 'user'=>null, 'genre'=>'Générique', 'article'=>null]
         ];
 
         
@@ -119,7 +121,9 @@ class TestData extends Fixture
             ['idartiste'=>$this->getReference('Fellez_artist'), 'nom'=>'L’arbre et la pirogue', 'annee'=>'2018', 'pochette' =>'larbreetlapirogue.jpg'],
             ['idartiste'=>$this->getReference('Cortex_artist'), 'nom'=>'Troupeau Bleu', 'annee'=>'1975', 'pochette' =>'troupeaubleu.jpg'],
             ['idartiste'=>$this->getReference('Aoced_artist'), 'nom'=>'Steve Mcqueen', 'annee'=>'2017', 'pochette' =>'stevemcqueen.jpg'],
-            ['idartiste'=>$this->getReference('Depeche Mode_artist'), 'nom'=>'Violator', 'annee'=>'1989', 'pochette' =>'violator.jpg']
+            ['idartiste'=>$this->getReference('Depeche Mode_artist'), 'nom'=>'Violator', 'annee'=>'1989', 'pochette' =>'violator.jpg'],
+            ['idartiste'=>$this->getReference('Busy P_artist'), 'nom'=>'Busy P Ep', 'annee'=>'2010', 'pochette' =>'busypbaste.jpg'],
+            ['idartiste'=>$this->getReference('Vladimir Cosma_artist'), 'nom'=>'Le grand blond avec une chaussure noire BOF', 'annee'=>'1972', 'pochette' =>'legrandblond.jpg']
 
 
         ];
@@ -160,7 +164,9 @@ class TestData extends Fixture
             ['idalbum'=>$this->getReference('L’arbre et la pirogue_album'),'isvalidated'=>1, 'titre'=>'Madame Rêve', 'lien'=>'https://www.youtube.com/watch?v=VW6xBr3aMcQ', 'date_publi'=> '2018-07-23'],
             ['idalbum'=>$this->getReference('Troupeau Bleu_album'),'isvalidated'=>1, 'titre'=>'Go Round', 'lien'=>'https://www.youtube.com/watch?v=GutIaarek20', 'date_publi'=> '2018-07-23'],
             ['idalbum'=>$this->getReference('Steve Mcqueen_album'),'isvalidated'=>1, 'titre'=>'The Hunter', 'lien'=>'https://www.youtube.com/watch?v=plHm06Xs0Vk', 'date_publi'=> '2018-07-23'],
-            ['idalbum'=>$this->getReference('Violator_album'),'isvalidated'=>1, 'titre'=>'Personal Jesus', 'lien'=>'https://www.youtube.com/watch?v=u1xrNaTO1bI', 'date_publi'=> '2018-07-23']
+            ['idalbum'=>$this->getReference('Violator_album'),'isvalidated'=>1, 'titre'=>'Personal Jesus', 'lien'=>'https://www.youtube.com/watch?v=u1xrNaTO1bI', 'date_publi'=> '2018-07-23'],
+            ['idalbum'=>$this->getReference('Busy P Ep_album'),'isvalidated'=>1, 'titre'=>'Le grand blond avec une casquette noire', 'lien'=>'https://www.youtube.com/watch?v=Zo0R-uygeJU', 'date_publi'=> '2018-07-24'],
+            ['idalbum'=>$this->getReference('Le grand blond avec une chaussure noire BOF_album'),'isvalidated'=>1, 'titre'=>'Le grand blond avec une chaussure noire (theme)', 'lien'=>'https://www.youtube.com/watch?v=Itkn6xC4lTY', 'date_publi'=> '2018-07-24']
     	];
 
 
@@ -193,7 +199,8 @@ $relations=[
             ['sampleur'=>$this->getReference('Pump It_track'), 'original'=>$this->getReference('Miserlou_track'),'isvalidated'=>1],
             ['sampleur'=>$this->getReference('Can I Kick It?_track'), 'original'=>$this->getReference('Walk on the Wild Side_track'),'isvalidated'=>1],
             ['sampleur'=>$this->getReference('Madame Rêve_track'), 'original'=>$this->getReference('Go Round_track'),'isvalidated'=>1],
-            ['sampleur'=>$this->getReference('The Hunter_track'), 'original'=>$this->getReference('Personal Jesus_track'),'isvalidated'=>1]
+            ['sampleur'=>$this->getReference('The Hunter_track'), 'original'=>$this->getReference('Personal Jesus_track'),'isvalidated'=>1],
+            ['sampleur'=>$this->getReference('Le grand blond avec une casquette noire_track'), 'original'=>$this->getReference('Le grand blond avec une chaussure noire (theme)_track'),'isvalidated'=>1]
         ];
 
         
