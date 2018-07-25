@@ -56,11 +56,12 @@ footer {
     bottom:0;
     left:0;
     height: 7em;
+    background-repeat: repeat;
 }
 
-body {
+body{
     background-image: url("../images/body.jpg");
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     background-attachment: fixed;
 }
 .fond{

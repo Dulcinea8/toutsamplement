@@ -21,11 +21,11 @@ class ArtistesRepository extends ServiceEntityRepository
 
 
 
-     public function last5Artistes(): array
+     public function last4Artistes(): array
     {
         //on récupère l'objet pdo qui permet de se connecter à la base => le résultat du try catch
         $connexion = $this->getEntityManager()->getConnection();
-        $sql = 'SELECT * FROM artistes ORDER BY id DESC LIMIT 5';
+        $sql = 'SELECT * FROM artistes ORDER BY id DESC LIMIT 4';
         $select = $connexion->prepare($sql);
         $select->execute();
         //on renvoie un tableau de tableau
