@@ -111,7 +111,27 @@ class UserController extends Controller
         return $this->render('user/updateProfil.html.twig', array('form' => $form->createView(),'avatar' => $fileName)  );
     }
 
+    /**
+     * @Route("/deleteProfil/{id}", name="delete_profil" , requirements={"id"="\d+"})
+     */
+    public function deleteProfil(Users $user)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->remove($user);
+        $entityManager->flush();
+        //supprimer l'image si elle existe
+        //supprimer l'eventuelle ancienne image
+        //si on m'a fourni un nom de fichier et que ce nom existe bien
+        /*if($user->getAvatar() and file_exists($this->targetDirectory . '/' . $oldFileName)){
+            //je supprime le fichier
+            unlink($this->targetDirectory . '/' . $oldFileName);
+        }*/
 
+
+
+        $this->addFlash('warning', 'Profil modifié');
+        return $this->redirectToRoute('\logout');
+    }
 
 
 

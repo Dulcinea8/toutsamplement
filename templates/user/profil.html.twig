@@ -16,32 +16,45 @@
     {% endfor %}
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-4 col-4">
-            {% if user.avatar %}
-                <img class="img-fluid" style="width: 70px; height: 70px;" src="{{asset(image_directory)}}{{user.avatar}}" alt="" />
-            {% endif %}
-            {% if user.score <= 10 %}
-                <img class="img-fluid" style="width: 60px; height: 60px;" src="{{ asset('images/score_debutant.png')  }}" alt="score" />
-                <h6>Niveau Debutant</h6>
-                <p><strong>Score: </strong>{{ user.score }}</p>
-            {% endif %}
-            {% if user.score > 10 and user.core <=20 %}
-                <img class="img-fluid" src="{{ asset('images/score_bronze.png')  }}" alt="score" />
-                <h6>Niveau Bronze</h6>
-                <p><strong>Score: </strong>{{ user.score }}</p>
-            {% endif %}
-            {% if user.score > 20 and user.core <=30 %}
-                <img class="img-fluid" src="{{ asset('images/score_silver.png')  }}" alt="score" />
-                <h6>Niveau Silver</h6>
-                <p><strong>Score: </strong>{{ user.score }}</p>
-            {% endif %}
-            {% if user.score > 30  %}
-                <img class="img-fluid" src="{{ asset('images/score_gold.png')  }}" alt="score" />
-                <h6>Niveau Gold</h6>
-                <p><strong>Score: </strong>{{ user.score }}</p>
-            {% endif %}
+        <div class="col-md-6 col-6">
+            <div class="row justify-content-center">
+                {% if user.avatar %}
+
+                    <img class="card-img-top" class="img-fluid" style="width: 220px; height: 220px;" src="{{asset(image_directory)}}{{user.avatar}}" alt="" />
+
+                {% endif %}
+                <br>
+                <br>
+            </div>
+            <div class="row justify-content-center">
+                <div class="card d-flex justify-content-center" style="width: 25rem; border:none; background: none;">
+                    <br>
+                    <br>
+                        {% if user.score <= 10 %}
+                            <img class="img-fluid" style="width: 120px; height: 120px;" src="{{ asset('images/score_debutant.png')  }}" alt="score" />
+                            <br>
+                            <h6>Niveau Debutant</h6>
+                        {% endif %}
+                        {% if user.score > 10 and user.score <=20 %}
+                            <img class="img-fluid" style="width: 120px; height: 120px;" src="{{ asset('images/sore_bronze.png')  }}" alt="score" />
+                            <br>
+                            <h6>Niveau Bronze</h6>
+                        {% endif %}
+                        {% if user.score > 20 and user.score <=30 %}
+                            <img class="img-fluid"  style="width: 120px; height: 120px;" src="{{ asset('images/score_silver.png')  }}" alt="score" />
+                            <br>
+                            <h6>Niveau Silver</h6>
+                        {% endif %}
+                        {% if user.score > 30  %}
+                            <img class="img-fluid"  style="width: 120px; height: 120px;" src="{{ asset('images/score_gold.png')  }}" alt="score" />
+                            <br>
+                            <h6>Niveau Gold</h6>
+                        {% endif %}
+                        <p class="card-title"><strong>Score: </strong>{{ user.score }}</p>
+                </div>
+            </div>
         </div>
-        <div class="col-md-8 col-8">
+        <div class="col-md-6 col-6">
             <h6><strong>Pseudo:</strong> {{ user.username }}</h6>
             <h6><strong>Nom:</strong> {{ user.nom }}</h6>
             <h6><strong>Prenom:</strong> {{ user.prenom }}</h6>
@@ -53,18 +66,20 @@
             <h6><strong>Bandcamp: </strong> {{ user.bandcamp }}</h6>
             <h6><strong>Facebook: </strong> {{ user.facebook }}</h6>
             <h6><strong>Site Web: </strong> {{ user.siteweb }}</h6>
-
-
-            <button>  <a class="stylebouton" href="{{ path ('update_profil', { id: user.id}) }}">Modifier mon Profil</a></button>
-
+            <br>
+            <br>
+            <div>
+                <button class="btn btn-link">  <a  href="{{ path ('update_profil', { id: user.id}) }}">Modifier mon Profil</a></button>
+            </div>
+            <div>
+                <button class="btn btn-link">  <a href="{{ path ('delete_profil', { id: user.id}) }}">Supprimer mon Profil</a></button>
+            </div>
 
 
         </div>
     </div>
     <h4>Contributions</h4>
 </div>
-
-
 
 
 {% endblock %}

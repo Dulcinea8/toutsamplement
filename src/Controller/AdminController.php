@@ -16,4 +16,11 @@ class AdminController extends Controller
             'controller_name' => 'AdminController',
         ]);
     }
+
+    /**
+    * @Route("/admin/requete_insertion", name="requete-insertion")
+    */
+    public function requete(){
+    	return $this->render('admin/requete_insertion.html.twig');
+    }
 }
