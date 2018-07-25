@@ -28,6 +28,11 @@ class Relations
      */
     private $original;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $is_validated;
+
     public function getId()
     {
         return $this->id;
@@ -53,6 +58,17 @@ class Relations
     public function setOriginal(?Tracks $original): self
     {
         $this->original = $original;
+
+        return $this;
+    }
+     public function getIsValidated(): ?bool
+    {
+        return $this->is_validated;
+    }
+
+    public function setIsValidated(bool $is_validated): self
+    {
+        $this->is_validated = $is_validated;
 
         return $this;
     }
