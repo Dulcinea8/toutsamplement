@@ -66,13 +66,20 @@ class UserController extends Controller
      */
     public function profil(){
         $user = $this->getUser();
-        dump($user);
-        $profil = $this->getDoctrine()->getRepository(User::class)->find($user->getId());
-        dump($profil);
 
-        return $this->render('user/profil.html.twig' );
+        return $this->render('user/profil.html.twig', array('user' => $user)  );
     }
 
+
+    /**
+     * @Route("/updateProfil", name="update_profil")
+     */
+    /*
+    public function updateProfil(){
+
+        return $this->render('user/profil.html.twig', array('form' => $form->createView())  );
+    }
+*/
 
 
 

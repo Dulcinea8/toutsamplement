@@ -1,0 +1,58 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Formulaire d'inscription{% endblock %}
+
+{% block titlepage %}Ton Profil{% endblock %}
+
+{% block content %}
+
+    {# pour afficher tous type de messages #}
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="alert alert-{{ label }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-4 col-4">
+            {% if user.avatar %}
+                <img class="img-fluid" src="{{asset(image_directory)}}{{user.avatar}}" alt="" />
+            {% endif %}
+            {% if user.score <= 10 %}
+                <img class="img-fluid" src="{{ asset('images/score_debutant.png')  }}" alt="score" />
+                <h6>Niveau Debutant</h6>
+                <p><strong>Score: </strong>{{ user.score }}</p>
+            {% endif %}
+            {% if user.score > 10 and user.core <=20 %}
+                <img class="img-fluid" src="{{ asset('images/score_bronze.png')  }}" alt="score" />
+                <h6>Niveau Bronze</h6>
+                <p><strong>Score: </strong>{{ user.score }}</p>
+            {% endif %}
+            {% if user.score > 20 and user.core <=30 %}
+                <img class="img-fluid" src="{{ asset('images/score_silver.png')  }}" alt="score" />
+                <h6>Niveau Silver</h6>
+                <p><strong>Score: </strong>{{ user.score }}</p>
+            {% endif %}
+            {% if user.score > 30  %}
+                <img class="img-fluid" src="{{ asset('images/score_gold.png')  }}" alt="score" />
+                <h6>Niveau Gold</h6>
+                <p><strong>Score: </strong>{{ user.score }}</p>
+            {% endif %}
+        </div>
+        <div class="col-md-8 col-8">
+            <h6><strong>Pseudo:</strong> {{ user.username }}</h6>
+            <h6><strong>Nom:</strong> {{ user.nom }}</h6>
+            <h6><strong>Prenom:</strong> {{ user.prenom }}</h6>
+            <h6><strong>Email:</strong> {{ user.email }}</h6>
+            <h6><strong>Date d'inscription:</strong> {{ user.dateinscription  |date('d/m/Y') }}</h6>
+        </div>
+    </div>
+    <h4>Contributions</h4>
+</div>
+
+
+
+
+{% endblock %}
