@@ -58,6 +58,7 @@ class Users implements UserInterface, \Serializable
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Image(maxSize="1000k")
      */
     private $avatar;
 
@@ -183,12 +184,12 @@ class Users implements UserInterface, \Serializable
         return $this;
     }
 
-    public function getAvatar(): ?string
+    public function getAvatar()
     {
         return $this->avatar;
     }
 
-    public function setAvatar(?string $avatar): self
+    public function setAvatar($avatar)
     {
         $this->avatar = $avatar;
 

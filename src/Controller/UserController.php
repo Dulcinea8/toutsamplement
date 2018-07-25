@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Users;
 use App\Form\UserFormType;
+use App\Form\UserUpdateType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -66,20 +67,28 @@ class UserController extends Controller
      */
     public function profil(){
         $user = $this->getUser();
-
         return $this->render('user/profil.html.twig', array('user' => $user)  );
     }
 
 
     /**
-     * @Route("/updateProfil", name="update_profil")
+     * @Route("/updateProfil/{id}", name="update_profil" , requirements={"id"="\d+"})
      */
-    /*
-    public function updateProfil(){
+    public function updateProfil(Users $user, Request $request){
 
-        return $this->render('user/profil.html.twig', array('form' => $form->createView())  );
+        $form = $this->createForm(UserUpdateType::class, $user);
+        $form->handleRequest($request);
+        if($form->isSubmitted()&& $form->isValid())
+        {
+            $user=$form->getData();
+            $entityManager=$this->getDoctrine()->getDoctrine()->getManager();
+            $entityManager->flush();
+            $this->addFlash('success', 'Modification fait');
+            return $this->redirectToRoute('profil');
+        }
+        return $this->render('user/updateProfil.html.twig', array('form' => $form->createView())  );
     }
-*/
+
 
 
 

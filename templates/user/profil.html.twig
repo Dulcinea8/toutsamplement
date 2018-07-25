@@ -47,6 +47,11 @@
             <h6><strong>Prenom:</strong> {{ user.prenom }}</h6>
             <h6><strong>Email:</strong> {{ user.email }}</h6>
             <h6><strong>Date d'inscription:</strong> {{ user.dateinscription  |date('d/m/Y') }}</h6>
+
+            <button>  <a class="stylebouton" href="{{ path ('update_profil', { id: user.id}) }}">Modifier mon Profil</a></button>
+
+
+
         </div>
     </div>
     <h4>Contributions</h4>
