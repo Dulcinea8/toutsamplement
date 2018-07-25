@@ -19,6 +19,16 @@ class RelationsRepository extends ServiceEntityRepository
         parent::__construct($registry, Relations::class);
     }
 
+    public function doesRelationExist($id1, $id2){
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.sampleur = :id1', 'a.original = :id2')
+            ->setParameter('id1', $id1)
+            ->setParameter('id2', $id2)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
+
 //    /**
 //     * @return Relations[] Returns an array of Relations objects
 //     */

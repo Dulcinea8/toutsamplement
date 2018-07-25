@@ -11,6 +11,7 @@ use App\Entity\Users;
 use App\Entity\Artistes;
 use App\Entity\Albums;
 use App\Entity\Tracks;
+use App\Entity\Relations;
 
 class InsertionController extends Controller
 {
@@ -25,7 +26,8 @@ class InsertionController extends Controller
     		$entityManager = $this->getDoctrine()->getManager();
     		 $repositoryArtistes = $this->getDoctrine()->getRepository(Artistes::class);
     		 $repositoryAlbums = $this->getDoctrine()->getRepository(Albums::class);
-    		 $repositoryTracks = $this->getDoctrine()->getRepository(Tracks::class);
+             $repositoryTracks = $this->getDoctrine()->getRepository(Tracks::class);
+    		 $repositoryRelations = $this->getDoctrine()->getRepository(Relations::class);
 
     		if (!$repositoryArtistes->findArtisteByNom($request->request->get('artisteSample')) ) {
     			$artisteSample= new Artistes();
@@ -55,7 +57,7 @@ class InsertionController extends Controller
     			$trackSample->setIsValidated(0);
     			$entityManager->persist($trackSample);
     		}else{
-    			$trackSample= $repositoryAlbums->findAlbumByNom($request->request->get('titreSample'));
+    			$trackSample= $repositoryTracks->findTrackByTitre($request->request->get('titreSample'));
     		}
 
     		if (!$repositoryArtistes->findArtisteByNom($request->request->get('artisteSampleur')) ) {
@@ -85,8 +87,19 @@ class InsertionController extends Controller
     			$trackSampleur->setIsValidated(0);
     			$entityManager->persist($trackSampleur);
     		}else{
-    			$trackSampleur= $repositoryAlbums->findAlbumByNom($request->request->get('titreSampleur'));
+    			$trackSampleur= $repositoryTracks->findTrackByTitre($request->request->get('titreSampleur'));
     		}
+
+            $idSampleur= $trackSampleur->getId();
+            $idOriginal= $trackSample->getId();
+
+            if (!$repositoryRelations->doesRelationExist($idSampleur, $idOriginal)) {
+                $relation= new Relations;
+                $relation->setSampleur($trackSampleur);
+                $relation->setOriginal($trackSample);
+                $relation->setIsValidated(0);
+                $entityManager->persist($relation);
+            }
 
     		$entityManager->flush();
     			$msg='Merci pour votre contribution ! Elle sera examinée par un admin avant validation';
