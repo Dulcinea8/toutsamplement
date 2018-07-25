@@ -149,7 +149,7 @@ class ArticlesController extends Controller
             }
 
 
-            //jon met à jour la propriété image qui doit contenir le nom du fichier pour etre persistée
+            //on met à jour la propriété image qui doit contenir le nom du fichier pour etre persistée
             // fileName contient soit le nouveau nom de fichier si on a recu une nouvelle image,
             // soit l'ancien si l'utilisateur n'a pas modifié l'image
             $article->setImage($fileName);

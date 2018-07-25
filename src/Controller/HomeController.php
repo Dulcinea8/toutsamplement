@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Relations;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use App\Entity\Artistes;
@@ -26,15 +27,21 @@ class HomeController extends Controller
     {
 
         $repositoryArtistes = $this->getDoctrine()->getRepository(Artistes::class);
-        $artistes = $repositoryArtistes->last5Artistes();
+        $artistes = $repositoryArtistes->last4Artistes();
 
         $repositoryArticles = $this->getDoctrine()->getRepository(Articles::class);
-        $articles = $repositoryArticles->last5Articles();
+        $articles = $repositoryArticles->last4Articles();
+
+        $repositorySamples = $this->getDoctrine()->getRepository(Relations::class);
+        $samples = $repositorySamples->last4Samples();
 
         // $repositorySamples = $this->getDoctrine()->getRepository(Sample::class);
         // $samples = $repositorySamples->findAll();
 
-        return $this->render('home/index.html.twig', array('artistes'=>$artistes, 'articles'=>$articles));
+        return $this->render('home/index.html.twig', array(
+                                                            'artistes'=>$artistes,
+                                                            'articles'=>$articles,
+                                                            'samples'=>$samples));
     }
 
 }

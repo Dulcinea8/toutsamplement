@@ -19,6 +19,20 @@ class RelationsRepository extends ServiceEntityRepository
         parent::__construct($registry, Relations::class);
     }
 
+<<<<<<< HEAD
+    public function last4Samples(): array
+    {
+        //on récupère l'objet pdo qui permet de se connecter à la base => le résultat du try catch
+        $connexion = $this->getEntityManager()->getConnection();
+        $sql = 'SELECT * FROM relations ORDER BY id DESC LIMIT 4';
+        $select = $connexion->prepare($sql);
+        $select->execute();
+        //on renvoie un tableau de tableau
+        return $select->fetchAll();
+
+    }
+
+=======
     public function doesRelationExist($id1, $id2){
         return $this->createQueryBuilder('a')
             ->andWhere('a.sampleur = :id1', 'a.original = :id2')
@@ -31,6 +45,7 @@ class RelationsRepository extends ServiceEntityRepository
 
 
 
+>>>>>>> 1943e9e459352ed5dc03ed5948a2de434d89ec8a
 //    /**
 //     * @return Relations[] Returns an array of Relations objects
 //     */
