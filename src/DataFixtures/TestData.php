@@ -77,7 +77,9 @@ class TestData extends Fixture
             ['nom'=>'A Tribe Called Quest', 'user'=>null, 'genre'=>'Hip-Hop', 'article'=>null],
             ['nom'=>'Lou Reed', 'user'=>null, 'genre'=>'Rock', 'article'=>null],
             ['nom'=>'Fellez', 'user'=>$this->getReference('Fellez'), 'genre'=>'Hip-Hop', 'article'=>null],
-            ['nom'=>'Cortex', 'user'=>null, 'genre'=>'Electro', 'article'=>null]
+            ['nom'=>'Cortex', 'user'=>null, 'genre'=>'Electro', 'article'=>null],
+            ['nom'=>'Aoced', 'user'=>$this->getReference('Aoced'), 'genre'=>'Electro', 'article'=>null],
+            ['nom'=>'Depeche Mode', 'user'=>null, 'genre'=>'Pop', 'article'=>null]
         ];
 
         
@@ -115,7 +117,9 @@ class TestData extends Fixture
             ['idartiste'=>$this->getReference('A Tribe Called Quest_artist'), 'nom'=>'People’s Instinctive Travels and the Paths of Rhythm', 'annee'=>'1990', 'pochette' =>'https://images-eu.ssl-images-amazon.com/images/I/615qpr0HpHL._SS500.jpg'],
             ['idartiste'=>$this->getReference('Lou Reed_artist'), 'nom'=>'Transformer', 'annee'=>'1972', 'pochette' =>'https://images-eu.ssl-images-amazon.com/images/I/51zy0FjR1TL._SS500.jpg'],
             ['idartiste'=>$this->getReference('Fellez_artist'), 'nom'=>'L’arbre et la pirogue', 'annee'=>'2018', 'pochette' =>'https://f4.bcbits.com/img/a1813742944_16.jpg'],
-            ['idartiste'=>$this->getReference('Cortex_artist'), 'nom'=>'Troupeau Bleu', 'annee'=>'1975', 'pochette' =>'https://www.lemauvaiscoton.fr/wp-content/uploads/2015/06/Cortex-Troupeau-bleu.jpg']
+            ['idartiste'=>$this->getReference('Cortex_artist'), 'nom'=>'Troupeau Bleu', 'annee'=>'1975', 'pochette' =>'https://www.lemauvaiscoton.fr/wp-content/uploads/2015/06/Cortex-Troupeau-bleu.jpg'],
+            ['idartiste'=>$this->getReference('Aoced_artist'), 'nom'=>'Steve Mcqueen', 'annee'=>'2017', 'pochette' =>null],
+            ['idartiste'=>$this->getReference('Depeche Mode_artist'), 'nom'=>'Violator', 'annee'=>'1989', 'pochette' =>null]
 
 
         ];
@@ -154,7 +158,9 @@ class TestData extends Fixture
             ['idalbum'=>$this->getReference('People’s Instinctive Travels and the Paths of Rhythm_album'),'isvalidated'=>1, 'titre'=>'Can I Kick It?', 'lien'=>'https://www.youtube.com/watch?v=7D_JwgIM-y4', 'date_publi'=> '2018-07-23'],
             ['idalbum'=>$this->getReference('Transformer_album'),'isvalidated'=>1, 'titre'=>'Walk on the Wild Side', 'lien'=>'https://www.youtube.com/watch?time_continue=4&v=oG6fayQBm9w', 'date_publi'=> '2018-07-23'],
             ['idalbum'=>$this->getReference('L’arbre et la pirogue_album'),'isvalidated'=>1, 'titre'=>'Madame Rêve', 'lien'=>'https://www.youtube.com/watch?v=VW6xBr3aMcQ', 'date_publi'=> '2018-07-23'],
-            ['idalbum'=>$this->getReference('Troupeau Bleu_album'),'isvalidated'=>1, 'titre'=>'Go Round', 'lien'=>'https://www.youtube.com/watch?v=GutIaarek20', 'date_publi'=> '2018-07-23']
+            ['idalbum'=>$this->getReference('Troupeau Bleu_album'),'isvalidated'=>1, 'titre'=>'Go Round', 'lien'=>'https://www.youtube.com/watch?v=GutIaarek20', 'date_publi'=> '2018-07-23'],
+            ['idalbum'=>$this->getReference('Steve Mcqueen_album'),'isvalidated'=>1, 'titre'=>'The Hunter', 'lien'=>'https://www.youtube.com/watch?v=plHm06Xs0Vk', 'date_publi'=> '2018-07-23'],
+            ['idalbum'=>$this->getReference('Violator_album'),'isvalidated'=>1, 'titre'=>'Personal Jesus', 'lien'=>'https://www.youtube.com/watch?v=u1xrNaTO1bI', 'date_publi'=> '2018-07-23']
     	];
 
 
@@ -186,7 +192,8 @@ $relations=[
             ['sampleur'=>$this->getReference('Je Zappe Et Je Mate_track'), 'original'=>$this->getReference('Nadia’s Theme_track'),'isvalidated'=>1],
             ['sampleur'=>$this->getReference('Pump It_track'), 'original'=>$this->getReference('Miserlou_track'),'isvalidated'=>1],
             ['sampleur'=>$this->getReference('Can I Kick It?_track'), 'original'=>$this->getReference('Walk on the Wild Side_track'),'isvalidated'=>1],
-            ['sampleur'=>$this->getReference('Madame Rêve_track'), 'original'=>$this->getReference('Go Round_track'),'isvalidated'=>1]
+            ['sampleur'=>$this->getReference('Madame Rêve_track'), 'original'=>$this->getReference('Go Round_track'),'isvalidated'=>1],
+            ['sampleur'=>$this->getReference('The Hunter_track'), 'original'=>$this->getReference('Personal Jesus_track'),'isvalidated'=>1]
         ];
 
         
