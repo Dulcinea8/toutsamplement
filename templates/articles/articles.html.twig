@@ -19,26 +19,26 @@
 
                     {# a chaque tour de boucle, on recupere les articles qui ici est un objet
                     pour acceder au titre artcile.title #}
-                    <article class="container text-center">
+                    <article class="container text-justify ">
 
-                        {{ article.titre }}  <a class="btn btn-info ml-5 "href="{{ path('detail-article', {id: article.id} ) }}">+++ info +++</a>
-                        <hr>
-                        {{ article.content }}
-                        <hr>
+                        <h2 class="font-weight-bold">{{ article.titre }}</h2>
+                        <br>
+                        <div class="row ">
+                            <div class="col-6">
+                                {% if article.image %}
+                                    <img class="img-fluid w-75" src="{{ asset(image_directory ~ article.image) }}"  alt=""/>
+                                {% endif %}
+                            </div>
 
-                        {% if article.image %}
-                            <img class="img-fluid" src="{{ asset(image_directory ~ article.image) }}"  alt=""/>
-                        {% endif %}
-                        <hr>
-
-                        {% if article.video %}
-                            <iframe width="560" height="315" src="{{ asset(video_directory ~ article.video) }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                        {% endif %}
-
-
-                        <hr class="bg-danger">
+                            <div class="col-6 align-self-center">
+                                {{ article.content | striptags | slice(0, 300) }}...
+                                <a class="text-danger float-bottom " href="{{ path('detail-article', {id: article.id} ) }}">Lire la suite</a>
+                            </div>
+                        </div>
 
                     </article>
+
+                    <hr>
 
                 {% endfor %}
 
