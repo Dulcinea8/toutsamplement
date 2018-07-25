@@ -35,11 +35,11 @@
                             <br>
                             <h6>Niveau Debutant</h6>
                         {% endif %}
-                        {% if user.score > 10 and user.core <=20 %}
+                        {% if user.score > 10 and user.score <=20 %}
                             <img class="img-fluid" src="{{ asset('images/score_bronze.png')  }}" alt="score" />
                             <h6>Niveau Bronze</h6>
                         {% endif %}
-                        {% if user.score > 20 and user.core <=30 %}
+                        {% if user.score > 20 and user.score <=30 %}
                             <img class="img-fluid" src="{{ asset('images/score_silver.png')  }}" alt="score" />
                             <h6>Niveau Silver</h6>
                         {% endif %}
