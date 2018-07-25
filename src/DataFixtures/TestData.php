@@ -9,8 +9,16 @@ use App\Entity\Albums;
 use App\Entity\Tracks;
 use App\Entity\Articles;
 use App\Entity\Users;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+
 class TestData extends Fixture
 {
+    private $encoder;
+    public function __construct(UserPasswordEncoderInterface $encoder)
+    {
+        //lors de l'instanciation de la classe, on va stocker l'encoder dans la propriété
+        $this->encoder= $encoder;
+    }
     public function load(ObjectManager $manager)
     {
 
@@ -30,7 +38,8 @@ class TestData extends Fixture
             $test->setNom($user['nom']);
             $test->setPrenom($user['prenom']);
             $test->setEmail($user['email']);
-            $test->setPassword($user['password']);
+            $mdpEncoded = $this->encoder->encodePassword($test, $user['password']);
+            $test->setPassword($mdpEncoded);
             $test->setAvatar($user['avatar']);
             $test->setDateinscription(new \DateTime($user['date_inscription']));
             $test->setScore($user['score']);
