@@ -31,22 +31,74 @@
         <!--DERNIERS ARTISTE -->
         <div>
             <h3>Derniers Artistes</h3>
-                <div class="d-flex">
-                    {% for artiste in artistes%}
-                        <a href="#"><article class="border p-3 m-3">{{artiste.nom}}</article></a>
-                    {%endfor%}
-                </div>
+            <div class="d-flex">
+                {% for artiste in artistes%}
+                    <article class="container text-center">
+                        <div class="p-3 bg-light text-dark m-1">
+
+                            <a href="#"><article class="">{{artiste.nom}}</article></a>
+
+                        </div>
+
+                    </article>
+                {% endfor %}
+
+            </div>
         </div>
+
 
         <!--DERNIERS SAMPLES -->
         <div>
             <h3>Derniers Samples</h3>
+
             <div class="d-flex">
+
                 {% for sample in samples %}
-                <div class="border m-3">
-                    <a href="#"><article class="p-3 m-3">{{ sample.sampleur.titre }}</article></a>
-                    <a href="#"><article class="p-3 m-3">{{ sample.original.titre }}</article></a>
-                </div>
+
+                <article class="container text-center">
+
+                    <div class="p-3 bg-light text-dark m-1">
+
+
+
+                            {% if sample.sampleur.titre|length >= 15 %}
+                                <a href="">
+                                    <p class="font-weight-bold">{{ sample.sampleur.idalbum.titre | striptags | slice(0, 15) }}...</p>
+                                </a>
+                            {% elseif sample.sampleur.titre|length < 15 %}
+                                <a href="">
+                                    <p class="font-weight-bold">{{ sample.sampleur.titre }}</p>
+                                </a>
+                            {% endif %}
+
+                            {% if sample.sampleur.idalbum.pochette %}
+                                <a href="">
+                                    <img class="img-fluid w-75" src="{{ asset(image_directory ~ sample.sampleur.idalbum.pochette) }}"  alt=""/>
+                                </a>
+                            {% endif %}
+
+
+                            {% if sample.original.titre|length >= 15 %}
+                                <a href="">
+                                    <p class="font-weight-bold">{{ sample.original.titre | striptags | slice(0, 15) }}...</p>
+                                </a>
+                            {% elseif sample.original.titre|length < 15 %}
+                                <a href="">
+                                    <p class="font-weight-bold">{{ sample.original.titre }}</p>
+                                </a>
+                            {% endif %}
+
+                            {% if sample.original.idalbum.pochette %}
+                                <a href="">
+                                    <img class="img-fluid w-75" src="{{ asset(image_directory ~ sample.original.idalbum.pochette) }}"  alt=""/>
+                                </a>
+                            {% endif %}
+
+
+                    </div>
+
+                </article>
+
                 {% endfor %}
                 
             </div>
@@ -59,14 +111,25 @@
                 {% for article in articles%}
 
                     <article class="container text-center">
-                        <div class="p-3 mb-2 bg-light text-dark m-1">
-                            <p class="font-weight-bold">{{ article.titre }}</p>
-                            <br>
-                                    <div class="">
-                                        {% if article.image %}
-                                            <img class="img-fluid w-75" src="{{ asset(image_directory ~ article.image) }}"  alt=""/>
-                                        {% endif %}
-                                    </div>
+
+                        <div class="p-3 bg-light text-dark m-1">
+
+                            {% if article.titre|length >= 35 %}
+                                <a href="{{ path('detail-article', {id: article.id} ) }}">
+                                    <p class="font-weight-bold">{{ article.titre | striptags | slice(0, 35) }}...</p>
+                                </a>
+                            {% elseif article.titre|length < 35 %}
+                                <a href="{{ path('detail-article', {id: article.id} ) }}">
+                                    <p class="font-weight-bold">{{ article.titre }}</p>
+                                </a>
+                            {% endif %}
+
+                            {% if article.image %}
+                                <a href="{{ path('detail-article', {id: article.id} ) }}">
+                                    <img class="img-fluid w-75" src="{{ asset(image_directory ~ article.image) }}"  alt=""/>
+                                </a>
+                            {% endif %}
+
                         </div>
 
                     </article>

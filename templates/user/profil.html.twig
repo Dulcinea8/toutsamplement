@@ -36,15 +36,18 @@
                             <h6>Niveau Debutant</h6>
                         {% endif %}
                         {% if user.score > 10 and user.score <=20 %}
-                            <img class="img-fluid" src="{{ asset('images/score_bronze.png')  }}" alt="score" />
+                            <img class="img-fluid" style="width: 120px; height: 120px;" src="{{ asset('images/sore_bronze.png')  }}" alt="score" />
+                            <br>
                             <h6>Niveau Bronze</h6>
                         {% endif %}
                         {% if user.score > 20 and user.score <=30 %}
-                            <img class="img-fluid" src="{{ asset('images/score_silver.png')  }}" alt="score" />
+                            <img class="img-fluid"  style="width: 120px; height: 120px;" src="{{ asset('images/score_silver.png')  }}" alt="score" />
+                            <br>
                             <h6>Niveau Silver</h6>
                         {% endif %}
                         {% if user.score > 30  %}
-                            <img class="img-fluid" src="{{ asset('images/score_gold.png')  }}" alt="score" />
+                            <img class="img-fluid"  style="width: 120px; height: 120px;" src="{{ asset('images/score_gold.png')  }}" alt="score" />
+                            <br>
                             <h6>Niveau Gold</h6>
                         {% endif %}
                         <p class="card-title"><strong>Score: </strong>{{ user.score }}</p>
@@ -69,7 +72,7 @@
                 <button class="btn btn-link">  <a  href="{{ path ('update_profil', { id: user.id}) }}">Modifier mon Profil</a></button>
             </div>
             <div>
-                <button class="btn btn-link">  <a href="{{ path ('delete_profil', { id: user.id}) }}">Supprimer mon Profil</a></button>
+               <!-- <button class="btn btn-link">  <a href="{{ path ('delete_profil', { id: user.id}) }}">Supprimer mon Profil</a></button>-->
             </div>
 
 

@@ -13,6 +13,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use App\Service\FileUploader;
 use Symfony\Component\HttpFoundation\File\File;
 
+
 class UserController extends Controller
 {
     /**
@@ -114,24 +115,23 @@ class UserController extends Controller
     /**
      * @Route("/deleteProfil/{id}", name="delete_profil" , requirements={"id"="\d+"})
      */
-    public function deleteProfil(Users $user)
+   /* public function deleteProfil(Users $user)
     {
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->remove($user);
         $entityManager->flush();
         //supprimer l'image si elle existe
-        //supprimer l'eventuelle ancienne image
         //si on m'a fourni un nom de fichier et que ce nom existe bien
-        /*if($user->getAvatar() and file_exists($this->targetDirectory . '/' . $oldFileName)){
+        if($user->getAvatar() and file_exists('%kernel.project_dir%/public/uploads/images/' . $user->getAvatar())){
             //je supprime le fichier
-            unlink($this->targetDirectory . '/' . $oldFileName);
-        }*/
+            unlink('%kernel.project_dir%/public/uploads/images/'  . $oldFileName);
+        }
 
 
 
         $this->addFlash('warning', 'Profil modifié');
         return $this->redirectToRoute('\logout');
-    }
+    }*/
 
 
 
