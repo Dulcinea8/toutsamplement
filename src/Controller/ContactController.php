@@ -45,9 +45,6 @@ class ContactController extends Controller
     
     	}
 
-    	
-
-       
         return $this->render('contact/index.html.twig', [
             'success'=>$confirmMessage, 'error'=>$errorMessage
         ]);
