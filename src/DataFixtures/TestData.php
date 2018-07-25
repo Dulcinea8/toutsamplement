@@ -9,6 +9,7 @@ use App\Entity\Albums;
 use App\Entity\Tracks;
 use App\Entity\Articles;
 use App\Entity\Users;
+use App\Entity\Relations;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class TestData extends Fixture
@@ -108,10 +109,10 @@ class TestData extends Fixture
             ['idartiste'=>$this->getReference('Scred Connexion_artist'), 'nom'=>'Scred Selexion 99/2000', 'annee'=>'2000', 'pochette' =>'https://images-eu.ssl-images-amazon.com/images/I/51au8w3gkAL._SS500.jpg'],
             ['idartiste'=>$this->getReference('Kentarō Haneda_artist'), 'nom'=>'Space Cobra', 'annee'=>'1982', 'pochette' =>'https://images-na.ssl-images-amazon.com/images/I/61LDGqm6JbL.jpg'],
             ['idartiste'=>$this->getReference('Passi_artist'), 'nom'=>'Les Tentations', 'annee'=>'1998', 'pochette' =>'https://images-eu.ssl-images-amazon.com/images/I/51gAUqPDe5L._SS500.jpg'],
-            ['idartiste'=>$this->getReference('Barry De Vorzon_artist'), 'nom'=>'Nadia\'s Theme', 'annee'=>'1973', 'pochette' =>'https://images-eu.ssl-images-amazon.com/images/I/5147PutAyYL._SS500.jpg'],
+            ['idartiste'=>$this->getReference('Barry De Vorzon_artist'), 'nom'=>'Nadia’s Theme', 'annee'=>'1973', 'pochette' =>'https://images-eu.ssl-images-amazon.com/images/I/5147PutAyYL._SS500.jpg'],
             ['idartiste'=>$this->getReference('Black Eyed Peas_artist'), 'nom'=>'Monkey Business', 'annee'=>'2005', 'pochette' =>'https://images-eu.ssl-images-amazon.com/images/I/61-MuHZZTkL._SS500.jpg'],
             ['idartiste'=>$this->getReference('Dick Dale_artist'), 'nom'=>'Deltone', 'annee'=>'1962', 'pochette' =>'https://images-eu.ssl-images-amazon.com/images/I/51lIjnodrBL._SS500.jpg'],
-            ['idartiste'=>$this->getReference('A Tribe Called Quest_artist'), 'nom'=>'People\'s Instinctive Travels and the Paths of Rhythm', 'annee'=>'1990', 'pochette' =>'https://images-eu.ssl-images-amazon.com/images/I/615qpr0HpHL._SS500.jpg'],
+            ['idartiste'=>$this->getReference('A Tribe Called Quest_artist'), 'nom'=>'People’s Instinctive Travels and the Paths of Rhythm', 'annee'=>'1990', 'pochette' =>'https://images-eu.ssl-images-amazon.com/images/I/615qpr0HpHL._SS500.jpg'],
             ['idartiste'=>$this->getReference('Lou Reed_artist'), 'nom'=>'Transformer', 'annee'=>'1972', 'pochette' =>'https://images-eu.ssl-images-amazon.com/images/I/51zy0FjR1TL._SS500.jpg'],
             ['idartiste'=>$this->getReference('Fellez_artist'), 'nom'=>'L’arbre et la pirogue', 'annee'=>'2018', 'pochette' =>'https://f4.bcbits.com/img/a1813742944_16.jpg'],
             ['idartiste'=>$this->getReference('Cortex_artist'), 'nom'=>'Troupeau Bleu', 'annee'=>'1975', 'pochette' =>'https://www.lemauvaiscoton.fr/wp-content/uploads/2015/06/Cortex-Troupeau-bleu.jpg']
@@ -141,16 +142,16 @@ class TestData extends Fixture
             ['idalbum'=>$this->getReference('Cross_album'),'isvalidated'=>1, 'titre'=>'Newjack', 'lien'=>'https://www.youtube.com/watch?v=9f-NQZYCZnA', 'date_publi'=> '2018-07-23'],
             ['idalbum'=>$this->getReference('Light Up the Night_album'),'isvalidated'=>1, 'titre'=>'You Make Me Wanna Wiggle', 'lien'=>'https://www.youtube.com/watch?v=bQ8TCpaw4m0', 'date_publi'=> '2018-07-23'],
             ['idalbum'=>$this->getReference('Life After Death_album'),'isvalidated'=>1, 'titre'=>'Mo Money Mo Problems', 'lien'=>'https://www.youtube.com/watch?v=VAOUbr2HEpo', 'date_publi'=> '2018-07-23'],
-            ['idalbum'=>$this->getReference('Diana_album'),'isvalidated'=>1, 'titre'=>'I\'m Coming Out', 'lien'=>'https://www.youtube.com/watch?time_continue=322&v=zbYcte4ZEgQ', 'date_publi'=> '2018-07-23'],
+            ['idalbum'=>$this->getReference('Diana_album'),'isvalidated'=>1, 'titre'=>'I’m Coming Out', 'lien'=>'https://www.youtube.com/watch?time_continue=322&v=zbYcte4ZEgQ', 'date_publi'=> '2018-07-23'],
             ['idalbum'=>$this->getReference('Discovery_album'),'isvalidated'=>1, 'titre'=>'One More Time', 'lien'=>'https://www.youtube.com/watch?v=FGBhQbmPwH8', 'date_publi'=> '2018-07-23'],
             ['idalbum'=>$this->getReference('More Spell on You_album'),'isvalidated'=>1, 'titre'=>'More Spell on You', 'lien'=>'https://www.youtube.com/watch?time_continue=230&v=53p7ogqJqqs', 'date_publi'=> '2018-07-23'],
             ['idalbum'=>$this->getReference('Scred Selexion 99/2000_album'),'isvalidated'=>1, 'titre'=>'Scred Connexion Feat Fabe', 'lien'=>'https://www.youtube.com/watch?v=uM9ZM1Jgs7k', 'date_publi'=> '2018-07-23'],
             ['idalbum'=>$this->getReference('Space Cobra_album'),'isvalidated'=>1, 'titre'=>'Shi No Kōshin', 'lien'=>'https://www.youtube.com/watch?v=37FCzjAvdE0', 'date_publi'=> '2018-07-23'],
             ['idalbum'=>$this->getReference('Les Tentations_album'),'isvalidated'=>1, 'titre'=>'Je Zappe Et Je Mate', 'lien'=>'https://www.youtube.com/watch?v=HRLmmnzbQHE', 'date_publi'=> '2018-07-23'],
-            ['idalbum'=>$this->getReference('Nadia\'s Theme_album'),'isvalidated'=>1, 'titre'=>'Nadia\'s Theme', 'lien'=>'https://www.youtube.com/watch?time_continue=2&v=Vlv32UEazGc', 'date_publi'=> '2018-07-23'],
+            ['idalbum'=>$this->getReference('Nadia’s Theme_album'),'isvalidated'=>1, 'titre'=>'Nadia’s Theme', 'lien'=>'https://www.youtube.com/watch?time_continue=2&v=Vlv32UEazGc', 'date_publi'=> '2018-07-23'],
             ['idalbum'=>$this->getReference('Monkey Business_album'),'isvalidated'=>1, 'titre'=>'Pump It', 'lien'=>'https://www.youtube.com/watch?v=ZaI2IlHwmgQ', 'date_publi'=> '2018-07-23'],
             ['idalbum'=>$this->getReference('Deltone_album'),'isvalidated'=>1, 'titre'=>'Miserlou', 'lien'=>'https://www.youtube.com/watch?time_continue=5&v=qJmI6fAPUSk', 'date_publi'=> '2018-07-23'],
-            ['idalbum'=>$this->getReference('People\'s Instinctive Travels and the Paths of Rhythm_album'),'isvalidated'=>1, 'titre'=>'Can I Kick It?', 'lien'=>'https://www.youtube.com/watch?v=7D_JwgIM-y4', 'date_publi'=> '2018-07-23'],
+            ['idalbum'=>$this->getReference('People’s Instinctive Travels and the Paths of Rhythm_album'),'isvalidated'=>1, 'titre'=>'Can I Kick It?', 'lien'=>'https://www.youtube.com/watch?v=7D_JwgIM-y4', 'date_publi'=> '2018-07-23'],
             ['idalbum'=>$this->getReference('Transformer_album'),'isvalidated'=>1, 'titre'=>'Walk on the Wild Side', 'lien'=>'https://www.youtube.com/watch?time_continue=4&v=oG6fayQBm9w', 'date_publi'=> '2018-07-23'],
             ['idalbum'=>$this->getReference('L’arbre et la pirogue_album'),'isvalidated'=>1, 'titre'=>'Madame Rêve', 'lien'=>'https://www.youtube.com/watch?v=VW6xBr3aMcQ', 'date_publi'=> '2018-07-23'],
             ['idalbum'=>$this->getReference('Troupeau Bleu_album'),'isvalidated'=>1, 'titre'=>'Go Round', 'lien'=>'https://www.youtube.com/watch?v=GutIaarek20', 'date_publi'=> '2018-07-23']
@@ -173,7 +174,36 @@ class TestData extends Fixture
         
 
 
-        $manager->flush();
+
+$relations=[
+            ['sampleur'=>$this->getReference('California Love_track'), 'original'=>$this->getReference('Woman to Woman_track'),'isvalidated'=>1],
+            ['sampleur'=>$this->getReference('The Next Episode_track'), 'original'=>$this->getReference('The Edge_track'),'isvalidated'=>1],
+            ['sampleur'=>$this->getReference('Les Princes De La Ville_track'), 'original'=>$this->getReference('Make Me Believe in You_track'),'isvalidated'=>1],
+            ['sampleur'=>$this->getReference('Newjack_track'), 'original'=>$this->getReference('You Make Me Wanna Wiggle_track'),'isvalidated'=>1],
+            ['sampleur'=>$this->getReference('Mo Money Mo Problems_track'), 'original'=>$this->getReference('I’m Coming Out_track'),'isvalidated'=>1],
+            ['sampleur'=>$this->getReference('One More Time_track'), 'original'=>$this->getReference('More Spell on You_track'),'isvalidated'=>1],
+            ['sampleur'=>$this->getReference('Scred Connexion Feat Fabe_track'), 'original'=>$this->getReference('Shi No Kōshin_track'),'isvalidated'=>1],
+            ['sampleur'=>$this->getReference('Je Zappe Et Je Mate_track'), 'original'=>$this->getReference('Nadia’s Theme_track'),'isvalidated'=>1],
+            ['sampleur'=>$this->getReference('Pump It_track'), 'original'=>$this->getReference('Miserlou_track_track'),'isvalidated'=>1],
+            ['sampleur'=>$this->getReference('Can I Kick It?_track'), 'original'=>$this->getReference('Walk on the Wild Side_track'),'isvalidated'=>1],
+            ['sampleur'=>$this->getReference('Madame Rêve_track'), 'original'=>$this->getReference('Go Round_track'),'isvalidated'=>1]
+        ];
+
+        
+
+        foreach($relations as $relation) { 
+            $test= new Relations();
+            $test->setSampleur($relation['sampleur']);
+            $test->setOriginal($relation['original']);
+            $test->setIsValidated($relation['isvalidated']);
+            $manager->persist($test);
+
+        
+        }
+
+
+
+
 
     
 
