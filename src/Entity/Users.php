@@ -280,12 +280,12 @@ class Users implements UserInterface, \Serializable
         return $this;
     }
 
-    public function getRole(): ?array
+    public function getRoles(): ?array
     {
         return $this->role;
     }
 
-    public function setRole(array $role): self
+    public function setRoles(array $role): self
     {
         $this->role = $role;
 
@@ -370,12 +370,6 @@ class Users implements UserInterface, \Serializable
             //see section on salt below
             // $this->>salt
             )= unserialize($serialized,['allowed_classes'=>false]);
-    }
-
-    public function getRoles()
-    {
-        //pour l'instant, on met les roles en dur: user par défaut
-        return array('ROLE_USER');
     }
 
 

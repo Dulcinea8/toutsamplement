@@ -28,6 +28,15 @@ class AlbumsRepository extends ServiceEntityRepository
             ->getOneOrNullResult()
         ;
     }
+
+    public function findAlbumByRequete($requete){
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.nom = :requete')
+            ->setParameter('requete', $requete)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 //    /**
 //     * @return Albums[] Returns an array of Albums objects
 //     */

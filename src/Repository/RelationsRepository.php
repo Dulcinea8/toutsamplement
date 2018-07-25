@@ -42,6 +42,14 @@ class RelationsRepository extends ServiceEntityRepository
         ;
     }
 
+    public function getNonValidated(){
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.is_validated = 0')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
 
 
 
