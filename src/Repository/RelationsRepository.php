@@ -22,6 +22,16 @@ class RelationsRepository extends ServiceEntityRepository
 
     public function last4Samples(): array
     {
+       return $this->createQueryBuilder('a')
+            ->orderBy('a.id', 'DESC')
+            ->setMaxResults(4)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+ public function last4Samples1(): array
+    {
         //on récupère l'objet pdo qui permet de se connecter à la base => le résultat du try catch
         $connexion = $this->getEntityManager()->getConnection();
         $sql = 'SELECT * FROM relations ORDER BY id DESC LIMIT 4';
@@ -32,7 +42,6 @@ class RelationsRepository extends ServiceEntityRepository
         return $select->fetchAll();
 
     }
-
 
 
     public function doesRelationExist($id1, $id2){
