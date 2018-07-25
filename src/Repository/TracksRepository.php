@@ -28,6 +28,15 @@ class TracksRepository extends ServiceEntityRepository
         ;
     }
 
+    public function findTracksById($id){
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.id = :id')
+            ->setParameter('id', $id)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
+
 //    /**
 //     * @return Tracks[] Returns an array of Tracks objects
 //     */

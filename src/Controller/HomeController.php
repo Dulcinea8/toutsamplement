@@ -7,6 +7,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use App\Entity\Artistes;
 use App\Entity\Articles;
+use App\Entity\Tracks;
 
 class HomeController extends Controller
 {
@@ -35,8 +36,9 @@ class HomeController extends Controller
         $repositorySamples = $this->getDoctrine()->getRepository(Relations::class);
         $samples = $repositorySamples->last4Samples();
 
-        // $repositorySamples = $this->getDoctrine()->getRepository(Sample::class);
-        // $samples = $repositorySamples->findAll();
+        // $repositoryTracks = $this->getDoctrine()->getRepository(Tracks::class);
+        // $tracks = $repositoryTracks->findTrackById($samples);
+
 
         return $this->render('home/index.html.twig', array(
                                                             'artistes'=>$artistes,
