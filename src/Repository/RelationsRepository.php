@@ -30,18 +30,6 @@ class RelationsRepository extends ServiceEntityRepository
         ;
     }
 
- public function last4Samples1(): array
-    {
-        //on récupère l'objet pdo qui permet de se connecter à la base => le résultat du try catch
-        $connexion = $this->getEntityManager()->getConnection();
-        $sql = 'SELECT * FROM relations ORDER BY id DESC LIMIT 4';
-        $select = $connexion->prepare($sql);
-        $select->execute();
-        
-        //on renvoie un tableau de tableau
-        return $select->fetchAll();
-
-    }
 
 
     public function doesRelationExist($id1, $id2){
