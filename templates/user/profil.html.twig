@@ -41,12 +41,12 @@
                             <h6>Niveau Bronze</h6>
                         {% endif %}
                         {% if user.score > 20 and user.score <=30 %}
-                            <img class="img-fluid" src="{{ asset('images/score_silver.png')  }}" alt="score" />
+                            <img class="img-fluid"  style="width: 120px; height: 120px;" src="{{ asset('images/score_silver.png')  }}" alt="score" />
                             <br>
                             <h6>Niveau Silver</h6>
                         {% endif %}
                         {% if user.score > 30  %}
-                            <img class="img-fluid" src="{{ asset('images/score_gold.png')  }}" alt="score" />
+                            <img class="img-fluid"  style="width: 120px; height: 120px;" src="{{ asset('images/score_gold.png')  }}" alt="score" />
                             <br>
                             <h6>Niveau Gold</h6>
                         {% endif %}
