@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Relations;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use App\Entity\Tracks;
@@ -23,5 +24,34 @@ class SampleController extends Controller
         ]);
     }
 
-   
+    /**
+     * @Route("/samples/", name="all-samples")
+     */
+    public function showAllSamples(){
+
+        $repository = $this->getDoctrine()->getRepository(Relations::class);
+
+        $samples = $repository->findAll();
+
+        return $this->render('sample/articles.html.twig', array('samples'=>$samples));
+
+    }
+
+
+    /**
+     * @Route("/sample/{id}", name="detail-sample", requirements={"id"="[0-9]+"})
+     */
+    public function detail($id){
+
+        $repository = $this->getDoctrine()->getRepository(Relations::class);
+
+        $sample = $repository->find($id);
+
+        if(!$sample){
+            throw $this->createNotFoundException('No article found for id' .$id);
+        }
+
+        return $this->render('sample/detailsample.html.twig',  array('sample'=>$sample));
+
+    }
 }
