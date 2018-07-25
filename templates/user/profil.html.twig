@@ -18,10 +18,10 @@
     <div class="row justify-content-center">
         <div class="col-md-4 col-4">
             {% if user.avatar %}
-                <img class="img-fluid" src="{{asset(image_directory)}}{{user.avatar}}" alt="" />
+                <img class="img-fluid" style="width: 70px; height: 70px;" src="{{asset(image_directory)}}{{user.avatar}}" alt="" />
             {% endif %}
             {% if user.score <= 10 %}
-                <img class="img-fluid" src="{{ asset('images/score_debutant.png')  }}" alt="score" />
+                <img class="img-fluid" style="width: 60px; height: 60px;" src="{{ asset('images/score_debutant.png')  }}" alt="score" />
                 <h6>Niveau Debutant</h6>
                 <p><strong>Score: </strong>{{ user.score }}</p>
             {% endif %}
@@ -47,6 +47,13 @@
             <h6><strong>Prenom:</strong> {{ user.prenom }}</h6>
             <h6><strong>Email:</strong> {{ user.email }}</h6>
             <h6><strong>Date d'inscription:</strong> {{ user.dateinscription  |date('d/m/Y') }}</h6>
+            <h6><strong>Ta Biographie</strong> {{ user.bio }}</h6>
+            <h5><strong>Tes Liens: </strong></h5>
+            <h6><strong>Soundcloud: </strong> {{ user.soundcloud }}</h6>
+            <h6><strong>Bandcamp: </strong> {{ user.bandcamp }}</h6>
+            <h6><strong>Facebook: </strong> {{ user.facebook }}</h6>
+            <h6><strong>Site Web: </strong> {{ user.siteweb }}</h6>
+
 
             <button>  <a class="stylebouton" href="{{ path ('update_profil', { id: user.id}) }}">Modifier mon Profil</a></button>
 

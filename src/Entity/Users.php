@@ -93,7 +93,7 @@ class Users implements UserInterface, \Serializable
     private $site_web;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(type="text", nullable=true, nullable=true)
      */
     private $bio;
 
