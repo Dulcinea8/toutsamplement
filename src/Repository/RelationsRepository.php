@@ -27,10 +27,12 @@ class RelationsRepository extends ServiceEntityRepository
         $sql = 'SELECT * FROM relations ORDER BY id DESC LIMIT 4';
         $select = $connexion->prepare($sql);
         $select->execute();
+        
         //on renvoie un tableau de tableau
         return $select->fetchAll();
 
     }
+
 
 
     public function doesRelationExist($id1, $id2){
