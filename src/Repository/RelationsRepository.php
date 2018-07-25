@@ -19,7 +19,7 @@ class RelationsRepository extends ServiceEntityRepository
         parent::__construct($registry, Relations::class);
     }
 
-<<<<<<< HEAD
+
     public function last4Samples(): array
     {
         //on récupère l'objet pdo qui permet de se connecter à la base => le résultat du try catch
@@ -32,7 +32,7 @@ class RelationsRepository extends ServiceEntityRepository
 
     }
 
-=======
+
     public function doesRelationExist($id1, $id2){
         return $this->createQueryBuilder('a')
             ->andWhere('a.sampleur = :id1', 'a.original = :id2')
@@ -45,7 +45,7 @@ class RelationsRepository extends ServiceEntityRepository
 
 
 
->>>>>>> 1943e9e459352ed5dc03ed5948a2de434d89ec8a
+
 //    /**
 //     * @return Relations[] Returns an array of Relations objects
 //     */
