@@ -27,7 +27,7 @@ class AdminController extends Controller
     	$repositoryRelations = $this->getDoctrine()->getRepository(Relations::class);
     	$repositoryAlbums = $this->getDoctrine()->getRepository(Albums::class);
         $requetes = $repositoryRelations->getNonValidated();
-        $albums= $repositoryAlbums->findAlbumByRequete($requetes);
-    	return $this->render('admin/requete_insertion.html.twig', ['requetes'=>$requetes, 'albums'=>$albums]);
+   
+    	return $this->render('admin/requete_insertion.html.twig', ['requetes'=>$requetes]);
     }
 }

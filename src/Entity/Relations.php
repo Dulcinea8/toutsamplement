@@ -38,7 +38,7 @@ class Relations
      * @ORM\ManyToOne(targetEntity="App\Entity\Users")
      * @ORM\JoinColumn(nullable=true)
      */
-    private $user_id;
+    private $user;
 
     public function getId()
     {
