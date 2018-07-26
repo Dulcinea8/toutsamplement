@@ -33,7 +33,6 @@ class AdminController extends Controller
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         $user = $this->getUser();
 
-
         return $this->render('admin/profil.html.twig', array('user' => $user)  );
     }
     /**
@@ -43,8 +42,8 @@ class AdminController extends Controller
     	$repositoryRelations = $this->getDoctrine()->getRepository(Relations::class);
     	$repositoryAlbums = $this->getDoctrine()->getRepository(Albums::class);
         $requetes = $repositoryRelations->getNonValidated();
-        $albums= $repositoryAlbums->findAlbumByRequete($requetes);
-    	return $this->render('admin/requete_insertion.html.twig', ['requetes'=>$requetes, 'albums'=>$albums]);
+   
+    	return $this->render('admin/requete_insertion.html.twig', ['requetes'=>$requetes]);
     }
 
     /**
