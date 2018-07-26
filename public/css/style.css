@@ -90,8 +90,7 @@ body{
     margin-left: 10%;
 }
 
-<<<<<<< HEAD
-=======
+
 .image_supprimer_input
 {
 background-image:url("../images/boutonSupprimer.png");
@@ -113,4 +112,3 @@ border: none;
 .image_supprimer_input button{
     border: none;
 }
->>>>>>> a9d94da4fd3d028c589364d42132f3b28de44970
