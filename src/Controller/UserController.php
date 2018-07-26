@@ -39,7 +39,7 @@ class UserController extends Controller
             $user->setDateInscription(new \DateTime(date('Y-m-d H:i:s')));
             $user->setScore(0);
             //je définis un role par défaut
-            $user->setRole(array('ROLE_USER'));
+            $user->setRoles(array('ROLE_USER'));
 
             // à ce moment, $user->getPassword() vaut null, seul $plainPassword contient le mdp en clair
             //je dois encoder le mdp en clair  (plainpassword) et le mettre dans password

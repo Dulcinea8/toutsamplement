@@ -31,9 +31,9 @@ class TestData extends Fixture
             ['username'=>'Spakye', 'nom'=>'Magnac', 'prenom'=>'Léo', 'email'=>'leomagnac@gmail.com', 'password'=>'Yoloswag33', 'avatar'=>null, 'date_inscription'=>'2018-07-21', 'score'=>1000, 'facebook'=>null, 'soundcloud'=>'https://soundcloud.com/user-686215597', 'bandcamp'=>null, 'site_web'=>null, 'bio'=>null, 'role'=>['ROLE_ADMIN']]
 
         ];
-        
 
-        foreach($users as $user) { 
+
+        foreach($users as $user) {
             $test= new Users();
             $test->setUsername($user['username']);
             $test->setNom($user['nom']);
@@ -56,8 +56,8 @@ class TestData extends Fixture
 
         }
         $artistes=[
-        	['nom'=>'2Pac', 'user'=>null, 'genre'=>'Hip-Hop', 'article'=>null],
-        	['nom'=>'Joe Cocker', 'user'=>null, 'genre'=>'Rock', 'article'=>null],
+            ['nom'=>'2Pac', 'user'=>null, 'genre'=>'Hip-Hop', 'article'=>null],
+            ['nom'=>'Joe Cocker', 'user'=>null, 'genre'=>'Rock', 'article'=>null],
             ['nom'=>'Dr. Dre', 'user'=>null, 'genre'=>'Hip-Hop', 'article'=>null],
             ['nom'=>'David McCallum', 'user'=>null, 'genre'=>'Soul', 'article'=>null],
             ['nom'=>'113', 'user'=>null, 'genre'=>'Hip-Hop', 'article'=>null],
@@ -82,22 +82,22 @@ class TestData extends Fixture
             ['nom'=>'Depeche Mode', 'user'=>null, 'genre'=>'Pop', 'article'=>null]
         ];
 
-        
 
-        foreach($artistes as $artiste) { 
-        	$test= new Artistes();
-        	$test->setNom($artiste['nom']);
-        	$test->setUser($artiste['user']);
-        	$test->setGenre($artiste['genre']);
-        	$test->setArticle($artiste['article']);
-        	$manager->persist($test);
 
-        	$this->addReference($artiste['nom'].'_artist', $test);
+        foreach($artistes as $artiste) {
+            $test= new Artistes();
+            $test->setNom($artiste['nom']);
+            $test->setUser($artiste['user']);
+            $test->setGenre($artiste['genre']);
+            $test->setArticle($artiste['article']);
+            $manager->persist($test);
+
+            $this->addReference($artiste['nom'].'_artist', $test);
         }
 
         $albums=[
-        	['idartiste'=>$this->getReference('2Pac_artist'), 'nom'=>'All Eyez on Me', 'annee'=>'1995', 'pochette' =>'alleyezonme.jpg'],
-        	['idartiste'=>$this->getReference('Joe Cocker_artist'), 'nom'=>'Joe Cocker', 'annee'=>'1972', 'pochette' =>'joecocker.jpg'],
+            ['idartiste'=>$this->getReference('2Pac_artist'), 'nom'=>'All Eyez on Me', 'annee'=>'1995', 'pochette' =>'alleyezonme.jpg'],
+            ['idartiste'=>$this->getReference('Joe Cocker_artist'), 'nom'=>'Joe Cocker', 'annee'=>'1972', 'pochette' =>'joecocker.jpg'],
             ['idartiste'=>$this->getReference('Dr. Dre_artist'), 'nom'=>'Chronic 2001', 'annee'=>'1999', 'pochette' =>'chronic2001.jpg'],
             ['idartiste'=>$this->getReference('David McCallum_artist'), 'nom'=>'Music: A Bit More of Me', 'annee'=>'1967', 'pochette' =>'musicabitmoreofme.jpg'],
             ['idartiste'=>$this->getReference('113_artist'), 'nom'=>'Les Princes De La Ville', 'annee'=>'1999', 'pochette' =>'lesprincesdelaville.jpg'],
@@ -124,21 +124,21 @@ class TestData extends Fixture
 
         ];
 
-        foreach($albums as $album) { 
-        	$test= new Albums();
-        	$test->setIdartiste($album['idartiste']);
-        	$test->setNom($album['nom']);
-        	$test->setAnnee($album['annee']);
-        	$test->setPochette($album['pochette']);
-        	
-        	$manager->persist($test);
+        foreach($albums as $album) {
+            $test= new Albums();
+            $test->setIdartiste($album['idartiste']);
+            $test->setNom($album['nom']);
+            $test->setAnnee($album['annee']);
+            $test->setPochette($album['pochette']);
 
-        	$this->addReference($album['nom'].'_album', $test);
+            $manager->persist($test);
+
+            $this->addReference($album['nom'].'_album', $test);
         }
 
         $tracks=[
-        	['idalbum'=>$this->getReference('All Eyez on Me_album'),'isvalidated'=>1, 'titre'=>'California Love', 'lien'=>'https://www.youtube.com/watch?v=5wBTdfAkqGU', 'date_publi'=> '2018-07-23'],
-        	['idalbum'=>$this->getReference('Joe Cocker_album'),'isvalidated'=>1, 'titre'=>'Woman to Woman', 'lien'=>'https://www.youtube.com/watch?v=9UC3y5QYJ_4', 'date_publi'=> '2018-07-23'],
+            ['idalbum'=>$this->getReference('All Eyez on Me_album'),'isvalidated'=>1, 'titre'=>'California Love', 'lien'=>'https://www.youtube.com/watch?v=5wBTdfAkqGU', 'date_publi'=> '2018-07-23'],
+            ['idalbum'=>$this->getReference('Joe Cocker_album'),'isvalidated'=>1, 'titre'=>'Woman to Woman', 'lien'=>'https://www.youtube.com/watch?v=9UC3y5QYJ_4', 'date_publi'=> '2018-07-23'],
             ['idalbum'=>$this->getReference('Chronic 2001_album'),'isvalidated'=>1, 'titre'=>'The Next Episode', 'lien'=>'https://www.youtube.com/watch?v=QZXc39hT8t4', 'date_publi'=> '2018-07-22'],
             ['idalbum'=>$this->getReference('Music: A Bit More of Me_album'),'isvalidated'=>1, 'titre'=>'The Edge', 'lien'=>'https://www.youtube.com/watch?v=6pG_3jZxzlo', 'date_publi'=> '2018-07-22'],
             ['idalbum'=>$this->getReference('Les Princes De La Ville_album'),'isvalidated'=>1, 'titre'=>'Les Princes De La Ville', 'lien'=>'https://www.youtube.com/watch?v=EdyzIh0to1c', 'date_publi'=> '2018-07-21'],
@@ -161,27 +161,27 @@ class TestData extends Fixture
             ['idalbum'=>$this->getReference('Troupeau Bleu_album'),'isvalidated'=>1, 'titre'=>'Go Round', 'lien'=>'https://www.youtube.com/watch?v=GutIaarek20', 'date_publi'=> '2018-07-23'],
             ['idalbum'=>$this->getReference('Steve Mcqueen_album'),'isvalidated'=>1, 'titre'=>'The Hunter', 'lien'=>'https://www.youtube.com/watch?v=plHm06Xs0Vk', 'date_publi'=> '2018-07-23'],
             ['idalbum'=>$this->getReference('Violator_album'),'isvalidated'=>1, 'titre'=>'Personal Jesus', 'lien'=>'https://www.youtube.com/watch?v=u1xrNaTO1bI', 'date_publi'=> '2018-07-23']
-    	];
+        ];
 
 
-    	foreach($tracks as $track) { 
-        	$test= new Tracks();
-        	$test->setIdalbum($track['idalbum']);
-        	$test->setTitre($track['titre']);
-        	$test->setIsValidated($track['isvalidated']);
-        	$test->setLien($track['lien']);
-        	$test->setDatePubli(new \DateTime($track['date_publi']));
-        	
-        	$manager->persist($test);
+        foreach($tracks as $track) {
+            $test= new Tracks();
+            $test->setIdalbum($track['idalbum']);
+            $test->setTitre($track['titre']);
+            $test->setIsValidated($track['isvalidated']);
+            $test->setLien($track['lien']);
+            $test->setDatePubli(new \DateTime($track['date_publi']));
 
-        	$this->addReference($track['titre'].'_track', $test);
+            $manager->persist($test);
+
+            $this->addReference($track['titre'].'_track', $test);
         }
 
-        
 
 
 
-$relations=[
+
+        $relations=[
             ['sampleur'=>$this->getReference('California Love_track'), 'original'=>$this->getReference('Woman to Woman_track'),'isvalidated'=>1],
             ['sampleur'=>$this->getReference('The Next Episode_track'), 'original'=>$this->getReference('The Edge_track'),'isvalidated'=>1],
             ['sampleur'=>$this->getReference('Les Princes De La Ville_track'), 'original'=>$this->getReference('Make Me Believe in You_track'),'isvalidated'=>1],
@@ -196,43 +196,43 @@ $relations=[
             ['sampleur'=>$this->getReference('The Hunter_track'), 'original'=>$this->getReference('Personal Jesus_track'),'isvalidated'=>1]
         ];
 
-        
 
-        foreach($relations as $relation) { 
+
+        foreach($relations as $relation) {
             $test= new Relations();
             $test->setSampleur($relation['sampleur']);
             $test->setOriginal($relation['original']);
             $test->setIsValidated($relation['isvalidated']);
             $manager->persist($test);
 
-        
+
         }
 
 
 
 
 
-    
 
-            $articles=[
-           
+
+        $articles=[
+
             ['titre'=>'Fellez : L’arbre et la pirogue', 'image'=>'fellez.jpg', 'content'=>'Bordeaux. Janvier 2018. Le rappeur Fellez sort 4 titres. 15 minutes de musique. En compagnie d’un arbre et d’une pirogue.
 En temps normal, les projets courts restent tapis dans un coin, avant le dossier de presse d’un premier album. L’arbre et la pirogue a des qualités qui mérite déjà qu’on s’y intéresse. Fellez s’est affiché au sein du collectif Errör 404, qui a sorti No Projet vol.1 fin 2015, auquel nous conseillons aux amateurs de jeter une oreille, enfin les deux. Tout commence ici par un crépitement. Celui du vinyle. Puis c’est un clavier. La prod se déroule lentement sous les pas de « Madame Rêve ». Un titre sur les envies inachevées, les limites palpables. Un titre nostalgique, un brin chaloupé, avec de la route et une écriture qui vise juste. À vitesse de pirogue donc.L’atmosphère change radicalement avec « Sale soir d’été », où certains reconnaitront une prod signée Le Parasite. Le son est lourd, ça ressemble à des projets signés Le Sept (qui vient d’ailleurs de sortir Amoco Cadiz mais le sujet n’est pas là), ça parle des « familles de merde » et des interrogations douloureuses, des phases efficaces et des images fortes qui vont aussi chercher une poésie proche de la plume de Arm (« j’reprends la route, le cœur déjà frappé par la foudre »). Une pesanteur reprise avec lenteur sur « Nouvel air » où l’on perçoit au loin des sons issus de « Feeling good »; électro downtempo et phrasé rythmique, Fellez est maître à bord de son vaisseau.
 
 Dans ses questions Fellez imagine demain sur un dernier titre; un sample avec piano et cordes que n’aurait pas renié Barbara, pour conter l’envie d’un toit pour trois, niché dans un arbre à l’abri du froid. Fellez trace ses échecs et ses désirs avec une plume convaincante et une voix prenante. 15 minutes dans une pirogue qui ne demande qu’une chose : la suite du voyage. Source : Imprimerie Nocturne', 'auteur_id'=>$this->getReference('Aoced'), 'date_publi'=>'2018-07-24', 'video'=>null],
-['titre'=>'Spécial Compositeur de Films', 'image'=>'film.jpg', 'content'=>'Citons en vrac des noms tels que Ennio Morricone, Vangelis, Bruno Coulais et j’en passe…Le cinéma et ses compositeurs sont des sources de samples pour les producteurs hiphop (mais pas que). On ne compte plus le nombre de bandes originales de films samplés, mais aussi des dialogues ou des extraits sonores.
+            ['titre'=>'Spécial Compositeur de Films', 'image'=>'film.jpg', 'content'=>'Citons en vrac des noms tels que Ennio Morricone, Vangelis, Bruno Coulais et j’en passe…Le cinéma et ses compositeurs sont des sources de samples pour les producteurs hiphop (mais pas que). On ne compte plus le nombre de bandes originales de films samplés, mais aussi des dialogues ou des extraits sonores.
 Cinéma et hiphop font souvent bon ménage, et pour ma part je retiens des morceaux comme « Dernier domicile connu », et un de mes coups de coeur, le sample de la bande originale du Grand Blond par Gérard Baste et Pedro Winter.', 'auteur_id'=>$this->getReference('Spakye'), 'date_publi'=>'2018-07-23', 'video'=>null],
-['titre'=>'Le Jour ou Daft Punk a créé "One More Time"', 'image'=>'daft.jpg', 'content'=>'« One More Time » passe sur le bloc opératoire. Les samples issus de « More Spell On You » d’Eddie Johns sont découpés au millimètre, et on découvre avec toujours autant de plaisir l’origine du titre de Daft Punk.Sans aucune hésitation, la meilleure explication de ce sample ! A la fois claire et limpide, tout est reproduit à l’identique… Alors si vous deviez expliquer à des amis l’origine du sample de « One More Time », voilà la meilleure vidéo possible à partager !', 'auteur_id'=>$this->getReference('Tooty'), 'date_publi'=>'2018-07-21', 'video'=>'qrW7ugpEaLc'],
-['titre'=>'Samples : Aux origines du Son Hip-Hop', 'image'=>'originehh.jpg', 'content'=>'C’est le genre d’initiative qui fait plaisir ! Un livre en français qui parle de samples, on ne pouvait pas passer à côté. Sorti prévue le 18 janvier 2018, « SAMPLE ! Aux origines du son hiphop » est édité par Le mot et le reste. L’ouvrage se veut accessible à tous, et permet d’avoir une compréhension générale de l’importance du sample dans la musique et la culture hiphop.L’intérêt numéro un du livre – à mon sens – réside dans les très nombreuses anecdotes. Passé l’histoire du sample et les pionniers du sampling, riche en informations, Brice Miclet s’est plongé dans des dizaines de titres afin d’analyser leur origine et le ou les samples qu’ils utilisent. Un véritable travail de fourmi qui passe en revue les histoires de samples qui ont fait la création des morceaux phares du hip-hop, mais aussi ceux un peu plus obscurs.
+            ['titre'=>'Le Jour ou Daft Punk a créé "One More Time"', 'image'=>'daft.jpg', 'content'=>'« One More Time » passe sur le bloc opératoire. Les samples issus de « More Spell On You » d’Eddie Johns sont découpés au millimètre, et on découvre avec toujours autant de plaisir l’origine du titre de Daft Punk.Sans aucune hésitation, la meilleure explication de ce sample ! A la fois claire et limpide, tout est reproduit à l’identique… Alors si vous deviez expliquer à des amis l’origine du sample de « One More Time », voilà la meilleure vidéo possible à partager !', 'auteur_id'=>$this->getReference('Tooty'), 'date_publi'=>'2018-07-21', 'video'=>'qrW7ugpEaLc'],
+            ['titre'=>'Samples : Aux origines du Son Hip-Hop', 'image'=>'originehh.jpg', 'content'=>'C’est le genre d’initiative qui fait plaisir ! Un livre en français qui parle de samples, on ne pouvait pas passer à côté. Sorti prévue le 18 janvier 2018, « SAMPLE ! Aux origines du son hiphop » est édité par Le mot et le reste. L’ouvrage se veut accessible à tous, et permet d’avoir une compréhension générale de l’importance du sample dans la musique et la culture hiphop.L’intérêt numéro un du livre – à mon sens – réside dans les très nombreuses anecdotes. Passé l’histoire du sample et les pionniers du sampling, riche en informations, Brice Miclet s’est plongé dans des dizaines de titres afin d’analyser leur origine et le ou les samples qu’ils utilisent. Un véritable travail de fourmi qui passe en revue les histoires de samples qui ont fait la création des morceaux phares du hip-hop, mais aussi ceux un peu plus obscurs.
 
 Cette culture du sample fête ses 40 ans : passée d’une méthode de création obscure et décriée, le sampling s’est élevé au rang d’art. Même si certains producteurs vont jouer la facilité avec le sample, on ne peut que saluer le travail incroyable que certains arrivent à produire avec des extraits de vieux morceaux. Un ouvrage qui nous (re)plonge dans cette culture du collage qui puise ses origines dans le funk, le jazz, le rock, le disco, le classique et même la chanson française. Un ouvrage qui salue aussi l’évolution technologique des outils qui permettent de sampler.
 
 Bref, si vous êtes curieux de connaître l’origine des morceaux hiphop à base de samples, en savoir plus sur une culture qui célèbre ses 40 ans, et friand d’anecdotes sur les classiques (mais pas que) du hiphop, ce livre est fait pour vous !', 'auteur_id'=>$this->getReference('dulcine'), 'date_publi'=>'2018-07-20', 'video'=>null]
-            
-        ];
-        
 
-        foreach($articles as $article) { 
+        ];
+
+
+        foreach($articles as $article) {
             $test= new Articles();
             $test->setTitre($article['titre']);
             $test->setContent($article['content']);
@@ -244,9 +244,10 @@ Bref, si vous êtes curieux de connaître l’origine des morceaux hiphop à bas
 
         }
         $manager->flush();
- 
 
-            
 
-    }     
+
+
+    }
 }
+

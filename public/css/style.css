@@ -68,7 +68,6 @@ body{
     background-color: #21212120;
 }
 
-
 .zoom {
     transition: transform .2s;
 }
@@ -77,10 +76,16 @@ body{
     transform: scale(0.9);
 }
 
-
-
 .requete{
     background: white;
 }
 
-
+.navbar{
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 10em;
+    background-image: url("../images/header.png");
+}
+.navbar-nav{
+    margin-left: 10%;
+}

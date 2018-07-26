@@ -18,9 +18,9 @@
 
     <header class="container-fluid p-5">
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="d-flex align-items-end navbar navbar-expand-lg navbar-light bg-light">
 
-            <a class="navbar-brand" href="{{ path('accueil') }}"><img src="{{ asset('images/Logo4_ico.ico') }}"></a>
+            <a class="navbar-brand" href="{{ path('accueil') }}"></a>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -28,46 +28,84 @@
 
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link"href="{{ path('accueil')}}"> Accueil <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('all-articles')}}"> Articles</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Samples</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('inserer')}}">Insérer</a>
-                    </li>
-
-                        {# l'element du menu n'apparaitra que si l'utilisateur est connecté #}
-                        {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ path('login') }}"> Connexion / Inscription </a>
-                            </li>
-                        {% endif %}
 
 
-                        {# l'element du menu n'apparaitra que si l'utilisateur est connecté #}
-                        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ path('logout') }}"> Deconnexion </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ path('add-article') }}"> Ajouter un article </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ path('profil') }}">Profil </a>
-                            </li>
-                        {% endif %}
+                    {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <li class="ml-5 nav-item active">
+                            <a class="ml-5 nav-link"href="{{ path('accueil')}}"> Accueil <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('all-articles')}}"> Articles</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Samples</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('inserer')}}">Insérer</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('login') }}"> Connexion / Inscription </a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link"href="{{ path('contact')}}"> Contact </a>
+                        </li>
+                    {% endif %}
 
-                    <li class="nav-item">
-                        {# l'element du menu n'apparaitra que si l'utilisateur est connecté et a le role admin #}
-                        {% if is_granted('ROLE_ADMIN') %}
-                            <a class="nav-link" href=""> |  Administrateur | </a>
-                        {% endif %}
-                    </li>
+                    {# l'element du menu n'apparaitra que si l'utilisateur est connecté en user#}
+
+                    {% if is_granted('ROLE_USER') %}
+                        <li class="nav-item active">
+                            <a class="nav-link"href="{{ path('accueil')}}"> Accueil <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('all-articles')}}"> Articles</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Samples</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('inserer')}}">Insérer</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('profil') }}">Profil </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('logout') }}"> Deconnexion </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link"href="{{ path('contact')}}"> Contact </a>
+                        </li>
+                    {% endif %}
+
+                    {# l'element du menu n'apparaitra que si l'utilisateur est connecté en user#}
+
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <li class="nav-item active">
+                            <a class="nav-link"href="{{ path('accueil')}}"> Accueil <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('admin-all-articles')}}"> Articles</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Samples</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('inserer')}}">Insérer</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('profil') }}">Profil </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('admin-add-article') }}"> Ajouter un article </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href=""> Administrateur </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('logout') }}"> Deconnexion </a>
+                        </li>
+                    {% endif %}
+
                 </ul>
             </div>
 
