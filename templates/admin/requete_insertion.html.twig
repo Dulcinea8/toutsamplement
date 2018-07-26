@@ -5,7 +5,7 @@
 {% block content %}
 
 {% for requete in requetes %}
-	<div class="row corner border requete pt-3">
+	<div class="row rounded shadow-lg border bg-white pt-3 m-4">
 		<div class="col-6 border-right">
 			<h5>Le sampleur</h5>
 			<p><strong>Artiste : </strong>{{requete.sampleur.idalbum.idartiste.nom}}</p><br>
@@ -20,7 +20,7 @@
 			<p><strong>Titre : </strong>{{requete.original.titre}}</p><br>
 		</div>
 		<div class="col-12 text-center mt-3">
-			<p><strong>Relation proposé par :</strong></p>
+			<p><strong>Relation proposé par :</strong> <a href="">{{requete.user.username}}</a></p>
 		</div>	
 		<div class="mx-auto">
 			<button class="btn btn-primary m-2">Valider</button>
