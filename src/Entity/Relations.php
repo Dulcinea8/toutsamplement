@@ -34,6 +34,12 @@ class Relations
      */
     private $is_validated;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Users")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $user_id;
+
     public function getId()
     {
         return $this->id;
