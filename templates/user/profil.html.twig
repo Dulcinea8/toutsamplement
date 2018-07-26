@@ -16,8 +16,8 @@
     {% endfor %}
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-6 col-6">
-            <div class="row justify-content-center">
+        <div class="col-md-6 col-12">
+            <div class="d-flex d-flex flex-column justify-content-center align-items-center">
                 {% if user.avatar %}
 
                     <img class="card-img-top" class="img-fluid" style="width: 220px; height: 220px;" src="{{asset(image_directory)}}{{user.avatar}}" alt="" />
@@ -25,13 +25,9 @@
                 {% endif %}
                 <br>
                 <br>
-            </div>
-            <div class="row justify-content-center">
-                <div class="card d-flex justify-content-center" style="width: 25rem; border:none; background: none;">
-                    <br>
-                    <br>
+                
                         {% if user.score <= 10 %}
-                            <img class="img-fluid" style="width: 120px; height: 120px;" src="{{ asset('images/score_debutant.png')  }}" alt="score" />
+                            <img class="" style="width: 120px; height: 120px;" src="{{ asset('images/score_debutant.png')  }}" alt="score" />
                             <br>
                             <h6>Niveau Debutant</h6>
                         {% endif %}
@@ -51,10 +47,10 @@
                             <h6>Niveau Gold</h6>
                         {% endif %}
                         <p class="card-title"><strong>Score: </strong>{{ user.score }}</p>
-                </div>
+
             </div>
         </div>
-        <div class="col-md-6 col-6">
+        <div class="col-md-6 col-12">
             <h6><strong>Pseudo:</strong> {{ user.username }}</h6>
             <h6><strong>Nom:</strong> {{ user.nom }}</h6>
             <h6><strong>Prenom:</strong> {{ user.prenom }}</h6>
