@@ -5,6 +5,9 @@ namespace App\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
+use App\Entity\Relations;
+use App\Entity\Albums;
+
 class AdminController extends Controller
 {
     /**
@@ -21,6 +24,10 @@ class AdminController extends Controller
     * @Route("/admin/requete_insertion", name="requete-insertion")
     */
     public function requete(){
-    	return $this->render('admin/requete_insertion.html.twig');
+    	$repositoryRelations = $this->getDoctrine()->getRepository(Relations::class);
+    	$repositoryAlbums = $this->getDoctrine()->getRepository(Albums::class);
+        $requetes = $repositoryRelations->getNonValidated();
+        $albums= $repositoryAlbums->findAlbumByRequete($requetes);
+    	return $this->render('admin/requete_insertion.html.twig', ['requetes'=>$requetes, 'albums'=>$albums]);
     }
 }

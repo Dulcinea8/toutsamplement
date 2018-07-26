@@ -1,9 +1,33 @@
-{% extends 'base.html.twig' %}
+{% extends 'layout.html.twig' %}
 
 {% block title %}Requetes d'insertion{% endblock %}
 
 {% block content %}
 
-yolo
+{% for requete in requetes %}
+	<div class="row border requete">
+		<div class="col-6">
+			<h5>Le sampleur</h5>
+			{{requete.sampleur.titre}}
+		</div>
+		<div class="col-6">
+			<h5>Le samplé</h5>
+			{{requete.original.titre}}
+		</div>		
+	</div>
+{%endfor%}
+
+{% for album in albums %}
+	<div class="row border requete">
+		<div class="col-6">
+			<h5>Le sampleur</h5>
+			{{album.nom}}
+		</div>
+		<div class="col-6">
+			<h5>Le samplé</h5>
+			{{album.nom}}
+		</div>		
+	</div>
+{%endfor%}
 
 {% endblock %}
