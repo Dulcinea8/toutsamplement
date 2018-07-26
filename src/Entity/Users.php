@@ -122,7 +122,8 @@ class Users implements UserInterface, \Serializable
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Articles", mappedBy="user")
      */
-    private $article;
+    private $articles;
+
 
     public function __construct()
     {
@@ -315,17 +316,6 @@ class Users implements UserInterface, \Serializable
         return $this;
     }
 
-    public function getArticle(): ?Articles
-    {
-        return $this->article;
-    }
-    public function setArticle(Articles $article): self
-    {
-        $this->article = $article;
-
-        return $this;
-    }
-
     /**
      * @return Collection|Comments[]
      */
@@ -397,6 +387,13 @@ class Users implements UserInterface, \Serializable
     public function getSamples(): Collection
     {
         return $this->samples;
+    }
+
+    /**
+     * @return Collection|Articles[]
+     */
+    public function getArticles(): Collection{
+        return $this->articles;
     }
 
 
