@@ -68,3 +68,12 @@ body{
     background-color: #21212120;
 }
 
+.zoom {
+    transition: transform .2s;
+}
+
+.zoom:hover {
+    transform: scale(0.9);
+}
+
+

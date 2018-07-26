@@ -38,6 +38,7 @@
 
                             <a href="#"><article class="">{{artiste.nom}}</article></a>
 
+
                         </div>
 
                     </article>
@@ -57,42 +58,48 @@
 
                 <article class="container text-center">
 
-                    <div class="p-3 bg-light text-dark m-1">
+                    <div class="p-3 bg-light m-1 border border-secondary">
 
-
+                        <div class="m-1 ">
 
                             {% if sample.sampleur.titre|length >= 15 %}
                                 <a href="">
-                                    <p class="font-weight-bold">{{ sample.sampleur.idalbum.titre | striptags | slice(0, 15) }}...</p>
+                                    <p class="font-weight-bold text-dark">{{ sample.sampleur.idalbum.titre | striptags | slice(0, 15) }}...</p>
                                 </a>
                             {% elseif sample.sampleur.titre|length < 15 %}
                                 <a href="">
-                                    <p class="font-weight-bold">{{ sample.sampleur.titre }}</p>
+                                    <p class="font-weight-bold text-dark">{{ sample.sampleur.titre }}</p>
                                 </a>
                             {% endif %}
 
                             {% if sample.sampleur.idalbum.pochette %}
                                 <a href="">
-                                    <img class="img-fluid w-75" src="{{ asset(image_directory ~ sample.sampleur.idalbum.pochette) }}"  alt=""/>
+                                    <img class="zoom img-fluid w-75 text-dark" src="{{ asset(image_directory ~ sample.sampleur.idalbum.pochette) }}"  alt=""/>
                                 </a>
                             {% endif %}
 
+                        </div>
+
+                        <div class="m-2">
 
                             {% if sample.original.titre|length >= 15 %}
                                 <a href="">
-                                    <p class="font-weight-bold">{{ sample.original.titre | striptags | slice(0, 15) }}...</p>
+                                    <p class="font-weight-bold text-dark ">{{ sample.original.titre | striptags | slice(0, 15) }}...</p>
                                 </a>
                             {% elseif sample.original.titre|length < 15 %}
                                 <a href="">
-                                    <p class="font-weight-bold">{{ sample.original.titre }}</p>
+                                    <p class="font-weight-bold text-dark">{{ sample.original.titre }}</p>
                                 </a>
                             {% endif %}
 
                             {% if sample.original.idalbum.pochette %}
                                 <a href="">
-                                    <img class="img-fluid w-75" src="{{ asset(image_directory ~ sample.original.idalbum.pochette) }}"  alt=""/>
+                                    <img class="zoom img-fluid w-75" src="{{ asset(image_directory ~ sample.original.idalbum.pochette) }}"  alt=""/>
                                 </a>
                             {% endif %}
+
+                        </div>
+
 
 
                     </div>
@@ -107,26 +114,26 @@
         <!--DERNIERS ARTICLES -->
         <div>
             <h3>Derniers Articles</h3>
-            <div class="d-flex">
+            <div class="d-flex ">
                 {% for article in articles%}
 
                     <article class="container text-center">
 
-                        <div class="p-3 bg-light text-dark m-1">
+                        <div class="p-3 bg-light m-1 border border-secondary">
 
                             {% if article.titre|length >= 35 %}
-                                <a href="{{ path('detail-article', {id: article.id} ) }}">
-                                    <p class="font-weight-bold">{{ article.titre | striptags | slice(0, 35) }}...</p>
+                                <a class="lien" href="{{ path('detail-article', {id: article.id} ) }}">
+                                    <p class="font-weight-bold text-dark">{{ article.titre | striptags | slice(0, 35) }}...</p>
                                 </a>
                             {% elseif article.titre|length < 35 %}
                                 <a href="{{ path('detail-article', {id: article.id} ) }}">
-                                    <p class="font-weight-bold">{{ article.titre }}</p>
+                                    <p class="font-weight-bold text-dark">{{ article.titre }}</p>
                                 </a>
                             {% endif %}
 
                             {% if article.image %}
                                 <a href="{{ path('detail-article', {id: article.id} ) }}">
-                                    <img class="img-fluid w-75" src="{{ asset(image_directory ~ article.image) }}"  alt=""/>
+                                    <img class="zoom img-fluid w-75" src="{{ asset(image_directory ~ article.image) }}"  alt=""/>
                                 </a>
                             {% endif %}
 
