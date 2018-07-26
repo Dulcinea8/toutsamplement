@@ -114,9 +114,15 @@ class Users implements UserInterface, \Serializable
      */
     private $comments;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Relations", mappedBy="user")
+     */
+    private $samples;
+
     public function __construct()
     {
-        $this->user = new ArrayCollection();
+        $this->comments = new ArrayCollection();
+        $this->samples = new ArrayCollection();
     }
 
     public function getId()
@@ -371,6 +377,12 @@ class Users implements UserInterface, \Serializable
             // $this->>salt
             )= unserialize($serialized,['allowed_classes'=>false]);
     }
+
+    public function getSamples(): Collection
+    {
+        return $this->samples;
+    }
+
 
 
 

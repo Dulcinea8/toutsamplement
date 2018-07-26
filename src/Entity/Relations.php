@@ -35,10 +35,10 @@ class Relations
     private $is_validated;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Users")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Users", inversedBy="samples")
      * @ORM\JoinColumn(nullable=true)
      */
-    private $user_id;
+    private $user;
 
     public function getId()
     {
@@ -77,6 +77,17 @@ class Relations
     {
         $this->is_validated = $is_validated;
 
+        return $this;
+    }
+    public function getUser(): ?Users
+    {
+        return $this->user;
+    }
+
+    public function setUser(Users $user): self
+    {
+        //toma el utilisateur connecté
+        $this->user = $user;
         return $this;
     }
 }
