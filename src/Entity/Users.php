@@ -119,6 +119,11 @@ class Users implements UserInterface, \Serializable
      */
     private $samples;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Articles", mappedBy="user")
+     */
+    private $article;
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
@@ -306,6 +311,17 @@ class Users implements UserInterface, \Serializable
     public function setPlainPassword(?string $plainPassword): self
     {
         $this->plainPassword = $plainPassword;
+
+        return $this;
+    }
+
+    public function getArticle(): ?Articles
+    {
+        return $this->article;
+    }
+    public function setArticle(Articles $article): self
+    {
+        $this->article = $article;
 
         return $this;
     }
