@@ -44,6 +44,11 @@ class Artistes
      */
     private $user;
 
+     /**
+     * @ORM\Column(type="boolean")
+     */
+    private $is_validated;
+
     public function __construct()
     {
         $this->albums = new ArrayCollection();
@@ -130,6 +135,18 @@ class Artistes
     public function setUser(?Users $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+      public function getIsValidated(): ?bool
+    {
+        return $this->is_validated;
+    }
+
+    public function setIsValidated(bool $is_validated): self
+    {
+        $this->is_validated = $is_validated;
 
         return $this;
     }

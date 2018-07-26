@@ -44,6 +44,11 @@ class Albums
      */
     private $tracks;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $is_validated;
+
     public function __construct()
     {
         $this->tracks = new ArrayCollection();
@@ -129,6 +134,17 @@ class Albums
                 $track->setIdalbum(null);
             }
         }
+
+        return $this;
+    }
+      public function getIsValidated(): ?bool
+    {
+        return $this->is_validated;
+    }
+
+    public function setIsValidated(bool $is_validated): self
+    {
+        $this->is_validated = $is_validated;
 
         return $this;
     }
