@@ -103,20 +103,33 @@
 {% block js %}
 <script>
 	$('#artisteSample').on('keydown', function(){
-		console.log($('#ajout').serialize());
-
-		$.ajax({
-			url: ,
-			dataType: "html",
-			data:$('#ajout').serialize(),
-			timeout: 3000,
-			success:function(data){
-
-			},
-			error: function(e){
-				console.log(error.responseText);
-			}
-		})
-	})
+    var availableTags = [
+      "ActionScript",
+      "AppleScript",
+      "Asp",
+      "BASIC",
+      "C",
+      "C++",
+      "Clojure",
+      "COBOL",
+      "ColdFusion",
+      "Erlang",
+      "Fortran",
+      "Groovy",
+      "Haskell",
+      "Java",
+      "JavaScript",
+      "Lisp",
+      "Perl",
+      "PHP",
+      "Python",
+      "Ruby",
+      "Scala",
+      "Scheme"
+    ];
+    $( "#artisteSample" ).autocomplete({
+      source: availableTags
+    });
+  } );
 </script>
 {% endblock %}
