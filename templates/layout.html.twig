@@ -108,15 +108,17 @@
 
                 </ul>
             </div>
-
-            <form class="form-inline">
+            {#FORMULAIRE DE RECHERCHE#}
+            <form class="form-inline" id="cherche">
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon1">Search</span>
                     </div>
-                    <input type="text" class="form-control" placeholder="Track or Artist" aria-label="Username" aria-describedby="basic-addon1">
+                    <input type="text" id="recherche" name="recherche" class="form-control" placeholder="Track or Artist" aria-label="Username" aria-describedby="basic-addon1">
                 </div>
             </form>
+
+
 
         </nav>
 
@@ -125,7 +127,6 @@
 
     <h1 class="text-center">{% block titlepage %}{% endblock %}</h1>
     <div class="font container justify-content-center">
-
         {% block content %}{% endblock %}
 
     </div>
@@ -154,8 +155,42 @@
 
     <script src="{{ asset('js/jquery-3.3.1.js') }}"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
     {% block js %}{% endblock %}
+    {% block requeteAjax %}
+        {#//ici je fait la requete Ajax pour le moteur de recherche de mon menu#}
+        <script>
+            $(function () {
+                var longueur = 2;
+                $('#cherche').on('keyup', function () {
+                    if ($(this).val().length > longueur)
+                    {
+
+                        //on genere la route, que l'on stocke dans une variable
+                        var url = "{{ path('ajax-search-by-track-and-artiste', {recherche:0}) }}";
+
+                        //lorsque l'utilisateur cherche, je remplace mon 0 par la recherche rentré
+                        //0 parce qu'il n'y  pas id =0
+                        url = url.replace('0', $(this).val())
+                            console.log(url);
+                        $.ajax({
+                            type: 'get',
+                            url: url,
+                            dataType: 'html',
+                            success: function (data) {
+                                $('#result').empty();
+                                $('#result').html(data);
+                                console.log(data);
+                            },
+                            error: function (error) {
+                                console.log(error.responseText);
+                            }
+                        })
+                    }
+                })
+            })
+        </script>
+    {% endblock %}
+
 
 
 

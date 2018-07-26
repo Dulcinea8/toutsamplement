@@ -12,6 +12,8 @@ use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\ParameterBag;
+use Symfony\Component\Form;
 
 use App\Entity\Relations;
 use App\Entity\Albums;
@@ -110,12 +112,32 @@ class AdminController extends Controller
     /**
     * @Route("/admin/requete_insertion", name="requete-insertion")
     */
-    public function requete(){
+    public function requete(Request $request){
+    	$entityManager = $this->getDoctrine()->getManager();
     	$repositoryRelations = $this->getDoctrine()->getRepository(Relations::class);
     	$repositoryAlbums = $this->getDoctrine()->getRepository(Albums::class);
+        
+        $msg="";
+
+    	if($request->get('valider')) {
+        	$relationAValider= $repositoryRelations->findOneById($request->request->get('valider'));
+        	$relationAValider->setIsValidated(true);
+        	$entityManager->persist($relationAValider);
+        	$entityManager->flush();
+        	$msg="La relation a bien été validée";
+
+        }elseif($request->get('refuser')){
+        	$test='no id= '.$request->get('refuser');
+        	$relationASuppr = $repositoryRelations->findOneById($request->get('refuser'));
+        	$entityManager->remove($relationASuppr);
+        	$entityManager->flush();
+        	$msg="La relation a bien été supprimée";
+
+        }
+
         $requetes = $repositoryRelations->getNonValidated();
    
-    	return $this->render('admin/requete_insertion.html.twig', ['requetes'=>$requetes]);
+    	return $this->render('admin/requete_insertion.html.twig', ['requetes'=>$requetes, 'msg'=>$msg]);
     }
 
 

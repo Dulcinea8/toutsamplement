@@ -7,7 +7,7 @@
 
 {% if msg %}<div class="alert alert-success">{{msg}}</div>{%endif%}
 
-<form method="POST" action="/inserer" id="ajout">
+<form method="POST" action="/inserer">
 		<h4 class="text-center">Le samplé</h4>
 	<div class="row justify-content-center ">
 		<div class="col-3 border-right">
@@ -115,7 +115,7 @@
 	    {%endfor%}
     ];
 
-    var availableTacks = [
+    var availableTracks = [
 	    {%for track in AjaxTrack%}
 	    "{{track.titre}}",
 	    {%endfor%}
@@ -152,7 +152,6 @@
   	});
 
   	$('#titreSampleur').on('keydown', function(){
-  		alert("yo");
 	    $( "#titreSampleur" ).autocomplete({
 	      source: availableTracks
 	    });

@@ -3,7 +3,12 @@
 {% block title %}Requetes d'insertion{% endblock %}
 
 {% block content %}
-
+{% if msg %}<div class="alert alert-success">{{msg}}</div>{%endif%}
+{% if not requetes %}
+<div class="alert alert-success">
+	<h5>Aucune requête en attente de validation.</h5>
+</div>
+{%endif%}
 {% for requete in requetes %}
 	<div class="row rounded shadow-lg border bg-white pt-3 m-4">
 		<div class="col-6 border-right">
@@ -23,8 +28,10 @@
 			<p><strong>Relation proposé par :</strong> <a href="">{{requete.user.username}}</a></p>
 		</div>	
 		<div class="mx-auto">
-			<button class="btn btn-primary m-2">Valider</button>
-			<button class="btn btn-danger m-2">Refuser</button>
+		<form method="POST" action="{{path('requete-insertion')}}">
+			<button class="image_valider_input m-3" type="submit" id="valider" value="{{requete.id}}" name="valider" class="btn btn-primary m-2"></button>
+			<button class="image_supprimer_input m-3" type="submit" id="refuser" name="refuser" value="{{requete.id}}" class="btn btn-danger m-2"></button>
+		</form>
 		</div>	
 	</div>
 {%endfor%}

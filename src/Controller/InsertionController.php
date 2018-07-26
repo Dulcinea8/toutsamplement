@@ -105,6 +105,7 @@ class InsertionController extends Controller
                 $relation->setSampleur($trackSampleur);
                 $relation->setOriginal($trackSample);
                 $relation->setIsValidated(0);
+                $relation->setUser($this->getUser());
                 $entityManager->persist($relation);
             }
 

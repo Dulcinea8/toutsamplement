@@ -76,7 +76,6 @@ class Relations
     public function setIsValidated(bool $is_validated): self
     {
         $this->is_validated = $is_validated;
-
         return $this;
     }
     public function getUser(): ?Users
