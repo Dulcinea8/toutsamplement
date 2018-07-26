@@ -1,0 +1,82 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Formulaire d'inscription{% endblock %}
+
+{% block titlepage %}Ton Profil{% endblock %}
+
+{% block content %}
+
+    {# pour afficher tous type de messages #}
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="alert alert-{{ label }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-12">
+            <div class="d-flex d-flex flex-column justify-content-center align-items-center">
+                {% if user.avatar %}
+
+                    <img class="card-img-top" class="img-fluid" style="width: 220px; height: 220px;" src="{{asset(image_directory)}}{{user.avatar}}" alt="" />
+
+                {% endif %}
+                <br>
+                <br>
+                
+                        {% if user.score <= 10 %}
+                            <img class="" style="width: 120px; height: 120px;" src="{{ asset('images/score_debutant.png')  }}" alt="score" />
+                            <br>
+                            <h6>Niveau Debutant</h6>
+                        {% endif %}
+                        {% if user.score > 10 and user.score <=20 %}
+                            <img class="img-fluid" style="width: 120px; height: 120px;" src="{{ asset('images/sore_bronze.png')  }}" alt="score" />
+                            <br>
+                            <h6>Niveau Bronze</h6>
+                        {% endif %}
+                        {% if user.score > 20 and user.score <=30 %}
+                            <img class="img-fluid"  style="width: 120px; height: 120px;" src="{{ asset('images/score_silver.png')  }}" alt="score" />
+                            <br>
+                            <h6>Niveau Silver</h6>
+                        {% endif %}
+                        {% if user.score > 30  %}
+                            <img class="img-fluid"  style="width: 120px; height: 120px;" src="{{ asset('images/score_gold.png')  }}" alt="score" />
+                            <br>
+                            <h6>Niveau Gold</h6>
+                        {% endif %}
+                        <p class="card-title"><strong>Score: </strong>{{ user.score }}</p>
+
+            </div>
+        </div>
+        <div class="col-md-6 col-12">
+            <h6><strong>Pseudo:</strong> {{ user.username }}</h6>
+            <h6><strong>Nom:</strong> {{ user.nom }}</h6>
+            <h6><strong>Prenom:</strong> {{ user.prenom }}</h6>
+            <h6><strong>Email:</strong> {{ user.email }}</h6>
+            <h6><strong>Date d'inscription:</strong> {{ user.dateinscription  |date('d/m/Y') }}</h6>
+            <h6><strong>Ta Biographie</strong> {{ user.bio }}</h6>
+            <h5><strong>Tes Liens: </strong></h5>
+            <h6><strong>Soundcloud: </strong> {{ user.soundcloud }}</h6>
+            <h6><strong>Bandcamp: </strong> {{ user.bandcamp }}</h6>
+            <h6><strong>Facebook: </strong> {{ user.facebook }}</h6>
+            <h6><strong>Site Web: </strong> {{ user.siteweb }}</h6>
+            <br>
+            <br>
+            <div>
+                <a class="btn btn-link" href="{{ path('admin-modifier-article', {id: user.id} ) }}">Modifier le Profil</a>
+                <a class="btn btn-link" href="{{ path('admin-supprimer-article', {id: user.id} ) }}">Supprimer le Profil</a>
+            </div>
+            <div>
+               {#<button class="btn btn-link">  <a href="{{ path ('delete_profil', { id: user.id}) }}">Supprimer mon Profil</a></button>#}
+            </div>
+
+
+        </div>
+    </div>
+    <h4>Contributions</h4>
+</div>
+
+
+{% endblock %}

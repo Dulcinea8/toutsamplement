@@ -68,10 +68,6 @@ body{
     background-color: #21212120;
 }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> c39abf85c7212f6be5fe0188e786d7b97793149b
 .zoom {
     transition: transform .2s;
 }
@@ -80,16 +76,16 @@ body{
     transform: scale(0.9);
 }
 
-<<<<<<< HEAD
-=======
-
-
->>>>>>> c39abf85c7212f6be5fe0188e786d7b97793149b
 .requete{
     background: white;
 }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> c39abf85c7212f6be5fe0188e786d7b97793149b
+.navbar{
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 10em;
+    background-image: url("../images/header.png");
+}
+.navbar-nav{
+    margin-left: 10%;
+}
