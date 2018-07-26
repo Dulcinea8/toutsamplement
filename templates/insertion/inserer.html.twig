@@ -44,7 +44,7 @@
 		</div>
 		<div class="col-3">
 			<label>Titre :</label>
-			<input type="text" name="titreSample" class="form-control">
+			<input type="text" name="titreSample" id="titreSample" class="form-control">
 			<label>Lien :</label>
 			<input type="url" name="lienSample" class="form-control">
 		</div>
@@ -87,7 +87,7 @@
 		</div>
 		<div class="col-3">
 			<label>Titre :</label>
-			<input type="text" name="titreSampleur" class="form-control">
+			<input type="text" name="titreSampleur" id="titreSampleur" class="form-control">
 			<label>Lien :</label>
 			<input type="url" name="lienSampleur" class="form-control">
 		</div>
@@ -102,34 +102,62 @@
 
 {% block js %}
 <script>
-	$('#artisteSample').on('keydown', function(){
-    var availableTags = [
-      "ActionScript",
-      "AppleScript",
-      "Asp",
-      "BASIC",
-      "C",
-      "C++",
-      "Clojure",
-      "COBOL",
-      "ColdFusion",
-      "Erlang",
-      "Fortran",
-      "Groovy",
-      "Haskell",
-      "Java",
-      "JavaScript",
-      "Lisp",
-      "Perl",
-      "PHP",
-      "Python",
-      "Ruby",
-      "Scala",
-      "Scheme"
+
+	var availableArtistes = [
+	    {%for artiste in AjaxArtiste%}
+	    "{{artiste.nom}}",
+	    {%endfor%}
     ];
-    $( "#artisteSample" ).autocomplete({
-      source: availableTags
-    });
-  } );
+
+    var availableAlbums = [
+	    {%for album in AjaxAlbum%}
+	    "{{album.nom}}",
+	    {%endfor%}
+    ];
+
+    var availableTacks = [
+	    {%for track in AjaxTrack%}
+	    "{{track.titre}}",
+	    {%endfor%}
+    ];
+
+	$('#artisteSample').on('keydown', function(){
+	    $( "#artisteSample" ).autocomplete({
+	      source: availableArtistes
+	    });
+  	});
+
+  	$('#artisteSampleur').on('keydown', function(){
+	    $( "#artisteSampleur" ).autocomplete({
+	      source: availableArtistes
+	    });
+  	});
+
+  	$('#albumSample').on('keydown', function(){
+	    $( "#albumSample" ).autocomplete({
+	      source: availableAlbums
+	    });
+  	});
+
+  	$('#albumSampleur').on('keydown', function(){
+	    $( "#albumSampleur" ).autocomplete({
+	      source: availableAlbums
+	    });
+  	});
+
+  	$('#titreSample').on('keydown', function(){
+	    $( "#titreSample" ).autocomplete({
+	      source: availableTracks
+	    });
+  	});
+
+  	$('#titreSampleur').on('keydown', function(){
+  		alert("yo");
+	    $( "#titreSampleur" ).autocomplete({
+	      source: availableTracks
+	    });
+  	});
+
+
 </script>
 {% endblock %}
