@@ -20,14 +20,21 @@ class InsertionController extends Controller
      */
     public function index(Request $request)
     {
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $repositoryArtistes = $this->getDoctrine()->getRepository(Artistes::class);
+        $repositoryAlbums = $this->getDoctrine()->getRepository(Albums::class);
+        $repositoryTracks = $this->getDoctrine()->getRepository(Tracks::class);
+        $repositoryRelations = $this->getDoctrine()->getRepository(Relations::class);
+
+    $AjaxArtiste= $repositoryArtistes->findAll();
+    $AjaxAlbum= $repositoryAlbums->findAll();
+    $AjaxTrack= $repositoryTracks->findAll();
+
     	$msg="";
     	if ($request->request->all()){
 
-    		$entityManager = $this->getDoctrine()->getManager();
-    		 $repositoryArtistes = $this->getDoctrine()->getRepository(Artistes::class);
-    		 $repositoryAlbums = $this->getDoctrine()->getRepository(Albums::class);
-             $repositoryTracks = $this->getDoctrine()->getRepository(Tracks::class);
-    		 $repositoryRelations = $this->getDoctrine()->getRepository(Relations::class);
+    		
 
     		if (!$repositoryArtistes->findArtisteByNom($request->request->get('artisteSample')) ) {
     			$artisteSample= new Artistes();
@@ -110,6 +117,9 @@ class InsertionController extends Controller
         return $this->render('insertion/inserer.html.twig', [
             'controller_name' => 'InsertionController',
             'msg'=>$msg,
+            'AjaxArtiste'=>$AjaxArtiste,
+            'AjaxAlbum'=>$AjaxAlbum,
+            'AjaxTrack'=>$AjaxTrack,
         ]);
     }
 
