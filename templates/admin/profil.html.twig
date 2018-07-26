@@ -20,7 +20,7 @@
             <div class="d-flex d-flex flex-column justify-content-center align-items-center">
                 {% if user.avatar %}
 
-                    <img class="card-img-top" class="img-fluid" style="width: 220px; height: 220px;" src="{{asset(image_directory)}}{{user.avatar}}" alt="" />
+                    <img class="card-img-top" class="img-fluid" src="{{asset(image_directory)}}{{user.avatar}}" alt="" />
 
                 {% endif %}
                 <br>
@@ -65,8 +65,8 @@
             <br>
             <br>
             <div>
-                <a class="btn btn-link" href="{{ path('admin-modifier-article', {id: user.id} ) }}">Modifier le Profil</a>
-                <a class="btn btn-link" href="{{ path('admin-supprimer-article', {id: user.id} ) }}">Supprimer le Profil</a>
+                <a class="btn btn-link" href="{{ path('admin-modifier-profil', {id: user.id} ) }}">Modifier le Profil</a>
+                <a class="btn btn-link" href="{{ path('admin-supprimer-profil', {id: user.id} ) }}">Supprimer le Profil</a>
             </div>
             <div>
                {#<button class="btn btn-link">  <a href="{{ path ('delete_profil', { id: user.id}) }}">Supprimer mon Profil</a></button>#}

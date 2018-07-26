@@ -23,7 +23,6 @@ class Artistes
      */
     private $nom;
 
-    
 
     /**
      * @ORM\Column(type="string", length=100)

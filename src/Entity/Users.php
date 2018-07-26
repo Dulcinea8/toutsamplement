@@ -119,6 +119,12 @@ class Users implements UserInterface, \Serializable
      */
     private $samples;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Articles", mappedBy="user")
+     */
+    private $articles;
+
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
@@ -381,6 +387,13 @@ class Users implements UserInterface, \Serializable
     public function getSamples(): Collection
     {
         return $this->samples;
+    }
+
+    /**
+     * @return Collection|Articles[]
+     */
+    public function getArticles(): Collection{
+        return $this->articles;
     }
 
 

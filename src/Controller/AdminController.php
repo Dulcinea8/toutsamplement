@@ -4,7 +4,9 @@ namespace App\Controller;
 
 use App\Entity\Articles;
 use App\Entity\Artistes;
+use App\Entity\Users;
 use App\Form\ArticlesType;
+use App\Form\UserUpdateType;
 use App\Service\FileUploader;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\Request;
@@ -29,14 +31,70 @@ class AdminController extends Controller
     }
 
     /**
-     * @Route("/admin/profil", name="admin-profil")
+     * @Route("/admin/profil/{id}", name="admin-profil", requirements={"id"="[0-9]+"})
      */
-    public function profil(Request $request){
-        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
-        $user = $this->getUser();
+    public function detailProfil(Users $user){
 
-        return $this->render('admin/profil.html.twig', array('user' => $user)  );
+        return $this->render('admin/profil.html.twig',  array('user'=>$user));
+
     }
+
+    /**
+     * @Route("admin/update/profil/{id}", name="admin-modifier-profil" , requirements={"id"="\d+"})
+     */
+    public function updateProfil(Users $user, Request $request,FileUploader $uploader){
+        $fileName = $user->getAvatar();
+        if($user->getAvatar()) {
+            //pour pouvoir generer le formulaire, on doit transformer le nom du ficier stocké pour l'instant dans l'attribut image en instance de la classe File, (ce qui est attendu par le formulaire)
+            $user->setAvatar(new File($this->getParameter('articles_image_directory') . '/' . $user->getAvatar()));
+        }
+        $form = $this->createForm(UserUpdateType::class, $user);
+        $form->handleRequest($request);
+        if($form->isSubmitted()&& $form->isValid())
+        {
+            $user=$form->getData();
+
+            ///je fais le traitement si on m'a envoy&é une image
+            if ($user->getAvatar()) {
+                //je stocke dans cette variable le nom du fichier actuel qui doit être supprimé ou null s'il n'y en a pas
+                $oldFileName = $user->getAvatar() ? $user->getAvatar() : null;
+                //on recupere un objet de classe file
+                $file = $user->getAvatar();
+                //dump($file);
+                $fileName = $uploader->upload($file, $oldFileName);
+
+            }
+            $user->setAvatar($fileName);
+            $entityManager=$this->getDoctrine()->getManager();
+            //$entityManager->persist($user);
+            $entityManager->flush();
+            $this->addFlash('success', 'Modification fait');
+            return $this->redirectToRoute('admin-profil');
+        }
+        return $this->render('admin/updateProfil.html.twig', array('form' => $form->createView(),'avatar' => $fileName)  );
+    }
+
+    /**
+     * @route("admin/article/delete/{id}", name="admin-supprimer-profil", requirements={"id"="\d+"})
+     */
+    public function deleteProfil(Users $user){
+
+
+        //recuperation de l'entite manager
+        $entityManager = $this->getDoctrine()->getManager();
+
+        //je veux supprimer cette catégorie
+        $entityManager->remove($user);
+
+        //j'execute la requete
+        $entityManager->flush();
+
+        $this->addFlash('danger', 'Le profil a bien été supprimé');
+
+        return $this->redirectToRoute('admin');
+
+    }
+
     /**
     * @Route("/admin/requete_insertion", name="requete-insertion")
     */
@@ -110,7 +168,7 @@ class AdminController extends Controller
     /**
      * @Route("admin/article/{id}", name="admin-detail-article", requirements={"id"="[0-9]+"})
      */
-    public function detail($id){
+    public function detailArticle($id){
 
         $repository = $this->getDoctrine()->getRepository(Articles::class);
 

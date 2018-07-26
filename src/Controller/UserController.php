@@ -72,7 +72,6 @@ class UserController extends Controller
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         $user = $this->getUser();
 
-
         return $this->render('user/profil.html.twig', array('user' => $user)  );
     }
 
