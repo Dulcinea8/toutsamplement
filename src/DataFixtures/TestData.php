@@ -49,7 +49,7 @@ class TestData extends Fixture
             $test->setBandcamp($user['bandcamp']);
             $test->setSiteweb($user['site_web']);
             $test->setBio($user['bio']);
-            $test->setRole($user['role']);
+            $test->setRoles($user['role']);
             $manager->persist($test);
 
             $this->addReference($user['username'], $test);
