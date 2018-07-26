@@ -9,38 +9,37 @@
 
     {# a chaque tour de boucle, opn recupere articles qui ici est un objet pour acceder au titre artcile.title #}
 
-    <article class="container text-center alert alert-info">
+    <article class="container text-center">
 
         Publié par :
-            <a>{{ article.auteurid.username }}</a>
-
+            <a href="{{ path('profilUser', {id: article.auteurid.id} ) }}">{{ article.auteurid.username }}</a>
         le
             {{ article.datepubli|date('d/m/Y') }}
 
         <br>
-        {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
-            <li class="nav-item">
-                <a class="btn btn-warning" href="{{ path('modifier-article', {id: article.id} ) }}">Modifier</a>
-                <a class="btn btn-warning" href="{{ path('supprimer-article', {id: article.id} ) }}">Delete</a>
-            </li>
-        {% endif %}
-        <div class="mt-3">
 
-        </div>
+
+
+
         <br>
 
         {% if article.image %}
             <img class="img-fluid" src="{{ asset(image_directory ~ article.image) }}"  alt=""/>
         {% endif %}
         <hr>
-        {{ article.content }}
 
+
+        <div class="text-justify">
+
+            {{ article.content }}
+
+        </div>
 
         <hr>
+
         {% if article.video %}
             <iframe width="560" height="315" src="{{ asset(video_directory ~ article.video) }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
         {% endif %}
-
 
 
    

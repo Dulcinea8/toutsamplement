@@ -19,13 +19,27 @@ use App\Entity\Albums;
 class AdminController extends Controller
 {
     /**
-     * @Route("/admin", name="admin")
+     * @Route("/admin/", name="admin")
      */
-    public function index()
+    public function accueil()
     {
-        return $this->render('admin/index.html.twig', [
-            'controller_name' => 'AdminController',
-        ]);
+        $repositoryArtistes = $this->getDoctrine()->getRepository(Artistes::class);
+        $artistes = $repositoryArtistes->last4Artistes();
+
+        $repositoryArticles = $this->getDoctrine()->getRepository(Articles::class);
+        $articles = $repositoryArticles->last4Articles();
+
+        $repositorySamples = $this->getDoctrine()->getRepository(Relations::class);
+        $samples = $repositorySamples->last4Samples();
+
+        // $repositoryTracks = $this->getDoctrine()->getRepository(Tracks::class);
+        // $tracks = $repositoryTracks->findTrackById($samples);
+
+
+        return $this->render('admin/index.html.twig', array(
+            'artistes'=>$artistes,
+            'articles'=>$articles,
+            'samples'=>$samples));
     }
 
     /**
@@ -104,30 +118,7 @@ class AdminController extends Controller
     	return $this->render('admin/requete_insertion.html.twig', ['requetes'=>$requetes]);
     }
 
-    /**
-     * @Route("/admin/", name="admin-accueil")
-     */
-    public function accueil()
-    {
 
-        $repositoryArtistes = $this->getDoctrine()->getRepository(Artistes::class);
-        $artistes = $repositoryArtistes->last4Artistes();
-
-        $repositoryArticles = $this->getDoctrine()->getRepository(Articles::class);
-        $articles = $repositoryArticles->last4Articles();
-
-        $repositorySamples = $this->getDoctrine()->getRepository(Relations::class);
-        $samples = $repositorySamples->last4Samples();
-
-        // $repositoryTracks = $this->getDoctrine()->getRepository(Tracks::class);
-        // $tracks = $repositoryTracks->findTrackById($samples);
-
-
-        return $this->render('admin/index.html.twig', array(
-            'artistes'=>$artistes,
-            'articles'=>$articles,
-            'samples'=>$samples));
-    }
 
     /**
      * @Route("/admin/articles/", name="admin-all-articles")
@@ -139,6 +130,19 @@ class AdminController extends Controller
         $articles = $repository->findAll();
 
         return $this->render('admin/articles.html.twig', array('articles'=>$articles));
+
+    }
+
+    /**
+     * @Route("/admin/artistes/", name="admin-all-artistes")
+     */
+    public function showAllArtistes(){
+
+        $repository = $this->getDoctrine()->getRepository(Users::class);
+
+        $artistes = $repository->findAll();
+
+        return $this->render('admin/articles.html.twig', array('articles'=>$artistes));
 
     }
 

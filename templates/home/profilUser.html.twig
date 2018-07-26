@@ -20,12 +20,12 @@
             <div class="d-flex d-flex flex-column justify-content-center align-items-center">
                 {% if user.avatar %}
 
-                    <img class="card-img-top" class="img-fluid" src="{{asset(image_directory)}}{{user.avatar}}" alt="" />
+                    <img class="card-img-top" class="img-fluid" style="width: 220px; height: 220px;" src="{{asset(image_directory)}}{{user.avatar}}" alt="" />
 
                 {% endif %}
                 <br>
                 <br>
-                
+
                         {% if user.score <= 10 %}
                             <img class="" style="width: 120px; height: 120px;" src="{{ asset('images/score_debutant.png')  }}" alt="score" />
                             <br>
@@ -64,10 +64,7 @@
             <h6><strong>Site Web: </strong> {{ user.siteweb }}</h6>
             <br>
             <br>
-            <div>
-                <a class="" href="{{ path('admin-modifier-profil', {id: user.id} ) }}"><img class="m-2" src="{{ asset('images/boutonModifier.png')}}"></a>
-                <a class="" href="{{ path('admin-supprimer-profil', {id: user.id} ) }}"><img class="m-2" src="{{ asset('images/boutonSupprimer.png')}}"></a>
-            </div>
+           
             <div>
                {#<button class="btn btn-link">  <a href="{{ path ('delete_profil', { id: user.id}) }}">Supprimer mon Profil</a></button>#}
             </div>
@@ -76,6 +73,64 @@
         </div>
     </div>
     <h4>Contributions</h4>
+
+    <!--Affiche les samples qui la personne a publié -->
+    <div>
+
+
+
+            <article class="d-flex align-content-start flex-wrap text-center" >
+                {% for sample in user %}
+                <div class="p-3 bg-light m-1 border border-secondary">
+
+                    <div class="m-1">
+
+                        {% if sample.sampleur.titre|length >= 15 %}
+                            <a href="">
+                                <p class="font-weight-bold text-dark">{{ sample.sampleur.titre | striptags | slice(0, 15) }}...</p>
+                            </a>
+                        {% elseif sample.sampleur.titre|length < 15 %}
+                            <a href="">
+                                <p class="font-weight-bold text-dark">{{ sample.sampleur.titre }}</p>
+                            </a>
+                        {% endif %}
+
+                        {% if sample.sampleur.idalbum.pochette %}
+                            <a href="">
+                                <img width="90" src="{{ asset(image_directory ~ sample.sampleur.idalbum.pochette) }}"  alt=""/>
+                            </a>
+                        {% endif %}
+
+                    </div>
+
+                <div class="m-1">
+
+                    {% if sample.original.titre|length >= 15 %}
+                        <a href="">
+                            <p class="font-weight-bold text-dark ">{{ sample.original.titre | striptags | slice(0, 15) }}...</p>
+                        </a>
+                    {% elseif sample.original.titre|length < 15 %}
+                        <a href="">
+                            <p class="font-weight-bold text-dark">{{ sample.original.titre }}</p>
+                        </a>
+                    {% endif %}
+
+                    {% if sample.original.idalbum.pochette %}
+                        <a href="">
+                            <img  width="90" src="{{ asset(image_directory ~ sample.original.idalbum.pochette) }}"  alt=""/>
+                        </a>
+                    {% endif %}
+
+                </div>
+
+                </div>
+                {% endfor %}
+        </article>
+
+
+
+    </div>
+
 </div>
 
 
