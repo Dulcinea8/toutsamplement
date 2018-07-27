@@ -1,0 +1,16 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}{{artiste.nom}}{% endblock %}
+
+{% block titlepage %}{{artiste.nom}}{% endblock %}
+
+{% block content %}
+
+    {{artiste.nom}}
+    {{artiste.genre}}
+    {%for album in artiste.albums%}
+        {{album.nom}}
+        <img src="{{ asset(image_directory ~ album.pochette)}}">
+    {%endfor%}
+
+{% endblock %}
