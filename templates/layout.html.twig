@@ -30,79 +30,47 @@
             <ul class="navbar-nav mr-auto">
 
 
+                <li class="ml-5 nav-item active">
+                    <a class="ml-5 nav-link" href="{{ path('accueil')}}"> Accueil <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('all-articles')}}"> Articles</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('all-samples')}}">Samples</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('inserer')}}">Insérer</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('contact')}}"> Contact </a>
+                </li>
+
                 {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
-                    <li class="ml-5 nav-item active">
-                        <a class="ml-5 nav-link"href="{{ path('accueil')}}"> Accueil <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('all-articles')}}"> Articles</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Samples</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('inserer')}}">Insérer</a>
-                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ path('login') }}"> Connexion / Inscription </a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link"href="{{ path('contact')}}"> Contact </a>
                     </li>
                 {% endif %}
 
                 {# l'element du menu n'apparaitra que si l'utilisateur est connecté en user#}
 
                 {% if is_granted('ROLE_USER') %}
-                    <li class="nav-item active">
-                        <a class="nav-link"href="{{ path('accueil')}}"> Accueil <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('all-articles')}}"> Articles</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Samples</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('inserer')}}">Insérer</a>
-                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ path('profil') }}">Profil </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ path('logout') }}"> Deconnexion </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link"href="{{ path('contact')}}"> Contact </a>
-                    </li>
                 {% endif %}
 
-                {# l'element du menu n'apparaitra que si l'utilisateur est connecté en user#}
+                {# l'element du menu n'apparaitra que si l'utilisateur est connecté en admin#}
 
                 {% if is_granted('ROLE_ADMIN') %}
-                    <li class="nav-item active">
-                        <a class="nav-link"href="{{ path('accueil')}}"> Accueil <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('admin-all-articles')}}"> Articles</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Samples</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('inserer')}}">Insérer</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('profil') }}">Profil </a>
-                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ path('admin-add-article') }}"> Ajouter un article </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href=""> Administrateur </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('logout') }}"> Deconnexion </a>
                     </li>
                 {% endif %}
 
@@ -114,7 +82,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon1">Search</span>
                 </div>
-                <input type="text" id="recherche" class="form-control" placeholder="Track or Artist" aria-label="Username" aria-describedby="basic-addon1">
+                <input type="text" id="recherche" name="recherche" class="form-control" placeholder="Track or Artist" aria-label="Username" aria-describedby="basic-addon1">
             </div>
         </form>
 
@@ -127,7 +95,6 @@
 
 <h1 class="text-center">{% block titlepage %}{% endblock %}</h1>
 <div class="font container justify-content-center">
-    <div id="result"></div>
     {% block content %}{% endblock %}
 
 </div>
@@ -167,20 +134,20 @@
             $('#recherche').on('keyup', function () {
 
                 //lorsqu'on tape un titre dans le champ
-
+                {#
                     console.log($(this).val());
                     //je ne lance la requête que si on a tapé au moins 3 lettres
                     if($(this).val().length > 2){
                         $('#result').load("{{ path('ajax-search') }}?recherche=" + $(this).val());
                     }
 
-
-                {#if ($(this).val().length > longueur)
+*/#}
+                if ($(this).val().length > 2)
                 {
                     {#var url = "{{ path('ajax-search', {recherche:0}) }}";#}
                     //url = url.replace('0', $(this).val())
                     //console.log(url);
-                {# $.ajax({
+                 $.ajax({
                         type: 'get',
                         url: "{{path('ajax-search')}}",
                         data: "recherche=" + $(this).val(),
@@ -188,14 +155,14 @@
                         dataType: 'html',
                         success: function (data) {
                             $('#result').empty();
-                            //$('#result').html(data);
+                            $('#result').html(data);
                             console.log(data);
                         },
                         error: function (error) {
                             console.log(error.responseText);
                         }
                     })
-                }#}
+                }
             })
         })
     </script>

@@ -12,6 +12,8 @@ use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\ParameterBag;
+use Symfony\Component\Form;
 
 use App\Entity\Relations;
 use App\Entity\Albums;
@@ -19,13 +21,27 @@ use App\Entity\Albums;
 class AdminController extends Controller
 {
     /**
-     * @Route("/admin", name="admin")
+     * @Route("/admin/", name="admin")
      */
-    public function index()
+    public function accueil()
     {
-        return $this->render('admin/index.html.twig', [
-            'controller_name' => 'AdminController',
-        ]);
+        $repositoryArtistes = $this->getDoctrine()->getRepository(Artistes::class);
+        $artistes = $repositoryArtistes->last4Artistes();
+
+        $repositoryArticles = $this->getDoctrine()->getRepository(Articles::class);
+        $articles = $repositoryArticles->last4Articles();
+
+        $repositorySamples = $this->getDoctrine()->getRepository(Relations::class);
+        $samples = $repositorySamples->last4Samples();
+
+        // $repositoryTracks = $this->getDoctrine()->getRepository(Tracks::class);
+        // $tracks = $repositoryTracks->findTrackById($samples);
+
+
+        return $this->render('admin/index.html.twig', array(
+            'artistes'=>$artistes,
+            'articles'=>$articles,
+            'samples'=>$samples));
     }
 
     /**
@@ -96,38 +112,35 @@ class AdminController extends Controller
     /**
     * @Route("/admin/requete_insertion", name="requete-insertion")
     */
-    public function requete(){
+    public function requete(Request $request){
+    	$entityManager = $this->getDoctrine()->getManager();
     	$repositoryRelations = $this->getDoctrine()->getRepository(Relations::class);
     	$repositoryAlbums = $this->getDoctrine()->getRepository(Albums::class);
+        
+        $msg="";
+
+    	if($request->get('valider')) {
+        	$relationAValider= $repositoryRelations->findOneById($request->request->get('valider'));
+        	$relationAValider->setIsValidated(true);
+        	$entityManager->persist($relationAValider);
+        	$entityManager->flush();
+        	$msg="La relation a bien été validée";
+
+        }elseif($request->get('refuser')){
+        	$test='no id= '.$request->get('refuser');
+        	$relationASuppr = $repositoryRelations->findOneById($request->get('refuser'));
+        	$entityManager->remove($relationASuppr);
+        	$entityManager->flush();
+        	$msg="La relation a bien été supprimée";
+
+        }
+
         $requetes = $repositoryRelations->getNonValidated();
    
-    	return $this->render('admin/requete_insertion.html.twig', ['requetes'=>$requetes]);
+    	return $this->render('admin/requete_insertion.html.twig', ['requetes'=>$requetes, 'msg'=>$msg]);
     }
 
-    /**
-     * @Route("/admin/", name="admin-accueil")
-     */
-    public function accueil()
-    {
 
-        $repositoryArtistes = $this->getDoctrine()->getRepository(Artistes::class);
-        $artistes = $repositoryArtistes->last4Artistes();
-
-        $repositoryArticles = $this->getDoctrine()->getRepository(Articles::class);
-        $articles = $repositoryArticles->last4Articles();
-
-        $repositorySamples = $this->getDoctrine()->getRepository(Relations::class);
-        $samples = $repositorySamples->last4Samples();
-
-        // $repositoryTracks = $this->getDoctrine()->getRepository(Tracks::class);
-        // $tracks = $repositoryTracks->findTrackById($samples);
-
-
-        return $this->render('admin/index.html.twig', array(
-            'artistes'=>$artistes,
-            'articles'=>$articles,
-            'samples'=>$samples));
-    }
 
     /**
      * @Route("/admin/articles/", name="admin-all-articles")
@@ -139,6 +152,19 @@ class AdminController extends Controller
         $articles = $repository->findAll();
 
         return $this->render('admin/articles.html.twig', array('articles'=>$articles));
+
+    }
+
+    /**
+     * @Route("/admin/artistes/", name="admin-all-artistes")
+     */
+    public function showAllArtistes(){
+
+        $repository = $this->getDoctrine()->getRepository(Users::class);
+
+        $artistes = $repository->findAll();
+
+        return $this->render('admin/articles.html.twig', array('articles'=>$artistes));
 
     }
 

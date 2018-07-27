@@ -64,6 +64,7 @@
             <h6><strong>Site Web: </strong> {{ user.siteweb }}</h6>
             <br>
             <br>
+
             <div>
                 <a class="" href="{{ path('admin-modifier-profil', {id: user.id} ) }}"><img class="m-2" src="{{ asset('images/boutonModifier.png')}}"></a>
                 <a class="" href="{{ path('admin-supprimer-profil', {id: user.id} ) }}"><img class="m-2" src="{{ asset('images/boutonSupprimer.png')}}"></a>

@@ -124,6 +124,11 @@ class Users implements UserInterface, \Serializable
      */
     private $articles;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Artistes", mappedBy="user")
+     */
+    private $artistes;
+
 
     public function __construct()
     {
@@ -312,6 +317,17 @@ class Users implements UserInterface, \Serializable
     public function setPlainPassword(?string $plainPassword): self
     {
         $this->plainPassword = $plainPassword;
+
+        return $this;
+    }
+
+    public function getArtistes(): ?Users
+    {
+        return $this->artistes;
+    }
+    public function setArtistes(Users $artistes): self
+    {
+        $this->auteur = $artistes;
 
         return $this;
     }

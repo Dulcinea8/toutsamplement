@@ -11,9 +11,13 @@ use App\Entity\Albums;
 use App\Form\InsererTrackType;
 use App\Form\InsererAlbumType;
 use App\Form\InsererArtisteType;
+use Symfony\Component\HttpFoundation\Request;
 
 class SampleController extends Controller
 {
+
+
+
     /**
      * @Route("/sample", name="sample")
      */
@@ -27,13 +31,17 @@ class SampleController extends Controller
     /**
      * @Route("/samples/", name="all-samples")
      */
-    public function showAllSamples(){
+    public function showAllSamples(Request $request){
+
+        //$repositoryTracks = $this->getDoctrine()->getRepository(Tracks::class);
+
+        //$tracks = $repositoryTracks->findTrackByTitre($request->request->get('titreSample'));
 
         $repository = $this->getDoctrine()->getRepository(Relations::class);
 
         $samples = $repository->findAll();
 
-        return $this->render('sample/articles.html.twig', array('samples'=>$samples));
+        return $this->render('sample/samples.html.twig', array('samples'=>$samples));
 
     }
 

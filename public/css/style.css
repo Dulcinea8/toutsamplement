@@ -89,3 +89,26 @@ body{
 .navbar-nav{
     margin-left: 10%;
 }
+
+
+.image_supprimer_input
+{
+background-image:url("../images/boutonSupprimer.png");
+background-size: cover;
+width: 7em;
+border: none;
+height: 4.5em;
+}
+
+.image_valider_input
+{
+background-image:url("../images/boutonValider.png");
+background-size: cover;
+width: 7em;
+height: 4.5em;
+border: none;
+}
+
+.image_supprimer_input button{
+    border: none;
+}

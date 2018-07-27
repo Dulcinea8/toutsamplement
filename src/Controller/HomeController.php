@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Relations;
+use App\Entity\Users;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use App\Entity\Artistes;
@@ -19,6 +20,15 @@ class HomeController extends Controller
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
         ]);
+    }
+
+    /**
+     * @Route("/profil/{id}", name="profilUser", requirements={"id"="[0-9]+"})
+     */
+    public function detailProfil(Users $user){
+
+        return $this->render('home/profilUser.html.twig',  array('user'=>$user));
+
     }
 
     /**

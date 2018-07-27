@@ -5,6 +5,8 @@ namespace App\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use App\Service\FileUploader;
+use Symfony\Component\HttpFoundation\File\File;
 
 
 use App\Entity\Users;
@@ -18,7 +20,7 @@ class InsertionController extends Controller
     /**
      * @Route("/inserer", name="inserer")
      */
-    public function index(Request $request)
+    public function index(Request $request, FileUploader $uploader)
     {
 
         $entityManager = $this->getDoctrine()->getManager();
@@ -40,6 +42,7 @@ class InsertionController extends Controller
     			$artisteSample= new Artistes();
     			$artisteSample->setNom($request->request->get('artisteSample'));
     			$artisteSample->setGenre($request->request->get('genreSample'));
+                $artisteSample->setIsValidated(0);
     			$entityManager->persist($artisteSample);
     		}else{
     			$artisteSample= $repositoryArtistes->findArtisteByNom($request->request->get('artisteSample'));
@@ -50,7 +53,8 @@ class InsertionController extends Controller
     			$albumSample->setNom($request->request->get('albumSample'));
     			$albumSample->setAnnee($request->request->get('dateSample'));
     			$albumSample->setIdartiste($artisteSample);
-    			$entityManager->persist($albumSample);
+                $albumSample->setIsValidated(0);
+                $entityManager->persist($albumSample);
     		}else{
     			$albumSample= $repositoryAlbums->findAlbumByNom($request->request->get('albumSample'));
     		}
@@ -71,6 +75,7 @@ class InsertionController extends Controller
     			$artisteSampleur= new Artistes();
     			$artisteSampleur->setNom($request->request->get('artisteSampleur'));
     			$artisteSampleur->setGenre($request->request->get('genreSampleur'));
+                $artisteSampleur->setIsValidated(0);
     			$entityManager->persist($artisteSampleur);
     		}else{
     			$artisteSampleur= $repositoryArtistes->findArtisteByNom($request->request->get('artisteSampleur'));
@@ -81,6 +86,7 @@ class InsertionController extends Controller
     			$albumSampleur->setNom($request->request->get('albumSampleur'));
     			$albumSampleur->setAnnee($request->request->get('dateSampleur'));
     			$albumSampleur->setIdartiste($artisteSampleur);
+                $albumSampleur->setIsValidated(0);
     			$entityManager->persist($albumSampleur);
     		}else{
     			$albumSampleur= $repositoryAlbums->findAlbumByNom($request->request->get('albumSampleur'));
@@ -105,6 +111,7 @@ class InsertionController extends Controller
                 $relation->setSampleur($trackSampleur);
                 $relation->setOriginal($trackSample);
                 $relation->setIsValidated(0);
+                $relation->setUser($this->getUser());
                 $entityManager->persist($relation);
             }
 

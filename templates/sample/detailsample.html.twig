@@ -1,0 +1,44 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Fiche article{% endblock %}
+
+{% block titlepage %}{{ sample.sampleur.titre }}{% endblock %}
+
+{% block content %}
+
+
+<div class="row d-flex justify-content-around">
+
+    <article class="col-5 d-flex flex-column">
+
+            <h2 class="text-center font-weight-bold">Le sampleur</h2>
+            <h2 class="font-weight-bold">{{ sample.sampleur.idalbum.idartiste.nom }}</h2>
+
+            <h3 class="font-weight-bold">{{ sample.sampleur.idalbum.nom }}</h3>
+
+            <h5 class="font-weight-light"> Track : {{ sample.sampleur.titre }}</h5>
+            <h5 class="font-weight-light"> Date d'ajout : {{ sample.sampleur.datepubli|date('d/m/Y') }}</h5>
+            <h5 class="font-weight-light"><a href="{{ sample.sampleur.lien }}">{{ sample.sampleur.lien }}</a></h5>
+
+            <iframe width="460" height="215" src="https://www.youtube.com/embed/5wBTdfAkqGU" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+    </article>
+
+    <article class="col-5 d-flex flex-column">
+
+            <h2 class="text-center font-weight-bold">Le samplé</h2>
+            <h2 class="font-weight-bold">{{ sample.original.idalbum.idartiste.nom }}</h2>
+
+            <h3 class="font-weight-bold">{{ sample.original.idalbum.nom }}</h3>
+
+            <h5 class="font-weight-light"> Track : {{ sample.original.titre }}</h5>
+            <h5 class="font-weight-light"> Date d'ajout : {{ sample.original.datepubli|date('d/m/Y') }}</h5>
+            <h5 class="font-weight-light"><a href="{{ sample.original.lien }}">{{ sample.original.lien }}</a></h5>
+
+            <iframe width="460" height="215" src="https://www.youtube.com/embed/5wBTdfAkqGU" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+    </article>
+
+</div>
+
+{% endblock %}
