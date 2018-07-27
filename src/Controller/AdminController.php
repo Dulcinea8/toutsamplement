@@ -54,6 +54,19 @@ class AdminController extends Controller
     }
 
     /**
+     * @Route("/admin/all-profil/", name="admin-all-profil")
+     */
+    public function showAllProfil(){
+
+        $repository = $this->getDoctrine()->getRepository(Users::class);
+
+        $users = $repository->findAll();
+
+        return $this->render('admin/users.html.twig',  array('users'=>$users));
+
+    }
+
+    /**
      * @Route("admin/update/profil/{id}", name="admin-modifier-profil" , requirements={"id"="\d+"})
      */
     public function updateProfil(Users $user, Request $request,FileUploader $uploader){
@@ -188,7 +201,7 @@ class AdminController extends Controller
     /**
      * @Route("/admin/articles/ajout", name="admin-add-article")
      */
-    public function addArticle(Request $request, FileUploader $uploader, Articles $article)
+    public function addArticle(Request $request, FileUploader $uploader)
     {
         //seul les users peuvent inserer un article
 

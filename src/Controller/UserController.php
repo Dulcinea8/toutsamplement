@@ -50,8 +50,6 @@ class UserController extends Controller
             $user->eraseCredentials();
 
 
-
-
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
@@ -73,15 +71,6 @@ class UserController extends Controller
         $user = $this->getUser();
 
         return $this->render('user/profil.html.twig', array('user' => $user)  );
-    }
-
-    /**
-     * @Route("/profil/{id}", name="user-profil", requirements={"id"="[0-9]+"})
-     */
-    public function detailProfil(Users $user){
-
-        return $this->render('profil.html.twig',  array('user'=>$user));
-
     }
 
 
