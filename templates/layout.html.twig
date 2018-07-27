@@ -16,77 +16,78 @@
 
 <body class="container-fluid">
 
-<header class="container-fluid p-5">
+    <header class="container-fluid p-5">
 
-    <nav class="d-flex align-items-end navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="d-flex align-items-end navbar navbar-expand-lg navbar-light bg-light">
 
-        <a class="navbar-brand" href="{{ path('accueil') }}"></a>
+            <a class="navbar-brand" href="{{ path('accueil') }}"></a>
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-        <div class="collapse navbar-collapse" id="navbarText">
-            <ul class="navbar-nav mr-auto">
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav mr-auto">
 
 
-                <li class="ml-5 nav-item active">
-                    <a class="ml-5 nav-link" href="{{ path('accueil')}}"> Accueil <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('all-articles')}}"> Articles</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('all-samples')}}">Samples</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('inserer')}}">Insérer</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('contact')}}"> Contact </a>
-                </li>
-
-                {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('login') }}"> Connexion / Inscription </a>
-                    </li>
-                {% endif %}
-
-                {# l'element du menu n'apparaitra que si l'utilisateur est connecté en user#}
-
-                {% if is_granted('ROLE_USER') %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('profil') }}">Profil </a>
+                    <li class="ml-5 nav-item active">
+                        <a class="ml-5 nav-link" href="{{ path('accueil')}}"> Accueil <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ path('logout') }}"> Deconnexion </a>
-                    </li>
-                {% endif %}
-
-                {# l'element du menu n'apparaitra que si l'utilisateur est connecté en admin#}
-
-                {% if is_granted('ROLE_ADMIN') %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('admin-add-article') }}"> Ajouter un article </a>
+                        <a class="nav-link" href="{{ path('all-articles')}}"> Articles</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href=""> Administrateur </a>
+                        <a class="nav-link" href="{{ path('all-samples')}}">Samples</a>
                     </li>
-                {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('inserer')}}">Insérer</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('contact')}}"> Contact </a>
+                    </li>
 
-            </ul>
-        </div>
+                    {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('login') }}"> Connexion / Inscription </a>
+                        </li>
+                    {% endif %}
+
+                    {# l'element du menu n'apparaitra que si l'utilisateur est connecté en user#}
+
+                    {% if is_granted('ROLE_USER') %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('profil') }}">Profil </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('logout') }}"> Deconnexion </a>
+                        </li>
+                    {% endif %}
+
+                    {# l'element du menu n'apparaitra que si l'utilisateur est connecté en admin#}
+
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('admin-add-article') }}"> Ajouter un article </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href=""> Administrateur </a>
+                        </li>
+                    {% endif %}
+
+                </ul>
+            </div>
+
         {#FORMULAIRE DE RECHERCHE#}
         <form class="form-inline" id="cherche">
             <div class="input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon1">Search</span>
+
                 </div>
                 <input type="text" id="recherche" name="recherche" class="form-control" placeholder="Track or Artist" aria-label="Username" aria-describedby="basic-addon1">
             </div>
+
         </form>
-
-
 
     </nav>
 
