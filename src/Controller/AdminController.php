@@ -70,12 +70,11 @@ class AdminController extends Controller
 
             ///je fais le traitement si on m'a envoy&é une image
             if ($user->getAvatar()) {
-                //je stocke dans cette variable le nom du fichier actuel qui doit être supprimé ou null s'il n'y en a pas
-                $oldFileName = $user->getAvatar() ? $user->getAvatar() : null;
+
                 //on recupere un objet de classe file
                 $file = $user->getAvatar();
                 //dump($file);
-                $fileName = $uploader->upload($file, $oldFileName);
+                $fileName = $uploader->upload($file, $fileName);
 
             }
             $user->setAvatar($fileName);
@@ -83,7 +82,7 @@ class AdminController extends Controller
             //$entityManager->persist($user);
             $entityManager->flush();
             $this->addFlash('success', 'Modification fait');
-            return $this->redirectToRoute('admin-profil');
+            return $this->redirectToRoute('admin');
         }
         return $this->render('admin/updateProfil.html.twig', array('form' => $form->createView(),'avatar' => $fileName)  );
     }

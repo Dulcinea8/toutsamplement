@@ -1,3 +1,4 @@
+
 {% extends 'layout.html.twig' %}
 
 
@@ -7,15 +8,23 @@
 {% block content %}
     <br>
     <br>
-    <div class="container">
+    <div class="container bg-primary">
 
         <!-- PRESENTATION de toutsamplement-->
         <div class="row">
             <div class="col-md-6 col-6">
-                <p>Le site “Tout samplement” est une base de données communautaire et gratuite qui recense les plus célèbres samples de Hip Hop, de Rock, de Pop, et d’Electro, issus de productions d’artistes professionels ou amateurs pouvant faire découvrir leur travail.  Ce site est une réponse aussi bien pour ceux qui souhaitent aller plus loin dans la découverte de l'histoire de la musique, ou de leurs artistes ou morceaux favoris en découvrant les échantillons musicaux et beats utilisés, que pour les beatmakers amateurs qui enrichissent la base de donnée grace à leur production personnelle. Et n’oublions pas tous les passionnés en quête du sample original qui permettent de développer cette banque d’information, en y partageant leur investigations musicales.
+                <p>Le site “Tout samplement” est une base de données communautaire et gratuite qui recense les plus
+                    célèbres samples de Hip Hop, de Rock, de Pop, et d’Electro, issus de productions d’artistes professionels
+                    ou amateurs pouvant faire découvrir leur travail.  Ce site est une réponse aussi bien pour ceux qui
+                    souhaitent aller plus loin dans la découverte de l'histoire de la musique, ou de leurs artistes ou
+                    morceaux favoris en découvrant les échantillons musicaux et beats utilisés, que pour les beatmakers
+                    amateurs qui enrichissent la base de donnée grace à leur production personnelle. Et n’oublions pas
+                    tous les passionnés en quête du sample original qui permettent de développer cette banque d’information,
+                    en y partageant leur investigations musicales.
                 </p>
                 <p>
-                    Vous l’avez compris vos contributions, à tous les niveaux sont necessaire pour l’évolution du site. Le principe de cette communauté est de mettre la base à jour au gré de vos découvertes, de vos productions.
+                    Vous l’avez compris vos contributions, à tous les niveaux sont necessaire pour l’évolution du site.
+                    Le principe de cette communauté est de mettre la base à jour au gré de vos découvertes, de vos productions.
                 </p>
             </div>
 
@@ -29,27 +38,47 @@
         </div>
 
         <!--DERNIERS ARTISTE -->
+
         <div>
+
             <h3>Derniers Artistes</h3>
+
             <div class="d-flex">
                 {% for artiste in artistes%}
-                    <article class="container text-center">
-                        <div class="p-3 bg-light text-dark m-1">
 
-                            <a href="#"><article class="">{{artiste.nom}}</article></a>
+                    <article class="container text-center bg-gradient-secondary">
 
+                        <div class="p-3 bg-light m-1 border border-secondary">
 
+                            {% if artiste.nom|length >= 15 %}
+                                <a href="{{ path('admin-profil', {id: artiste.user.id} ) }}">
+                                    <p class="font-weight-bold text-dark">{{artiste.nom | striptags | slice(0, 15) }}...</p>
+                                </a>
+                            {% else%}
+                                <a href="{{ path('admin-profil', {id: artiste.user.id} ) }}">
+                                    <p class="font-weight-bold text-dark">{{artiste.nom }} </p>
+                                </a>
+                            {% endif %}
+
+                            {% if artiste.user.avatar %}
+                                <a href="{{ path('admin-profil', {id: artiste.user.id} ) }}">
+                                    <img class="zoom w-25 rounded-circle" src="{{ asset(image_directory ~ artiste.user.avatar) }}"  alt=""/>
+                                </a>
+                            {% endif %}
                         </div>
-
                     </article>
+
                 {% endfor %}
 
             </div>
+
         </div>
 
 
         <!--DERNIERS SAMPLES -->
+
         <div>
+
             <h3>Derniers Samples</h3>
 
             <div class="d-flex">
@@ -63,18 +92,18 @@
                             <div class="m-1">
 
                                 {% if sample.sampleur.titre|length >= 15 %}
-                                    <a href="">
+                                    <a href="{{ path('detail-sample', {id: sample.id} ) }}">
                                         <p class="font-weight-bold text-dark">{{ sample.sampleur.titre | striptags | slice(0, 15) }}...</p>
                                     </a>
-                                {% elseif sample.sampleur.titre|length < 15 %}
-                                    <a href="">
+                                {% else%}
+                                    <a href="{{ path('detail-sample', {id: sample.id} ) }}">
                                         <p class="font-weight-bold text-dark">{{ sample.sampleur.titre }}</p>
                                     </a>
                                 {% endif %}
 
                                 {% if sample.sampleur.idalbum.pochette %}
-                                    <a href="">
-                                        <img class="zoom img-fluid w-75 text-dark" src="{{ asset(image_directory ~ sample.sampleur.idalbum.pochette) }}"  alt=""/>
+                                    <a href="{{ path('detail-sample', {id: sample.id} ) }}">
+                                        <img class="zoom w-75" src="{{ asset(image_directory ~ sample.sampleur.idalbum.pochette) }}"  alt=""/>
                                     </a>
                                 {% endif %}
 
@@ -83,18 +112,18 @@
                             <div class="m-2">
 
                                 {% if sample.original.titre|length >= 15 %}
-                                    <a href="">
+                                    <a href="{{ path('detail-sample', {id: sample.id} ) }}">
                                         <p class="font-weight-bold text-dark ">{{ sample.original.titre | striptags | slice(0, 15) }}...</p>
                                     </a>
-                                {% elseif sample.original.titre|length < 15 %}
-                                    <a href="">
+                                {% else %}
+                                    <a href="{{ path('detail-sample', {id: sample.id} ) }}">
                                         <p class="font-weight-bold text-dark">{{ sample.original.titre }}</p>
                                     </a>
                                 {% endif %}
 
                                 {% if sample.original.idalbum.pochette %}
-                                    <a href="">
-                                        <img class="zoom img-fluid w-75" src="{{ asset(image_directory ~ sample.original.idalbum.pochette) }}"  alt=""/>
+                                    <a href="{{ path('detail-sample', {id: sample.id} ) }}">
+                                        <img class="zoom w-75" src="{{ asset(image_directory ~ sample.original.idalbum.pochette) }}"  alt=""/>
                                     </a>
                                 {% endif %}
 
@@ -109,10 +138,13 @@
                 {% endfor %}
 
             </div>
+
         </div>
+
 
         <!--DERNIERS ARTICLES -->
         <div>
+
             <h3>Derniers Articles</h3>
             <div class="d-flex ">
                 {% for article in articles%}
@@ -122,18 +154,18 @@
                         <div class="p-3 bg-light m-1 border border-secondary">
 
                             {% if article.titre|length >= 35 %}
-                                <a class="lien" href="{{ path('admin-detail-article', {id: article.id} ) }}">
+                                <a href="{{ path('detail-article', {id: article.id} ) }}">
                                     <p class="font-weight-bold text-dark">{{ article.titre | striptags | slice(0, 35) }}...</p>
                                 </a>
-                            {% elseif article.titre|length < 35 %}
-                                <a href="{{ path('admin-detail-article', {id: article.id} ) }}">
+                            {% else %}
+                                <a href="{{ path('detail-article', {id: article.id} ) }}">
                                     <p class="font-weight-bold text-dark">{{ article.titre }}</p>
                                 </a>
                             {% endif %}
 
                             {% if article.image %}
-                                <a href="{{ path('admin-detail-article', {id: article.id} ) }}">
-                                    <img class="zoom img-fluid w-75" src="{{ asset(image_directory ~ article.image) }}"  alt=""/>
+                                <a href="{{ path('detail-article', {id: article.id} ) }}">
+                                    <img class="zoom w-75" src="{{ asset(image_directory ~ article.image) }}"  alt=""/>
                                 </a>
                             {% endif %}
 
@@ -149,3 +181,4 @@
     </div>
 
 {% endblock %}
+

@@ -24,6 +24,7 @@ class ArtistesRepository extends ServiceEntityRepository
      public function last4Artistes(): array
     {
          return $this->createQueryBuilder('a')
+            ->andWhere('a.user IS NOT NULL')
             ->orderBy('a.id', 'DESC')
             ->setMaxResults(4)
             ->getQuery()
