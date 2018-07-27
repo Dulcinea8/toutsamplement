@@ -56,30 +56,30 @@ class TestData extends Fixture
 
         }
         $artistes=[
-            ['nom'=>'2Pac', 'user'=>null, 'genre'=>'Hip-Hop', 'article'=>null],
-            ['nom'=>'Joe Cocker', 'user'=>null, 'genre'=>'Rock', 'article'=>null],
-            ['nom'=>'Dr. Dre', 'user'=>null, 'genre'=>'Hip-Hop', 'article'=>null],
-            ['nom'=>'David McCallum', 'user'=>null, 'genre'=>'Soul', 'article'=>null],
-            ['nom'=>'113', 'user'=>null, 'genre'=>'Hip-Hop', 'article'=>null],
-            ['nom'=>'Curtis Mayfield', 'user'=>null, 'genre'=>'Soul', 'article'=>null],
-            ['nom'=>'Justice', 'user'=>null, 'genre'=>'Electro', 'article'=>null],
-            ['nom'=>'The Brothers Johnson', 'user'=>null, 'genre'=>'Soul', 'article'=>null],
-            ['nom'=>'The Notorious B.I.G.', 'user'=>null, 'genre'=>'Hip-Hop', 'article'=>null],
-            ['nom'=>'Diana Ross', 'user'=>null, 'genre'=>'Soul', 'article'=>null],
-            ['nom'=>'Daft Punk', 'user'=>null, 'genre'=>'Electro', 'article'=>null],
-            ['nom'=>'Eddie Johns', 'user'=>null, 'genre'=>'Disco', 'article'=>null],
-            ['nom'=>'Scred Connexion', 'user'=>null, 'genre'=>'Hip-Hop', 'article'=>null],
-            ['nom'=>'Kentarō Haneda', 'user'=>null, 'genre'=>'Générique', 'article'=>null],
-            ['nom'=>'Passi', 'user'=>null, 'genre'=>'Hip-Hop', 'article'=>null],
-            ['nom'=>'Barry De Vorzon', 'user'=>null, 'genre'=>'Générique', 'article'=>null],
-            ['nom'=>'Black Eyed Peas', 'user'=>null, 'genre'=>'Hip-Hop', 'article'=>null],
-            ['nom'=>'Dick Dale', 'user'=>null, 'genre'=>'Rock', 'article'=>null],
-            ['nom'=>'A Tribe Called Quest', 'user'=>null, 'genre'=>'Hip-Hop', 'article'=>null],
-            ['nom'=>'Lou Reed', 'user'=>null, 'genre'=>'Rock', 'article'=>null],
-            ['nom'=>'Fellez', 'user'=>$this->getReference('Fellez'), 'genre'=>'Hip-Hop', 'article'=>null],
-            ['nom'=>'Cortex', 'user'=>null, 'genre'=>'Electro', 'article'=>null],
-            ['nom'=>'Aoced', 'user'=>$this->getReference('Aoced'), 'genre'=>'Electro', 'article'=>null],
-            ['nom'=>'Depeche Mode', 'user'=>null, 'genre'=>'Pop', 'article'=>null]
+            ['nom'=>'2Pac', 'user'=>null, 'genre'=>'Hip-Hop', 'article'=>null,'isvalidated'=>1],
+            ['nom'=>'Joe Cocker', 'user'=>null, 'genre'=>'Rock', 'article'=>null,'isvalidated'=>1],
+            ['nom'=>'Dr. Dre', 'user'=>null, 'genre'=>'Hip-Hop', 'article'=>null,'isvalidated'=>1],
+            ['nom'=>'David McCallum', 'user'=>null, 'genre'=>'Soul', 'article'=>null,'isvalidated'=>1],
+            ['nom'=>'113', 'user'=>null, 'genre'=>'Hip-Hop', 'article'=>null,'isvalidated'=>1],
+            ['nom'=>'Curtis Mayfield', 'user'=>null, 'genre'=>'Soul', 'article'=>null,'isvalidated'=>1],
+            ['nom'=>'Justice', 'user'=>null, 'genre'=>'Electro', 'article'=>null,'isvalidated'=>1],
+            ['nom'=>'The Brothers Johnson', 'user'=>null, 'genre'=>'Soul', 'article'=>null,'isvalidated'=>1],
+            ['nom'=>'The Notorious B.I.G.', 'user'=>null, 'genre'=>'Hip-Hop', 'article'=>null,'isvalidated'=>1],
+            ['nom'=>'Diana Ross', 'user'=>null, 'genre'=>'Soul', 'article'=>null,'isvalidated'=>1],
+            ['nom'=>'Daft Punk', 'user'=>null, 'genre'=>'Electro', 'article'=>null,'isvalidated'=>1],
+            ['nom'=>'Eddie Johns', 'user'=>null, 'genre'=>'Disco', 'article'=>null,'isvalidated'=>1],
+            ['nom'=>'Scred Connexion', 'user'=>null, 'genre'=>'Hip-Hop', 'article'=>null,'isvalidated'=>1],
+            ['nom'=>'Kentarō Haneda', 'user'=>null, 'genre'=>'Générique', 'article'=>null,'isvalidated'=>1],
+            ['nom'=>'Passi', 'user'=>null, 'genre'=>'Hip-Hop', 'article'=>null,'isvalidated'=>1],
+            ['nom'=>'Barry De Vorzon', 'user'=>null, 'genre'=>'Générique', 'article'=>null,'isvalidated'=>1],
+            ['nom'=>'Black Eyed Peas', 'user'=>null, 'genre'=>'Hip-Hop', 'article'=>null,'isvalidated'=>1],
+            ['nom'=>'Dick Dale', 'user'=>null, 'genre'=>'Rock', 'article'=>null,'isvalidated'=>1],
+            ['nom'=>'A Tribe Called Quest', 'user'=>null, 'genre'=>'Hip-Hop', 'article'=>null,'isvalidated'=>1],
+            ['nom'=>'Lou Reed', 'user'=>null, 'genre'=>'Rock', 'article'=>null,'isvalidated'=>1],
+            ['nom'=>'Fellez', 'user'=>$this->getReference('Fellez'), 'genre'=>'Hip-Hop', 'article'=>null,'isvalidated'=>1],
+            ['nom'=>'Cortex', 'user'=>null, 'genre'=>'Electro', 'article'=>null,'isvalidated'=>1],
+            ['nom'=>'Aoced', 'user'=>$this->getReference('Aoced'), 'genre'=>'Electro', 'article'=>null,'isvalidated'=>1],
+            ['nom'=>'Depeche Mode', 'user'=>null, 'genre'=>'Pop', 'article'=>null,'isvalidated'=>1]
         ];
 
 
@@ -90,36 +90,37 @@ class TestData extends Fixture
             $test->setUser($artiste['user']);
             $test->setGenre($artiste['genre']);
             $test->setArticle($artiste['article']);
+            $test->setIsValidated($artiste['isvalidated']);
             $manager->persist($test);
 
             $this->addReference($artiste['nom'].'_artist', $test);
         }
 
         $albums=[
-            ['idartiste'=>$this->getReference('2Pac_artist'), 'nom'=>'All Eyez on Me', 'annee'=>'1995', 'pochette' =>'alleyezonme.jpg'],
-            ['idartiste'=>$this->getReference('Joe Cocker_artist'), 'nom'=>'Joe Cocker', 'annee'=>'1972', 'pochette' =>'joecocker.jpg'],
-            ['idartiste'=>$this->getReference('Dr. Dre_artist'), 'nom'=>'Chronic 2001', 'annee'=>'1999', 'pochette' =>'chronic2001.jpg'],
-            ['idartiste'=>$this->getReference('David McCallum_artist'), 'nom'=>'Music: A Bit More of Me', 'annee'=>'1967', 'pochette' =>'musicabitmoreofme.jpg'],
-            ['idartiste'=>$this->getReference('113_artist'), 'nom'=>'Les Princes De La Ville', 'annee'=>'1999', 'pochette' =>'lesprincesdelaville.jpg'],
-            ['idartiste'=>$this->getReference('Curtis Mayfield_artist'), 'nom'=>'Sweet Exorcist', 'annee'=>'1974', 'pochette' =>'sweetexorcist.jpg'],
-            ['idartiste'=>$this->getReference('Justice_artist'), 'nom'=>'Cross', 'annee'=>'2007', 'pochette' =>'cross.jpg'],
-            ['idartiste'=>$this->getReference('The Brothers Johnson_artist'), 'nom'=>'Light Up the Night', 'annee'=>'1980', 'pochette' =>'lightupthenight.jpg'],
-            ['idartiste'=>$this->getReference('The Notorious B.I.G._artist'), 'nom'=>'Life After Death', 'annee'=>'1997', 'pochette' =>'https://images-na.ssl-images-amazon.com/images/I/71-QUlvAlBL._SL1400_.jpg'],
-            ['idartiste'=>$this->getReference('Diana Ross_artist'), 'nom'=>'Diana', 'annee'=>'1980', 'pochette' =>'diana.jpg'],
-            ['idartiste'=>$this->getReference('Daft Punk_artist'), 'nom'=>'Discovery', 'annee'=>'2000', 'pochette' =>'discovery.jpg'],
-            ['idartiste'=>$this->getReference('Eddie Johns_artist'), 'nom'=>'More Spell on You', 'annee'=>'1979', 'pochette' =>'morespellonyou.jpg'],
-            ['idartiste'=>$this->getReference('Scred Connexion_artist'), 'nom'=>'Scred Selexion 99/2000', 'annee'=>'2000', 'pochette' =>'scredconnexion.jpg'],
-            ['idartiste'=>$this->getReference('Kentarō Haneda_artist'), 'nom'=>'Space Cobra', 'annee'=>'1982', 'pochette' =>'cobra.jpg'],
-            ['idartiste'=>$this->getReference('Passi_artist'), 'nom'=>'Les Tentations', 'annee'=>'1998', 'pochette' =>'lestentations.jpg'],
-            ['idartiste'=>$this->getReference('Barry De Vorzon_artist'), 'nom'=>'Nadia’s Theme', 'annee'=>'1973', 'pochette' =>'nadiastheme.jpg'],
-            ['idartiste'=>$this->getReference('Black Eyed Peas_artist'), 'nom'=>'Monkey Business', 'annee'=>'2005', 'pochette' =>'monkeybusiness.jpg'],
-            ['idartiste'=>$this->getReference('Dick Dale_artist'), 'nom'=>'Deltone', 'annee'=>'1962', 'pochette' =>'deltone.jpg'],
-            ['idartiste'=>$this->getReference('A Tribe Called Quest_artist'), 'nom'=>'People’s Instinctive Travels and the Paths of Rhythm', 'annee'=>'1990', 'pochette' =>'peoplesinstincttravels.jpg'],
-            ['idartiste'=>$this->getReference('Lou Reed_artist'), 'nom'=>'Transformer', 'annee'=>'1972', 'pochette' =>'transformer.jpg'],
-            ['idartiste'=>$this->getReference('Fellez_artist'), 'nom'=>'L’arbre et la pirogue', 'annee'=>'2018', 'pochette' =>'larbreetlapirogue.jpg'],
-            ['idartiste'=>$this->getReference('Cortex_artist'), 'nom'=>'Troupeau Bleu', 'annee'=>'1975', 'pochette' =>'troupeaubleu.jpg'],
-            ['idartiste'=>$this->getReference('Aoced_artist'), 'nom'=>'Steve Mcqueen', 'annee'=>'2017', 'pochette' =>'stevemcqueen.jpg'],
-            ['idartiste'=>$this->getReference('Depeche Mode_artist'), 'nom'=>'Violator', 'annee'=>'1989', 'pochette' =>'violator.jpg']
+            ['idartiste'=>$this->getReference('2Pac_artist'), 'nom'=>'All Eyez on Me', 'annee'=>'1995', 'pochette' =>'alleyezonme.jpg','isvalidated'=>1],
+            ['idartiste'=>$this->getReference('Joe Cocker_artist'), 'nom'=>'Joe Cocker', 'annee'=>'1972', 'pochette' =>'joecocker.jpg','isvalidated'=>1],
+            ['idartiste'=>$this->getReference('Dr. Dre_artist'), 'nom'=>'Chronic 2001', 'annee'=>'1999', 'pochette' =>'chronic2001.jpg','isvalidated'=>1],
+            ['idartiste'=>$this->getReference('David McCallum_artist'), 'nom'=>'Music: A Bit More of Me', 'annee'=>'1967', 'pochette' =>'musicabitmoreofme.jpg','isvalidated'=>1],
+            ['idartiste'=>$this->getReference('113_artist'), 'nom'=>'Les Princes De La Ville', 'annee'=>'1999', 'pochette' =>'lesprincesdelaville.jpg','isvalidated'=>1],
+            ['idartiste'=>$this->getReference('Curtis Mayfield_artist'), 'nom'=>'Sweet Exorcist', 'annee'=>'1974', 'pochette' =>'sweetexorcist.jpg','isvalidated'=>1],
+            ['idartiste'=>$this->getReference('Justice_artist'), 'nom'=>'Cross', 'annee'=>'2007', 'pochette' =>'cross.jpg','isvalidated'=>1],
+            ['idartiste'=>$this->getReference('The Brothers Johnson_artist'), 'nom'=>'Light Up the Night', 'annee'=>'1980', 'pochette' =>'lightupthenight.jpg','isvalidated'=>1],
+            ['idartiste'=>$this->getReference('The Notorious B.I.G._artist'), 'nom'=>'Life After Death', 'annee'=>'1997', 'pochette' =>'lifeafterdeath.jpg','isvalidated'=>1],
+            ['idartiste'=>$this->getReference('Diana Ross_artist'), 'nom'=>'Diana', 'annee'=>'1980', 'pochette' =>'diana.jpg','isvalidated'=>1],
+            ['idartiste'=>$this->getReference('Daft Punk_artist'), 'nom'=>'Discovery', 'annee'=>'2000', 'pochette' =>'discovery.jpg','isvalidated'=>1],
+            ['idartiste'=>$this->getReference('Eddie Johns_artist'), 'nom'=>'More Spell on You', 'annee'=>'1979', 'pochette' =>'morespellonyou.jpg','isvalidated'=>1],
+            ['idartiste'=>$this->getReference('Scred Connexion_artist'), 'nom'=>'Scred Selexion 99/2000', 'annee'=>'2000', 'pochette' =>'scredconnexion.jpg','isvalidated'=>1],
+            ['idartiste'=>$this->getReference('Kentarō Haneda_artist'), 'nom'=>'Space Cobra', 'annee'=>'1982', 'pochette' =>'cobra.jpg','isvalidated'=>1],
+            ['idartiste'=>$this->getReference('Passi_artist'), 'nom'=>'Les Tentations', 'annee'=>'1998', 'pochette' =>'lestentations.jpg','isvalidated'=>1],
+            ['idartiste'=>$this->getReference('Barry De Vorzon_artist'), 'nom'=>'Nadia’s Theme', 'annee'=>'1973', 'pochette' =>'nadiastheme.jpg','isvalidated'=>1],
+            ['idartiste'=>$this->getReference('Black Eyed Peas_artist'), 'nom'=>'Monkey Business', 'annee'=>'2005', 'pochette' =>'monkeybusiness.jpg','isvalidated'=>1],
+            ['idartiste'=>$this->getReference('Dick Dale_artist'), 'nom'=>'Deltone', 'annee'=>'1962', 'pochette' =>'deltone.jpg','isvalidated'=>1],
+            ['idartiste'=>$this->getReference('A Tribe Called Quest_artist'), 'nom'=>'People’s Instinctive Travels and the Paths of Rhythm', 'annee'=>'1990', 'pochette' =>'peoplesinstincttravels.jpg','isvalidated'=>1],
+            ['idartiste'=>$this->getReference('Lou Reed_artist'), 'nom'=>'Transformer', 'annee'=>'1972', 'pochette' =>'transformer.jpg','isvalidated'=>1],
+            ['idartiste'=>$this->getReference('Fellez_artist'), 'nom'=>'L’arbre et la pirogue', 'annee'=>'2018', 'pochette' =>'larbreetlapirogue.jpg','isvalidated'=>1],
+            ['idartiste'=>$this->getReference('Cortex_artist'), 'nom'=>'Troupeau Bleu', 'annee'=>'1975', 'pochette' =>'troupeaubleu.jpg','isvalidated'=>1],
+            ['idartiste'=>$this->getReference('Aoced_artist'), 'nom'=>'Steve Mcqueen', 'annee'=>'2017', 'pochette' =>'stevemcqueen.jpg','isvalidated'=>1],
+            ['idartiste'=>$this->getReference('Depeche Mode_artist'), 'nom'=>'Violator', 'annee'=>'1989', 'pochette' =>'violator.jpg','isvalidated'=>1]
 
 
         ];
@@ -130,7 +131,7 @@ class TestData extends Fixture
             $test->setNom($album['nom']);
             $test->setAnnee($album['annee']);
             $test->setPochette($album['pochette']);
-
+            $test->setIsValidated($album['isvalidated']);
             $manager->persist($test);
 
             $this->addReference($album['nom'].'_album', $test);
@@ -182,18 +183,18 @@ class TestData extends Fixture
 
 
         $relations=[
-            ['sampleur'=>$this->getReference('California Love_track'), 'original'=>$this->getReference('Woman to Woman_track'),'isvalidated'=>1],
-            ['sampleur'=>$this->getReference('The Next Episode_track'), 'original'=>$this->getReference('The Edge_track'),'isvalidated'=>1],
-            ['sampleur'=>$this->getReference('Les Princes De La Ville_track'), 'original'=>$this->getReference('Make Me Believe in You_track'),'isvalidated'=>1],
-            ['sampleur'=>$this->getReference('Newjack_track'), 'original'=>$this->getReference('You Make Me Wanna Wiggle_track'),'isvalidated'=>1],
-            ['sampleur'=>$this->getReference('Mo Money Mo Problems_track'), 'original'=>$this->getReference('I’m Coming Out_track'),'isvalidated'=>1],
-            ['sampleur'=>$this->getReference('One More Time_track'), 'original'=>$this->getReference('More Spell on You_track'),'isvalidated'=>1],
-            ['sampleur'=>$this->getReference('Scred Connexion Feat Fabe_track'), 'original'=>$this->getReference('Shi No Kōshin_track'),'isvalidated'=>1],
-            ['sampleur'=>$this->getReference('Je Zappe Et Je Mate_track'), 'original'=>$this->getReference('Nadia’s Theme_track'),'isvalidated'=>1],
-            ['sampleur'=>$this->getReference('Pump It_track'), 'original'=>$this->getReference('Miserlou_track'),'isvalidated'=>1],
-            ['sampleur'=>$this->getReference('Can I Kick It?_track'), 'original'=>$this->getReference('Walk on the Wild Side_track'),'isvalidated'=>1],
-            ['sampleur'=>$this->getReference('Madame Rêve_track'), 'original'=>$this->getReference('Go Round_track'),'isvalidated'=>1],
-            ['sampleur'=>$this->getReference('The Hunter_track'), 'original'=>$this->getReference('Personal Jesus_track'),'isvalidated'=>1]
+            ['sampleur'=>$this->getReference('California Love_track'), 'original'=>$this->getReference('Woman to Woman_track'),'isvalidated'=>1,'user'=>$this->getReference('Spakye')],
+            ['sampleur'=>$this->getReference('The Next Episode_track'), 'original'=>$this->getReference('The Edge_track'),'isvalidated'=>1,'user'=>$this->getReference('Aoced')],
+            ['sampleur'=>$this->getReference('Les Princes De La Ville_track'), 'original'=>$this->getReference('Make Me Believe in You_track'),'isvalidated'=>1,'user'=>$this->getReference('Tooty')],
+            ['sampleur'=>$this->getReference('Newjack_track'), 'original'=>$this->getReference('You Make Me Wanna Wiggle_track'),'isvalidated'=>1,'user'=>$this->getReference('Spakye')],
+            ['sampleur'=>$this->getReference('Mo Money Mo Problems_track'), 'original'=>$this->getReference('I’m Coming Out_track'),'isvalidated'=>1,'user'=>$this->getReference('Aoced')],
+            ['sampleur'=>$this->getReference('One More Time_track'), 'original'=>$this->getReference('More Spell on You_track'),'isvalidated'=>1,'user'=>$this->getReference('Aoced')],
+            ['sampleur'=>$this->getReference('Scred Connexion Feat Fabe_track'), 'original'=>$this->getReference('Shi No Kōshin_track'),'isvalidated'=>1,'user'=>$this->getReference('Spakye')],
+            ['sampleur'=>$this->getReference('Je Zappe Et Je Mate_track'), 'original'=>$this->getReference('Nadia’s Theme_track'),'isvalidated'=>1,'user'=>$this->getReference('Tooty')],
+            ['sampleur'=>$this->getReference('Pump It_track'), 'original'=>$this->getReference('Miserlou_track'),'isvalidated'=>1,'user'=>$this->getReference('Aoced')],
+            ['sampleur'=>$this->getReference('Can I Kick It?_track'), 'original'=>$this->getReference('Walk on the Wild Side_track'),'isvalidated'=>1,'user'=>$this->getReference('dulcine')],
+            ['sampleur'=>$this->getReference('Madame Rêve_track'), 'original'=>$this->getReference('Go Round_track'),'isvalidated'=>1,'user'=>$this->getReference('Fellez')],
+            ['sampleur'=>$this->getReference('The Hunter_track'), 'original'=>$this->getReference('Personal Jesus_track'),'isvalidated'=>1,'user'=>$this->getReference('Aoced')]
         ];
 
 
@@ -203,6 +204,8 @@ class TestData extends Fixture
             $test->setSampleur($relation['sampleur']);
             $test->setOriginal($relation['original']);
             $test->setIsValidated($relation['isvalidated']);
+            $test->setIsValidated($relation['isvalidated']);
+            $test->setUser($relation['user']);
             $manager->persist($test);
 
 
