@@ -59,4 +59,5 @@ class SampleController extends Controller
         return $this->render('sample/detailsample.html.twig',  array('sample'=>$sample));
 
     }
+
 }
