@@ -40,14 +40,17 @@ class TracksRepository extends ServiceEntityRepository
     /*
  Moteur de recherche par Track
  */
-    public function searcheTrack(string $recherche): array
+    public function searchTrack($recherche)
     {
+
         $querybuilder = $this->createQueryBuilder('t')
-            ->where('t.title LIKE :title')
-            ->setParameter('title', '%' . $recherche.'%')
+            ->andWhere('t.titre LIKE :titre')
+            ->setParameter('titre', '%' . $recherche.'%')
             ->getQuery();
         return $querybuilder->execute();
     }
+
+
 
 //    /**
 //     * @return Tracks[] Returns an array of Tracks objects

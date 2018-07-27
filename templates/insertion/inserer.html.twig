@@ -34,12 +34,16 @@
 				<input type="text" name="albumSample" id="albumSample" class="form-control">
 			</div>
 			<div class="form-group">
-				<label for="dateSample">Date de sortie:</label>
-				<input type="date" name="dateSample" id="dateSample" class="form-control">
+				<label for="dateSample">Année de sortie:</label>
+				<select id="dateSample" name="dateSample">
+				{% for i in 1900..2020 %}
+    				<option value="{{i}}">{{ i }}</option>
+				{% endfor %}
+				</select>
 			</div>
 			<div class="form-group">
 				<label for="pochetteSample">Pochette :</label>
-				<input type="url" name="pochetteSample" id="pochetteSample" class="form-control">
+				<input type="file" id="pochetteSample" name="pochetteSample" class="form-control">
 			</div>
 		</div>
 		<div class="col-3">
@@ -77,12 +81,16 @@
 				<input type="text" name="albumSampleur" id="albumSampleur" class="form-control">
 			</div>
 			<div class="form-group">
-				<label for="dateSampleur">Date de sortie:</label>
-				<input type="date" name="dateSampleur" id="dateSampleur" class="form-control">
+				<label for="dateSampleur">Année de sortie:</label>
+				<select id="dateSampleur" name="dateSampleur">
+				{% for i in 1900..2020 %}
+    				<option value="{{i}}">{{ i }}</option>
+				{% endfor %}
+				</select>
 			</div>
 			<div class="form-group">
 				<label for="pochetteSampleur">Pochette :</label>
-				<input type="url" name="pochetteSampleur" id="pochetteSampleur" class="form-control">
+				<input type="file" id="pochetteSampleur" name="pochetteSampleur" class="form-control">
 			</div>
 		</div>
 		<div class="col-3">
@@ -109,7 +117,7 @@
 	    {%endfor%}
     ];
 
-    var availableAlbums = [
+     availableAlbums = [
 	    {%for album in AjaxAlbum%}
 	    "{{album.nom}}",
 	    {%endfor%}
