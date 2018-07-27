@@ -44,8 +44,9 @@ class ArtistesRepository extends ServiceEntityRepository
     /*
         Moteur de recherche par Artist
     */
-    public function searcheArtist(string $recherche): array
+    public function searchArtist($recherche)
     {
+
         $querybuilder = $this->createQueryBuilder('a')
             ->where('a.nom LIKE :recherche')
             ->setParameter('recherche', '%' . $recherche.'%')
