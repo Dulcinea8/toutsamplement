@@ -90,6 +90,7 @@ class TestData extends Fixture
             $test->setUser($artiste['user']);
             $test->setGenre($artiste['genre']);
             $test->setArticle($artiste['article']);
+            $test->setIsValidated($artiste['isvalidated']);
             $manager->persist($test);
 
             $this->addReference($artiste['nom'].'_artist', $test);
@@ -130,7 +131,7 @@ class TestData extends Fixture
             $test->setNom($album['nom']);
             $test->setAnnee($album['annee']);
             $test->setPochette($album['pochette']);
-
+            $test->setIsValidated($album['isvalidated']);
             $manager->persist($test);
 
             $this->addReference($album['nom'].'_album', $test);
