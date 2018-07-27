@@ -79,7 +79,19 @@ class TestData extends Fixture
             ['nom'=>'Fellez', 'user'=>$this->getReference('Fellez'), 'genre'=>'Hip-Hop', 'article'=>null,'isvalidated'=>1],
             ['nom'=>'Cortex', 'user'=>null, 'genre'=>'Electro', 'article'=>null,'isvalidated'=>1],
             ['nom'=>'Aoced', 'user'=>$this->getReference('Aoced'), 'genre'=>'Electro', 'article'=>null,'isvalidated'=>1],
-            ['nom'=>'Depeche Mode', 'user'=>null, 'genre'=>'Pop', 'article'=>null,'isvalidated'=>1]
+            ['nom'=>'Depeche Mode', 'user'=>null, 'genre'=>'Pop', 'article'=>null,'isvalidated'=>1],
+            ['nom'=>'KRS-One', 'user'=>null, 'genre'=>'Hip-Hop', 'article'=>null,'isvalidated'=>1],
+            ['nom'=>'Blondie', 'user'=>null, 'genre'=>'Pop', 'article'=>null,'isvalidated'=>1],
+            ['nom'=>'Stardust', 'user'=>null, 'genre'=>'Electro', 'article'=>null,'isvalidated'=>1],
+            ['nom'=>'Chaka Khan', 'user'=>null, 'genre'=>'Soul', 'article'=>null,'isvalidated'=>1],
+            ['nom'=>'Modjo', 'user'=>null, 'genre'=>'Electro', 'article'=>null,'isvalidated'=>1],
+            ['nom'=>'Chic', 'user'=>null, 'genre'=>'Soul', 'article'=>null,'isvalidated'=>1],
+            ['nom'=>'Busy P', 'user'=>null, 'genre'=>'Electro', 'article'=>null,'isvalidated'=>1],
+            ['nom'=>'Vladimir Cosma', 'user'=>null, 'genre'=>'Générique', 'article'=>null,'isvalidated'=>1],
+            ['nom'=>'Vanilla Ice', 'user'=>null, 'genre'=>'Hip-Hop', 'article'=>null,'isvalidated'=>1],
+            ['nom'=>'Queen', 'user'=>null, 'genre'=>'Rock', 'article'=>null,'isvalidated'=>1],
+            ['nom'=>'David Guetta', 'user'=>null, 'genre'=>'Electro', 'article'=>null,'isvalidated'=>1],
+            ['nom'=>'Simple Minds', 'user'=>null, 'genre'=>'Rock', 'article'=>null,'isvalidated'=>1]
         ];
 
 
@@ -120,7 +132,19 @@ class TestData extends Fixture
             ['idartiste'=>$this->getReference('Fellez_artist'), 'nom'=>'L’arbre et la pirogue', 'annee'=>'2018', 'pochette' =>'larbreetlapirogue.jpg','isvalidated'=>1],
             ['idartiste'=>$this->getReference('Cortex_artist'), 'nom'=>'Troupeau Bleu', 'annee'=>'1975', 'pochette' =>'troupeaubleu.jpg','isvalidated'=>1],
             ['idartiste'=>$this->getReference('Aoced_artist'), 'nom'=>'Steve Mcqueen', 'annee'=>'2017', 'pochette' =>'stevemcqueen.jpg','isvalidated'=>1],
-            ['idartiste'=>$this->getReference('Depeche Mode_artist'), 'nom'=>'Violator', 'annee'=>'1989', 'pochette' =>'violator.jpg','isvalidated'=>1]
+            ['idartiste'=>$this->getReference('Depeche Mode_artist'), 'nom'=>'Violator', 'annee'=>'1989', 'pochette' =>'violator.jpg','isvalidated'=>1],
+            ['idartiste'=>$this->getReference('KRS-One_artist'), 'nom'=>'I Got Next', 'annee'=>'1997', 'pochette' =>'igotnext.jpg','isvalidated'=>1],
+            ['idartiste'=>$this->getReference('Blondie_artist'), 'nom'=>'Autoamerican', 'annee'=>'1980', 'pochette' =>'autoamerican.jpg','isvalidated'=>1],
+            ['idartiste'=>$this->getReference('Stardust_artist'), 'nom'=>'Stardust Ep', 'annee'=>'1998', 'pochette' =>'musicsoundsbetterwithyou.jpg','isvalidated'=>1],
+            ['idartiste'=>$this->getReference('Chaka Khan_artist'), 'nom'=>'What Cha’Gonna Do for Me', 'annee'=>'1981', 'pochette' =>'whatchagonnadoforme.jpg','isvalidated'=>1],
+            ['idartiste'=>$this->getReference('Modjo_artist'), 'nom'=>'Modjo', 'annee'=>'2000', 'pochette' =>'modjo.jpg','isvalidated'=>1],
+            ['idartiste'=>$this->getReference('Chaka Khan_artist'), 'nom'=>'Soup for One', 'annee'=>'1982', 'pochette' =>'soupforone.jpg','isvalidated'=>1],
+            ['idartiste'=>$this->getReference('Busy P_artist'), 'nom'=>'Busy P Ep', 'annee'=>'2009', 'pochette' =>'busypbaste.jpg','isvalidated'=>1],
+            ['idartiste'=>$this->getReference('Vladimir Cosma_artist'), 'nom'=>'Le Grand Blond avec une Chaussure Noire', 'annee'=>'1972', 'pochette' =>'legrandblond.jpg','isvalidated'=>1],
+            ['idartiste'=>$this->getReference('Vanilla Ice_artist'), 'nom'=>'Hooked', 'annee'=>'1990', 'pochette' =>'hooked.jpg','isvalidated'=>1],
+            ['idartiste'=>$this->getReference('Queen_artist'), 'nom'=>'Hot Space', 'annee'=>'1981', 'pochette' =>'hotspace.jpg','isvalidated'=>1],
+            ['idartiste'=>$this->getReference('David Guetta_artist'), 'nom'=>'Guetta Blaster', 'annee'=>'2004', 'pochette' =>'guettablaster.jpg','isvalidated'=>1],
+            ['idartiste'=>$this->getReference('Simple Minds_artist'), 'nom'=>'New Gold Dream', 'annee'=>'1982', 'pochette' =>'newgolddream.jpg','isvalidated'=>1]
 
 
         ];
@@ -161,7 +185,19 @@ class TestData extends Fixture
             ['idalbum'=>$this->getReference('L’arbre et la pirogue_album'),'isvalidated'=>1, 'titre'=>'Madame Rêve', 'lien'=>'https://www.youtube.com/watch?v=VW6xBr3aMcQ', 'date_publi'=> '2018-07-23'],
             ['idalbum'=>$this->getReference('Troupeau Bleu_album'),'isvalidated'=>1, 'titre'=>'Go Round', 'lien'=>'https://www.youtube.com/watch?v=GutIaarek20', 'date_publi'=> '2018-07-23'],
             ['idalbum'=>$this->getReference('Steve Mcqueen_album'),'isvalidated'=>1, 'titre'=>'The Hunter', 'lien'=>'https://www.youtube.com/watch?v=plHm06Xs0Vk', 'date_publi'=> '2018-07-23'],
-            ['idalbum'=>$this->getReference('Violator_album'),'isvalidated'=>1, 'titre'=>'Personal Jesus', 'lien'=>'https://www.youtube.com/watch?v=u1xrNaTO1bI', 'date_publi'=> '2018-07-23']
+            ['idalbum'=>$this->getReference('Violator_album'),'isvalidated'=>1, 'titre'=>'Personal Jesus', 'lien'=>'https://www.youtube.com/watch?v=u1xrNaTO1bI', 'date_publi'=> '2018-07-23'],
+            ['idalbum'=>$this->getReference('I Got Next_album'),'isvalidated'=>1, 'titre'=>'Step Into a World', 'lien'=>'https://www.youtube.com/watch?v=xbJxcFyaCpI', 'date_publi'=> '2018-07-27'],
+            ['idalbum'=>$this->getReference('Autoamerican_album'),'isvalidated'=>1, 'titre'=>'Rapture', 'lien'=>'https://www.youtube.com/watch?v=pHCdS7O248g', 'date_publi'=> '2018-07-27'],
+            ['idalbum'=>$this->getReference('Stardust Ep_album'),'isvalidated'=>1, 'titre'=>'Music Sounds Better With You', 'lien'=>'https://www.youtube.com/watch?v=BEq9PUE0AE0', 'date_publi'=> '2018-07-27'],
+            ['idalbum'=>$this->getReference('What Cha’Gonna Do for Me_album'),'isvalidated'=>1, 'titre'=>'Fate', 'lien'=>'https://www.youtube.com/watch?time_continue=14&v=eFQdCRQd3yg', 'date_publi'=> '2018-07-27'],
+            ['idalbum'=>$this->getReference('Modjo_album'),'isvalidated'=>1, 'titre'=>'Lady', 'lien'=>'https://www.youtube.com/watch?v=mMfxI3r_LyA', 'date_publi'=> '2018-07-27'],
+            ['idalbum'=>$this->getReference('Modjo_album'),'isvalidated'=>1, 'titre'=>'Soup for One', 'lien'=>'https://www.youtube.com/watch?time_continue=7&v=PZj-5DZn-fs', 'date_publi'=> '2018-07-27'],
+            ['idalbum'=>$this->getReference('Busy P Ep_album'),'isvalidated'=>1, 'titre'=>'Le Grand Blond avec une Casquette Noire', 'lien'=>'https://www.youtube.com/watch?v=Zo0R-uygeJU', 'date_publi'=> '2018-07-27'],
+            ['idalbum'=>$this->getReference('Le Grand Blond avec une Chaussure Noire_album'),'isvalidated'=>1, 'titre'=>'Sirba', 'lien'=>'https://www.youtube.com/watch?v=Itkn6xC4lTY', 'date_publi'=> '2018-07-27'],
+            ['idalbum'=>$this->getReference('Hooked_album'),'isvalidated'=>1, 'titre'=>'Ice Ice Baby', 'lien'=>'https://www.youtube.com/watch?time_continue=12&v=rog8ou-ZepE', 'date_publi'=> '2018-07-27'],
+            ['idalbum'=>$this->getReference('Hot Space_album'),'isvalidated'=>1, 'titre'=>'Under Pressure', 'lien'=>'https://www.youtube.com/watch?v=UWkIY7-FFTY', 'date_publi'=> '2018-07-27'],
+            ['idalbum'=>$this->getReference('Guetta Blaster_album'),'isvalidated'=>1, 'titre'=>'The World Is Mine', 'lien'=>'https://www.youtube.com/watch?v=13EsiCjsssY', 'date_publi'=> '2018-07-20'],
+            ['idalbum'=>$this->getReference('New Gold Dream_album'),'isvalidated'=>1, 'titre'=>'Someone Somewhere', 'lien'=>'https://www.youtube.com/watch?v=UW_VlaWDEYM', 'date_publi'=> '2018-07-20']
         ];
 
 
@@ -194,7 +230,14 @@ class TestData extends Fixture
             ['sampleur'=>$this->getReference('Pump It_track'), 'original'=>$this->getReference('Miserlou_track'),'isvalidated'=>1,'user'=>$this->getReference('Aoced')],
             ['sampleur'=>$this->getReference('Can I Kick It?_track'), 'original'=>$this->getReference('Walk on the Wild Side_track'),'isvalidated'=>1,'user'=>$this->getReference('dulcine')],
             ['sampleur'=>$this->getReference('Madame Rêve_track'), 'original'=>$this->getReference('Go Round_track'),'isvalidated'=>1,'user'=>$this->getReference('Fellez')],
-            ['sampleur'=>$this->getReference('The Hunter_track'), 'original'=>$this->getReference('Personal Jesus_track'),'isvalidated'=>1,'user'=>$this->getReference('Aoced')]
+            ['sampleur'=>$this->getReference('The Hunter_track'), 'original'=>$this->getReference('Personal Jesus_track'),'isvalidated'=>1,'user'=>$this->getReference('Aoced')],
+            ['sampleur'=>$this->getReference('Step Into a World_track'), 'original'=>$this->getReference('Rapture_track'),'isvalidated'=>1,'user'=>$this->getReference('Aoced')],
+            ['sampleur'=>$this->getReference('Music Sounds Better With You_track'), 'original'=>$this->getReference('Fate_track'),'isvalidated'=>1,'user'=>$this->getReference('Aoced')],
+            ['sampleur'=>$this->getReference('Lady_track'), 'original'=>$this->getReference('Soup for One_track'),'isvalidated'=>1,'user'=>$this->getReference('Aoced')],
+            ['sampleur'=>$this->getReference('Le Grand Blond avec une Casquette Noire_track'), 'original'=>$this->getReference('Sirba_track'),'isvalidated'=>1,'user'=>$this->getReference('Aoced')],
+            ['sampleur'=>$this->getReference('Ice Ice Baby_track'), 'original'=>$this->getReference('Under Pressure_track'),'isvalidated'=>1,'user'=>$this->getReference('Aoced')],
+            ['sampleur'=>$this->getReference('The World Is Mine_track'), 'original'=>$this->getReference('Someone Somewhere_track'),'isvalidated'=>1,'user'=>$this->getReference('Aoced')]
+
         ];
 
 
