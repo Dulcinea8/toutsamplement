@@ -65,10 +65,8 @@
             <br>
             <br>
             <div>
-                <button class="btn btn-link">  <a  href="{{ path ('update_profil', { id: user.id}) }}">Modifier mon Profil</a></button>
-            </div>
-            <div>
-               {#<button class="btn btn-link">  <a href="{{ path ('delete_profil', { id: user.id}) }}">Supprimer mon Profil</a></button>#}
+                <a class="" href="{{ path('admin-modifier-profil', {id: user.id} ) }}"><img class="m-2" src="{{ asset('images/boutonModifier.png')}}"></a>
+                <a class="" href="{{ path('admin-supprimer-profil', {id: user.id} ) }}"><img class="m-2" src="{{ asset('images/boutonSupprimer.png')}}"></a>
             </div>
 
 
