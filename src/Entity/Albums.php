@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\AlbumsRepository")
@@ -36,6 +37,7 @@ class Albums
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Image(maxSize="1000k")
      */
     private $pochette;
 
@@ -95,12 +97,12 @@ class Albums
         return $this;
     }
 
-    public function getPochette(): ?string
+    public function getPochette()
     {
         return $this->pochette;
     }
 
-    public function setPochette(?string $pochette): self
+    public function setPochette($pochette)
     {
         $this->pochette = $pochette;
 
