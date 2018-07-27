@@ -50,6 +50,16 @@ class RelationsRepository extends ServiceEntityRepository
         ;
     }
 
+    public function findByIdTrack($id){
+        return $this->createQueryBuilder('r')
+            ->andWhere('r.sampleur = :id')
+            ->orWhere('r.original = :id')
+            ->setParameter('id', $id)
+            ->getQuery()
+            ->getResult();
+
+    }
+
 
 
 
