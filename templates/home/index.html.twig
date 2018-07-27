@@ -44,13 +44,9 @@
                     <article class="container text-center">
                         <div class="p-3 bg-light text-dark m-1">
 
-                            <a href="{{ path('profil', {id: artiste.user.username} ) }}">{{artiste.nom}}</a>
+                            <a href="">{{artiste.nom}}</a>
 
-                            {% if sample.sampleur.idalbum.pochette %}
-                                <a href="">
-                                    <img class="zoom img-fluid w-75 text-dark" src="{{ asset(image_directory ~ sample.sampleur.idalbum.pochette) }}"  alt=""/>
-                                </a>
-                            {% endif %}
+                            
 
 
                         </div>
