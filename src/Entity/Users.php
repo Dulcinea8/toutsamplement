@@ -134,6 +134,7 @@ class Users implements UserInterface, \Serializable
     {
         $this->comments = new ArrayCollection();
         $this->samples = new ArrayCollection();
+        $this->artistes = new ArrayCollection();
     }
 
     public function getId()

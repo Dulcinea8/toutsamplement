@@ -20,19 +20,17 @@ class AjaxController extends Controller
         //$get = $request->query->all();
         $recherche=$request->query->get('recherche', null);
         dump($recherche);
-        if(!$recherche){
-            return new Response('titre invalide');
-        }
+
         $repository = $this->getDoctrine()->getRepository(Tracks::class);
         $tracks = $repository->searchTrack($recherche);
 
-        //$repository = $this->getDoctrine()->getRepository(Artistes::class);
-        //$artistes = $repository->searchArtist($recherche);
+        $repository = $this->getDoctrine()->getRepository(Artistes::class);
+        $artistes = $repository->searchArtist($recherche);
 
-        dump($artistes);
         //dump($artistes);
-        return $this->render('layout.html.twig', [
-            'tracks' => $tracks,
+        //dump($artistes);
+        return $this->render('ajax/search.html.twig', [
+            'tracks' => $tracks, 'artistes' => $artistes
         ]);
     }
 }

@@ -112,3 +112,13 @@ border: none;
 .image_supprimer_input button{
     border: none;
 }
+
+#result{
+    z-index: 100;
+    width: 15%;
+    position: absolute;
+    /*float: left;*/
+    left: 80%;
+    top: 200px;
+
+}

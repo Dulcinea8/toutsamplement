@@ -25,10 +25,10 @@ class ArtistesController extends Controller
     }
 
     /**
-    * @Route("/artiste/{id}", name="fiche-artiste", requirements={"\d+"})
-    */
+     * @Route("/artiste/{id}", name="fiche-artiste", requirements={"\d+"})
+     */
     public function ficheArtiste($id){
-    	$entityManager = $this->getDoctrine()->getManager();
+        $entityManager = $this->getDoctrine()->getManager();
         $repositoryArtistes = $this->getDoctrine()->getRepository(Artistes::class);
         $repositoryAlbums = $this->getDoctrine()->getRepository(Albums::class);
         $repositoryTracks = $this->getDoctrine()->getRepository(Tracks::class);
@@ -38,8 +38,8 @@ class ArtistesController extends Controller
         $albums= $repositoryArtistes->find($artiste);
 
         return $this->render('artistes/fiche_artiste.html.twig', [
-        	'artiste'=>$artiste,
-        	'albums'=>$albums,
+            'artiste'=>$artiste,
+            'albums'=>$albums,
         ]);
 
     }

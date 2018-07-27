@@ -37,29 +37,46 @@
         </div>
 
         <!--DERNIERS ARTISTE -->
+
         <div>
+
             <h3>Derniers Artistes</h3>
+
             <div class="d-flex">
                 {% for artiste in artistes%}
-                    <article class="container text-center">
-                        <div class="p-3 bg-light text-dark m-1">
 
-                            <a href="">{{artiste.nom}}</a>
+                    <article class="container text-center bg-gradient-secondary">
 
-                            
+                        <div class="p-3 bg-light m-1 border border-secondary">
 
+                            {% if artiste.nom|length >= 15 %}
+                                <a href="{{ path('fiche-artiste', {id: artiste.user.id} ) }}">
+                                    <p class="font-weight-bold text-dark">{{artiste.nom | striptags | slice(0, 15) }}...</p>
+                                </a>
+                            {% else%}
+                                <a href="{{ path('fiche-artiste', {id: artiste.user.id} ) }}">
+                                    <p class="font-weight-bold text-dark">{{artiste.nom }} </p>
+                                </a>
+                            {% endif %}
 
-                        </div>
+                            {% if artiste.user.avatar %}
+                                <a href="{{ path('fiche-artiste', {id: artiste.user.id} ) }}">
+                                    <img class="zoom w-25 rounded-circle" src="{{ asset(image_directory ~ artiste.user.avatar) }}"  alt=""/>
+                                </a>
+                            {% endif %}
+                            </div>
+                        </article>
 
-                    </article>
                 {% endfor %}
 
             </div>
+
         </div>
 
-
         <!--DERNIERS SAMPLES -->
+
         <div>
+
             <h3>Derniers Samples</h3>
 
             <div class="d-flex">
@@ -73,18 +90,18 @@
                         <div class="m-1">
 
                             {% if sample.sampleur.titre|length >= 15 %}
-                                <a href="">
+                                <a href="{{ path('detail-sample', {id: sample.id} ) }}">
                                     <p class="font-weight-bold text-dark">{{ sample.sampleur.titre | striptags | slice(0, 15) }}...</p>
                                 </a>
-                            {% elseif sample.sampleur.titre|length < 15 %}
-                                <a href="">
+                            {% else%}
+                                <a href="{{ path('detail-sample', {id: sample.id} ) }}">
                                     <p class="font-weight-bold text-dark">{{ sample.sampleur.titre }}</p>
                                 </a>
                             {% endif %}
 
                             {% if sample.sampleur.idalbum.pochette %}
-                                <a href="">
-                                    <img class="zoom img-fluid w-75 text-dark" src="{{ asset(image_directory ~ sample.sampleur.idalbum.pochette) }}"  alt=""/>
+                                <a href="{{ path('detail-sample', {id: sample.id} ) }}">
+                                    <img class="zoom w-75" src="{{ asset(image_directory ~ sample.sampleur.idalbum.pochette) }}"  alt=""/>
                                 </a>
                             {% endif %}
 
@@ -93,18 +110,18 @@
                         <div class="m-2">
 
                             {% if sample.original.titre|length >= 15 %}
-                                <a href="">
+                                <a href="{{ path('detail-sample', {id: sample.id} ) }}">
                                     <p class="font-weight-bold text-dark ">{{ sample.original.titre | striptags | slice(0, 15) }}...</p>
                                 </a>
-                            {% elseif sample.original.titre|length < 15 %}
-                                <a href="">
+                            {% else %}
+                                <a href="{{ path('detail-sample', {id: sample.id} ) }}">
                                     <p class="font-weight-bold text-dark">{{ sample.original.titre }}</p>
                                 </a>
                             {% endif %}
 
                             {% if sample.original.idalbum.pochette %}
-                                <a href="">
-                                    <img class="zoom img-fluid w-75" src="{{ asset(image_directory ~ sample.original.idalbum.pochette) }}"  alt=""/>
+                                <a href="{{ path('detail-sample', {id: sample.id} ) }}">
+                                    <img class="zoom w-75" src="{{ asset(image_directory ~ sample.original.idalbum.pochette) }}"  alt=""/>
                                 </a>
                             {% endif %}
 
@@ -119,10 +136,13 @@
                 {% endfor %}
                 
             </div>
+
         </div>
+
 
         <!--DERNIERS ARTICLES -->
         <div>
+
             <h3>Derniers Articles</h3>
             <div class="d-flex ">
                 {% for article in articles%}
@@ -132,10 +152,10 @@
                         <div class="p-3 bg-light m-1 border border-secondary">
 
                             {% if article.titre|length >= 35 %}
-                                <a class="lien" href="{{ path('detail-article', {id: article.id} ) }}">
+                                <a href="{{ path('detail-article', {id: article.id} ) }}">
                                     <p class="font-weight-bold text-dark">{{ article.titre | striptags | slice(0, 35) }}...</p>
                                 </a>
-                            {% elseif article.titre|length < 35 %}
+                            {% else %}
                                 <a href="{{ path('detail-article', {id: article.id} ) }}">
                                     <p class="font-weight-bold text-dark">{{ article.titre }}</p>
                                 </a>
@@ -143,7 +163,7 @@
 
                             {% if article.image %}
                                 <a href="{{ path('detail-article', {id: article.id} ) }}">
-                                    <img class="zoom img-fluid w-75" src="{{ asset(image_directory ~ article.image) }}"  alt=""/>
+                                    <img class="zoom w-75" src="{{ asset(image_directory ~ article.image) }}"  alt=""/>
                                 </a>
                             {% endif %}
 

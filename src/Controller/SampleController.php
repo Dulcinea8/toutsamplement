@@ -33,9 +33,6 @@ class SampleController extends Controller
      */
     public function showAllSamples(Request $request){
 
-        //$repositoryTracks = $this->getDoctrine()->getRepository(Tracks::class);
-
-        //$tracks = $repositoryTracks->findTrackByTitre($request->request->get('titreSample'));
 
         $repository = $this->getDoctrine()->getRepository(Relations::class);
 

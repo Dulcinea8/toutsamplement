@@ -16,6 +16,75 @@
 
 <body class="container-fluid">
 
+<<<<<<< HEAD
+    <header class="container-fluid p-5">
+
+        <nav class="d-flex align-items-end navbar navbar-expand-lg navbar-light bg-light">
+
+            <a class="navbar-brand" href="{{ path('accueil') }}"></a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav mr-auto">
+
+
+                    <li class="ml-5 nav-item active">
+                        <a class="ml-5 nav-link" href="{{ path('accueil')}}"> Accueil <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('all-articles')}}"> Articles</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('all-samples')}}">Samples</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('inserer')}}">Insérer</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('contact')}}"> Contact </a>
+                    </li>
+
+                    {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('login') }}"> Connexion / Inscription </a>
+                        </li>
+                    {% endif %}
+
+                    {# l'element du menu n'apparaitra que si l'utilisateur est connecté en user#}
+
+                    {% if is_granted('ROLE_USER') %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('profil') }}">Profil </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('logout') }}"> Deconnexion </a>
+                        </li>
+                    {% endif %}
+
+                    {# l'element du menu n'apparaitra que si l'utilisateur est connecté en admin#}
+
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('admin-add-article') }}"> Ajouter un article </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href=""> Administrateur </a>
+                        </li>
+                    {% endif %}
+
+                </ul>
+            </div>
+            {#FORMULAIRE DE RECHERCHE#}
+            <form class="form-inline" id="cherche">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Search</span>
+                    </div>
+                    <input type="text" id="recherche" name="recherche" class="form-control" placeholder="Track or Artist" aria-label="Username" aria-describedby="basic-addon1">
+=======
 <header class="container-fluid p-5">
 
     <nav class="d-flex align-items-end navbar navbar-expand-lg navbar-light bg-light">
@@ -81,6 +150,7 @@
             <div class="input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon1">Search</span>
+>>>>>>> 79402085ac0b68d7bbc977e3ed1699a70afeb6c9
                 </div>
                 <input type="text" id="recherche" name="recherche" class="form-control" placeholder="Track or Artist" aria-label="Username" aria-describedby="basic-addon1">
             </div>
@@ -95,6 +165,8 @@
 
 <h1 class="text-center">{% block titlepage %}{% endblock %}</h1>
 <div class="font container justify-content-center">
+
+    <div id="result"></div>
     {% block content %}{% endblock %}
 
 </div>
@@ -128,25 +200,11 @@
     {#//ici je fait la requete Ajax pour le moteur de recherche de mon menu#}
     <script>
         $(function () {
-            //var longueur = 2;
 
-            //$('#result').html('hello');
             $('#recherche').on('keyup', function () {
 
-                //lorsqu'on tape un titre dans le champ
-                {#
-                    console.log($(this).val());
-                    //je ne lance la requête que si on a tapé au moins 3 lettres
-                    if($(this).val().length > 2){
-                        $('#result').load("{{ path('ajax-search') }}?recherche=" + $(this).val());
-                    }
-
-*/#}
-                if ($(this).val().length > 2)
-                {
-                    {#var url = "{{ path('ajax-search', {recherche:0}) }}";#}
-                    //url = url.replace('0', $(this).val())
-                    //console.log(url);
+                //if ($(this).val().length > 1)
+                //{
                  $.ajax({
                         type: 'get',
                         url: "{{path('ajax-search')}}",
@@ -154,7 +212,7 @@
                         timeout: 3000,
                         dataType: 'html',
                         success: function (data) {
-                            $('#result').empty();
+                            //$('#result').empty();
                             $('#result').html(data);
                             console.log(data);
                         },
@@ -162,7 +220,7 @@
                             console.log(error.responseText);
                         }
                     })
-                }
+               // }
             })
         })
     </script>
