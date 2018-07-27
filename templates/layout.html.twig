@@ -95,6 +95,8 @@
 
 <h1 class="text-center">{% block titlepage %}{% endblock %}</h1>
 <div class="font container justify-content-center">
+
+    <div id="result"></div>
     {% block content %}{% endblock %}
 
 </div>
@@ -128,25 +130,11 @@
     {#//ici je fait la requete Ajax pour le moteur de recherche de mon menu#}
     <script>
         $(function () {
-            //var longueur = 2;
 
-            //$('#result').html('hello');
             $('#recherche').on('keyup', function () {
 
-                //lorsqu'on tape un titre dans le champ
-                {#
-                    console.log($(this).val());
-                    //je ne lance la requête que si on a tapé au moins 3 lettres
-                    if($(this).val().length > 2){
-                        $('#result').load("{{ path('ajax-search') }}?recherche=" + $(this).val());
-                    }
-
-*/#}
-                if ($(this).val().length > 2)
-                {
-                    {#var url = "{{ path('ajax-search', {recherche:0}) }}";#}
-                    //url = url.replace('0', $(this).val())
-                    //console.log(url);
+                //if ($(this).val().length > 1)
+                //{
                  $.ajax({
                         type: 'get',
                         url: "{{path('ajax-search')}}",
@@ -154,7 +142,7 @@
                         timeout: 3000,
                         dataType: 'html',
                         success: function (data) {
-                            $('#result').empty();
+                            //$('#result').empty();
                             $('#result').html(data);
                             console.log(data);
                         },
@@ -162,7 +150,7 @@
                             console.log(error.responseText);
                         }
                     })
-                }
+               // }
             })
         })
     </script>

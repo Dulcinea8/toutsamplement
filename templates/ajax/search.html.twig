@@ -1,0 +1,18 @@
+
+<div class="list-group">
+
+        {% if tracks is not empty %}
+            <h4 class="list-group-item list-group-item-action" >Tracks</h4>
+            {% for track in tracks %}
+                <a href="{{ path('show-track', {id: track.id, }) }}" class="list-group-item list-group-item-action"><article> {{ track .titre }} </article></a>
+            {% endfor %}
+        {% endif %}
+
+        {% if artistes is not empty %}
+            <h4 class="list-group-item list-group-item-action" >Artistes</h4>
+            {% for artiste in artistes %}
+                <a href="{{ path('show-artiste', {id: artiste.id, }) }}" class="list-group-item list-group-item-action"><article> {{ artiste .nom }}</article></a>
+            {% endfor %}
+        {% endif %}
+
+</div>

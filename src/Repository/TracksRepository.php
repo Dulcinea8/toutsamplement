@@ -48,13 +48,6 @@ class TracksRepository extends ServiceEntityRepository
             ->setParameter('titre', '%' . $recherche.'%')
             ->getQuery();
         return $querybuilder->execute();
-        /*$connexion = $this->getEntityManager()->getConnection();
-        $sql = 'SELECT * FROM tracks WHERE titre LIKE :titre';
-        $select = $connexion->prepare($sql);
-        $select->bindValue(':titre', $recherche);
-        $select->execute();
-        //on renvoie un tableau de tableau
-        return $select->fetchAll();*/
     }
 
 
