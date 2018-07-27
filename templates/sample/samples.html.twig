@@ -30,7 +30,7 @@
                             {% endif %}
 
                             <div class="p-2">
-                                <h4 class="font-weight-normal"> Artiste : {{ sample.sampleur.idalbum.idartiste.nom }}</h4>
+                                <h4 class="font-weight-normal"> Artiste : <a href="{{ path('fiche-artiste',{'id':sample.sampleur.idalbum.idartiste.id})}}">{{ sample.sampleur.idalbum.idartiste.nom }}</a></h4>
                                 <h5 class="font-weight-light"> Track :
                                     <a href="{{ path('detail-sample', {id: sample.id} ) }}">{{ sample.sampleur.titre }}</a>
                                 </h5>
@@ -55,9 +55,9 @@
 
                             <div class="p-2">
                                 {% if sample.original.idalbum.idartiste.nom|length >=18 %}
-                                    <h4 class="font-weight-normal"> Artiste : {{ sample.original.idalbum.idartiste.nom | striptags | slice(0, 18) }}...</h4>
+                                    <h4 class="font-weight-normal"> Artiste : <a href="{{ path('fiche-artiste',{'id':sample.original.idalbum.idartiste.id})}}">{{ sample.original.idalbum.idartiste.nom | striptags | slice(0, 18) }}...</a></h4>
                                 {% else %}
-                                    <h4 class="font-weight-normal"> Artiste : {{ sample.original.idalbum.idartiste.nom}}</h4>
+                                    <h4 class="font-weight-normal"> Artiste : <a href="{{ path('fiche-artiste',{'id':sample.original.idalbum.idartiste.id})}}">{{ sample.original.idalbum.idartiste.nom}}</a></h4>
                                 {% endif %}
                                 <h5 class="font-weight-light">  Track :
                                     <a href="{{ path('detail-sample', {id: sample.id} ) }}">{{ sample.original.titre }}</a>
