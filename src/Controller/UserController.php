@@ -73,6 +73,15 @@ class UserController extends Controller
         return $this->render('user/profil.html.twig', array('user' => $user)  );
     }
 
+    /**
+     * @Route("/admin/profil/{id}", name="admin-profil", requirements={"id"="[0-9]+"})
+     */
+    public function detailProfil(Users $user){
+
+        return $this->render('admin/profil.html.twig',  array('user'=>$user));
+
+    }
+
 
     /**
      * @Route("/updateProfil/{id}", name="update_profil" , requirements={"id"="\d+"})
