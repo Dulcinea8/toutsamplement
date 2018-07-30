@@ -10,11 +10,11 @@
 
         <hr class="bg-danger">
 
-        <div class="row d-flex justify-content-around ">
+        <div class="row d-flex justify-content-around">
 
                 {% for sample in samples %}
-
-                    <div class="row col-12 border m-2 p-2">
+                <!-- <a href="{{ path('detail-sample',{'id':sample.id})}}" class="mt-5"> -->
+                    <div class="row col-12 border m-2 p-2 test bg-white rounded" href="{{ path('detail-sample',{'id':sample.id})}}">
 
                     <article class="col-5 d-flex flex-column">
 
@@ -30,7 +30,7 @@
                             {% endif %}
 
                             <div class="p-2">
-                                <h4 class="font-weight-normal"> Artiste : <a href="{{ path('fiche-artiste',{'id':sample.sampleur.idalbum.idartiste.id})}}">{{ sample.sampleur.idalbum.idartiste.nom }}</a></h4>
+                                <h4 class="font-weight-normal"> Artiste :{{ sample.sampleur.idalbum.idartiste.nom }}</h4>
                                 <h5 class="font-weight-light"> Track :
                                     {{ sample.sampleur.titre }}
                                 </h5>
@@ -40,7 +40,7 @@
                     </article>
 
                     <div class="col-2 text-center align-self-center">
-                        <a href="{{ path('detail-sample',{'id':sample.id})}}" class="mt-5"> <i class="fas fa-exchange-alt fa-5x notreGris"></i></a>
+                        <i class="fas fa-exchange-alt fa-5x notreGris"></i>
                     </div>
 
                     <article class="col-5 d-flex flex-column">
@@ -59,9 +59,9 @@
 
                             <div class="p-2">
                                 {% if sample.original.idalbum.idartiste.nom|length >=18 %}
-                                    <h4 class="font-weight-normal"> Artiste : <a href="{{ path('fiche-artiste',{'id':sample.original.idalbum.idartiste.id})}}">{{ sample.original.idalbum.idartiste.nom | striptags | slice(0, 18) }}...</a></h4>
+                                    <h4 class="font-weight-normal"> Artiste :{{ sample.original.idalbum.idartiste.nom | striptags | slice(0, 18) }}...</h4>
                                 {% else %}
-                                    <h4 class="font-weight-normal"> Artiste : <a href="{{ path('fiche-artiste',{'id':sample.original.idalbum.idartiste.id})}}">{{ sample.original.idalbum.idartiste.nom}}</a></h4>
+                                    <h4 class="font-weight-normal"> Artiste : {{ sample.original.idalbum.idartiste.nom}}</h4>
                                 {% endif %}
                                 <h5 class="font-weight-light">  Track :
                                    {{ sample.original.titre }}
@@ -73,15 +73,29 @@
                     </article>
 
                     </div>
-
+                    <!-- </a> -->
                 {% endfor %}
         </div>
 
     </div>
 
+{% endblock %}
+{% block js %}
+<script>
+
+    $('.test').css('cursor', 'pointer');
+
+    $('.test').on('click', function(){
+        var url= $(this).attr("href");
+        window.location.href = url;
+    });
+
+    $('#titreSampleur').on('keydown', function(){
+        $( "#titreSampleur" ).autocomplete({
+          source: availableTracks
+        });
+    });
 
 
-
-
-
+</script>
 {% endblock %}
