@@ -6,7 +6,7 @@
 
     {#affichage des messages d'erreurs le cas échéant#}
     {% if error %}
-        <div>
+        <div class="alert alert-warning" role="alert">
             {{ error.messageKey|trans(error.messageData, 'security') }}
         </div>
     {% endif %}
