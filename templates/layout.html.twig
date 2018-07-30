@@ -77,6 +77,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ path('admin-all-profil') }}">Utilisateurs </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('logout') }}"> Deconnexion </a>
+                        </li>
                     {% endif %}
 
                 </ul>
@@ -90,6 +93,7 @@
 
                 </div>
                 <input type="text" id="recherche" name="recherche" class="form-control" placeholder="Track or Artist" aria-label="Username" aria-describedby="basic-addon1">
+                <div id="result"></div>
             </div>
 
         </form>
@@ -102,7 +106,7 @@
 <h1 class="text-center">{% block titlepage %}{% endblock %}</h1>
 <div class="font container justify-content-center">
 
-    <div id="result"></div>
+
     {% block content %}{% endblock %}
 
 </div>
