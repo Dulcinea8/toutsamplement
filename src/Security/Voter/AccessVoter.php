@@ -23,7 +23,7 @@ class AccessVoter extends Voter
         }
 
         //si $subject n'est pas supporté, on renvoie false
-        if(!$subject instanceof Articles){
+        if(!$subject instanceof Users){
             return false;
         }
         return true;
@@ -38,29 +38,28 @@ class AccessVoter extends Voter
             return false;
         }
 
-        //grace a la methode support on sait que $subject (passé en parametre est un objet de class article
+        //grace a la methode support on sait que $subject (passé en parametre est un objet de class user
 
-        $article = $subject;
 
         switch ($attribute) {
             case self::EDIT:
-                return $this->canEdit($article, $user);
+                return $this->canEdit($user, $subject);
                 break;
             case self::VIEW:
-                return $this->canView($article, $user);
+                return $this->canView($user);
                 break;
             case self::DELETE:
-                return $this->canDelete($article, $user);
+                return $this->canDelete($user, $subject);
                 break;
         }
 
         return false;
     }
 
-    //je crée une methode qui va determiner si l'utilisateur peut modifier l'article
-    private function canEdit(Articles $article, Users $user){
-        //l'utilisateur peut modifier l'article s'il en est l'auteur
-        if($user == $article->getUser()){
+    //je crée une methode qui va determiner si l'utilisateur peut modifier
+    private function canEdit(Users $user, Users $subject){
+        //l'utilisateur peut modifier son profil
+        if($user === $subject){
             return true;
         }
         else{
@@ -68,15 +67,15 @@ class AccessVoter extends Voter
         }
     }
 
-    //je vais créer la methode qui va determiner si l'utilisateur peut voir l'artcile
-    private function canView(Articles $article, Users $user){
+    //je vais créer la methode qui va determiner si l'utilisateur peut voir
+    private function canView(Users $user){
         return true;
     }
 
-    //je vais créer la methode qui va determiner si l'utilisateur peut effacer l'artcile
-    private function canDelete(Articles $article, Users $user){
-        //l'utilisateur peut modifier l'article s'il en est l'auteur
-        if($user == $article->getUser()){
+    //je vais créer la methode qui va determiner si l'utilisateur peut effacer
+    private function canDelete(Users $user, Users $subject){
+        //l'utilisateur peut supprimer
+        if($user == $subject){
             return true;
         }
         else{
