@@ -2,6 +2,11 @@
 
 namespace App\Controller;
 
+
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -41,6 +46,67 @@ class ArtistesController extends Controller
             'artiste'=>$artiste,
             'albums'=>$albums,
         ]);
+
+    }
+
+    /**
+     * @Route("/show/artistes", name="liste-artistes")
+     */
+    public function listeArtistes()
+    {
+        $repository = $this->getDoctrine()->getRepository(Artistes::class);
+
+        $liste=$repository->findAll();
+        return $this->render('artistes/listeArtistes.html.twig', array('artistes'=>$liste));
+
+    }
+
+    /**
+     * @Route("/update/artiste/{id}", name="artiste-update", requirements={"id"="\d+"})
+     */
+    public function updateArtiste(Artistes $artiste, Request $request)
+    {
+
+        $form = $this->createFormBuilder($artiste)
+            ->add('nom', TextType::class,array('label'=>'Nom', 'required'=>true))
+            ->add('genre', ChoiceType::class, array(
+                'choices'  => array(
+                    'Hip-Hop' => "Hip-Hop",
+                    'Electro' => "Electro",
+                    'Rock' => "Rock",
+                    'Disco' => "Disco",
+                    'Générique' => "Générique",
+                    'Soul' => "Soul",
+                    'Pop' => "Pop",
+                ),
+                'label' => "Genre",
+                'required'=> true))
+            ->add('modifier', SubmitType::class,array('label'=>'Modifier'))
+            ->getForm();
+
+
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()) {
+            $artiste = $form->getData();
+            $entityManager = $this->getDoctrine()->getManager();
+            //$entityManager->persist($artiste);
+            $entityManager->flush();
+            $this->addFlash('success', 'Artiste modifié!');
+            return $this->redirectToRoute('admin');
+        }
+        return $this->render('artistes/updateArtiste.html.twig',array('form' => $form->createView()) );
+
+    }
+
+    /**
+     * @Route("/delete/artiste/{id}", name="artiste-delete", requirements={"id"="\d+"})
+     */
+    public function deleteArtiste(Artistes $artiste){
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->remove($artiste);
+        $entityManager->flush();
+        $this->addFlash('warning', 'Artiste supprimé!');
+        return $this->redirectToRoute('admin');
 
     }
 }
