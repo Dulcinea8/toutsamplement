@@ -56,7 +56,7 @@
 
                     {# l'element du menu n'apparaitra que si l'utilisateur est connecté en user#}
 
-                    {% if is_granted('ROLE_USER') %}
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                         <li class="nav-item">
                             <a class="nav-link" href="{{ path('profil') }}">Profil </a>
                         </li>
@@ -72,16 +72,10 @@
                             <a class="nav-link" href="{{ path('admin-add-article') }}"> Ajouter un article </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ path('profil') }}">Profil </a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link" href=""> Administrateur </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ path('admin-all-profil') }}">Utilisateurs </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('logout') }}"> Deconnexion </a>
                         </li>
                     {% endif %}
 

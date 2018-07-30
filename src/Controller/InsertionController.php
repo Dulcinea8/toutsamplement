@@ -24,6 +24,8 @@ class InsertionController extends Controller
     public function index(Request $request, FileUploader $uploader)
     {
 
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+
         $entityManager = $this->getDoctrine()->getManager();
         $repositoryArtistes = $this->getDoctrine()->getRepository(Artistes::class);
         $repositoryAlbums = $this->getDoctrine()->getRepository(Albums::class);
@@ -35,8 +37,6 @@ class InsertionController extends Controller
     $AjaxTrack= $repositoryTracks->findAll();
     	$msg="";
     	if ($request->request->all()){
-
-    		
     		if (!$repositoryArtistes->findArtisteByNom($request->request->get('artisteSample')) ) {
     			$artisteSample= new Artistes();
     			$artisteSample->setNom($request->request->get('artisteSample'));

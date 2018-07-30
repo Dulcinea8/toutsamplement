@@ -30,7 +30,14 @@ class RelationsRepository extends ServiceEntityRepository
         ;
     }
 
-
+    public function lastSamples(): array
+    {
+        return $this->createQueryBuilder('a')
+            ->orderBy('a.id', 'DESC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 
     public function doesRelationExist($id1, $id2){
         return $this->createQueryBuilder('a')

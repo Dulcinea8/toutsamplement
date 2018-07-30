@@ -8,15 +8,14 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20180727114450 extends AbstractMigration
+final class Version20180730130348 extends AbstractMigration
 {
     public function up(Schema $schema) : void
     {
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE albums ADD is_validated TINYINT(1) NOT NULL');
-        $this->addSql('ALTER TABLE artistes ADD is_validated TINYINT(1) NOT NULL');
+        $this->addSql('ALTER TABLE articles DROP INDEX IDX_BFDD31681BFA63C8, ADD UNIQUE INDEX UNIQ_BFDD31681BFA63C8 (relations_id)');
     }
 
     public function down(Schema $schema) : void
@@ -24,7 +23,6 @@ final class Version20180727114450 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE albums DROP is_validated');
-        $this->addSql('ALTER TABLE artistes DROP is_validated');
+        $this->addSql('ALTER TABLE articles DROP INDEX UNIQ_BFDD31681BFA63C8, ADD INDEX IDX_BFDD31681BFA63C8 (relations_id)');
     }
 }

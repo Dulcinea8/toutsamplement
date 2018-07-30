@@ -22,37 +22,16 @@
             </div>
             <div class="col-6 p-3">
                 <h5>Titres :</h5>
-                {%for track in album.tracks%}
-                    {{track.titre}}
-                {%endfor%}
-            </div>
-        </div>
-    {%endfor%}
-    </div>
-    <hr>
-    <div class="m-4">
-        <h4 class="text-center p-2">Relations :</h4>
-    {%for album in artiste.albums%}
+                <ul>
                 {%for track in album.tracks%}
                     {%for relation in track.relations%}
-                    <div class="row bg-white rounded border text-center">
-                        <div class="col-6"><a href="{{ path('fiche-artiste',{'id':artiste.id})}}">{{relation.sampleur.titre}}</a></div>
-                        <div class="col-6"><a href="{{ path('fiche-artiste',{'id':relation.original.idalbum.idartiste.id})}}">{{relation.original.titre}}</a></div>
-                        <div class="col-12 text-center p-3"><a href="{{ path('detail-sample',{'id':relation.id})}}" class="btn btn-primary">Voir plus</a></div>
-                    </div>
+                    <a href="{{ path('detail-sample',{'id':relation.id})}}"><li>{{relation.sampleur.titre}}  <i class="fas fa-exchange-alt fa-1x"></i>   {{relation.original.titre}}</li></a>
                     {%endfor%}
                 {%endfor%}
+                </ul>
             </div>
         </div>
     {%endfor%}
     </div>
-
-    <div class="m-4">
-        <h4 class="text-center p-2">Articles associés :</h4>
-    {%for article in artiste.article%}
-               {{article.titre}}
-    {%endfor%}
-    </div>
-
 
 {% endblock %}

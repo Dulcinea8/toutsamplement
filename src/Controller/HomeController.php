@@ -23,15 +23,6 @@ class HomeController extends Controller
     }
 
     /**
-     * @Route("/profil/{id}", name="profilUser", requirements={"id"="[0-9]+"})
-     */
-    public function detailProfil(Users $user){
-
-        return $this->render('home/profilUser.html.twig',  array('user'=>$user));
-
-    }
-
-    /**
      * @Route("/", name="accueil")
      */
     public function accueil()

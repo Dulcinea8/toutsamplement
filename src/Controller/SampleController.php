@@ -31,14 +31,14 @@ class SampleController extends Controller
     /**
      * @Route("/samples/", name="all-samples")
      */
-    public function showAllSamples(Request $request){
+    public function showAllSamples(){
 
+        $repositorySamples = $this->getDoctrine()->getRepository(Relations::class);
 
-        $repository = $this->getDoctrine()->getRepository(Relations::class);
+        $samples = $repositorySamples->lastSamples();
 
-        $samples = $repository->findAll();
-
-        return $this->render('sample/samples.html.twig', array('samples'=>$samples));
+        return $this->render('sample/samples.html.twig', array(
+            'samples'=>$samples));
 
     }
 
