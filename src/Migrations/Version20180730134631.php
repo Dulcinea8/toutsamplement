@@ -8,7 +8,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20180730130708 extends AbstractMigration
+final class Version20180730134631 extends AbstractMigration
 {
     public function up(Schema $schema) : void
     {
@@ -17,7 +17,7 @@ final class Version20180730130708 extends AbstractMigration
 
         $this->addSql('ALTER TABLE articles ADD relations_id INT DEFAULT NULL');
         $this->addSql('ALTER TABLE articles ADD CONSTRAINT FK_BFDD31681BFA63C8 FOREIGN KEY (relations_id) REFERENCES relations (id)');
-        $this->addSql('CREATE INDEX IDX_BFDD31681BFA63C8 ON articles (relations_id)');
+        $this->addSql('CREATE UNIQUE INDEX UNIQ_BFDD31681BFA63C8 ON articles (relations_id)');
         $this->addSql('ALTER TABLE artistes DROP article');
         $this->addSql('ALTER TABLE relations ADD articles_id INT DEFAULT NULL');
         $this->addSql('ALTER TABLE relations ADD CONSTRAINT FK_146CBF781EBAF6CC FOREIGN KEY (articles_id) REFERENCES articles (id)');
@@ -30,7 +30,7 @@ final class Version20180730130708 extends AbstractMigration
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
         $this->addSql('ALTER TABLE articles DROP FOREIGN KEY FK_BFDD31681BFA63C8');
-        $this->addSql('DROP INDEX IDX_BFDD31681BFA63C8 ON articles');
+        $this->addSql('DROP INDEX UNIQ_BFDD31681BFA63C8 ON articles');
         $this->addSql('ALTER TABLE articles DROP relations_id');
         $this->addSql('ALTER TABLE artistes ADD article INT DEFAULT NULL');
         $this->addSql('ALTER TABLE relations DROP FOREIGN KEY FK_146CBF781EBAF6CC');
