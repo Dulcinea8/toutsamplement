@@ -42,12 +42,14 @@ table {
     border-spacing: 0;
 }
 
-.header {
-    background-image: url("../images/header.jpg");
+header {
+    background-image: url("../images/header.png");
     background-repeat: no-repeat;
     background-size: 100%;
     position:relative;
-    height: 7em;
+    height: 15em;
+    width: 100%;
+
 }
 
 footer {
@@ -80,16 +82,27 @@ body{
     background: white;
 }
 
-.navbar{
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 10em;
-    background-image: url("../images/header.png");
-}
-.navbar-nav{
-    margin-left: 10%;
+.navbar-default{
+background-color: transparent !important;
+background-image: none !important;
+
+    
+
 }
 
+.navbar-nav{
+    margin-left: 10%;
+
+}
+
+.nav-link{
+    color: #FFD600 !important;
+    background-color: black !important;
+    font-size: 1.5em !important;
+    margin: 0.2em;
+    border-radius: 5px !important;
+    margin-top: 5.5em;
+}
 
 .image_supprimer_input
 {
