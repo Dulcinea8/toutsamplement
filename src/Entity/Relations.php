@@ -40,6 +40,11 @@ class Relations
      */
     private $user;
 
+    /**
+    * @ORM\OneToOne(targetEntity="App\Entity\Articles", inversedBy="relations")
+    */
+    private $articles;
+
     public function getId()
     {
         return $this->id;

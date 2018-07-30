@@ -30,11 +30,6 @@ class Artistes
     private $genre;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    private $article;
-
-    /**
      * @ORM\OneToMany(targetEntity="App\Entity\Albums", mappedBy="idartiste", orphanRemoval=true)
      */
     private $albums;
