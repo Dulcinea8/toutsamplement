@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use App\Entity\Users;
+use App\Entity\Relations;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -60,7 +61,7 @@ class Articles
     private $video;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Relations", inversedBy="articles")
+     * @ORM\OneToOne(targetEntity="App\Entity\Relations", inversedBy="articles")
     */
     private $relations;
 
@@ -170,6 +171,18 @@ class Articles
                 $comment->setIdarticle(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getRelations(): ?Relations
+    {
+        return $this->relations;
+    }
+
+    public function setRelations(Relations $relations): self
+    {
+        $this->relations = $relations;
 
         return $this;
     }

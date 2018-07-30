@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use App\Entity\Tracks;
+use App\Entity\Articles;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\RelationsRepository")
@@ -92,6 +93,18 @@ class Relations
     {
         //toma el utilisateur connecté
         $this->user = $user;
+        return $this;
+    }
+
+    public function getArticles(): ?Articles
+    {
+        return $this->relations;
+    }
+
+    public function setArticles(Articles $articles): self
+    {
+        $this->articles = $articles;
+
         return $this;
     }
 }
