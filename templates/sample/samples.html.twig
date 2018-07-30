@@ -14,9 +14,9 @@
 
                 {% for sample in samples %}
 
-                    <div class="d-inline-flex col-12 border m-2 p-2">
+                    <div class="row col-12 border m-2 p-2">
 
-                    <article class="col-6 d-flex flex-column">
+                    <article class="col-4 d-flex flex-column">
 
                         {% if sample.sampleur.idalbum.nom|length >= 25 %}
                             <h2 class="font-weight-bold">{{ sample.sampleur.idalbum.nom | striptags | slice(0, 25) }}...</h2>
@@ -32,14 +32,18 @@
                             <div class="p-2">
                                 <h4 class="font-weight-normal"> Artiste : <a href="{{ path('fiche-artiste',{'id':sample.sampleur.idalbum.idartiste.id})}}">{{ sample.sampleur.idalbum.idartiste.nom }}</a></h4>
                                 <h5 class="font-weight-light"> Track :
-                                    <a href="{{ path('detail-sample', {id: sample.id} ) }}">{{ sample.sampleur.titre }}</a>
+                                    {{ sample.sampleur.titre }}
                                 </h5>
                             </div>
                         </div>
 
                     </article>
 
-                    <article class="col-6 d-flex flex-column">
+                    <div class="col-4 text-center">
+                         <div class="col-12"><a href="{{ path('detail-sample',{'id':sample.id})}}" class="text-center"><i class="fas fa-exchange-alt fa-1x"></i></a></div>
+                    </div>
+
+                    <article class="col-4 d-flex flex-column">
 
                         {% if sample.original.idalbum.nom|length >= 25 %}
                             <h2 class="font-weight-bold">{{ sample.original.idalbum.nom | striptags | slice(0, 25) }}...</h2>
@@ -60,18 +64,17 @@
                                     <h4 class="font-weight-normal"> Artiste : <a href="{{ path('fiche-artiste',{'id':sample.original.idalbum.idartiste.id})}}">{{ sample.original.idalbum.idartiste.nom}}</a></h4>
                                 {% endif %}
                                 <h5 class="font-weight-light">  Track :
-                                    <a href="{{ path('detail-sample', {id: sample.id} ) }}">{{ sample.original.titre }}</a>
+                                   {{ sample.original.titre }}
                                 </h5>
                             </div>
 
                         </div>
 
                     </article>
-
+                    <div class="col-12"><a href="{{ path('detail-sample',{'id':sample.id})}}" class="text-center"><i class="fas fa-exchange-alt fa-1x"></i></a></div>
                     </div>
 
                 {% endfor %}
-
         </div>
 
     </div>

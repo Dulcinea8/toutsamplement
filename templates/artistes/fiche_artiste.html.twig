@@ -22,11 +22,13 @@
             </div>
             <div class="col-6 p-3">
                 <h5>Titres :</h5>
+                <ul>
                 {%for track in album.tracks%}
                     {%for relation in track.relations%}
-                    <a href="{{ path('detail-sample',{'id':relation.id})}}">{{relation.sampleur.titre}} <i class="fas fa-exchange-alt fa-1x"></i> {{relation.original.titre}}</a>
+                    <a href="{{ path('detail-sample',{'id':relation.id})}}"><li>{{relation.sampleur.titre}}  <i class="fas fa-exchange-alt fa-1x"></i>   {{relation.original.titre}}</li></a>
                     {%endfor%}
                 {%endfor%}
+                </ul>
             </div>
         </div>
     {%endfor%}
