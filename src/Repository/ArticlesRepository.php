@@ -32,6 +32,16 @@ class ArticlesRepository extends ServiceEntityRepository
 
     }
 
+    public function lastArticles(): array
+    {
+        return $this->createQueryBuilder('a')
+            ->orderBy('a.id', 'DESC')
+            ->getQuery()
+            ->getResult()
+            ;
+
+    }
+
 
 //    /**
 //     * @return Articles[] Returns an array of Articles objects
