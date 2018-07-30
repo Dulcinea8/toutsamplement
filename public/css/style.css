@@ -115,10 +115,9 @@ border: none;
 
 #result{
     z-index: 100;
-    width: 15%;
+    width: 80%;
     position: absolute;
-    /*float: left;*/
-    left: 80%;
-    top: 200px;
+    top: 38px;
+    left: 20%;
 
 }
