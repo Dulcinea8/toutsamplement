@@ -72,7 +72,7 @@
                 {% endif %}
 
                 {% if is_granted('ROLE_ADMIN') %}
-                    <a class="" href="{{ path('admin_update_profil', {id: user.id} ) }}"><img class="m-2" src="{{ asset('images/boutonModifier.png')}}"></a>
+                    <a class="" href="{{ path('admin-update-profil', {id: user.id} ) }}"><img class="m-2" src="{{ asset('images/boutonModifier.png')}}"></a>
                     <a class="" href="{{ path('admin-supprimer-profil', {id: user.id} ) }}"><img class="m-2" src="{{ asset('images/boutonSupprimer.png')}}"></a>
                 {% endif %}
 

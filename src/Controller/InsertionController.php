@@ -24,7 +24,7 @@ class InsertionController extends Controller
     public function index(Request $request, FileUploader $uploader)
     {
 
-        $this->denyAccessUnlessGranted('ROLE_USER');
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
         $entityManager = $this->getDoctrine()->getManager();
         $repositoryArtistes = $this->getDoctrine()->getRepository(Artistes::class);

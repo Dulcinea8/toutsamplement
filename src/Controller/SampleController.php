@@ -33,12 +33,12 @@ class SampleController extends Controller
      */
     public function showAllSamples(){
 
+        $repositorySamples = $this->getDoctrine()->getRepository(Relations::class);
 
-        $repository = $this->getDoctrine()->getRepository(Relations::class);
+        $samples = $repositorySamples->lastSamples();
 
-        $samples = $repository->findAll();
-
-        return $this->render('sample/samples.html.twig', array('samples'=>$samples));
+        return $this->render('sample/samples.html.twig', array(
+            'samples'=>$samples));
 
     }
 

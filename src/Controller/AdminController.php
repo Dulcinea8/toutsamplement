@@ -45,11 +45,11 @@ class AdminController extends Controller
     }
 
     /**
-     * @Route("/admin/profil/{id}", name="admin-profil", requirements={"id"="[0-9]+"})
+     * @Route("/admin/profil/{id}", name="admin-profilUser", requirements={"id"="[0-9]+"})
      */
     public function detailProfil(Users $user){
 
-        return $this->render('admin/profil.html.twig',  array('user'=>$user));
+        return $this->render('admin/profilUser.html.twig',  array('user'=>$user));
 
     }
 
@@ -68,7 +68,7 @@ class AdminController extends Controller
 
 
     /**
-     * @Route("/admin/updateProfil/{id}", name="admin_update_profil" , requirements={"id"="\d+"})
+     * @Route("/admin/updateProfil/{id}", name="admin-update-profil" , requirements={"id"="\d+"})
      */
     public function updateProfil(Users $user, Request $request,FileUploader $uploader){
 
@@ -103,7 +103,7 @@ class AdminController extends Controller
             $this->addFlash('success', 'Modification fait');
             return $this->redirectToRoute('profil');
         }
-        return $this->render('user/updateProfil.html.twig', array('form' => $form->createView(),'avatar' => $fileName)  );
+        return $this->render('admin/updateProfil.html.twig', array('form' => $form->createView(),'avatar' => $fileName)  );
     }
 
 
