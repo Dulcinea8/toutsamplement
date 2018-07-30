@@ -94,6 +94,9 @@ background-image: none !important;
     margin-left: 10%;
 
 }
+nav{
+    vertical-align: bottom;
+}
 
 .nav-link{
     color: #FFD600 !important;
@@ -101,7 +104,7 @@ background-image: none !important;
     font-size: 1.5em !important;
     margin: 0.2em;
     border-radius: 5px !important;
-    margin-top: 5.5em;
+    /*margin-top: 5.5em;*/
 }
 
 .image_supprimer_input

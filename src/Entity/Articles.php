@@ -61,7 +61,7 @@ class Articles
     private $video;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Relations", inversedBy="articles")
+     * @ORM\OneToOne(targetEntity="App\Entity\Relations", mappedBy="articles")
     */
     private $relations;
 

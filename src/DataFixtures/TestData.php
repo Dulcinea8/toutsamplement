@@ -216,52 +216,7 @@ class TestData extends Fixture
         }
 
 
-
-
-
-        $relations=[
-            ['sampleur'=>$this->getReference('California Love_track'), 'original'=>$this->getReference('Woman to Woman_track'),'isvalidated'=>1,'user'=>$this->getReference('Spakye')],
-            ['sampleur'=>$this->getReference('The Next Episode_track'), 'original'=>$this->getReference('The Edge_track'),'isvalidated'=>1,'user'=>$this->getReference('Aoced')],
-            ['sampleur'=>$this->getReference('Les Princes De La Ville_track'), 'original'=>$this->getReference('Make Me Believe in You_track'),'isvalidated'=>1,'user'=>$this->getReference('Tooty')],
-            ['sampleur'=>$this->getReference('Newjack_track'), 'original'=>$this->getReference('You Make Me Wanna Wiggle_track'),'isvalidated'=>1,'user'=>$this->getReference('Spakye')],
-            ['sampleur'=>$this->getReference('Mo Money Mo Problems_track'), 'original'=>$this->getReference('I’m Coming Out_track'),'isvalidated'=>1,'user'=>$this->getReference('Aoced')],
-            ['sampleur'=>$this->getReference('One More Time_track'), 'original'=>$this->getReference('More Spell on You_track'),'isvalidated'=>1,'user'=>$this->getReference('Aoced')],
-            ['sampleur'=>$this->getReference('Scred Connexion Feat Fabe_track'), 'original'=>$this->getReference('Shi No Kōshin_track'),'isvalidated'=>1,'user'=>$this->getReference('Spakye')],
-            ['sampleur'=>$this->getReference('Je Zappe Et Je Mate_track'), 'original'=>$this->getReference('Nadia’s Theme_track'),'isvalidated'=>1,'user'=>$this->getReference('Tooty')],
-            ['sampleur'=>$this->getReference('Pump It_track'), 'original'=>$this->getReference('Miserlou_track'),'isvalidated'=>1,'user'=>$this->getReference('Aoced')],
-            ['sampleur'=>$this->getReference('Can I Kick It?_track'), 'original'=>$this->getReference('Walk on the Wild Side_track'),'isvalidated'=>1,'user'=>$this->getReference('dulcine')],
-            ['sampleur'=>$this->getReference('Madame Rêve_track'), 'original'=>$this->getReference('Go Round_track'),'isvalidated'=>1,'user'=>$this->getReference('Fellez')],
-            ['sampleur'=>$this->getReference('The Hunter_track'), 'original'=>$this->getReference('Personal Jesus_track'),'isvalidated'=>1,'user'=>$this->getReference('Aoced')],
-            ['sampleur'=>$this->getReference('Step Into a World_track'), 'original'=>$this->getReference('Rapture_track'),'isvalidated'=>1,'user'=>$this->getReference('Aoced')],
-            ['sampleur'=>$this->getReference('Music Sounds Better With You_track'), 'original'=>$this->getReference('Fate_track'),'isvalidated'=>1,'user'=>$this->getReference('Aoced')],
-            ['sampleur'=>$this->getReference('Lady_track'), 'original'=>$this->getReference('Soup for One_track'),'isvalidated'=>1,'user'=>$this->getReference('Aoced')],
-            ['sampleur'=>$this->getReference('Le Grand Blond (remix)_track'), 'original'=>$this->getReference('Sirba_track'),'isvalidated'=>1,'user'=>$this->getReference('Aoced')],
-            ['sampleur'=>$this->getReference('Ice Ice Baby_track'), 'original'=>$this->getReference('Under Pressure_track'),'isvalidated'=>1,'user'=>$this->getReference('Aoced')],
-            ['sampleur'=>$this->getReference('The World Is Mine_track'), 'original'=>$this->getReference('Someone Somewhere_track'),'isvalidated'=>1,'user'=>$this->getReference('Aoced')]
-
-        ];
-
-
-
-        foreach($relations as $relation) {
-            $test= new Relations();
-            $test->setSampleur($relation['sampleur']);
-            $test->setOriginal($relation['original']);
-            $test->setIsValidated($relation['isvalidated']);
-            $test->setIsValidated($relation['isvalidated']);
-            $test->setUser($relation['user']);
-            $manager->persist($test);
-
-
-        }
-
-
-
-
-
-
-
-        $articles=[
+                $articles=[
 
             ['titre'=>'Fellez : L’arbre et la pirogue', 'image'=>'fellezart.jpeg', 'content'=>'Bordeaux. Janvier 2018. Le rappeur Fellez sort 4 titres. 15 minutes de musique. En compagnie d’un arbre et d’une pirogue.En temps normal, les projets courts restent tapis dans un coin, avant le dossier de presse d’un premier album. L’arbre et la pirogue a des qualités qui mérite déjà qu’on s’y intéresse. Fellez s’est affiché au sein du collectif Errör 404, qui a sorti No Projet vol.1 fin 2015, auquel nous conseillons aux amateurs de jeter une oreille, enfin les deux. Tout commence ici par un crépitement. Celui du vinyle. Puis c’est un clavier. La prod se déroule lentement sous les pas de « Madame Rêve ». Un titre sur les envies inachevées, les limites palpables. Un titre nostalgique, un brin chaloupé, avec de la route et une écriture qui vise juste. À vitesse de pirogue donc.L’atmosphère change radicalement avec « Sale soir d’été », où certains reconnaitront une prod signée Le Parasite. Le son est lourd, ça ressemble à des projets signés Le Sept (qui vient d’ailleurs de sortir Amoco Cadiz mais le sujet n’est pas là), ça parle des « familles de merde » et des interrogations douloureuses, des phases efficaces et des images fortes qui vont aussi chercher une poésie proche de la plume de Arm (« j’reprends la route, le cœur déjà frappé par la foudre »). Une pesanteur reprise avec lenteur sur « Nouvel air » où l’on perçoit au loin des sons issus de « Feeling good »; électro downtempo et phrasé rythmique, Fellez est maître à bord de son vaisseau.Dans ses questions Fellez imagine demain sur un dernier titre; un sample avec piano et cordes que n’aurait pas renié Barbara, pour conter l’envie d’un toit pour trois, niché dans un arbre à l’abri du froid. Fellez trace ses échecs et ses désirs avec une plume convaincante et une voix prenante. 15 minutes dans une pirogue qui ne demande qu’une chose : la suite du voyage. Source : Imprimerie Nocturne', 'auteur_id'=>$this->getReference('Aoced'), 'date_publi'=>'2018-07-24', 'video'=>null],
 
@@ -316,7 +271,57 @@ class TestData extends Fixture
             $test->setImage($article['image']);
             $manager->persist($test);
 
+            $this->addReference($article['titre'].'_article', $test);
+
         }
+
+
+
+
+
+        $relations=[
+            ['sampleur'=>$this->getReference('California Love_track'), 'original'=>$this->getReference('Woman to Woman_track'),'isvalidated'=>1,'user'=>$this->getReference('Spakye'), 'article'=>$this->getReference('Quand 2Pac sample Joe Cocker_article')],
+            ['sampleur'=>$this->getReference('The Next Episode_track'), 'original'=>$this->getReference('The Edge_track'),'isvalidated'=>1,'user'=>$this->getReference('Aoced'), 'article'=>$this->getReference('Où Dr. Dre a-t-il a t’il puisé son sample pour "Next Episode"?_article')],
+            ['sampleur'=>$this->getReference('Les Princes De La Ville_track'), 'original'=>$this->getReference('Make Me Believe in You_track'),'isvalidated'=>1,'user'=>$this->getReference('Tooty'), 'article'=>$this->getReference('Curtis le Prince de la Ville_article')],
+            ['sampleur'=>$this->getReference('Newjack_track'), 'original'=>$this->getReference('You Make Me Wanna Wiggle_track'),'isvalidated'=>1,'user'=>$this->getReference('Spakye'), 'article'=>$this->getReference('Justice pour les Brothers Johnson_article')],
+            ['sampleur'=>$this->getReference('Mo Money Mo Problems_track'), 'original'=>$this->getReference('I’m Coming Out_track'),'isvalidated'=>1,'user'=>$this->getReference('Aoced'), 'article'=>$this->getReference('Mo Money Mo Dianna_article')],
+            ['sampleur'=>$this->getReference('One More Time_track'), 'original'=>$this->getReference('More Spell on You_track'),'isvalidated'=>1,'user'=>$this->getReference('Aoced'), 'article'=>$this->getReference('Le Jour ou Daft Punk a créé "One More Time"_article')],
+            ['sampleur'=>$this->getReference('Scred Connexion Feat Fabe_track'), 'original'=>$this->getReference('Shi No Kōshin_track'),'isvalidated'=>1,'user'=>$this->getReference('Spakye'), 'article'=>$this->getReference('Des samples incongrus dans le rap français_article')],
+            ['sampleur'=>$this->getReference('Je Zappe Et Je Mate_track'), 'original'=>$this->getReference('Nadia’s Theme_track'),'isvalidated'=>1,'user'=>$this->getReference('Tooty'), 'article'=>$this->getReference('Les Feux de l’amour pour Passi_article')],
+            ['sampleur'=>$this->getReference('Pump It_track'), 'original'=>$this->getReference('Miserlou_track'),'isvalidated'=>1,'user'=>$this->getReference('Aoced'), 'article'=>$this->getReference('Will.i.am inspire par Tarentino_article')],
+            ['sampleur'=>$this->getReference('Can I Kick It?_track'), 'original'=>$this->getReference('Walk on the Wild Side_track'),'isvalidated'=>1,'user'=>$this->getReference('dulcine'), 'article'=>$this->getReference('Lou Reed empoche le jackpote avec Tribe Called Quest_article')],
+            ['sampleur'=>$this->getReference('Madame Rêve_track'), 'original'=>$this->getReference('Go Round_track'),'isvalidated'=>1,'user'=>$this->getReference('Fellez'), 'article'=>$this->getReference('Fellez : L’arbre et la pirogue_article')],
+            ['sampleur'=>$this->getReference('The Hunter_track'), 'original'=>$this->getReference('Personal Jesus_track'),'isvalidated'=>1,'user'=>$this->getReference('Aoced'), 'article'=>$this->getReference('Jésus personnel_article')],
+            ['sampleur'=>$this->getReference('Step Into a World_track'), 'original'=>$this->getReference('Rapture_track'),'isvalidated'=>1,'user'=>$this->getReference('Aoced'), 'article'=>$this->getReference('Rapture, le premier titre rap d’une Femme blanche ?_article')],
+            ['sampleur'=>$this->getReference('Music Sounds Better With You_track'), 'original'=>$this->getReference('Fate_track'),'isvalidated'=>1,'user'=>$this->getReference('Aoced'), 'article'=>$this->getReference('L’hymne de la French Touch_article')],
+            ['sampleur'=>$this->getReference('Lady_track'), 'original'=>$this->getReference('Soup for One_track'),'isvalidated'=>1,'user'=>$this->getReference('Aoced'), 'article'=>$this->getReference('Soup for Lady_article')],
+            ['sampleur'=>$this->getReference('Le Grand Blond (remix)_track'), 'original'=>$this->getReference('Sirba_track'),'isvalidated'=>1,'user'=>$this->getReference('Aoced'), 'article'=>$this->getReference('The Headbangers_article')],
+            ['sampleur'=>$this->getReference('Ice Ice Baby_track'), 'original'=>$this->getReference('Under Pressure_track'),'isvalidated'=>1,'user'=>$this->getReference('Aoced'), 'article'=>$this->getReference('Queen Vs Vanilla Ice_article')],
+            ['sampleur'=>$this->getReference('The World Is Mine_track'), 'original'=>$this->getReference('Someone Somewhere_track'),'isvalidated'=>1,'user'=>$this->getReference('Aoced'), 'article'=>$this->getReference('The Simple Minds’s world_article')]
+
+        ];
+
+
+
+        foreach($relations as $relation) {
+            $test= new Relations();
+            $test->setSampleur($relation['sampleur']);
+            $test->setOriginal($relation['original']);
+            $test->setIsValidated($relation['isvalidated']);
+            $test->setArticles($relation['article']);
+            $test->setUser($relation['user']);
+            $manager->persist($test);
+
+
+        }
+
+
+
+
+
+
+
+
         $manager->flush();
 
 
