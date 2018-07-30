@@ -37,7 +37,6 @@ class InsertionController extends Controller
     	if ($request->request->all()){
 
     		
-
     		if (!$repositoryArtistes->findArtisteByNom($request->request->get('artisteSample')) ) {
     			$artisteSample= new Artistes();
     			$artisteSample->setNom($request->request->get('artisteSample'));
@@ -54,9 +53,9 @@ class InsertionController extends Controller
     			$albumSample->setAnnee($request->request->get('dateSample'));
     			$albumSample->setIdartiste($artisteSample);
                 $albumSample->setIsValidated(0);
-                $pochette = $request->files->get('pochetteSample', null);
-                if($pochette){
-                    $fileName = $uploader->upload($pochette);
+                $pochetteSample = $request->files->get('pochetteSample', null);
+                if($pochetteSample){
+                    $fileName = $uploader->upload($pochetteSample);
                     $albumSample->setPochette($fileName);
                 }
                 
@@ -96,6 +95,11 @@ class InsertionController extends Controller
     			$albumSampleur->setAnnee($request->request->get('dateSampleur'));
     			$albumSampleur->setIdartiste($artisteSampleur);
                 $albumSampleur->setIsValidated(0);
+                $pochetteSampleur = $request->files->get('pochetteSampleur', null);
+                if($pochetteSampleur){
+                    $fileName = $uploader->upload($pochetteSampleur);
+                    $albumSampleur->setPochette($fileName);
+                }
     			$entityManager->persist($albumSampleur);
     		}else{
     			$albumSampleur= $repositoryAlbums->findAlbumByNom($request->request->get('albumSampleur'));

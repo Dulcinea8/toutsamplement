@@ -13,11 +13,11 @@
 		<div class="col-3 border-right">
 			<div class="form-group">
 				<label for="artisteSample">Artiste :</label>
-				<input type="text" name="artisteSample" id="artisteSample" class="form-control">
+				<input type="text" name="artisteSample" id="artisteSample" class="form-control" required>
 			</div>
 			<div class="form-group">
 				<label for="genreSample">Genre :</label>
-				<select id="genreSample" name="genreSample">
+				<select id="genreSample" name="genreSample" required>
 					<option value="Hip-Hop">Hip-Hop</option>
 					<option value="Electro">Electro</option>
 					<option value="Rock">Rock</option>
@@ -31,11 +31,11 @@
 		<div class="col-3 border-right text-left">
 			<div class="form-group">
 				<label for="albumSample">Album :</label>
-				<input type="text" name="albumSample" id="albumSample" class="form-control">
+				<input type="text" name="albumSample" id="albumSample" class="form-control" required>
 			</div>
 			<div class="form-group">
 				<label for="dateSample">Année de sortie:</label>
-				<select id="dateSample" name="dateSample">
+				<select id="dateSample" name="dateSample" required>
 				{% for i in 1900..2020 %}
     				<option value="{{i}}">{{ i }}</option>
 				{% endfor %}
@@ -43,14 +43,14 @@
 			</div>
 			<div class="form-group">
 				<label for="pochetteSample">Pochette :</label>
-				<input type="file" id="pochetteSample" name="pochetteSample" class="form-control">
+				<input type="file" id="pochetteSample" name="pochetteSample" class="form-control" required>
 			</div>
 		</div>
 		<div class="col-3">
 			<label>Titre :</label>
-			<input type="text" name="titreSample" id="titreSample" class="form-control">
-			<label>Lien :</label>
-			<input type="url" name="lienSample" class="form-control">
+			<input type="text" name="titreSample" id="titreSample" class="form-control" required>
+			<label>Lien Youtube:</label>
+			<input type="url" name="lienSample" class="form-control" placeholder="" required>
 		</div>
 	</div>
 	<hr>
@@ -60,11 +60,11 @@
 		<div class="col-3 border-right">
 			<div class="form-group">
 				<label for="artisteSampleur">Artiste :</label>
-				<input type="text" name="artisteSampleur" id="artisteSampleur" class="form-control">
+				<input type="text" name="artisteSampleur" id="artisteSampleur" class="form-control" required>
 			</div>
 			<div class="form-group">
 				<label for="genreSampleur">Genre :</label>
-				<select id="genreSampleur" name="genreSampleur">
+				<select id="genreSampleur" name="genreSampleur" required>
 					<option value="Hip-Hop">Hip-Hop</option>
 					<option value="Electro">Electro</option>
 					<option value="Rock">Rock</option>
@@ -78,11 +78,11 @@
 		<div class="col-3 border-right text-left">
 			<div class="form-group">
 				<label for="albumSampleur">Album :</label>
-				<input type="text" name="albumSampleur" id="albumSampleur" class="form-control">
+				<input type="text" name="albumSampleur" id="albumSampleur" class="form-control" required>
 			</div>
 			<div class="form-group">
 				<label for="dateSampleur">Année de sortie:</label>
-				<select id="dateSampleur" name="dateSampleur">
+				<select id="dateSampleur" name="dateSampleur" required>
 				{% for i in 1900..2020 %}
     				<option value="{{i}}">{{ i }}</option>
 				{% endfor %}
@@ -90,14 +90,14 @@
 			</div>
 			<div class="form-group">
 				<label for="pochetteSampleur">Pochette :</label>
-				<input type="file" id="pochetteSampleur" name="pochetteSampleur" class="form-control">
+				<input type="file" id="pochetteSampleur" name="pochetteSampleur" class="form-control" required>
 			</div>
 		</div>
 		<div class="col-3">
 			<label>Titre :</label>
-			<input type="text" name="titreSampleur" id="titreSampleur" class="form-control">
+			<input type="text" name="titreSampleur" id="titreSampleur" class="form-control" required>
 			<label>Lien :</label>
-			<input type="url" name="lienSampleur" class="form-control">
+			<input type="url" name="lienSampleur" class="form-control" required>
 		</div>
 	</div>
 	<hr>
