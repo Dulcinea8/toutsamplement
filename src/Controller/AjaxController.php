@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Albums;
 use App\Entity\Artistes;
 use App\Entity\Tracks;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,10 +20,11 @@ class AjaxController extends Controller
 
         //$get = $request->query->all();
         $recherche=$request->query->get('recherche', null);
-        dump($recherche);
+        //dump($recherche);
 
         $repository = $this->getDoctrine()->getRepository(Tracks::class);
         $tracks = $repository->searchTrack($recherche);
+
 
         $repository = $this->getDoctrine()->getRepository(Artistes::class);
         $artistes = $repository->searchArtist($recherche);
