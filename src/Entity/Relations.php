@@ -42,7 +42,7 @@ class Relations
     private $user;
 
     /**
-    * @ORM\OneToOne(targetEntity="App\Entity\Articles", inversedBy="relations")
+    * @ORM\OneToMany(targetEntity="App\Entity\Articles", inversedBy="relations")
     */
     private $articles;
 
