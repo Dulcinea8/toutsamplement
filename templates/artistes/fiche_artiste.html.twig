@@ -38,7 +38,6 @@
                     <div class="row bg-white rounded border text-center">
                         <div class="col-6"><a href="{{ path('fiche-artiste',{'id':artiste.id})}}">{{relation.sampleur.titre}}</a></div>
                         <div class="col-6"><a href="{{ path('fiche-artiste',{'id':relation.original.idalbum.idartiste.id})}}">{{relation.original.titre}}</a></div>
-                        <div class="col-12 text-center p-3">Contributeur : {%if relation.user%}<a href="{{ path('user-profil',{'id':relation.user.id})}}" >{{relation.user.username}}</a>{%endif%}</div>
                         <div class="col-12 text-center p-3"><a href="{{ path('detail-sample',{'id':relation.id})}}" class="btn btn-primary">Voir plus</a></div>
                     </div>
                     {%endfor%}

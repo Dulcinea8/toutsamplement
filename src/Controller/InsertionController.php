@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use Symfony\Component\Routing\Annotation\Route;
+
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use App\Service\FileUploader;
@@ -32,7 +33,6 @@ class InsertionController extends Controller
     $AjaxArtiste= $repositoryArtistes->findAll();
     $AjaxAlbum= $repositoryAlbums->findAll();
     $AjaxTrack= $repositoryTracks->findAll();
-
     	$msg="";
     	if ($request->request->all()){
 
@@ -54,6 +54,13 @@ class InsertionController extends Controller
     			$albumSample->setAnnee($request->request->get('dateSample'));
     			$albumSample->setIdartiste($artisteSample);
                 $albumSample->setIsValidated(0);
+                $pochette = $request->files->get('pochetteSample', null);
+                if($pochette){
+                    $fileName = $uploader->upload($pochette);
+                    $albumSample->setPochette($fileName);
+                }
+                
+                dump($albumSample);
                 $entityManager->persist($albumSample);
     		}else{
     			$albumSample= $repositoryAlbums->findAlbumByNom($request->request->get('albumSample'));
@@ -76,6 +83,8 @@ class InsertionController extends Controller
     			$artisteSampleur->setNom($request->request->get('artisteSampleur'));
     			$artisteSampleur->setGenre($request->request->get('genreSampleur'));
                 $artisteSampleur->setIsValidated(0);
+                
+
     			$entityManager->persist($artisteSampleur);
     		}else{
     			$artisteSampleur= $repositoryArtistes->findArtisteByNom($request->request->get('artisteSampleur'));
