@@ -20,6 +20,7 @@ class Articles
      */
     private $id;
 
+
     /**
      * @ORM\Column(type="string", length=255)
      */
@@ -57,6 +58,11 @@ class Articles
      * @ORM\Column(type="string", nullable=true)
      */
     private $video;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Relations", inversedBy="articles")
+    */
+    private $relations;
 
     public function __construct()
     {
