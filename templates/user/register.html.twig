@@ -14,12 +14,18 @@
             </div>
         {% endfor %}
     {% endfor %}
+    <div class="d-flex justify-content-center">
+        <div class="w-50">
+                {{ form_start(form) }} {# permet de créer la balise <form>  #}
+                {{  form_row(form.username) }}
+                {{  form_row(form.prenom) }}
+                {{  form_row(form.nom) }}
+                {{  form_row(form.email) }}
 
+                {{  form_row(form.plainPassword) }}
+            <div><p><small>Le mot de passe doit comporter au moins 6 caractères dont au moins une majuscules, une minuscule et un chiffre </small></p></div>
 
-            {{ form_start(form) }} {# permet de créer la balise <form>  #}
-            {{ form_widget(form) }}  {# permet de créer les champs #}
-            {{ form_end(form) }} {# va fermer la balise #}
-
-
-
+                {{ form_end(form) }} {# va fermer la balise #}
+        </div>
+    </div>
 {% endblock %}
