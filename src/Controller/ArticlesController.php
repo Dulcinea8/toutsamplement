@@ -24,20 +24,17 @@ class ArticlesController extends Controller
         ]);
     }
 
-
     /**
      * @Route("/articles/", name="all-articles")
      */
-    public function showAllArticles(){
+    public function showLastArticles(){
 
-        $repository = $this->getDoctrine()->getRepository(Articles::class);
+        $repositoryArticles = $this->getDoctrine()->getRepository(Articles::class);
 
-        $articles = $repository->findAll();
+        $articles = $repositoryArticles->lastArticles();
 
         return $this->render('articles/articles.html.twig', array('articles'=>$articles));
-
     }
-
 
     /**
      * @Route("/article/{id}", name="detail-article", requirements={"id"="[0-9]+"})
@@ -51,9 +48,7 @@ class ArticlesController extends Controller
             if(!$article){
                 throw $this->createNotFoundException('No article found for id' .$id);
             }
-
         return $this->render('articles/detailarticle.html.twig',  array('article'=>$article));
-
     }
 
     /**
@@ -101,7 +96,6 @@ class ArticlesController extends Controller
 
             return $this->redirectToRoute('all-articles');
         }
-
         return $this->render('articles/addarticle.html.twig', array('form' => $form->createView()));
     }
 
