@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Users;
 use App\Form\UserFormType;
 use App\Form\UserUpdateType;
+use Symfony\Component\ExpressionLanguage\Token;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -74,71 +75,75 @@ class UserController extends Controller
     }
 
     /**
-     * @Route("/admin/profil/{id}", name="admin-profil", requirements={"id"="[0-9]+"})
+     * @Route("/profil/{id}", name="profilUser", requirements={"id"="[0-9]+"})
      */
     public function detailProfil(Users $user){
 
-        return $this->render('admin/profil.html.twig',  array('user'=>$user));
+        return $this->render('user/profilUser.html.twig',  array('user'=>$user));
 
     }
 
+    /**
+     * @route("profil/delete/{id}", name="supprimer-profil", requirements={"id"="\d+"})
+     */
+    public function deleteProfil(Users $user){
+
+        $this->denyAccessUnlessGranted('DELETE', $user);
+
+        //recuperation de l'entite manager
+        $entityManager = $this->getDoctrine()->getManager();
+
+        //je veux supprimer cette catégorie
+        $entityManager->remove($user);
+
+        //j'execute la requete
+        $entityManager->flush();
+
+        $this->addFlash('danger', 'Le profil a bien été supprimé');
+
+        return $this->redirectToRoute('home');
+
+    }
 
     /**
      * @Route("/updateProfil/{id}", name="update_profil" , requirements={"id"="\d+"})
      */
     public function updateProfil(Users $user, Request $request,FileUploader $uploader){
-        $fileName = $user->getAvatar();
-        if($user->getAvatar()) {
-            //pour pouvoir generer le formulaire, on doit transformer le nom du ficier stocké pour l'instant dans l'attribut image en instance de la classe File, (ce qui est attendu par le formulaire)
-            $user->setAvatar(new File($this->getParameter('articles_image_directory') . '/' . $user->getAvatar()));
-        }
-        $form = $this->createForm(UserUpdateType::class, $user);
-        $form->handleRequest($request);
-        if($form->isSubmitted()&& $form->isValid())
-        {
-            $user=$form->getData();
 
-            ///je fait le traitemnet si on m'a envoy&é une image
+            $this->denyAccessUnlessGranted('EDIT', $user);
+
+            $fileName = $user->getAvatar();
+
             if ($user->getAvatar()) {
-                //je stocke dans cette variable le nom du fichier actuel qui doit être supprimé ou null s'il n'y en a pas
-                $oldFileName = $user->getAvatar() ? $user->getAvatar() : null;
-                //on recupere un objet de classe file
-                $file = $user->getAvatar();
-                //dump($file);
-                $fileName = $uploader->upload($file, $oldFileName);
-
+                //pour pouvoir generer le formulaire, on doit transformer le nom du ficier stocké pour l'instant dans l'attribut image en instance de la classe File, (ce qui est attendu par le formulaire)
+                $user->setAvatar(new File($this->getParameter('articles_image_directory') . '/' . $user->getAvatar()));
             }
-            $user->setAvatar($fileName);
-            $entityManager=$this->getDoctrine()->getManager();
-            //$entityManager->persist($user);
-            $entityManager->flush();
-            $this->addFlash('success', 'Modification fait');
-            return $this->redirectToRoute('profil');
-        }
-        return $this->render('user/updateProfil.html.twig', array('form' => $form->createView(),'avatar' => $fileName)  );
+
+            $form = $this->createForm(UserUpdateType::class, $user);
+            $form->handleRequest($request);
+
+            if ($form->isSubmitted() && $form->isValid()) {
+                $user = $form->getData();
+
+                ///je fait le traitemnet si on m'a envoy&é une image
+                if ($user->getAvatar()) {
+                    //je stocke dans cette variable le nom du fichier actuel qui doit être supprimé ou null s'il n'y en a pas
+                    $oldFileName = $user->getAvatar() ? $user->getAvatar() : null;
+                    //on recupere un objet de classe file
+                    $file = $user->getAvatar();
+                    //dump($file);
+                    $fileName = $uploader->upload($file, $oldFileName);
+
+                }
+                $user->setAvatar($fileName);
+                $entityManager = $this->getDoctrine()->getManager();
+                //$entityManager->persist($user);
+                $entityManager->flush();
+                $this->addFlash('success', 'Modification fait');
+                return $this->redirectToRoute('profil');
+            }
+            return $this->render('user/updateProfil.html.twig', array('form' => $form->createView(), 'avatar' => $fileName));
+
     }
-
-    /**
-     * @Route("/deleteProfil/{id}", name="delete_profil" , requirements={"id"="\d+"})
-     */
-   /* public function deleteProfil(Users $user)
-    {
-        $entityManager = $this->getDoctrine()->getManager();
-        $entityManager->remove($user);
-        $entityManager->flush();
-        //supprimer l'image si elle existe
-        //si on m'a fourni un nom de fichier et que ce nom existe bien
-        if($user->getAvatar() and file_exists('%kernel.project_dir%/public/uploads/images/' . $user->getAvatar())){
-            //je supprime le fichier
-            unlink('%kernel.project_dir%/public/uploads/images/'  . $oldFileName);
-        }
-
-
-
-        $this->addFlash('warning', 'Profil modifié');
-        return $this->redirectToRoute('\logout');
-    }*/
-
-
 
 }

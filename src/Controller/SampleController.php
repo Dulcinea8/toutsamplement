@@ -31,7 +31,7 @@ class SampleController extends Controller
     /**
      * @Route("/samples/", name="all-samples")
      */
-    public function showAllSamples(Request $request){
+    public function showAllSamples(){
 
 
         $repository = $this->getDoctrine()->getRepository(Relations::class);

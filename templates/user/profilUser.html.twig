@@ -2,7 +2,7 @@
 
 {% block title %}Formulaire d'inscription{% endblock %}
 
-{% block titlepage %}Ton Profil{% endblock %}
+{% block titlepage %}Profil de {{ user.username }}{% endblock %}
 
 {% block content %}
 
@@ -56,8 +56,8 @@
             <h6><strong>Prenom:</strong> {{ user.prenom }}</h6>
             <h6><strong>Email:</strong> {{ user.email }}</h6>
             <h6><strong>Date d'inscription:</strong> {{ user.dateinscription  |date('d/m/Y') }}</h6>
-            <h6><strong>Ta Biographie</strong> {{ user.bio }}</h6>
-            <h5><strong>Tes Liens: </strong></h5>
+            <h6><strong>Biographie</strong> {{ user.bio }}</h6>
+            <h5><strong>Liens: </strong></h5>
             <h6><strong>Soundcloud: </strong> {{ user.soundcloud }}</h6>
             <h6><strong>Bandcamp: </strong> {{ user.bandcamp }}</h6>
             <h6><strong>Facebook: </strong> {{ user.facebook }}</h6>
@@ -66,8 +66,10 @@
             <br>
 
             <div>
-                <a class="" href="{{ path('admin-modifier-profil', {id: user.id} ) }}"><img class="m-2" src="{{ asset('images/boutonModifier.png')}}"></a>
-                <a class="" href="{{ path('admin-supprimer-profil', {id: user.id} ) }}"><img class="m-2" src="{{ asset('images/boutonSupprimer.png')}}"></a>
+                {% if is_granted('ROLE_USER') %}
+                    <a class="" href="{{ path('update_profil', {id: user.id} ) }}"><img class="m-2" src="{{ asset('images/boutonModifier.png')}}"></a>
+                    <a class="" href="{{ path('supprimer-profil', {id: user.id} ) }}"><img class="m-2" src="{{ asset('images/boutonSupprimer.png')}}"></a>
+                {% endif %}
             </div>
 
 

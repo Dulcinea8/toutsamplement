@@ -38,10 +38,13 @@
             <iframe width="560" height="315" src="{{ asset(video_directory ~ article.video) }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
         {% endif %}
         <br>
-        <div class="text-center">
-            <a class="m-5" href="{{ path('admin-modifier-article', {id: article.id} ) }}"><img class="" src="{{ asset('images/boutonModifier.png')}}"></a>
-            <a class="m-3" href="{{ path('admin-supprimer-article', {id: article.id} ) }}"><img class="" src="{{ asset('images/boutonSupprimer.png')}}"></a>
-        </div>
+
+        {% if is_granted('ROLE_ADMIN') %}
+            <div class="text-center">
+                <a class="m-5" href="{{ path('admin-modifier-article', {id: article.id} ) }}"><img class="" src="{{ asset('images/boutonModifier.png')}}"></a>
+                <a class="m-3" href="{{ path('admin-supprimer-article', {id: article.id} ) }}"><img class="" src="{{ asset('images/boutonSupprimer.png')}}"></a>
+            </div>
+        {% endif %}
 
     </article>
 
