@@ -42,7 +42,7 @@ class Albums
     private $pochette;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Tracks", mappedBy="idalbum")
+     * @ORM\OneToMany(targetEntity="App\Entity\Tracks", mappedBy="idalbum", orphanRemoval=true)
      */
     private $tracks;
 

@@ -6,7 +6,17 @@
 
 
 {% block content %}
-    
+
+    {# pour afficher tous type de messages #}
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="alert alert-{{ label }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+
+
     <h1>Zone Admin</h1>
     <div class="d-flex justify-content-around mt-4">
 
@@ -43,7 +53,7 @@
         </div>
 
         <div class="col-3 border rounded bg-white text-center p-3">
-            <a href="{{path('liste-artistes')}}">
+            <a href="{{path('show-artiste-delete')}}">
                 <h3>Supprimer un Artiste</h3>
                 <i class="fas fa-trash-alt fa-5x"></i>
             </a>

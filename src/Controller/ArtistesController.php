@@ -89,7 +89,6 @@ class ArtistesController extends Controller
         if($form->isSubmitted() && $form->isValid()) {
             $artiste = $form->getData();
             $entityManager = $this->getDoctrine()->getManager();
-            //$entityManager->persist($artiste);
             $entityManager->flush();
             $this->addFlash('success', 'Artiste modifié!');
             return $this->redirectToRoute('admin');
@@ -97,6 +96,19 @@ class ArtistesController extends Controller
         return $this->render('artistes/updateArtiste.html.twig',array('form' => $form->createView()) );
 
     }
+
+    /**
+     * @Route("/liste/artiste/delete/", name="show-artiste-delete")
+     */
+    public function listeDeleteArtiste()
+    {
+        $repository = $this->getDoctrine()->getRepository(Artistes::class);
+        $liste=$repository->findAll();
+        return $this->render('artistes/liste-artiste-delete.html.twig', array('artistes'=>$liste));
+
+    }
+
+
 
     /**
      * @Route("/delete/artiste/{id}", name="artiste-delete", requirements={"id"="\d+"})
@@ -109,4 +121,6 @@ class ArtistesController extends Controller
         return $this->redirectToRoute('admin');
 
     }
+
+
 }
