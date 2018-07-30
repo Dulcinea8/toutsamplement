@@ -77,6 +77,11 @@ class ArticlesController extends Controller
             $article = $form->getData();
             $article->setDatePubli(new \DateTime(date('Y-m-d H:i:s')));
 
+            $url = $article->getVideo();
+            $idVideo = substr($url, 32, 11);
+            $article->setVideo($idVideo);
+            dump($idVideo);
+
             //ceci va contenir l'image envoyée
             $file = $article->getImage();
 
@@ -85,6 +90,7 @@ class ArticlesController extends Controller
             //on met a jour la propriété image, qui doit contenir le nom du fichier et pas le fichier lui meme
             //pour pouvoir persister l'article
             $article->setImage($fileName);
+
 
             //l'utilisateur connecté est l'auteur de l'article
 

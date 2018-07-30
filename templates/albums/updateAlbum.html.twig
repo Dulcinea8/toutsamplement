@@ -1,0 +1,31 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Modifier Album{% endblock %}
+
+{% block content %}
+
+    {# pour afficher tous type de messages #}
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="alert alert-{{ label }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+    <h4 class="text-center">Modification Album</h4>
+    <div class="d-flex justify-content-center">
+
+        <div class="w-50">
+            {{ form_start(form) }} {# permet de créer la balise <form>  #}
+            {{  form_row(form.nom) }}
+            {{  form_row(form.annee) }}
+            <img class="img-fluid" src="{{asset(image_directory~pochette)}}" alt="" />
+            <div><small>Telechargez la nouvelle pochette, si vous souhaitez la modifier</small></div>
+            {{  form_row(form.pochette) }}
+            {{ form_end(form) }} {# va fermer la balise #}
+        </div>
+    </div>
+
+
+
+{% endblock %}

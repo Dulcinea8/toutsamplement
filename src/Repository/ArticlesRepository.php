@@ -20,7 +20,6 @@ class ArticlesRepository extends ServiceEntityRepository
     }
 
 
-
     public function last4Articles(): array
     {
          return $this->createQueryBuilder('a')
