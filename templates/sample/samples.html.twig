@@ -16,7 +16,7 @@
 
                     <div class="row col-12 border m-2 p-2">
 
-                    <article class="col-4 d-flex flex-column">
+                    <article class="col-5 d-flex flex-column">
 
                         {% if sample.sampleur.idalbum.nom|length >= 25 %}
                             <h2 class="font-weight-bold">{{ sample.sampleur.idalbum.nom | striptags | slice(0, 25) }}...</h2>
@@ -26,7 +26,7 @@
 
                         <div class="d-inline-flex">
                             {% if sample.sampleur.idalbum.pochette %}
-                                <img width="200" height="200" src="{{ asset(image_directory ~ sample.sampleur.idalbum.pochette) }}"  alt=""/>
+                                <img width="170" height="170" src="{{ asset(image_directory ~ sample.sampleur.idalbum.pochette) }}"  alt=""/>
                             {% endif %}
 
                             <div class="p-2">
@@ -39,11 +39,11 @@
 
                     </article>
 
-                    <div class="col-4 text-center mt-5">
-                        <a href="{{ path('detail-sample',{'id':sample.id})}}" class="mt-5"> <div class="col-12"><i class="fas fa-exchange-alt fa-7x notreGris"></i></div></a>
+                    <div class="col-2 text-center align-self-center">
+                        <a href="{{ path('detail-sample',{'id':sample.id})}}" class="mt-5"> <i class="fas fa-exchange-alt fa-5x notreGris"></i></a>
                     </div>
 
-                    <article class="col-4 d-flex flex-column">
+                    <article class="col-5 d-flex flex-column">
 
                         {% if sample.original.idalbum.nom|length >= 25 %}
                             <h2 class="font-weight-bold">{{ sample.original.idalbum.nom | striptags | slice(0, 25) }}...</h2>
@@ -54,7 +54,7 @@
                         <div class="d-inline-flex">
 
                             {% if sample.original.idalbum.pochette %}
-                                <img width="200" height="200" src="{{ asset(image_directory ~ sample.original.idalbum.pochette) }}"  alt=""/>
+                                <img width="170" height="170" src="{{ asset(image_directory ~ sample.original.idalbum.pochette) }}"  alt=""/>
                             {% endif %}
 
                             <div class="p-2">
@@ -71,6 +71,7 @@
                         </div>
 
                     </article>
+
                     </div>
 
                 {% endfor %}

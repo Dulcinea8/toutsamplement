@@ -9,6 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -25,6 +26,7 @@ class ArticlesType extends AbstractType
                     //on choisi la propriété de l'entité a afficher dans la liste
                     'choice_label' => 'username'))
             ->add('image', FileType::class, array('label' => 'Ajouter une image', 'required' => true))
+            ->add('video', UrlType::class, array('label' => 'Lien :'))
             ->add('ajouter', SubmitType::class, array('label' => 'Enregistrer', 'attr' => ['class' => 'btn btn-info']));
 
     }
