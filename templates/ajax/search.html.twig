@@ -4,7 +4,7 @@
         {% if tracks is not empty %}
             <h4 class="list-group-item list-group-item-action" >Tracks</h4>
             {% for track in tracks %}
-                <a href="{{ path('rechercheByTrack-showTrack', {id: track.id, }) }}" class="list-group-item list-group-item-action"><article> {{ track .titre }} </article></a>
+                <a href="{{ path('rechercheByTrack-showTrack', {id: track.id, }) }}" class="list-group-item list-group-item-action"><div class="d-flex flex-row align-items-center"><img  width="45" height="45" class="m-1" src="{{ asset(image_directory ~ track.idalbum.pochette) }}"  alt="pochette"/> <article> {{ track .titre }} </article></div></a>
             {% endfor %}
         {% endif %}
 
