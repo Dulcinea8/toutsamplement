@@ -51,7 +51,11 @@ class AdminController extends Controller
      */
     public function detailProfil(Users $user){
 
-        return $this->render('admin/profilUser.html.twig',  array('user'=>$user));
+        $id = $user->getId();
+        $repositorySamples = $this->getDoctrine()->getRepository(Relations::class);
+        $samples = $repositorySamples->findByUser($id);
+
+        return $this->render('admin/profil.html.twig',  array('user'=>$user, 'samples' => $samples));
 
     }
 

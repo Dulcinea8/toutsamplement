@@ -6,6 +6,7 @@ use App\Entity\Users;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -29,6 +30,7 @@ class UserAdminUpdateType extends AbstractType
             ->add('bandcamp', TextType::class, array('label' =>'Ton bandcamp','required' => false))
             ->add('site_web',TextType::class, array('label' => 'Ton Site Web','required' => false))
             ->add('bio', TextareaType::class, array('label' => 'Ta Biographie','required' => false))
+            ->add('score',NumberType::class, array('label' => 'Ton Score','required' => false))
             ->add('roles', ChoiceType::class,array('label'=>'Role', 'multiple' => true, 'choices' => $roles, 'required'=>true))
             ->add ('ajouter', SubmitType::class, array ('label'=> 'Modifier', 'attr' => ['class'=> 'btn btn-primary']));
         ;
