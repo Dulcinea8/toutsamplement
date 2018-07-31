@@ -9,9 +9,9 @@
 
 <div class="row d-flex justify-content-around">
 
-    <article class="col-5 d-flex flex-column">
+    <article class="col-5 d-flex align-items-start flex-column">
 
-            <h2 class="text-center font-weight-bold">Le sampleur</h2>
+            <h2 class="m-auto font-weight-bold iceland">Le sampleur</h2>
             <h2 class="font-weight-bold">{{ sample.sampleur.idalbum.idartiste.nom }}</h2>
 
             <h3 class="font-weight-bold">{{ sample.sampleur.idalbum.nom }}</h3>
@@ -22,27 +22,33 @@
 
             
             {% if sample.sampleur.lien %}
-            <iframe width="373" height="210" src="{{ asset(video_directory ~ sample.sampleur.lien) }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            <iframe alt="video {{ sample.sampleur.titre }}" class="border" width="373" height="210" src="{{ asset(video_directory ~ sample.sampleur.lien) }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
             {% endif %}
 
     </article>
 
-    <article class="col-5 d-flex flex-column">
+    <article class="col-5 d-flex align-items-end flex-column">
 
-            <h2 class="text-center font-weight-bold">L'original</h2>
+            <h2 class="m-auto font-weight-bold iceland">L'original</h2>
             <h2 class="font-weight-bold">{{ sample.original.idalbum.idartiste.nom }}</h2>
-            <h2 class="font-weight-bold">{{ sample.articles.content }}</h2>
+
             <h3 class="font-weight-bold">{{ sample.original.idalbum.nom }}</h3>
 
             <h5 class="font-weight-light"> Track : {{ sample.original.titre }}</h5>
             <h5 class="font-weight-light"> Date d'ajout : {{ sample.original.datepubli|date('d/m/Y') }}</h5>
             
             {% if sample.original.lien %}
-            <iframe width="373" height="210" src="{{ asset(video_directory ~ sample.original.lien) }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            <iframe alt="video {{ sample.original.titre }}" class="border" width="373" height="210" src="{{ asset(video_directory ~ sample.original.lien) }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
             {% endif %}
 
     </article>
 
 </div>
 
+<div class="m-5 border border-dark bg-white">
+
+    <h2 class="m-3 text-center font-weight-bold iceland">L'histoire du sample "{{ sample.sampleur.titre }}"</h2>
+    <p class="m-3 text-justify">{{ sample.articles.content }}<p>
+
+</div>
 {% endblock %}

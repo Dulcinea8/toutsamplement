@@ -1,6 +1,7 @@
 {% extends 'layout.html.twig' %}
 
 {% block title %}Login {% endblock %}
+{% block titlepage %}Se Connecter {% endblock %}
 
 {% block content %}
 
@@ -28,22 +29,22 @@
 
         <div class="card" style="width: 30rem; margin: 50px; padding: 30px;">
             <div class="card-body" >
-                <h5 class="card-title" style="text-align: center;font-weight: bold;">SIGN IN</h5>
+                <!-- <h2 class="card-title iceland" style="text-align: center;font-weight: bold;">Se Connecter</h2> -->
                 {# le formulaire de login #}
                 <form action="{{ path('login') }}" method="post">
                     <div class="form-group">
-                        <label for="username">Username</label>
-                        <input type="text" id="username" name="_username" value="{{ last_username }}" class="form-control" placeholder="username">
+                        <label for="username">Pseudo</label>
+                        <input type="text" id="username" name="_username" value="{{ last_username }}" class="form-control" placeholder="Pseudo">
                     </div>
                     <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" id="password" name="_password" class="form-control">
+                        <label for="password">Mot de passe</label>
+                        <input type="password" id="password" name="_password" class="form-control" placeholder="Mot de passe">
                     </div>
-                    <button type="submit" class="btn btn-primary btn-lg btn-block">Login</button>
+                    <button type="submit" class="btn btn-warning btn-lg btn-block">Login</button>
                 </form>
                     <div style="text-align: center">
                         <form action="{{ path('register') }}" method="post">
-                            <button type="submit"  name="" class="btn btn-outline-primary btn-lg btn-block" style="margin-bottom: 8px; margin-top: 15px;">CREER UN COMPTE</button>
+                            <button type="submit"  name="" class="btn btn-outline-warning btn-lg btn-block" style="margin-bottom: 8px; margin-top: 15px;">CREER UN COMPTE</button>
                         </form>
 
                         <form action="{{ path('reset-password') }}" method="post">

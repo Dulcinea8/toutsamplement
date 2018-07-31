@@ -10,6 +10,10 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+
+
 
     <title>{% block title %}{% endblock %}</title>
 </head>
@@ -17,92 +21,85 @@
 <body>
 
     <header>
-
-        <nav class="d-flex align-items-end navbar navbar-expand-lg">
-
-            <a class="navbar-brand" href="{{ path('accueil') }}"></a>
-
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarText">
-
-                <ul class="navbar-nav mr-auto">
-
-                    <li class="ml-5 nav-item active">
-                        <a class="ml-5 nav-link" href="{{ path('accueil')}}"> Accueil <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('all-articles')}}"> Articles</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('all-samples')}}">Samples</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('inserer')}}">Insérer</a>
-                    </li>
-                    {% if not is_granted('ROLE_ADMIN') %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('contact')}}"> Contact </a>
+        <nav class="row no-gutters align-bottom fixed-top bgnav p-3 mainnav">
+            <div class="col-0 col-md-2 d-flex inline">
+                <a href="{{ path('accueil')}}" class="d-flex">
+                    <img src="../images/LogoSeul.png" width="100">
+                    <div class="col p-1">
+                    <h2 class="iceland mt-3 mb-0">tOuT</h2>
+                    <h2 class="iceland mt-0">SampleMenT</h2>
+                    </div>
+                    <!-- <img src="../images/LogoTitre(2).png" width="200"> -->
+                    <!-- <img src="../images/LogoTitre(1).png" width="160"> -->
+                </a>
+            </div>
+            <div class="col-12 col-md-6 no-gutters mt-2 iceland">
+            <ul class="d-flex no-gutters justify-content-between">
+                <li class="">
+                    <a class="" href="{{ path('accueil')}}"> Accueil</a>
+                </li>
+                <li class="">
+                        <a class="" href="{{ path('all-articles')}}"> Articles</a>
+                </li>
+                <li class="">
+                        <a class="" href="{{ path('all-samples')}}">Samples</a>
+                </li>
+                <li class="">
+                        <a class="" href="{{ path('inserer')}}">Insérer</a>
+                </li>
+                 {% if not is_granted('ROLE_ADMIN') %}
+                    <li class="">
+                        <a class="" href="{{ path('contact')}}"> Contact </a>
                     </li>
                     {% endif %}
 
                     {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('login') }}"> Connexion / Inscription </a>
+                        <li class="">
+                            <a class="" href="{{ path('login') }}"> Connexion/Inscription </a>
                         </li>
                     {% endif %}
 
                     {# l'element du menu n'apparaitra que si l'utilisateur est connecté en user#}
 
                     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('profil') }}">Profil </a>
+                        <li class="">
+                            <a class="" href="{{ path('profil') }}">Profil </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('logout') }}"> Deconnexion </a>
+                        <li class="">
+                            <a class="" href="{{ path('logout') }}"> Deconnexion </a>
                         </li>
                     {% endif %}
 
                     {# l'element du menu n'apparaitra que si l'utilisateur est connecté en admin#}
 
                     {% if is_granted('ROLE_ADMIN') %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('admin-add-article') }}"> Ajouter un article </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href=""> Administrateur </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('admin-all-profil') }}">Utilisateurs </a>
+                        <li class="">
+                            <a class="" href=""> Administrateur </a>
                         </li>
                     {% endif %}
+                    </div>
 
-                </ul>
-
-            </div>
-
+                    <div class="offset-2"></div>
+                    <div class="col-12  col-md-2 text-right">
         {#FORMULAIRE DE RECHERCHE#}
-        <form class="form-inline" id="cherche">
+        <form class="form-inline test mr-4 mt-3" id="cherche">
             <div class="input-group">
                 <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1">Search</span>
-
+                    <span class="input-group-text" id="basic-addon1">Recherche</span>
                 </div>
-                <input type="text" id="recherche" name="recherche" class="form-control" placeholder="Track or Artist" aria-label="Username" aria-describedby="basic-addon1">
+                <input type="text" id="recherche" name="recherche" class="form-control" placeholder="Titre ou Artiste" aria-label="Username" aria-describedby="basic-addon1">
                 <div id="result"></div>
             </div>
 
         </form>
+    </div>
+            </ul>
+        </nav>
+    </header>
 
-    </nav>
 
-</header>
-
-
-<h1 class="text-center">{% block titlepage %}{% endblock %}</h1>
-<div class="font container justify-content-center">
+<h1 class="text-center iceland">{% block titlepage %}{% endblock %}</h1>
+<div class="font container justify-content-center rounded mt-4 pb-4 border-warning border">
 
 
     {% block content %}{% endblock %}
@@ -118,13 +115,13 @@
 
 <footer class="container-fluid">
 
-    <div class="mt-5 d-flex justify-content-between">
+    <div class="mt-4 d-flex justify-content-between">
 
-        <a class="text-danger" href="{{ path('cgu')}}">Conditions d'utilisation</a>
+        <a class="" href="{{ path('cgu')}}">Conditions d'utilisation</a>
         <div class="">
-            <i class="mr-2 text-danger fab fa-twitter-square fa-lg"></i>
-            <i class="mr-2 text-danger fab fa-facebook-square fa-lg"></i>
-            <i class="mr-2 text-danger fab fa-instagram fa-lg"></i>
+            <i class="mr-2 fab fa-twitter-square fa-lg fa-3x"></i>
+            <i class="mr-2 fab fa-facebook-square fa-lg fa-3x"></i>
+            <i class="mr-2 fab fa-instagram fa-lg fa-3x"></i>
         </div>
 
     </div>

@@ -37,9 +37,29 @@ class SampleController extends Controller
 
         $samples = $repositorySamples->lastSamples();
 
-        return $this->render('sample/samples.html.twig', array(
-            'samples'=>$samples));
+        //requete pour recuperer les genres
+        $repositoryArtistes = $this->getDoctrine()->getRepository(Artistes::class);
+        //$genres = $repositoryArtistes->findGenres();
 
+        return $this->render('sample/samples.html.twig', array(
+            'samples'=>$samples/*'genres'=>$genres*/));
+
+    }
+
+    /**
+     * @Route("/ajax/genre/", name="search-by-genre", requirements={"genre"="[A-z][0-9]+"})
+     */
+    public function searchByGenre(Artistes $artiste)
+    {
+        //j'ai recupere l'artiste grace a mon parametre {genre}
+        $repository = $this->getDoctrine()->getRepository(Artistes::class);
+        //on rajoute a la suite de findBy le nom de la propriété par laquelle on fait la recherche
+        //doctrine va comprendre et faire la requete appropriée
+        $artistes = $repository->findByGenre($artiste);
+
+        return $this->render('ajax/genre.html.twig', [
+            'artistes' => $artistes,
+        ]);
     }
 
 

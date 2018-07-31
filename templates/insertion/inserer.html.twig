@@ -1,14 +1,13 @@
 {% extends 'layout.html.twig' %}
 
-{% block title %}Insérer{% endblock %}
+{% block titlepage %}Insérer{% endblock %}
 
 {% block content %}
-<h1>Inserer</h1>
 
 {% if msg %}<div class="alert alert-success">{{msg}}</div>{%endif%}
 
 <form method="POST" action="/inserer" enctype="multipart/form-data">
-		<h4 class="text-center">Le samplé</h4>
+		<h4 class="text-center iceland">Le samplé</h4>
 	<div class="row justify-content-center ">
 		<div class="col-3 border-right">
 			<div class="form-group">
@@ -41,9 +40,9 @@
 				{% endfor %}
 				</select>
 			</div>
-			<div class="form-group">
-				<label for="pochetteSample">Pochette :</label>
-				<input type="file" id="pochetteSample" name="pochetteSample" class="form-control" required>
+			<div class="form-group text-center">
+				<input type="file" id="pochetteSample" name="pochetteSample" class="form-control" hidden required>
+				<label for="pochetteSample" class="btn btn-warning">Choisir une pochette</label>
 			</div>
 		</div>
 		<div class="col-3">
@@ -55,7 +54,7 @@
 	</div>
 	<hr>
 
-	<h4 class="text-center">Le sampleur</h4>
+	<h4 class="text-center iceland">Le sampleur</h4>
 	<div class="row justify-content-center">
 		<div class="col-3 border-right">
 			<div class="form-group">
@@ -88,9 +87,9 @@
 				{% endfor %}
 				</select>
 			</div>
-			<div class="form-group">
-				<label for="pochetteSampleur">Pochette :</label>
-				<input type="file" id="pochetteSampleur" name="pochetteSampleur" class="form-control" required>
+			<div class="form-group text-center">
+				<label for="pochetteSampleur" class="btn btn-warning">Choisir une pochette</label>
+				<input type="file" id="pochetteSampleur" name="pochetteSampleur" class="form-control" hidden required>
 			</div>
 		</div>
 		<div class="col-3">
@@ -102,7 +101,7 @@
 	</div>
 	<hr>
 	<div class="row justify-content-center">
-		<button type="submit" class="btn btn-primary">Envoyer</button>		
+		<button type="submit" class="btn btn-warning">Envoyer</button>		
 	</div>
 
 </form>

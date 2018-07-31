@@ -1,0 +1,76 @@
+
+<div class="genre-list">
+
+
+    <div class="row d-flex justify-content-around">
+
+        {% for sample in samples %}
+            <!-- <a href="{{ path('detail-sample',{'id':sample.id})}}" class="mt-5"> -->
+            <div class="zoom row col-12 border m-2 p-2 test bg-white rounded" href="{{ path('detail-sample',{'id':sample.id})}}">
+
+                <article class="col-5 d-flex flex-column">
+
+                    {% if sample.sampleur.idalbum.nom|length >= 25 %}
+                        <h2 class="font-weight-bold">{{ sample.sampleur.idalbum.nom | striptags | slice(0, 25) }}...</h2>
+                    {% else %}
+                        <h2 class="font-weight-bold">{{ sample.sampleur.idalbum.nom }}</h2>
+                    {% endif %}
+
+                    <div class="d-inline-flex">
+                        {% if sample.sampleur.idalbum.pochette %}
+                            <img alt="image {{ sample.sampleur.idalbum.nom }}" width="170" height="170" src="{{ asset(image_directory ~ sample.sampleur.idalbum.pochette) }}"  alt=""/>
+                        {% endif %}
+
+                        <div class="p-2">
+                            <h4 class="font-weight-normal"> Artiste :{{ sample.sampleur.idalbum.idartiste.nom }}</h4>
+                            <h5 class="font-weight-light"> Track :
+                                {{ sample.sampleur.titre }}
+                            </h5>
+                        </div>
+                    </div>
+
+                </article>
+
+                <div class="col-2 text-center align-self-center">
+                    <i class="fas fa-exchange-alt fa-5x notreGris"></i>
+                </div>
+
+                <article class="col-5 d-flex flex-column">
+
+                    {% if sample.original.idalbum.nom|length >= 25 %}
+                        <h2 class="font-weight-bold">{{ sample.original.idalbum.nom | striptags | slice(0, 25) }}...</h2>
+                    {% else %}
+                        <h2 class="font-weight-bold">{{ sample.original.idalbum.nom }}</h2>
+                    {% endif %}
+
+                    <div class="d-inline-flex">
+
+                        {% if sample.original.idalbum.pochette %}
+                            <img alt="image {{ sample.original.idalbum.nom }}"width="170" height="170" src="{{ asset(image_directory ~ sample.original.idalbum.pochette) }}"  alt=""/>
+                        {% endif %}
+
+                        <div class="p-2">
+                            {% if sample.original.idalbum.idartiste.nom|length >=18 %}
+                                <h4 class="font-weight-normal"> Artiste :{{ sample.original.idalbum.idartiste.nom | striptags | slice(0, 18) }}...</h4>
+                            {% else %}
+                                <h4 class="font-weight-normal"> Artiste : {{ sample.original.idalbum.idartiste.nom}}</h4>
+                            {% endif %}
+                            <h5 class="font-weight-light">  Track :
+                                {{ sample.original.titre }}
+                            </h5>
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </div>
+            <!-- </a> -->
+        {% endfor %}
+    </div>
+
+
+
+
+
+</div>

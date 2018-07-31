@@ -8,7 +8,6 @@
 
     <div  class="container">
 
-        <hr class="bg-danger">
 
         <div class="row d-flex justify-content-center">
 
@@ -19,26 +18,27 @@
 
                     {# a chaque tour de boucle, on recupere les articles qui ici est un objet
                     pour acceder au titre artcile.title #}
-                    <article class="container text-justify ">
+                    <div class="zoom row col-12 border m-2 p-2 test bg-white rounded border-warning mb-4">
+                        <article class="container text-justify bg-white">
+                            <a class="" href="{{ path('detail-article', {id: article.id} ) }}">
+                                <h2 class="font-weight-bold iceland">{{ article.titre }}</h2>
+                            </a>
+                            <br>
+                            <div class="row ">
+                                <div class="col-6">
+                                    {% if article.image %}
+                                        <img class="img-fluid w-50" src="{{ asset(image_directory ~ article.image) }}"  alt=""/>
+                                    {% endif %}
+                                </div>
 
-                        <h2 class="font-weight-bold">{{ article.titre }}</h2>
-                        <br>
-                        <div class="row ">
-                            <div class="col-6">
-                                {% if article.image %}
-                                    <img class="img-fluid w-50" src="{{ asset(image_directory ~ article.image) }}"  alt=""/>
-                                {% endif %}
+                                <div class="col-6 align-self-center">
+                                    {{ article.content | striptags | slice(0, 300) }}...
+                                    <a class="iceland float-bottom" href="{{ path('detail-article', {id: article.id} ) }}">lire la Suite</a>
+                                </div>
                             </div>
 
-                            <div class="col-6 align-self-center">
-                                {{ article.content | striptags | slice(0, 300) }}...
-                                <a class="text-danger float-bottom " href="{{ path('detail-article', {id: article.id} ) }}">Lire la suite</a>
-                            </div>
-                        </div>
-
-                    </article>
-
-                    <hr>
+                        </article>
+                    </div>
 
                 {% endfor %}
 

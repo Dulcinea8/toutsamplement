@@ -6,6 +6,14 @@
 
 {% block content %}
 
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="alert alert-{{ label }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+
     <hr class="bg-danger">
 
     <div class="d-flex justify-content-center">

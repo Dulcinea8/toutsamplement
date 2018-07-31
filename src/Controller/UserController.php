@@ -85,9 +85,14 @@ class UserController extends Controller
     /**
      * @Route("/profil/{id}", name="profilUser", requirements={"id"="[0-9]+"})
      */
-    public function detailProfil(Users $user){
+    public function detailProfil(Users $user, $id){
 
-        return $this->render('user/profilUser.html.twig',  array('user'=>$user));
+        $repositorySamples = $this->getDoctrine()->getRepository(Relations::class);
+        $repositoryUsers = $this->getDoctrine()->getRepository(Users::class);
+        $user = $repositoryUsers->findOneById($id);
+        $samples = $repositorySamples->findByUser($user);
+        dump($samples);
+        return $this->render('user/profilUser.html.twig',  array('user'=>$user, 'samples'=>$samples));
 
     }
 
