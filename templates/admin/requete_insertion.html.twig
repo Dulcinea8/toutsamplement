@@ -29,6 +29,7 @@
 		</div>	
 		<div class="mx-auto">
 		<form method="POST" action="{{path('requete-insertion')}}">
+			<input type="hidden" value="{{ requete.user.id }}" name="idUser">
 			<button class="image_valider_input m-3" type="submit" id="valider" value="{{requete.id}}" name="valider" class="btn btn-primary m-2"></button>
 			<button class="image_supprimer_input m-3" type="submit" id="refuser" name="refuser" value="{{requete.id}}" class="btn btn-danger m-2"></button>
 		</form>

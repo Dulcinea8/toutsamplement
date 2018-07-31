@@ -154,7 +154,20 @@ class AdminController extends Controller
         
         $msg="";
 
+
     	if($request->get('valider')) {
+
+    	    //on aumente le score d'un 1
+            $repositoryUsers = $this->getDoctrine()->getRepository(Users::class);
+            $id = $request->request->get('idUser');
+            dump($id);
+            $user = $repositoryUsers->findOneById($id);
+            dump($user);
+            $ancienScore = $user->getScore();
+            $nouveauScore = $ancienScore + 1;
+            $user->setScore($nouveauScore);
+
+
         	$relationAValider= $repositoryRelations->findOneById($request->request->get('valider'));
         	$relationAValider->setIsValidated(true);
         	$entityManager->persist($relationAValider);
@@ -171,6 +184,7 @@ class AdminController extends Controller
         }
 
         $requetes = $repositoryRelations->getNonValidated();
+
    
     	return $this->render('admin/requete_insertion.html.twig', ['requetes'=>$requetes, 'msg'=>$msg]);
     }
