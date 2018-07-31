@@ -58,12 +58,22 @@ class ArtistesRepository extends ServiceEntityRepository
     /*
      * Recherche des genres d Artiste
      */
-    /*public function findGenres()
-    /*{
-        $querybuilder = $this->createQueryBuilder('a')
+    public function findGenres()
+    {
+
+        $connexion = $this->getEntityManager()->getConnection();
+        $sql = 'SELECT DISTINCT(genre) FROM artistes';
+        $select = $connexion->query($sql);
+        $select->execute();
+        // on renvoie un tableau de tableau
+        return $select->fetchAll();
+
+        //SELECT DISTINCT(genre) FROM artistes
 
     }
-*/
+
+
+
 //    /**
 //     * @return Artistes[] Returns an array of Artistes objects
 //     */

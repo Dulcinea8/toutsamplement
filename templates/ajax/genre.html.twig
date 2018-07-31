@@ -1,11 +1,6 @@
 
-<div class="genre-list">
-
-
-    <div class="row d-flex justify-content-around">
 
         {% for sample in samples %}
-            <!-- <a href="{{ path('detail-sample',{'id':sample.id})}}" class="mt-5"> -->
             <div class="zoom row col-12 border m-2 p-2 test bg-white rounded" href="{{ path('detail-sample',{'id':sample.id})}}">
 
                 <article class="col-5 d-flex flex-column">
@@ -46,7 +41,7 @@
                     <div class="d-inline-flex">
 
                         {% if sample.original.idalbum.pochette %}
-                            <img alt="image {{ sample.original.idalbum.nom }}"width="170" height="170" src="{{ asset(image_directory ~ sample.original.idalbum.pochette) }}"  alt=""/>
+                            <img alt="image {{ sample.original.idalbum.nom }}" width="170" height="170" src="{{ asset(image_directory ~ sample.original.idalbum.pochette) }}" />
                         {% endif %}
 
                         <div class="p-2">
@@ -67,10 +62,3 @@
             </div>
             <!-- </a> -->
         {% endfor %}
-    </div>
-
-
-
-
-
-</div>

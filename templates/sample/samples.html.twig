@@ -8,9 +8,15 @@
 
     <div  class="container">
 
+            <label>Rechercher par genre</label>
+            <select class="form-control" id="genre-list">
+                <option value="0">Choisi un genre</option>
+                {% for genre in genres %}
+                    <option value="{{ genre.genre }}">{{ genre.genre }}</option>
+                {% endfor %}
+            </select>
 
-
-        <div class="row d-flex justify-content-around">
+        <div class="row d-flex justify-content-around" id="result2">
 
                 {% for sample in samples %}
                 <!-- <a href="{{ path('detail-sample',{'id':sample.id})}}" class="mt-5"> -->
@@ -103,17 +109,15 @@
         $(function () {
 
             $('#genre-list').on('change', function() {
+                var url = "{{ path('ajax-search-by-genre', {genre:'aaaa'}) }}";
+                //lorsque l'utilisateur selectionne un auteur, je remplace mon 0 par l'id selectionnée
+                url = url.replace('aaaa', $(this).val());
                 $.ajax({
                     type: 'get',
-                    url: "{{path('ajax-search-by-genre') }}",
-                    data: "recherche=" + $(this).val(),
-                    timeout: 3000,
+                    url: url,
                     dataType: 'html',
                     success: function (data) {
-                        //$('#result').empty();
-                        $('#result').html(data);
-
-                        console.log(data);
+                        $('#result2').html(data);
                     },
                     error: function (error) {
                         console.log(error.responseText);

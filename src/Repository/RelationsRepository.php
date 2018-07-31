@@ -67,6 +67,23 @@ class RelationsRepository extends ServiceEntityRepository
 
     }
 
+    /*
+ * recherche de samples par genre
+ */
+    public function myfindSamplesGenre($genre){
+        $querybuilder = $this->createQueryBuilder('s')
+            ->innerJoin('s.sampleur', 't')
+            ->addSelect('t')
+            ->innerJoin('t.idalbum', 'a')
+            ->addSelect('a')
+            ->innerJoin('a.idartiste', 'ar')
+            ->addSelect('ar')
+            ->andWhere('ar.genre = :genre')
+            ->setParameter('genre', $genre)
+            ->getQuery();
+        return $querybuilder->execute();
+    }
+
 
 
 
