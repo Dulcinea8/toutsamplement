@@ -1,9 +1,9 @@
 {% extends 'layout.html.twig' %}
 
 {% block title %}Contact{% endblock %}
-
+{% block titlepage %}Contact{%endblock%}
 {% block content %}
-<h1>Contact</h1>
+
 	
 	{% if success %}<div class="alert alert-success">{{success}}</div>{%endif%}
 	{% if error %}<div class="alert alert-warning">{{error}}</div>{%endif%}
@@ -29,7 +29,7 @@
 				<textarea class="form-control" name="message" placeholder="Votre message"></textarea>
 			</div>
 			<hr>
-				<button type="submit" class="btn btn-default">Envoyer</button>
+				<button type="submit" class="btn btn-warning">Envoyer</button>
 		</form>
 	</div>
 
