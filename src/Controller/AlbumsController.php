@@ -54,7 +54,7 @@ class AlbumsController extends Controller
         $form = $this->createFormBuilder($album)
             ->add('nom', TextType::class,array('label'=>'Nom', 'required'=>true))
             ->add('annee', ChoiceType::class,array('label'=>'Année', 'choices' => $years, 'required'=>true))
-            ->add('pochette',FileType::class, array('label' => 'Pochette', 'required' => true))
+            ->add('pochette',FileType::class, array('label' => 'Pochette', 'required' => false))
             ->add('modifier', SubmitType::class,array('label'=>'Modifier'))
             ->getForm();
 

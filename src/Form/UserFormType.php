@@ -18,12 +18,12 @@ class UserFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('username',TextType::class, array('label' => 'Username'))
-            ->add('prenom', TextType::class, array('label' => 'Prenom'))
-            ->add('nom', TextType::class, array('label' => 'Nom'))
-            ->add('email',EmailType::class, array('label' => 'Email'))
+            ->add('username',TextType::class, array('label' => 'Username','required'=>true))
+            ->add('prenom', TextType::class, array('label' => 'Prenom','required'=>true))
+            ->add('nom', TextType::class, array('label' => 'Nom','required'=>true))
+            ->add('email',EmailType::class, array('label' => 'Email','required'=>true))
             ->add('plainPassword', RepeatedType::class, array('type' => PasswordType::class, 'help' => 'le mot de passe doit être 6 caracteres et au moins une majuscules, une minuscule et un chiffre','invalid_message' => 'les mdp ne sont pas identiques', 'first_options' => ['label' => 'mot de passe'],
-                'second_options' => ['label' => 'répétez le mot de passe'] ))
+                'second_options' => ['label' => 'répétez le mot de passe'] ,'required'=>true))
             ->add ('ajouter', SubmitType::class, array ('label'=> 'Valider', 'attr' => ['class'=> 'btn btn-primary']));
         ;
     }

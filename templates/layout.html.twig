@@ -9,6 +9,18 @@
     <link rel="icon" href="{{ asset('images/logo4.png') }}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker%7CRock+Salt" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bangers%7CMonoton" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Allerta+Stencil%7CBangers%7CCabin+Sketch%7CCovered+By+Your+Grace%7CMonoton" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Allerta+Stencil%7CBangers%7CCabin+Sketch%7CCovered+By+Your+Grace%7CFaster+One%7CMonoton" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Allerta+Stencil%7CBangers%7CCabin+Sketch%7CCovered+By+Your+Grace%7CExpletus+Sans%7CFaster+One%7CMonoton" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Timmana" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Zilla+Slab+Highlight" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+
 
 
     <title>{% block title %}{% endblock %}</title>
@@ -17,74 +29,64 @@
 <body>
 
     <header>
-
-        <nav class="d-flex align-items-end navbar navbar-expand-lg">
-
-            <a class="navbar-brand" href="{{ path('accueil') }}"></a>
-
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarText">
-
-                <ul class="navbar-nav mr-auto">
-
-                    <li class="ml-5 nav-item active">
-                        <a class="ml-5 nav-link" href="{{ path('accueil')}}"> Accueil <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('all-articles')}}"> Articles</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('all-samples')}}">Samples</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('inserer')}}">Insérer</a>
-                    </li>
-                    {% if not is_granted('ROLE_ADMIN') %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('contact')}}"> Contact </a>
+        <nav class="row no-gutters align-bottom fixed-top bgnav p-3">
+            <div class="col-0 col-md-2 d-flex inline">
+                <a href="{{ path('accueil')}}">
+                    <img src="../images/LogoSeul.png" width="70">
+                    <h6>Tout samplement</h6>
+                    <!-- <img src="../images/LogoTitre(1).png" width="160"> -->
+                </a>
+            </div>
+            <div class="col-12 col-md-6 no-gutters mainnav mt-2">
+            <ul class="d-flex no-gutters justify-content-between">
+                <li class="">
+                    <a class="" href="{{ path('accueil')}}"> Accueil</a>
+                </li>
+                <li class="">
+                        <a class="" href="{{ path('all-articles')}}"> Articles</a>
+                </li>
+                <li class="">
+                        <a class="" href="{{ path('all-samples')}}">Samples</a>
+                </li>
+                <li class="">
+                        <a class="" href="{{ path('inserer')}}">Insérer</a>
+                </li>
+                 {% if not is_granted('ROLE_ADMIN') %}
+                    <li class="">
+                        <a class="" href="{{ path('contact')}}"> Contact </a>
                     </li>
                     {% endif %}
 
                     {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('login') }}"> Connexion / Inscription </a>
+                        <li class="">
+                            <a class="" href="{{ path('login') }}"> Connexion/Inscription </a>
                         </li>
                     {% endif %}
 
                     {# l'element du menu n'apparaitra que si l'utilisateur est connecté en user#}
 
                     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('profil') }}">Profil </a>
+                        <li class="">
+                            <a class="" href="{{ path('profil') }}">Profil </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('logout') }}"> Deconnexion </a>
+                        <li class="">
+                            <a class="" href="{{ path('logout') }}"> Deconnexion </a>
                         </li>
                     {% endif %}
 
                     {# l'element du menu n'apparaitra que si l'utilisateur est connecté en admin#}
 
                     {% if is_granted('ROLE_ADMIN') %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('admin-add-article') }}"> Ajouter un article </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href=""> Administrateur </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('admin-all-profil') }}">Utilisateurs </a>
+                        <li class="">
+                            <a class="" href=""> Administrateur </a>
                         </li>
                     {% endif %}
+                    </div>
 
-                </ul>
-
-            </div>
-
+                    <div class="offset-2"></div>
+                    <div class="col-12  col-md-2 text-right">
         {#FORMULAIRE DE RECHERCHE#}
-        <form class="form-inline" id="cherche">
+        <form class="form-inline test mr-4 mt-2" id="cherche">
             <div class="input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon1">Search</span>
@@ -94,14 +96,14 @@
             </div>
 
         </form>
-
-    </nav>
-
-</header>
+    </div>
+            </ul>
+        </nav>
+    </header>
 
 
 <h1 class="text-center">{% block titlepage %}{% endblock %}</h1>
-<div class="font container justify-content-center">
+<div class="font container justify-content-center rounded mt-4">
 
 
     {% block content %}{% endblock %}

@@ -115,17 +115,17 @@ class Users implements UserInterface, \Serializable
     private $comments;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Relations", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="App\Entity\Relations", mappedBy="user", orphanRemoval=true)
      */
     private $samples;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Articles", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="App\Entity\Articles", mappedBy="auteur", orphanRemoval=true)
      */
     private $articles;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Artistes", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="App\Entity\Artistes", mappedBy="user", orphanRemoval=true)
      */
     private $artistes;
 
