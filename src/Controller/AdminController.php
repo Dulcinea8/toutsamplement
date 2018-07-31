@@ -6,10 +6,12 @@ use App\Entity\Articles;
 use App\Entity\Artistes;
 use App\Entity\Users;
 use App\Form\ArticlesType;
+use App\Form\UserAdminUpdateType;
 use App\Form\UserUpdateType;
 use App\Service\FileUploader;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\ParameterBag;
@@ -79,7 +81,7 @@ class AdminController extends Controller
             $user->setAvatar(new File($this->getParameter('articles_image_directory') . '/' . $user->getAvatar()));
         }
 
-        $form = $this->createForm(UserUpdateType::class, $user);
+        $form = $this->createForm(UserAdminUpdateType::class, $user);
         $form->handleRequest($request);
 
         if($form->isSubmitted()&& $form->isValid())
@@ -101,7 +103,7 @@ class AdminController extends Controller
             //$entityManager->persist($user);
             $entityManager->flush();
             $this->addFlash('success', 'Modification fait');
-            return $this->redirectToRoute('profil');
+            return $this->redirectToRoute('admin');
         }
         return $this->render('admin/updateProfil.html.twig', array('form' => $form->createView(),'avatar' => $fileName)  );
     }
@@ -112,8 +114,19 @@ class AdminController extends Controller
      */
     public function deleteProfil(Users $user){
 
+        //code pour s'eliminir soit meme
+        $id= $user->getId();
+        $currentUserId = $this->getUser()->getId();
+        if ($currentUserId == $id)
+        {
+            $session = $this->get('session');
+            $session = new Session();
+            $session->invalidate();
+        }
+
         //recuperation de l'entite manager
         $entityManager = $this->getDoctrine()->getManager();
+
 
         //je veux supprimer cette catégorie
         $entityManager->remove($user);

@@ -2,11 +2,13 @@
 
 namespace App\Controller;
 
+use App\Entity\Relations;
 use App\Entity\Users;
 use App\Form\UserFormType;
 use App\Form\UserUpdateType;
 use Symfony\Component\ExpressionLanguage\Token;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -79,6 +81,7 @@ class UserController extends Controller
         return $this->render('user/profil.html.twig', array('user' => $user, 'samples' => $samples)  );
     }
 
+
     /**
      * @Route("/profil/{id}", name="profilUser", requirements={"id"="[0-9]+"})
      */
@@ -95,6 +98,16 @@ class UserController extends Controller
 
         $this->denyAccessUnlessGranted('DELETE', $user);
 
+        //code pour s'eliminir soit meme
+        $id= $user->getId();
+        $currentUserId = $this->getUser()->getId();
+        if ($currentUserId == $id)
+        {
+            $session = $this->get('session');
+            $session = new Session();
+            $session->invalidate();
+        }
+
         //recuperation de l'entite manager
         $entityManager = $this->getDoctrine()->getManager();
 
@@ -104,9 +117,11 @@ class UserController extends Controller
         //j'execute la requete
         $entityManager->flush();
 
+
+
         $this->addFlash('danger', 'Le profil a bien été supprimé');
 
-        return $this->redirectToRoute('home');
+        return $this->redirectToRoute('logout');
 
     }
 
