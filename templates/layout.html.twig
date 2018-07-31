@@ -151,6 +151,10 @@
                     }, 1500 );
                 });
 
+                $('#recherche').on( "mouseenter", function(){
+                    clearTimeout( ObjMenuTimeout );
+                });
+
                  $.ajax({
                         type: 'get',
                         url: "{{path('ajax-search')}}",
@@ -167,6 +171,8 @@
                             console.log(error.responseText);
                         }
                     })
+
+
                // }
             })
         })
