@@ -25,8 +25,8 @@ class ArticlesType extends AbstractType
                 array('class' => Users::class,
                     //on choisi la propriété de l'entité a afficher dans la liste
                     'choice_label' => 'username'))
-            ->add('image', FileType::class, array('label' => 'Ajouter une image', 'required' => true))
-            ->add('video', UrlType::class, array('label' => 'Lien :'))
+            ->add('image', FileType::class, array('label' => 'Ajouter une image', 'required' => false))
+            ->add('video', UrlType::class, array('label' => 'Lien :', 'required' => false))
             ->add('ajouter', SubmitType::class, array('label' => 'Enregistrer', 'attr' => ['class' => 'btn btn-info']));
 
     }

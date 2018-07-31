@@ -35,4 +35,20 @@ class AjaxController extends Controller
             'tracks' => $tracks, 'artistes' => $artistes
         ]);
     }
+
+    /**
+     * @Route("/ajax/search-by-genre/", name="ajax-search-by-genre")
+     */
+    public function searchByGenre(Artistes $artiste)
+    {
+        //j'ai recupere l'artiste grace a mon parametre {genre}
+        $repository = $this->getDoctrine()->getRepository(Artistes::class);
+        //on rajoute a la suite de findBy le nom de la propriété par laquelle on fait la recherche
+        //doctrine va comprendre et faire la requete appropriée
+        $artistes = $repository->findByGenre($artiste);
+
+        return $this->render('ajax/samples.html.twig', [
+            'artistes' => $artistes,
+        ]);
+    }
 }

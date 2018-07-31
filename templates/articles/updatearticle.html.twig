@@ -6,6 +6,14 @@
 
 {% block content %}
 
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="alert alert-{{ label }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+
     {{ form_start(form)}} {# permet de creer la balise <form> #}
 
         {{ form_label(form.titre, 'Titre de l\'article', {'label_attr' : {'class' : 'ma-classe'}})}}

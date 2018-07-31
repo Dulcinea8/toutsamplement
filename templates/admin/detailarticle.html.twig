@@ -26,7 +26,7 @@
         <br>
 
         {% if article.image %}
-            <img class="img-fluid" src="{{ asset(image_directory ~ article.image) }}"  alt=""/>
+            <img alt="image {{ article.titre }}"class="img-fluid" src="{{ asset(image_directory ~ article.image) }}"  alt=""/>
         {% endif %}
         <hr>
         {{ article.content }}
@@ -34,7 +34,7 @@
 
         <hr>
         {% if article.video %}
-            <iframe width="560" height="315" src="{{ asset(video_directory ~ article.video) }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            <iframe alt="video {{ article.titre }}" width="560" height="315" src="{{ asset(video_directory ~ article.video) }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
         {% endif %}
         <br>
             <div class="text-center">

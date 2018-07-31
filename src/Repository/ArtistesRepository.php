@@ -55,6 +55,15 @@ class ArtistesRepository extends ServiceEntityRepository
         return $querybuilder->execute();
     }
 
+    /*
+     * Recherche des genres d Artiste
+     */
+    /*public function findGenres()
+    /*{
+        $querybuilder = $this->createQueryBuilder('a')
+
+    }
+*/
 //    /**
 //     * @return Artistes[] Returns an array of Artistes objects
 //     */
