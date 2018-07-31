@@ -15,16 +15,15 @@
         {% endfor %}
     {% endfor %}
 <div class="container">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center mt-4">
         <div class="col-md-6 col-12">
             <div class="d-flex d-flex flex-column justify-content-center align-items-center">
                 {% if user.avatar %}
 
-                    <img class="card-img-top" class="img-fluid" style="width: 220px; height: 220px;" src="{{asset(image_directory)}}{{user.avatar}}" alt="" />
+                    <img class="card-img-top img-fluid rounded-circle mb-4" style="width: 220px; height: 220px;" src="{{asset(image_directory)}}{{user.avatar}}" alt="" />
 
                 {% endif %}
-                <br>
-                <br>
+
 
                         {% if user.score <= 10 %}
                             <img class="" style="width: 120px; height: 120px;" src="{{ asset('images/score_debutant.png')  }}" alt="score" />
@@ -79,7 +78,7 @@
 
         </div>
     </div>
-    <h4>Contributions</h4>
+    <h4 class="iceland">Contributions</h4>
 
     <!--Affiche les samples qui la personne a publié -->
     <div>
@@ -87,7 +86,7 @@
 
 
             <article class="d-flex align-content-start flex-wrap text-center" >
-                {% for sample in user %}
+                {% for sample in samples %}
                 <div class="p-3 bg-light m-1 border border-secondary">
 
                     <div class="m-1">
