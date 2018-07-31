@@ -144,6 +144,13 @@
 
                 //if ($(this).val().length > 1)
                 //{
+
+                $('#recherche').on( "mouseleave", function(){
+                    ObjMenuTimeout  = setTimeout( function(){
+                        $('#result').hide();
+                    }, 1500 );
+                });
+
                  $.ajax({
                         type: 'get',
                         url: "{{path('ajax-search')}}",
