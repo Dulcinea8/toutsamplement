@@ -98,7 +98,7 @@ class Relations
 
     public function getArticles(): ?Articles
     {
-        return $this->relations;
+        return $this->articles;
     }
 
     public function setArticles(Articles $articles): self
