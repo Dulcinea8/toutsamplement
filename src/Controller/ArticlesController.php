@@ -100,7 +100,7 @@ class ArticlesController extends Controller
 
             $this->addFlash('info', 'L\'article a bien été enregistré');
 
-            return $this->redirectToRoute('all-articles');
+            return $this->redirectToRoute('admin');
         }
         return $this->render('articles/addarticle.html.twig', array('form' => $form->createView()));
     }
@@ -159,7 +159,7 @@ class ArticlesController extends Controller
 
             $this->addFlash('info', 'L\'article a bien été modifié');
 
-            return $this->redirectToRoute('all-articles');
+            return $this->redirectToRoute('admin');
         }
 
         return $this->render('articles/updatearticle.html.twig', array('form' => $form->createView()));

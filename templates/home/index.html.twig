@@ -36,7 +36,7 @@
 
             <div class="col-md-6 col-12">
                 <div class="embed-responsive embed-responsive-16by9 ">
-                    <iframe width="560" height="315" class="embed-responsive-item" src="https://www.youtube.com/embed/rJThPCQ3Oro" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    <iframe alt="video tuto sample" width="560" height="315" class="embed-responsive-item" src="https://www.youtube.com/embed/rJThPCQ3Oro" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
                 </div>
             </div>
@@ -68,7 +68,7 @@
 
                             {% if artiste.user.avatar %}
                                 <a href="{{ path('fiche-artiste', {id: artiste.id} ) }}">
-                                    <img class="zoom w-25 rounded-circle" src="{{ asset(image_directory ~ artiste.user.avatar) }}"  alt=""/>
+                                    <img alt="{{ artiste.nom }}" class="zoom w-25 rounded-circle" src="{{ asset(image_directory ~ artiste.user.avatar) }}"  />
                                 </a>
                             {% endif %}
                             </div>
@@ -108,7 +108,7 @@
 
                             {% if sample.sampleur.idalbum.pochette %}
                                 <a href="{{ path('detail-sample', {id: sample.id} ) }}">
-                                    <img class="zoom w-75" src="{{ asset(image_directory ~ sample.sampleur.idalbum.pochette) }}"  alt=""/>
+                                    <img alt="image {{ sample.sampleur.titre }}" class="zoom w-75" src="{{ asset(image_directory ~ sample.sampleur.idalbum.pochette) }}" />
                                 </a>
                             {% endif %}
 
@@ -128,7 +128,7 @@
 
                             {% if sample.original.idalbum.pochette %}
                                 <a href="{{ path('detail-sample', {id: sample.id} ) }}">
-                                    <img class="zoom w-75" src="{{ asset(image_directory ~ sample.original.idalbum.pochette) }}"  alt=""/>
+                                    <img alt="image {{ sample.original.titre }}" class="zoom w-75" src="{{ asset(image_directory ~ sample.original.idalbum.pochette) }}"/>
                                 </a>
                             {% endif %}
 
@@ -168,7 +168,7 @@
 
                             {% if article.image %}
                                 <a href="{{ path('detail-article', {id: article.id} ) }}">
-                                    <img class="zoom w-75" src="{{ asset(image_directory ~ article.image) }}"  alt=""/>
+                                    <img alt="image {{ article.titre }}" class="zoom w-75" src="{{ asset(image_directory ~ article.image) }}" />
                                 </a>
                             {% endif %}
 
