@@ -29,15 +29,19 @@
 <body>
 
     <header>
-        <nav class="row no-gutters align-bottom fixed-top bgnav p-3">
+        <nav class="row no-gutters align-bottom fixed-top bgnav p-3 mainnav">
             <div class="col-0 col-md-2 d-flex inline">
-                <a href="{{ path('accueil')}}">
-                    <img src="../images/LogoSeul.png" width="70">
-                    <h6>Tout samplement</h6>
+                <a href="{{ path('accueil')}}" class="d-flex">
+                    <img src="../images/LogoSeul.png" width="100">
+                    <div class="col p-1">
+                    <h2 class=" mt-3 mb-0">tOuT</h2>
+                    <h2 class="mt-0">SampleMenT</h2>
+                    </div>
+                    <!-- <img src="../images/LogoTitre(2).png" width="200"> -->
                     <!-- <img src="../images/LogoTitre(1).png" width="160"> -->
                 </a>
             </div>
-            <div class="col-12 col-md-6 no-gutters mainnav mt-2">
+            <div class="col-12 col-md-6 no-gutters mt-2">
             <ul class="d-flex no-gutters justify-content-between">
                 <li class="">
                     <a class="" href="{{ path('accueil')}}"> Accueil</a>
