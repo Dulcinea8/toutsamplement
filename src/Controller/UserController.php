@@ -70,8 +70,13 @@ class UserController extends Controller
     public function profil(Request $request){
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         $user = $this->getUser();
+        $id = $user->getId();
+        $repositorySamples = $this->getDoctrine()->getRepository(Relations::class);
+        $samples = $repositorySamples->findByUser($id);
 
-        return $this->render('user/profil.html.twig', array('user' => $user)  );
+
+
+        return $this->render('user/profil.html.twig', array('user' => $user, 'samples' => $samples)  );
     }
 
     /**

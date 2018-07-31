@@ -83,4 +83,30 @@ class AlbumsController extends Controller
 
     }
 
+
+    /**
+     * @Route("/liste/album/delete/", name="show-album-delete")
+     */
+    public function listeDeleteAlbum()
+    {
+        $repository = $this->getDoctrine()->getRepository(Albums::class);
+        $liste=$repository->findAll();
+        return $this->render('albums/liste-albums-delete.html.twig', array('albums'=>$liste));
+
+    }
+
+
+
+    /**
+     * @Route("/delete/album/{id}", name="album-delete", requirements={"id"="\d+"})
+     */
+    public function deleteArtiste(Albums $albums){
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->remove($albums);
+        $entityManager->flush();
+        $this->addFlash('warning', 'Album supprimé!');
+        return $this->redirectToRoute('admin');
+
+    }
+
 }
