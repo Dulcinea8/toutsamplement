@@ -65,7 +65,19 @@
             </form>
         </div>
     {% endif %}
-    <div id="result3"></div>
+    <div>
+        <h4 class="iceland">Les commentaires</h4>
+        {%for commentaire in commentaires%}
+            <p>Publié par :
+            <a class="iceland" href="{{ path('profilUser', {id: commentaire.iduser.id} ) }}">{{ commentaire.iduser.username }}</a>
+            le {{ commentaire.datepubli|date('d/m/Y') }} </p>
+
+            <p>Commentaire: {{ commentaire.message }}</p>
+            <hr>
+        {%endfor%}
+    </div>
+    <div id="result3">
+    </div>
 {% endblock %}
 {% block js %}
     <script>
@@ -82,6 +94,7 @@
                     dataType: 'html',
                     success: function (data) {
                         $('#result3').html(data);
+                        $('#contenu').val(" ");
                     },
                     error: function (error) {
                         console.log(error.responseText);
