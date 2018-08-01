@@ -62,7 +62,7 @@ class ArtistesRepository extends ServiceEntityRepository
     {
 
         $connexion = $this->getEntityManager()->getConnection();
-        $sql = 'SELECT DISTINCT(genre) FROM artistes';
+        $sql = 'SELECT DISTINCT(genre) FROM artistes ORDER By genre ASC ';
         $select = $connexion->query($sql);
         $select->execute();
         // on renvoie un tableau de tableau

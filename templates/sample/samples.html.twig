@@ -110,7 +110,7 @@
 
             $('#genre-list').on('change', function() {
                 var url = "{{ path('ajax-search-by-genre', {genre:'aaaa'}) }}";
-                //lorsque l'utilisateur selectionne un auteur, je remplace mon 0 par l'id selectionnée
+                //lorsque l'utilisateur selectionne un genre, je remplace mon aaaa par le genre selectionné
                 url = url.replace('aaaa', $(this).val());
                 $.ajax({
                     type: 'get',
