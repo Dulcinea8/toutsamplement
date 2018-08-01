@@ -90,7 +90,7 @@
 
     $('.test').css('cursor', 'pointer');
 
-    $('body').on('click', '.test', function(){
+    $('.container').on('click', '.test', function(){
         var url= $(this).attr("href");
         $(this).css('cursor', 'pointer');
         window.location.href = url;
