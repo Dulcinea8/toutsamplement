@@ -9,7 +9,7 @@
 
     {# a chaque tour de boucle, opn recupere articles qui ici est un objet pour acceder au titre artcile.title #}
 
-    <article class="container text-justify">
+    <article class="text-justify">
         <div class="row d-flex mt-3 mb-2">
             <p>Publié par :
             <a class="iceland" href="{{ path('profilUser', {id: article.auteurid.id} ) }}">{{ article.auteurid.username }}</a>
@@ -19,7 +19,7 @@
         </div>
         
         <div class="row">
-            <div class="col-12 col-md-4">
+            <div class="col-12 col-md-4 mb-5">
                 {% if article.image %}
                     <img class="img-fluid text-center" src="{{ asset(image_directory ~ article.image) }}" width="300"  alt=""/>
                 {% endif %}
@@ -29,18 +29,19 @@
             </div>
         </div>
 
-        <hr>
 
-        <div class="row d-flex justify-content-center">
+        <div class="row d-flex justify-content-center mt-4 mb-4">
             {% if article.video %}
-                <iframe width="560" height="315" src="{{ asset(video_directory ~ article.video) }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            <div class="col-12 col-md-6 embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" width="560" height="315" src="{{ asset(video_directory ~ article.video) }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
             {% endif %}
         </div>
 
         {% if is_granted('ROLE_ADMIN') %}
-            <div class="text-center">
-                <a class="m-5" href="{{ path('admin-modifier-article', {id: article.id} ) }}"><img class="" src="{{ asset('images/boutonModifier.png')}}"></a>
-                <a class="m-3" href="{{ path('admin-supprimer-article', {id: article.id} ) }}"><img class="" src="{{ asset('images/boutonSupprimer.png')}}"></a>
+            <div class="text-center d-md-flex justify-content-center">
+                <a class="" href="{{ path('admin-modifier-article', {id: article.id} ) }}"><img class="p-4" src="{{ asset('images/boutonModifier.png')}}"></a>
+                <a class="" href="{{ path('admin-supprimer-article', {id: article.id} ) }}"><img class="p-4" src="{{ asset('images/boutonSupprimer.png')}}"></a>
             </div>
         {% endif %}
 

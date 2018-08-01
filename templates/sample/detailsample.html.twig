@@ -7,11 +7,11 @@
 {% block content %}
 
 
-<div class="row d-flex justify-content-around">
+<div class="d-md-flex justify-content-md-around">
 
-    <article class="col-12 col-md-5 d-flex align-items-start flex-column">
+    <article class="col-12 col-md-6 d-md-flex align-items-md-start flex-column">
 
-            <h2 class="m-auto font-weight-bold iceland">Le sampleur</h2>
+            <h2 class="font-weight-bold iceland">Le sampleur</h2>
             <h2 class="font-weight-bold">{{ sample.sampleur.idalbum.idartiste.nom }}</h2>
 
             <h3 class="font-weight-bold">{{ sample.sampleur.idalbum.nom }}</h3>
@@ -22,14 +22,16 @@
 
             
             {% if sample.sampleur.lien %}
-            <iframe alt="video {{ sample.sampleur.titre }}" class="border" width="373" height="210" src="{{ asset(video_directory ~ sample.sampleur.lien) }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe alt="video {{ sample.sampleur.titre }}" class="border embed-responsive-item" width="373" height="210" src="{{ asset(video_directory ~ sample.sampleur.lien) }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
             {% endif %}
 
     </article>
 
-    <article class="col-12 col-md-5 d-flex align-items-end flex-column">
+    <article class="col-12 col-md-6 d-flex align-items-md-start flex-column">
 
-            <h2 class="m-auto font-weight-bold iceland">L'original</h2>
+            <h2 class="font-weight-bold iceland">L'original</h2>
             <h2 class="font-weight-bold">{{ sample.original.idalbum.idartiste.nom }}</h2>
 
             <h3 class="font-weight-bold">{{ sample.original.idalbum.nom }}</h3>
@@ -38,14 +40,16 @@
             <h5 class="font-weight-light"> Date d'ajout : {{ sample.original.datepubli|date('d/m/Y') }}</h5>
             
             {% if sample.original.lien %}
-            <iframe alt="video {{ sample.original.titre }}" class="border" width="373" height="210" src="{{ asset(video_directory ~ sample.original.lien) }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe alt="video {{ sample.original.titre }}" class="border embed-responsive-item" width="373" height="210" src="{{ asset(video_directory ~ sample.original.lien) }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
             {% endif %}
 
     </article>
 
 </div>
 
-<div class="row d-flex justify-content-around">
+<div class="d-flex justify-content-around mt-4">
     <div class="col-12 col-md-10 border border-dark bg-white">
 
         <h2 class="m-3 text-center font-weight-bold iceland">L'histoire du sample "{{ sample.sampleur.titre }}"</h2>

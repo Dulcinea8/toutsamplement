@@ -68,6 +68,7 @@
             <div>
 
                 {% if is_granted('ROLE_USER') %}
+                <div class="d-sd-flex justify-content-center mb-3">
                     <a class="" href="{{ path('update_profil', {id: user.id} ) }}"><img class="m-2" src="{{ asset('images/boutonModifier.png')}}"></a>
                     <a class="" href="#" data-toggle="modal" data-target="#user-{{ user.id }}"><img class="m-2" src="{{ asset('images/boutonSupprimer.png')}}"></a>
                     <div class="modal fade" id="user-{{ user.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -91,9 +92,11 @@
                             </div>
                         </div>
                     </div>
+                </div>
                 {% endif %}
 
                 {% if is_granted('ROLE_ADMIN') %}
+                <div class="d-sd-flex justify-content-center mb-3">
                     <a class="" href="{{ path('admin-update-profil', {id: user.id} ) }}"><img class="m-2" src="{{ asset('images/boutonModifier.png')}}"></a>
                     <a class="" href="#" data-toggle="modal" data-target="#user-{{ user.id }}"><img class="m-2" src="{{ asset('images/boutonSupprimer.png')}}"></a>
                     <div class="modal fade" id="user-{{ user.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -117,6 +120,7 @@
                             </div>
                         </div>
                     </div>
+                </div>
                 {% endif %}
 
 
@@ -132,9 +136,9 @@
 
 
 
-            <article class="d-flex align-content-start flex-wrap text-center" >
+            <article class="d-flex justify-content-center flex-wrap text-center" >
                 {% for sample in samples %}
-                <div class="p-3 bg-light m-1 border border-secondary" style="width: 183px">
+                <div class="col-12 col-md-2 p-3 p-3 bg-light m-1 border border-secondary" style="width: 183px">
 
                     <div class="m-1">
 
