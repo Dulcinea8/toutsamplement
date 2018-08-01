@@ -48,5 +48,45 @@
 
 
 
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <div class="d-flex flex-column w-50">
 
+            <h4 class="iceland">Laisser un commentaire</h4>
+
+            <form id="message">
+                <div class="form-group">
+                    <input type="hidden" id="idArticle" name="idArticle" value="{{ article.id }}">
+                    <textarea name="contenu" id="contenu" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Ton message"></textarea>
+                </div>
+                <div class="form-group">
+                    <button type="submit" id="envoyer" class="btn btn-warning">Envoyer</button>
+                </div>
+            </form>
+        </div>
+    {% endif %}
+    <div id="result3"></div>
+{% endblock %}
+{% block js %}
+    <script>
+        $(function () {
+
+            $('#envoyer').on('click', function(e) {
+                e.preventDefault();
+                var url = "{{ path('laisser-commentaire') }}";
+                $.ajax({
+                    type: 'post',
+                    url: url,
+                    data: $('#message').serialize(),
+                    timeout: 3000,
+                    dataType: 'html',
+                    success: function (data) {
+                        $('#result3').html(data);
+                    },
+                    error: function (error) {
+                        console.log(error.responseText);
+                    }
+                })
+            })
+        })
+    </script>
 {% endblock %}

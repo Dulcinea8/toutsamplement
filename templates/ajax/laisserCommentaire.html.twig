@@ -1,0 +1,11 @@
+
+
+<div >
+    <p>Publié par :
+        <a class="iceland" href="{{ path('profilUser', {id: commentaire.iduser.id} ) }}">{{ commentaire.iduser.username }}</a>
+        le {{ commentaire.datepubli|date('d/m/Y') }}
+    </p>
+    <div >
+    <p>Commentaire: {{ commentaire.message }}</p>
+
+</div>

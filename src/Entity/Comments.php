@@ -49,12 +49,12 @@ class Comments
         return $this->id;
     }
 
-    public function getIdarticle(): ?Articles
+    public function getIdArticle(): ?Articles
     {
         return $this->idarticle;
     }
 
-    public function setIdarticle(?Articles $idarticle): self
+    public function setIdArticle(?Articles $idarticle): self
     {
         $this->idarticle = $idarticle;
 
@@ -81,6 +81,29 @@ class Comments
     public function setIduser(?Users $iduser): self
     {
         $this->iduser = $iduser;
+
+        return $this;
+    }
+    public function getMessage()
+    {
+        return $this->message;
+    }
+
+    public function setMessage( $message)
+    {
+        $this->message = $message;
+
+        return $this;
+    }
+
+    public function getDatePubli(): ?\DateTimeInterface
+    {
+        return $this->date_publi;
+    }
+
+    public function setDatePubli(\DateTimeInterface $date_publi): self
+    {
+        $this->date_publi = $date_publi;
 
         return $this;
     }
