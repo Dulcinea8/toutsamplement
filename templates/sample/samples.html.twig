@@ -7,13 +7,14 @@
 {% block content %}
 
 
-            <label>Rechercher par genre</label>
-            <select class="form-control" id="genre-list">
+            <h3 class="text-center iceland m-2">Rechercher par genre</h3>
+            <select class="col-4 m-auto form-control " id="genre-list">
                 <option value="0">Choisir un style musical</option>
                 {% for genre in genres %}
                     <option value="{{ genre.genre }}">{{ genre.genre }}</option>
                 {% endfor %}
             </select>
+            <a class="" href="{{ path('all-samples')}}"><h4 class="text-center iceland m-2">Rafraichir la page</h4></a>
 
         <div class="justify-content-center" id="result2">
 
@@ -31,7 +32,7 @@
 
                         <div class="d-md-flex col-12">
                             {% if sample.sampleur.idalbum.pochette %}
-                                <img alt="image {{ sample.sampleur.idalbum.nom }}" width="170" height="170" src="{{ asset(image_directory ~ sample.sampleur.idalbum.pochette) }}"  alt=""/>
+                                <img alt="image {{ sample.sampleur.idalbum.nom }}" width="170" height="170" src="{{ asset(image_directory ~ sample.sampleur.idalbum.pochette) }}"/>
                             {% endif %}
 
                             <div class="p-2">
@@ -44,7 +45,7 @@
 
                     </article>
 
-                    <div class="col-12 col-md-2 text-center align-self-center">
+                    <div class="col-12 col-md-2 pb-3 pt-1 text-center align-self-center">
                         <i class="fas fa-sync fa-5x notreJaune"></i>
                     </div>
 
@@ -95,7 +96,6 @@
         window.location.href = url;
     });
 
-
 </script>
 
     <script>
@@ -111,6 +111,7 @@
                     dataType: 'html',
                     success: function (data) {
                         $('#result2').html(data);
+                        $('.test').css('cursor', 'pointer');
                     },
                     error: function (error) {
                         console.log(error.responseText);
