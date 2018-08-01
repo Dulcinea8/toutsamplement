@@ -8,9 +8,9 @@
 
     <div  class="container">
 
-            <label>Rechercher par genre</label>
-            <select class="form-control" id="genre-list">
-                <option value="0">Choisi un genre</option>
+            <h3 class="text-center iceland m-2">Rechercher par genre</h3>
+            <select class="col-4 m-auto form-control " id="genre-list">
+                <option value="0">Genre</option>
                 {% for genre in genres %}
                     <option value="{{ genre.genre }}">{{ genre.genre }}</option>
                 {% endfor %}
