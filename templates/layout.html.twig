@@ -152,13 +152,13 @@
                 //if ($(this).val().length > 1)
                 //{
 
-                $('#recherche').on( "mouseleave", function(){
+                $('#result').on( "mouseleave", function(){
                     ObjMenuTimeout  = setTimeout( function(){
                         $('#result').hide();
                     }, 1500 );
                 });
 
-                $('#recherche').on( "mouseenter", function(){
+                $('#result').on( "mouseenter", function(){
                     clearTimeout( ObjMenuTimeout );
                 });
 
