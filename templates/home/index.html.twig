@@ -12,7 +12,7 @@
         <!-- PRESENTATION de toutsamplement-->
         <h1 class="text-center mb-5 iceland">Tout SampleMent</h1>
         <div class="row">
-            <div class="col-md-6 col-12">
+            <div class="col-12 col-md-6">
                 <p>Le site “Tout samplement” est une base de données communautaire et gratuite qui recense les plus
                     célèbres samples de Hip Hop, de Rock, de Pop, et d’Electro, issus de productions d’artistes professionnels
                     ou amateurs pouvant faire découvrir leur travail. Ce site est une réponse aussi bien pour ceux qui souhaitent
@@ -34,7 +34,7 @@
                 </p>
             </div>
 
-            <div class="col-md-6 col-12">
+            <div class="col-12 col-md-6">
                 <div class="embed-responsive embed-responsive-16by9 ">
                     <iframe alt="video tuto sample" width="560" height="315" class="embed-responsive-item" src="https://www.youtube.com/embed/rJThPCQ3Oro" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
@@ -49,10 +49,10 @@
 
             <h3 class="iceland">Derniers Artistes</h3>
 
-            <div class="d-flex">
+            <div class="d-md-flex">
                 {% for artiste in artistes%}
 
-                    <article class="container text-center bg-gradient-secondary">
+                    <article class="col-12 col-md-3 text-center bg-gradient-secondary">
 
                         <div class="p-3 bg-light m-1 border border-secondary">
 
@@ -86,11 +86,11 @@
 
             <h3 class="iceland">Derniers Samples</h3>
 
-            <div class="d-flex">
+            <div class="d-md-flex">
 
                 {% for sample in samples %}
 
-                <article class="container text-center">
+                <article class="col-12 col-md-3 text-center">
 
                     <div class="p-3 bg-light m-1 border border-secondary">
 
@@ -149,10 +149,10 @@
         <div>
 
             <h3 class="iceland">Derniers Articles</h3>
-            <div class="d-flex ">
+            <div class="d-md-flex ">
                 {% for article in articles%}
 
-                    <article class="container text-center">
+                    <article class="col-12 col-md-3 text-center">
 
                         <div class="p-3 bg-light m-1 border border-secondary">
 
