@@ -28,7 +28,7 @@ class UserUpdateType extends AbstractType
             ->add('bandcamp', TextType::class, array('label' =>'Ton bandcamp','required' => false))
             ->add('site_web',TextType::class, array('label' => 'Ton Site Web','required' => false))
             ->add('bio', TextareaType::class, array('label' => 'Ta Biographie','required' => false))
-            ->add ('ajouter', SubmitType::class, array ('label'=> 'Modifier', 'attr' => ['class'=> 'btn btn-primary']));
+            ->add ('ajouter', SubmitType::class, array ('label'=> 'Modifier', 'attr' => ['class'=> 'btn btn-warning']));
         ;
     }
 

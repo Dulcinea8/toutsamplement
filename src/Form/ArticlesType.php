@@ -27,7 +27,7 @@ class ArticlesType extends AbstractType
                     'choice_label' => 'username'))
             ->add('image', FileType::class, array('label' => 'Ajouter une image', 'required' => false))
             ->add('video', UrlType::class, array('label' => 'Lien :', 'required' => false))
-            ->add('ajouter', SubmitType::class, array('label' => 'Enregistrer', 'attr' => ['class' => 'btn btn-info']));
+            ->add('ajouter', SubmitType::class, array('label' => 'Enregistrer', 'attr' => ['class' => 'btn btn-warning']));
 
     }
 

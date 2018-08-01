@@ -32,7 +32,7 @@ class UserAdminUpdateType extends AbstractType
             ->add('bio', TextareaType::class, array('label' => 'Ta Biographie','required' => false))
             ->add('score',NumberType::class, array('label' => 'Ton Score','required' => false))
             ->add('roles', ChoiceType::class,array('label'=>'Role', 'multiple' => true, 'choices' => $roles, 'required'=>true))
-            ->add ('ajouter', SubmitType::class, array ('label'=> 'Modifier', 'attr' => ['class'=> 'btn btn-primary']));
+            ->add ('ajouter', SubmitType::class, array ('label'=> 'Modifier', 'attr' => ['class'=> 'btn btn-warning']));
         ;
 
 
