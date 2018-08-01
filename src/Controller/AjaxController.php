@@ -38,7 +38,7 @@ class AjaxController extends Controller
     }
 
     /**
-     * @Route("/ajax/search-by-genre/{genre}", name="ajax-search-by-genre", requirements={"genre"="[-A-z]+"})
+     * @Route("/ajax/search-by-genre/{genre}", name="ajax-search-by-genre", options={"utf8":true}, requirements={"genre"="[-A-záàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ]+"})
      */
     public function searchByGenre($genre)
     {
