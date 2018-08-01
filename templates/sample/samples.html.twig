@@ -87,10 +87,11 @@
 {% block js %}
 <script>
 
-    $('body').css('cursor','.test', 'pointer');
+    $('.test').css('cursor', 'pointer');
 
     $('body').on('click', '.test', function(){
         var url= $(this).attr("href");
+        $(this).css('cursor', 'pointer');
         window.location.href = url;
     });
 
