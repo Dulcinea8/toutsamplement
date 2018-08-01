@@ -74,7 +74,7 @@
 
                     {% if is_granted('ROLE_ADMIN') %}
                         <li class="">
-                            <a class="" href=""> Administrateur </a>
+                            <a class="" href="{{path('admin')}}"> Administrateur </a>
                         </li>
                     {% endif %}
                     </ul>
@@ -103,7 +103,7 @@
 
 
 <h1 class="text-center iceland">{% block titlepage %}{% endblock %}</h1>
-<div class="font container justify-content-center rounded mt-4 pb-4 border-warning border">
+<div class="font container justify-content-md-center rounded mt-4 pb-4 border-warning border">
 
 
     {% block content %}{% endblock %}
