@@ -1,13 +1,13 @@
 {% extends 'layout.html.twig' %}
 
-{% block title %}Liste d'Artistes{% endblock %}
+{% block title %}Modifier artiste{% endblock %}
+{% block titlepage %}Selectionne l'artiste à modifier{% endblock %}
 
 
 
 {% block content %}
 
     <div class="m-4 w-65">
-        <h4 class="text-center p-2">Selectionne l'artiste à modifier</h4>
         <ul class="list-group d-flex justify-content-center">
             {%for artiste in artistes%}
             <a href="{{ path('artiste-update', {id: artiste.id} )  }}" alt="{{ artiste.nom }}"> <li class="list-group-item">{{ artiste.nom }}</li></a>

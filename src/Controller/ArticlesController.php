@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Comments;
 use App\Form\ArticlesType;
 use App\Service\FileUploader;
 use App\Entity\Articles;
@@ -42,13 +43,16 @@ class ArticlesController extends Controller
     public function detail($id){
 
         $repository = $this->getDoctrine()->getRepository(Articles::class);
-
         $article = $repository->find($id);
+
+        //trouver les commentaires pour l'article
+        $repositoryComments = $this->getDoctrine()->getRepository(Comments::class);
+        $commentaires = $repositoryComments->findByIdarticle($id);
 
             if(!$article){
                 throw $this->createNotFoundException('No article found for id' .$id);
             }
-        return $this->render('articles/detailarticle.html.twig',  array('article'=>$article));
+        return $this->render('articles/detailarticle.html.twig',  array('article'=>$article, 'commentaires'=>$commentaires));
     }
 
     /**

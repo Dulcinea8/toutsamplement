@@ -58,7 +58,7 @@ footer {
     position:fixed;
     bottom:0;
     left:0;
-    height: 5em;
+    height: 4em;
  /*   background-repeat: repeat;*/
  color: #FFD600;
 
@@ -89,6 +89,10 @@ src: url("../fonts/Whatka!.ttf");*/
 
 .container{
     background: #EEEEEE;
+}
+
+.notreGris{
+    color: #EEEEEE;
 }
 
 .fond{
@@ -139,7 +143,7 @@ p, label, input{
 
 .mainnav{
 border-radius: 5px;
-font-size: 1.7rem;
+font-size: 1.5rem;
 
 }
 
@@ -223,4 +227,12 @@ font-family: 'Roboto', sans-serif !important;
 
 input{
     font-size: 0.8rem !important;
+}
+
+.adminIcon{
+    color: #424242 !important;
+}
+
+.adminIcon a {
+    color: #424242 !important;
 }

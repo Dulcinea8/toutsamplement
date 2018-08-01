@@ -3,6 +3,7 @@
 
 
 {% block title %}Zone Admin{% endblock %}
+{% block titlepage %}Zone AdmiN{% endblock %}
 
 
 {% block content %}
@@ -16,72 +17,85 @@
         {% endfor %}
     {% endfor %}
 
+    <div class="d-flex justify-content-center mt-4">
 
-    <h1>Zone Admin</h1>
-    <div class="d-flex justify-content-around mt-4">
-
-        <div class="col-3 border rounded bg-white text-center p-3">
+        <div class="col-10 border border-warning rounded bg-white text-center p-3 adminIcon">
             <a href="{{path('admin-add-article')}}">
                 <h3>Ajouter un article</h3>
                 <i class="far fa-file-alt fa-5x"></i>
             </a>
         </div>
 
-        <div class="col-3 border rounded bg-white text-center p-3">
+    </div>
+    <hr class="border border-warning" width="50%">
+
+    <div class="d-flex justify-content-center mt-4">
+
+        <div class="col-10 border border-warning rounded bg-white text-center p-3 adminIcon">
             <a href="{{path('requete-insertion')}}">
                 <h3>Gestion des requêtes</h3>
                 <i class="fas fa-exchange-alt fa-5x"></i>
             </a>
-        </div>
+        </div>        
 
-        <div class="col-3 border rounded bg-white text-center p-3">
+    </div>
+    <hr class="border border-warning" width="50%">
+
+    <div class="d-flex justify-content-center mt-4">
+
+       
+
+            <div class="col-10 border border-warning rounded bg-white text-center p-3 adminIcon">
+                <a href="{{path('liste-albums')}}">
+                    <h3>Modifier un Album</h3>
+                    <i class="fas fa-edit fa-5x"></i>
+                </a>
+            </div>
+  </div>
+
+<div class="d-flex justify-content-center mt-4">
+            <div class="col-10 border border-warning rounded bg-white text-center p-3 adminIcon">
+                <a href="{{path('show-album-delete')}}">
+                    <h3>Supprimer un Album</h3>
+                    <i class="fas fa-trash-alt fa-5x"></i>
+                </a>
+            </div>
+
+</div>
+   <hr class="border border-warning" width="50%">
+
+    <div class="d-flex justify-content-center mt-4">
+
+        <div class="col-10 border rounded border-warning bg-white text-center p-3 adminIcon">
             <a href="{{path('admin-all-profil')}}">
                 <h3>Gestion des utilisateurs</h3>
                 <i class="fas fa-users fa-5x"></i>
             </a>
         </div>
 
-    </div>
-
-    <div class="d-flex justify-content-around mt-4">
-
-        <div class="col-3 border rounded bg-white text-center p-3">
-            <a href="{{path('liste-artistes')}}">
-                <h3>Modifier un Artiste</h3>
-                <i class="fas fa-edit fa-5x"></i>
-            </a>
-        </div>
-
-        <div class="col-3 border rounded bg-white text-center p-3">
-            <a href="{{path('show-artiste-delete')}}">
-                <h3>Supprimer un Artiste</h3>
-                <i class="fas fa-trash-alt fa-5x"></i>
-            </a>
-        </div>
 
     </div>
+    <hr class="border border-warning" width="50%">
 
-    <div class="d-flex justify-content-around mt-4">
-
-
-
-        <div class="col-3 border rounded bg-white text-center p-3">
-            <a href="{{path('liste-albums')}}">
-                <h3>Modifier un Album</h3>
-                <i class="fas fa-edit fa-5x"></i>
-            </a>
-        </div>
-
-        <div class="col-3 border rounded bg-white text-center p-3">
-            <a href="{{path('show-album-delete')}}">
-                <h3>Supprimer un Album</h3>
-                <i class="fas fa-trash-alt fa-5x"></i>
-            </a>
-        </div>
-
+    <div class="d-flex justify-content-center mt-4">
+            <div class="col-10 border border-warning rounded bg-white text-center p-3 adminIcon">
+                <a href="{{path('liste-artistes')}}">
+                    <h3>Modifier un Artiste</h3>
+                    <i class="fas fa-edit fa-5x"></i>
+                </a>
+            </div>
     </div>
+    <div class="d-flex justify-content-center mt-4">
+            
+            <div class="col-10 border border-warning rounded bg-white text-center p-3 adminIcon">
+                <a href="{{path('show-artiste-delete')}}">
+                    <h3>Supprimer un Artiste</h3>
+                    <i class="fas fa-trash-alt fa-5x"></i>
+                </a>
+            </div>
+        </div>
+        </div>
 
-    
 
 {% endblock %}
 

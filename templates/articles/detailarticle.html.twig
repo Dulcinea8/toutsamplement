@@ -49,5 +49,58 @@
 
 
 
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <div class="d-flex flex-column w-50">
 
+            <h4 class="iceland">Laisser un commentaire</h4>
+
+            <form id="message">
+                <div class="form-group">
+                    <input type="hidden" id="idArticle" name="idArticle" value="{{ article.id }}">
+                    <textarea name="contenu" id="contenu" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Ton message"></textarea>
+                </div>
+                <div class="form-group">
+                    <button type="submit" id="envoyer" class="btn btn-warning">Envoyer</button>
+                </div>
+            </form>
+        </div>
+    {% endif %}
+    <div>
+        <h4 class="iceland">Les commentaires</h4>
+        {%for commentaire in commentaires%}
+            <p>Publié par :
+            <a class="iceland" href="{{ path('profilUser', {id: commentaire.iduser.id} ) }}">{{ commentaire.iduser.username }}</a>
+            le {{ commentaire.datepubli|date('d/m/Y') }} </p>
+
+            <p>Commentaire: {{ commentaire.message }}</p>
+            <hr>
+        {%endfor%}
+    </div>
+    <div id="result3">
+    </div>
+{% endblock %}
+{% block js %}
+    <script>
+        $(function () {
+
+            $('#envoyer').on('click', function(e) {
+                e.preventDefault();
+                var url = "{{ path('laisser-commentaire') }}";
+                $.ajax({
+                    type: 'post',
+                    url: url,
+                    data: $('#message').serialize(),
+                    timeout: 3000,
+                    dataType: 'html',
+                    success: function (data) {
+                        $('#result3').html(data);
+                        $('#contenu').val(" ");
+                    },
+                    error: function (error) {
+                        console.log(error.responseText);
+                    }
+                })
+            })
+        })
+    </script>
 {% endblock %}

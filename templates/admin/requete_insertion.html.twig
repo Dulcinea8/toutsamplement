@@ -11,18 +11,22 @@
 {%endif%}
 {% for requete in requetes %}
 	<div class="row rounded shadow-lg border bg-white pt-3 m-4">
-		<div class="col-6 border-right">
+		<div class="col-12 col-md-6 border-right">
 			<h5>Le sampleur</h5>
 			<p><strong>Artiste : </strong>{{requete.sampleur.idalbum.idartiste.nom}}</p><br>
 			<p><strong>Album : </strong>{{requete.sampleur.idalbum.nom}}</p><br>
 			<p><strong>Titre : </strong>{{requete.sampleur.titre}}</p><br>
+			<p><strong>Lien : </strong></p><a href="{{requete.original.lien}}">{{requete.sampleur.lien}}</a><br>
+			<p><strong>Pochette : </strong></p><img src="{{asset(image_directory ~ requete.sampleur.idalbum.pochette)}}" width="170" height="170"><br>
 			
 		</div>
-		<div class="col-6">
+		<div class="col-12 col-md-6">
 			<h5>Le samplé</h5>
 			<p><strong>Artiste : </strong>{{requete.original.idalbum.idartiste.nom}}</p><br>
 			<p><strong>Album : </strong>{{requete.original.idalbum.nom}}</p><br>
 			<p><strong>Titre : </strong>{{requete.original.titre}}</p><br>
+			<p><strong>Lien : </strong></p><a href="{{requete.original.lien}}">{{requete.original.lien}}</a><br>
+			<p><strong>Pochette : </strong></p><img src="{{asset(image_directory ~ requete.original.idalbum.pochette)}}" width="170" height="170"><br>
 		</div>
 		<div class="col-12 text-center mt-3">
 			<p><strong>Relation proposé par :</strong> <a href="">{{requete.user.username}}</a></p>
@@ -36,6 +40,6 @@
 		</div>	
 	</div>
 {%endfor%}
-
+<!--  -->
 
 {% endblock %}

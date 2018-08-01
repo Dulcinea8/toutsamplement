@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Albums;
+use App\Entity\Articles;
 use App\Entity\Artistes;
+use App\Entity\Comments;
 use App\Entity\Relations;
 use App\Entity\Tracks;
 use Symfony\Component\HttpFoundation\Request;
@@ -50,6 +52,38 @@ class AjaxController extends Controller
 
         return $this->render('ajax/genre.html.twig', [
             'samples' => $samples,
+        ]);
+    }
+
+    /**
+     * @Route("/ajax/commentaire", name="laisser-commentaire")
+     */
+    public function comment(Request $request)
+    {
+        $contenu = $request->request->get('contenu');
+        $idArticle = $request->request->get('idArticle');
+        $repository = $this->getDoctrine()->getRepository(Articles::class);
+        $article = $repository->find($idArticle);
+        //dump($idArticle);
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $commentaire = new Comments();
+        $commentaire->setMessage($contenu);
+        //$id_user = $this->getUser()->getId();
+        $commentaire->setIduser($this->getUser());
+        $commentaire->setIdArticle($article);
+        //l'attibut date_publi est de type datetime et doit contenir un objet de classe DateTime
+        $date_publi = new \DateTime(date('Y-m-d H:i:s'));
+        $commentaire->setDatePubli($date_publi);
+        $entityManager->persist($commentaire);
+        //flush permet d'executer la requete d'insertion, on peut la faire une fois après plusieurs persist
+        $entityManager->flush();
+
+
+        dump($commentaire);
+
+        return $this->render('ajax/laisserCommentaire.html.twig', [
+            'commentaire' => $commentaire,
         ]);
     }
 }
