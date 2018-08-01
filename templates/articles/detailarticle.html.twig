@@ -73,6 +73,12 @@
             le {{ commentaire.datepubli|date('d/m/Y') }} </p>
 
             <p>Commentaire: {{ commentaire.message }}</p>
+            {#si c'est un admin va pouvoir supprimer les commentaires#}
+            {% if is_granted('ROLE_ADMIN') %}
+                <form method="post" action="{{path('remove-commentaire')}}">
+                    <button class="image_supprimer_input m-3" type="submit" id="supprimer" name="supprimer" value="{{ commentaire.id }}" class="btn btn-danger m-2"></button>
+                </form>
+            {% endif %}
             <hr>
         {%endfor%}
     </div>
