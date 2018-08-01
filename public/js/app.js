@@ -10,7 +10,9 @@
 */
 
 	if(Cookies.get('cookie_toutsamplement') === undefined){
-		$('body').append('<div id="cookie_bar" class="cookie_bar">Bonjour et bienvenue <a class="btn btn-warning" href="http://localhost:8000/cgu" title="">Lien vers CGU</a><button id="cookie_btn" class="cookie_btn">J\'accepte</button></div>');
+		$('body').append('<div id="cookie_bar" class="cookie_bar">Bonjour et bienvenue <hr>' +
+			'<a class="text-warning" href="http://localhost:8000/cgu" title="">Lien vers CGU</a> <hr>' +
+			'<button id="cookie_btn" class="cookie_btn">J\'accepte</button></div>');
 		$('#cookie_btn').click(function(){
 			$('#cookie_bar').fadeOut();
 			Cookies.set('cookie_toutsamplement', 'clicked', {expires: 1});

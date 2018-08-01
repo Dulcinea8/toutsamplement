@@ -152,15 +152,6 @@
                 //if ($(this).val().length > 1)
                 //{
 
-                $('#recherche').on( "mouseleave", function(){
-                    ObjMenuTimeout  = setTimeout( function(){
-                        $('#result').hide();
-                    }, 1500 );
-                });
-
-                $('#recherche').on( "mouseenter", function(){
-                    clearTimeout( ObjMenuTimeout );
-                });
 
                  $.ajax({
                         type: 'get',
@@ -179,9 +170,20 @@
                         }
                     })
 
+                $('#result').on( "mouseleave", function(){
+                    ObjMenuTimeout  = setTimeout( function(){
+                        $('#result').hide();
+                    }, 1500 );
+                });
+
+                $('#result').on( "mouseenter", function(){
+                    clearTimeout( ObjMenuTimeout );
+                });
+
 
                // }
             })
+
         })
     </script>
 
