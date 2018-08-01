@@ -49,9 +49,16 @@ class Tracks
     private $comments;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Relations", mappedBy="sampleur", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\Relations", mappedBy="sampleur")
      */
     private $relations;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Relations", mappedBy="original")
+     */
+    private $relations2;
+
+    
 
 
     
@@ -60,6 +67,7 @@ class Tracks
     {
         $this->comments = new ArrayCollection();
         $this->relations = new ArrayCollection();
+        $this->relations2 = new ArrayCollection();
     }
 
     public function getId()
@@ -191,6 +199,39 @@ class Tracks
 
         return $this;
     }
+
+    /**
+     * @return Collection|Relations[]
+     */
+    public function getRelations2(): Collection
+    {
+        return $this->relations2;
+    }
+
+    public function addRelations2(Relations $relations2): self
+    {
+        if (!$this->relations2->contains($relations2)) {
+            $this->relations2[] = $relations2;
+            $relations2->setOriginal($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRelations2(Relations $relations2): self
+    {
+        if ($this->relations2->contains($relations2)) {
+            $this->relations2->removeElement($relations2);
+            // set the owning side to null (unless already changed)
+            if ($relations2->getOriginal() === $this) {
+                $relations2->setOriginal(null);
+            }
+        }
+
+        return $this;
+    }
+
+    
 
 
 }
