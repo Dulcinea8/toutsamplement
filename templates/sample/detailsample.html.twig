@@ -9,7 +9,7 @@
 
 <div class="row d-flex justify-content-around">
 
-    <article class="col-5 d-flex align-items-start flex-column">
+    <article class="col-12 col-md-5 d-flex align-items-start flex-column">
 
             <h2 class="m-auto font-weight-bold iceland">Le sampleur</h2>
             <h2 class="font-weight-bold">{{ sample.sampleur.idalbum.idartiste.nom }}</h2>
@@ -27,7 +27,7 @@
 
     </article>
 
-    <article class="col-5 d-flex align-items-end flex-column">
+    <article class="col-12 col-md-5 d-flex align-items-end flex-column">
 
             <h2 class="m-auto font-weight-bold iceland">L'original</h2>
             <h2 class="font-weight-bold">{{ sample.original.idalbum.idartiste.nom }}</h2>
@@ -45,10 +45,12 @@
 
 </div>
 
-<div class="m-5 border border-dark bg-white">
+<div class="row d-flex justify-content-around">
+    <div class="col-12 col-md-10 border border-dark bg-white">
 
-    <h2 class="m-3 text-center font-weight-bold iceland">L'histoire du sample "{{ sample.sampleur.titre }}"</h2>
-    <p class="m-3 text-justify">{{ sample.articles.content }}<p>
+        <h2 class="m-3 text-center font-weight-bold iceland">L'histoire du sample "{{ sample.sampleur.titre }}"</h2>
+        <p class="m-3 text-justify">{{ sample.articles.content }}</p>
 
+    </div>
 </div>
 {% endblock %}

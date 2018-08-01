@@ -19,12 +19,12 @@
         </div>
         
         <div class="row">
-            <div class="col-4">
+            <div class="col-12 col-md-4">
                 {% if article.image %}
                     <img class="img-fluid text-center" src="{{ asset(image_directory ~ article.image) }}" width="300"  alt=""/>
                 {% endif %}
             </div>
-            <div class="col-7 text-justify">
+            <div class="col-12 col-md-7 text-justify">
                 {{ article.content }}
             </div>
         </div>
