@@ -14,6 +14,7 @@
                     <option value="{{ genre.genre }}">{{ genre.genre }}</option>
                 {% endfor %}
             </select>
+            <a class="" href="{{ path('all-samples')}}"><h4 class="text-center iceland m-2">Rafraichir la page</h4></a>
 
         <div class="justify-content-center" id="result2">
 
@@ -31,7 +32,7 @@
 
                         <div class="d-md-flex col-12">
                             {% if sample.sampleur.idalbum.pochette %}
-                                <img alt="image {{ sample.sampleur.idalbum.nom }}" width="170" height="170" src="{{ asset(image_directory ~ sample.sampleur.idalbum.pochette) }}"  alt=""/>
+                                <img alt="image {{ sample.sampleur.idalbum.nom }}" width="170" height="170" src="{{ asset(image_directory ~ sample.sampleur.idalbum.pochette) }}"/>
                             {% endif %}
 
                             <div class="p-2">
@@ -94,7 +95,6 @@
         $(this).css('cursor', 'pointer');
         window.location.href = url;
     });
-
 
 </script>
 
