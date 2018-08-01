@@ -35,7 +35,7 @@ class Artistes
     private $albums;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Users")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Users", inversedBy="artistes")
      */
     private $user;
 

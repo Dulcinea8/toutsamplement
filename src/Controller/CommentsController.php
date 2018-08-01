@@ -25,12 +25,12 @@ class CommentsController extends Controller
     public function removeComments(Request $request)
     {
         $id = $request->request->get('supprimer');
-        dump($id);
+        //dump($id);
         $repository = $this->getDoctrine()->getRepository(Comments::class);
         $commentaire = $repository->find($id);
         $idArticle= $commentaire->getIdarticle()->getId();
-        dump($idArticle);
-        dump($commentaire);
+        //dump($idArticle);
+        //dump($commentaire);
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->remove($commentaire);
         $entityManager->flush();

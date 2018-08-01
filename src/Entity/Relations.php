@@ -18,17 +18,7 @@ class Relations
      */
     private $id;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Tracks", inversedBy="relations")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $sampleur;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Tracks")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $original;
+    
 
     /**
      * @ORM\Column(type="boolean")
@@ -46,34 +36,24 @@ class Relations
     */
     private $articles;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Tracks", inversedBy="relations")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $sampleur;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Tracks", inversedBy="relations2")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $original;
+
     public function getId()
     {
         return $this->id;
     }
 
-    public function getSampleur(): ?Tracks
-    {
-        return $this->sampleur;
-    }
-
-    public function setSampleur(?Tracks $sampleur): self
-    {
-        $this->sampleur = $sampleur;
-
-        return $this;
-    }
-
-    public function getOriginal(): ?Tracks
-    {
-        return $this->original;
-    }
-
-    public function setOriginal(?Tracks $original): self
-    {
-        $this->original = $original;
-
-        return $this;
-    }
+    
      public function getIsValidated(): ?bool
     {
         return $this->is_validated;
@@ -104,6 +84,30 @@ class Relations
     public function setArticles(Articles $articles): self
     {
         $this->articles = $articles;
+
+        return $this;
+    }
+
+    public function getSampleur(): ?Tracks
+    {
+        return $this->sampleur;
+    }
+
+    public function setSampleur(?Tracks $sampleur): self
+    {
+        $this->sampleur = $sampleur;
+
+        return $this;
+    }
+
+    public function getOriginal(): ?Tracks
+    {
+        return $this->original;
+    }
+
+    public function setOriginal(?Tracks $original): self
+    {
+        $this->original = $original;
 
         return $this;
     }
