@@ -23,8 +23,8 @@
 <body>
 
     <header>
-        <nav class="d-xl-flex no-gutters align-bottom fixed-top bgnav p-3 mainnav">
-            <div class="col-12 col-md-2 d-flex inline">
+        <nav class="row no-gutters align-bottom fixed-top bgnav p-3 mainnav">
+            <div class="col-0 col-md-2 d-flex inline">
                 <a href="{{ path('accueil')}}" class="d-flex">
                     <img src="../images/LogoSeul.png" width="100" height="108">
                     <div class="col p-1">
@@ -35,10 +35,8 @@
                     <!-- <img src="../images/LogoTitre(1).png" width="160"> -->
                 </a>
             </div>
-            <div class="col-12 col-md-8 no-gutters mt-2 iceland">
-                <button class="navbar-toggler toggler-example d-lg-none d-xl-none" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1"
-        aria-expanded="false" aria-label="Toggle navigation"><span class="dark-blue-text"><i class="fa fa-bars fa-2x notreJaune"></i></span></button>
-            <ul class="d-lg-flex no-gutters justify-content-around collapse navbar-collapse" id="navbarSupportedContent1">
+            <div class="col-12 col-md-6 no-gutters mt-2 iceland">
+            <ul class="d-flex no-gutters justify-content-between">
                 <li class="">
                     <a class="" href="{{ path('accueil')}}"> Accueil</a>
                 </li>
@@ -83,10 +81,12 @@
                     {% endif %}
                     </ul>
 
+            </ul>
+
                     </div>
 
-                   <!--  <div class="offset-2"></div> -->
-                    <div class="col-12 col-xl-2 text-right">
+                    <div class="offset-2"></div>
+                    <div class="col-12  col-md-2 text-right">
         {#FORMULAIRE DE RECHERCHE#}
         <form class="form-inline test mr-4 mt-3" id="cherche">
             <div class="input-group">
@@ -105,26 +105,29 @@
 
 
 <h1 class="text-center iceland">{% block titlepage %}{% endblock %}</h1>
-<div class="font container justify-content-md-center rounded mt-4 pb-3 border-warning border mb-5">
+<div class="font container justify-content-md-center rounded mt-4 pb-4 border-warning border">
 
 
     {% block content %}{% endblock %}
 
 </div>
-
+<br>
+<br>
+<br>
+<br>
 <br>
 <br>
 
 
-<footer class="container-fluid mt-5">
+<footer class="container-fluid">
 
     <div class="mt-4 d-md-flex justify-content-between">
 
         <a class="" href="{{ path('cgu')}}">Conditions d'utilisation</a>
         <div class="d-md-flex">
-            <i class="mr-2 fab fa-twitter-square fa-lg fa-2x"></i>
-            <i class="mr-2 fab fa-facebook-square fa-lg fa-2x"></i>
-            <i class="mr-2 fab fa-instagram fa-lg fa-2x"></i>
+            <i class="mr-2 fab fa-twitter-square fa-lg fa-3x"></i>
+            <i class="mr-2 fab fa-facebook-square fa-lg fa-3x"></i>
+            <i class="mr-2 fab fa-instagram fa-lg fa-3x"></i>
         </div>
 
     </div>
@@ -143,15 +146,20 @@
     <script>
         $(function () {
 
-            $('').on('clic', function(){
-
-            })
-
             $('#recherche').on('keyup', function () {
 
                 //if ($(this).val().length > 1)
                 //{
 
+                $('#recherche').on( "mouseleave", function(){
+                    ObjMenuTimeout  = setTimeout( function(){
+                        $('#result').hide();
+                    }, 1500 );
+                });
+
+                $('#recherche').on( "mouseenter", function(){
+                    clearTimeout( ObjMenuTimeout );
+                });
 
                  $.ajax({
                         type: 'get',
@@ -170,20 +178,9 @@
                         }
                     })
 
-                $('#result').on( "mouseleave", function(){
-                    ObjMenuTimeout  = setTimeout( function(){
-                        $('#result').hide();
-                    }, 1500 );
-                });
-
-                $('#result').on( "mouseenter", function(){
-                    clearTimeout( ObjMenuTimeout );
-                });
-
 
                // }
             })
-
         })
     </script>
 
