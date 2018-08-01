@@ -6,32 +6,29 @@
 
 {% block content %}
 
-    <div  class="container">
 
 
-        <div class="row d-flex justify-content-center">
 
             {# equivalent twig de la boucle foreach #}
-            <div class="col-10">
                 {# equivalent twig de la boucle foreach #}
                 {% for article in articles %}
 
                     {# a chaque tour de boucle, on recupere les articles qui ici est un objet
                     pour acceder au titre artcile.title #}
-                    <div class="zoom row col-12 border m-2 p-2 test bg-white rounded border-warning mb-4">
-                        <article class="container text-justify bg-white">
+                    <div class="zoom row border m-2 p-2 test bg-white rounded border-warning mb-4">
+                        <article class="bg-white">
                             <a class="" href="{{ path('detail-article', {id: article.id} ) }}">
                                 <h2 class="font-weight-bold iceland">{{ article.titre }}</h2>
                             </a>
                             <br>
                             <div class="row ">
-                                <div class="col-12 col-md-6">
+                                <div class="col-12 col-md-5">
                                     {% if article.image %}
                                         <img class="img-fluid w-50" src="{{ asset(image_directory ~ article.image) }}"  alt=""/>
                                     {% endif %}
                                 </div>
 
-                                <div class="col-12 col-md-6 align-self-center">
+                                <div class="col-12 col-md-7 align-self-center text-justify">
                                     {{ article.content | striptags | slice(0, 300) }}...
                                     <a class="iceland float-bottom" href="{{ path('detail-article', {id: article.id} ) }}">lire la Suite</a>
                                 </div>
@@ -42,10 +39,7 @@
 
                 {% endfor %}
 
-            </div>
-        </div>
 
-    </div>
 
 
 
