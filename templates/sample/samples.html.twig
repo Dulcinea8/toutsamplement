@@ -87,17 +87,11 @@
 {% block js %}
 <script>
 
-    $('.test').css('cursor', 'pointer');
+    $('body').css('cursor','.test', 'pointer');
 
-    $('.test').on('click', function(){
+    $('body').on('click', '.test', function(){
         var url= $(this).attr("href");
         window.location.href = url;
-    });
-
-    $('#titreSampleur').on('keydown', function(){
-        $( "#titreSampleur" ).autocomplete({
-          source: availableTracks
-        });
     });
 
 
