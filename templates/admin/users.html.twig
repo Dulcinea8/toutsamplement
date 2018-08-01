@@ -2,13 +2,12 @@
 
 {% block title %}Liste des articles{% endblock %}
 
-{% block titlepage %}Nos derniers articles{% endblock %}
+{% block titlepage %}Gestion des utilisateurs{% endblock %}
 
 {% block content %}
 
     <div  class="container">
 
-        <hr class="bg-danger">
 
                 {# equivalent twig de la boucle foreach #}
                 {% for user in users %}
@@ -17,13 +16,13 @@
                     pour acceder au titre artcile.title #}
                     <article class="row text-center">
 
-                        <div class="col-5">
+                        <div class="col-12 col-md-5">
                             {% if user.avatar %}
                                 <img class="img-fluid w-50" src="{{ asset(image_directory ~ user.avatar) }}"  alt=""/>
                             {% endif %}
                         </div>
 
-                        <div class="col-7">
+                        <div class="col-12 col-md-7">
                             <h2 class="font-weight-bold">{{ user.username }}</h2>
                             <p>{{ user.nom  }}</p>
                             <p>{{ user.prenom }}</p>

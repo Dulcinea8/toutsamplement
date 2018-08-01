@@ -91,6 +91,10 @@ src: url("../fonts/Whatka!.ttf");*/
     background: #EEEEEE;
 }
 
+.notreGris{
+    color: #EEEEEE;
+}
+
 .fond{
     background-color: #21212120;
 }
@@ -223,4 +227,12 @@ font-family: 'Roboto', sans-serif !important;
 
 input{
     font-size: 0.8rem !important;
+}
+
+.adminIcon{
+    color: #424242 !important;
+}
+
+.adminIcon a {
+    color: #424242 !important;
 }
