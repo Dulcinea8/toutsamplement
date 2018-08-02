@@ -29,13 +29,15 @@ class SampleController extends Controller
     }
 
     /**
-     * @Route("/samples/", name="all-samples")
+     * @Route("/samples/", defaults={"page": "1"}, methods={"GET"}, name="all-samples")
+     * @Route("/page/{page}",  requirements={"page": "[1-9]\d*"}, methods={"GET"}, name="all-samples_paginated")
+     *
      */
-    public function showAllSamples(){
+    public function showAllSamples(int $page){
 
         $repositorySamples = $this->getDoctrine()->getRepository(Relations::class);
 
-        $samples = $repositorySamples->lastSamples();
+        $samples = $repositorySamples->lastSamples($page);
 
         //requete pour recuperer les genres
         $repositoryArtistes = $this->getDoctrine()->getRepository(Artistes::class);

@@ -5,6 +5,8 @@ namespace App\Repository;
 use App\Entity\Relations;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
+use Pagerfanta\Adapter\DoctrineORMAdapter;
+use Pagerfanta\Pagerfanta;
 
 /**
  * @method Relations|null find($id, $lockMode = null, $lockVersion = null)
@@ -30,14 +32,24 @@ class RelationsRepository extends ServiceEntityRepository
         ;
     }
 
-    public function lastSamples(): array
+    public function lastSamples(int $page = 1): Pagerfanta
     {
-        return $this->createQueryBuilder('a')
+        $qb= $this->createQueryBuilder('a')
             ->orderBy('a.id', 'DESC')
-            ->getQuery()
-            ->getResult()
+
             ;
+        return $this->createPaginator($qb->getQuery(), $page);
     }
+
+    private function createPaginator($query, int $page): Pagerfanta
+    {
+        $paginator = new Pagerfanta(new DoctrineORMAdapter($query));
+        $paginator->setMaxPerPage(5);
+        $paginator->setCurrentPage($page);
+
+        return $paginator;
+    }
+
 
     public function doesRelationExist($id1, $id2){
         return $this->createQueryBuilder('a')
