@@ -24,24 +24,28 @@
                 <h5>Titres :</h5>
                 <ul>
                 {%for track in album.tracks%}
-                    <!-- {{ track.titre }} -->
-                    
+
+                    {%for relation in track.relations%}
+                        <a href="{{path('detail-sample', {id: relation.id} )}}">
+                            <li class="zoom">
+                            {{ relation.sampleur.titre }}
+                            <i class="fas fa-sync fa-1x"></i>
+                            {{ relation.original.titre }}</a>
+                            </li>
+                    {%endfor%}
 
                     {%for relation in track.relations2%}
-                        {{ dump(relation) }}
-                        {{ relation.original.titre }}
-                        {{ relation.sampleur.titre }}
+                    <a href="{{path('detail-sample', {id: relation.id} )}}">
+                        <li class="zoom">
+                            {{ relation.original.titre }}
+                            <i class="fas fa-sync fa-1x"></i>
+                            {{ relation.sampleur.titre }}</a>
+                        </li>
                     {%endfor%}
-                    {%for relation in track.relations%}
-                        {{ dump(relation) }}
-                        {{ relation.original.titre }}
-                        {{ relation.sampleur.titre }}
-                    {%endfor%}
+
 
 
                 {%endfor%}
-
-                    {{dump(album)}}
                 
                 </ul>
             </div>

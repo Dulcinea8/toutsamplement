@@ -23,10 +23,10 @@
 <body>
 
     <header>
-        <nav class="row no-gutters align-bottom fixed-top bgnav p-3 mainnav">
-            <div class="col-0 col-md-2 d-flex inline">
+        <nav class="d-flex flex-column flex-xl-row no-gutters align-bottom fixed-top bgnav p-3 mainnav">
+            <div class="col-12 col-xl-2 d-flex inline">
                 <a href="{{ path('accueil')}}" class="d-flex">
-                    <img src="../images/LogoSeul.png" width="100" height="108">
+                    <img src="{{ asset('images/LogoSeul.png')}}" width="100" height="108">
                     <div class="col p-1">
                     <h2 class="iceland mt-3 mb-0">tOuT</h2>
                     <h2 class="iceland mt-0">SampleMenT</h2>
@@ -35,8 +35,10 @@
                     <!-- <img src="../images/LogoTitre(1).png" width="160"> -->
                 </a>
             </div>
-            <div class="col-12 col-md-6 no-gutters mt-2 iceland">
-            <ul class="d-flex no-gutters justify-content-between">
+            <div class="col-12 col-lg-12 col-xl-6 no-gutters mt-2 iceland">
+               <button class="navbar-toggler toggler-example d-lg-none d-xl-none" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1"
+        aria-expanded="false" aria-label="Toggle navigation"><span class="dark-blue-text"><i class="fa fa-bars fa-2x notreJaune"></i></span></button>
+            <ul class="d-lg-flex no-gutters justify-content-xl-between justify-content-between collapse navbar-collapse" id="navbarSupportedContent1">
                 <li class="">
                     <a class="" href="{{ path('accueil')}}"> Accueil</a>
                 </li>
@@ -85,10 +87,10 @@
 
                     </div>
 
-                    <div class="offset-2"></div>
-                    <div class="col-12  col-md-2 text-right">
+                    <!-- <div class="col offset-xl-2"></div> -->
+                    <div class="col-12 col-lg-12 col-xl-4 ">
         {#FORMULAIRE DE RECHERCHE#}
-        <form class="form-inline test mr-4 mt-3" id="cherche">
+        <form class="form-inline d-flex test  mt-3" id="cherche">
             <div class="input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon1">Recherche</span>
