@@ -5,6 +5,9 @@ namespace App\Repository;
 use App\Entity\Articles;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
+use Pagerfanta\Adapter\DoctrineORMAdapter;
+use Pagerfanta\Pagerfanta;
+
 
 /**
  * @method Articles|null find($id, $lockMode = null, $lockVersion = null)
@@ -31,14 +34,22 @@ class ArticlesRepository extends ServiceEntityRepository
 
     }
 
-    public function lastArticles(): array
+    public function lastArticles(int $page = 1): Pagerfanta
     {
-        return $this->createQueryBuilder('a')
+        $qb = $this->createQueryBuilder('a')
             ->orderBy('a.id', 'DESC')
-            ->getQuery()
-            ->getResult()
             ;
+        return $this->createPaginator($qb->getQuery(), $page);
+    }
 
+
+    private function createPaginator($query, int $page): Pagerfanta
+    {
+        $paginator = new Pagerfanta(new DoctrineORMAdapter($query));
+        $paginator->setMaxPerPage(5);
+        $paginator->setCurrentPage($page);
+
+        return $paginator;
     }
 
 

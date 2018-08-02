@@ -40,7 +40,11 @@
                 {% endfor %}
 
 
-
+    {% if articles.haveToPaginate %}
+        <div class="navigation pagi text-center">
+            {{ pagerfanta(articles, 'twitter_bootstrap4', {routeName: 'all-articles_paginated'}) }}
+        </div>
+    {% endif %}
 
 
 
