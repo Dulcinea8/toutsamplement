@@ -6,13 +6,13 @@ use App\Entity\Comments;
 use App\Form\ArticlesType;
 use App\Service\FileUploader;
 use App\Entity\Articles;
-
+use App\Entity\Relations;
 use Symfony\Component\HttpFoundation\File\File;
 use App\Entity\Users;
 use Symfony\Component\HttpFoundation\Request;
+
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
 
 class ArticlesController extends Controller
 {
@@ -27,20 +27,16 @@ class ArticlesController extends Controller
     }
 
     /**
-     * @Route("/articles/", defaults={"page": "1"}, methods={"GET"}, name="all-articles")
-     * @Route("/page/{page}",  requirements={"page": "[1-9]\d*"}, methods={"GET"}, name="all-articles_paginated")
-     *
+     * @Route("/articles/", name="all-articles")
      */
-    public function showLastArticles(int $page){
+    public function showLastArticles(){
 
         $repositoryArticles = $this->getDoctrine()->getRepository(Articles::class);
 
-        $articles = $repositoryArticles->lastArticles($page);
+        $articles = $repositoryArticles->lastArticles();
 
         return $this->render('articles/articles.html.twig', array('articles'=>$articles));
     }
-
-
 
     /**
      * @Route("/article/{id}", name="detail-article", requirements={"id"="[0-9]+"})
@@ -99,6 +95,7 @@ class ArticlesController extends Controller
             //on met a jour la propriété image, qui doit contenir le nom du fichier et pas le fichier lui meme
             //pour pouvoir persister l'article
             $article->setImage($fileName);
+          
 
 
             //l'utilisateur connecté est l'auteur de l'article

@@ -61,9 +61,11 @@ class Articles
     private $video;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Relations", mappedBy="articles")
-    */
+     * @ORM\OneToOne(targetEntity="App\Entity\Relations", mappedBy="articles", cascade={"persist", "remove"})
+     */
     private $relations;
+
+    
 
     public function __construct()
     {
@@ -180,10 +182,18 @@ class Articles
         return $this->relations;
     }
 
-    public function setRelations(Relations $relations): self
+    public function setRelations(?Relations $relations): self
     {
         $this->relations = $relations;
 
+        // set (or unset) the owning side of the relation if necessary
+        $newArticles = $relations === null ? null : $this;
+        if ($newArticles !== $relations->getArticles()) {
+            $relations->setArticles($newArticles);
+        }
+
         return $this;
     }
+
+    
 }

@@ -1,8 +1,8 @@
 {% extends 'layout.html.twig' %}
 
-{% block title %}Fiche article{% endblock %}
+{% block title %}{{ sample.sampleur.titre }} / {{ sample.original.titre }}{% endblock %}
 
-{% block titlepage %}{{ sample.sampleur.titre }}{% endblock %}
+{% block titlepage %}{{ sample.sampleur.titre }} / {{ sample.original.titre }}{% endblock %}
 
 {% block content %}
 
@@ -49,6 +49,7 @@
 
 </div>
 
+{% if sample.articles %}
 <div class="d-flex justify-content-around mt-4">
     <div class="col-12 col-md-10 border border-dark bg-white">
 
@@ -57,4 +58,5 @@
 
     </div>
 </div>
+{%endif%}
 {% endblock %}

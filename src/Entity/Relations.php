@@ -31,10 +31,6 @@ class Relations
      */
     private $user;
 
-    /**
-    * @ORM\OneToOne(targetEntity="App\Entity\Articles", inversedBy="relations")
-    */
-    private $articles;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Tracks", inversedBy="relations")
@@ -47,6 +43,11 @@ class Relations
      * @ORM\JoinColumn(nullable=true)
      */
     private $original;
+
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Articles", inversedBy="relations", cascade={"persist", "remove"})
+     */
+    private $articles;
 
     public function getId()
     {
@@ -76,17 +77,6 @@ class Relations
         return $this;
     }
 
-    public function getArticles(): ?Articles
-    {
-        return $this->articles;
-    }
-
-    public function setArticles(Articles $articles): self
-    {
-        $this->articles = $articles;
-
-        return $this;
-    }
 
     public function getSampleur(): ?Tracks
     {
@@ -108,6 +98,18 @@ class Relations
     public function setOriginal(?Tracks $original): self
     {
         $this->original = $original;
+
+        return $this;
+    }
+
+    public function getArticles(): ?Articles
+    {
+        return $this->articles;
+    }
+
+    public function setArticles(?Articles $articles): self
+    {
+        $this->articles = $articles;
 
         return $this;
     }

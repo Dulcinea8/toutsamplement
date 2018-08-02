@@ -35,6 +35,7 @@ class RelationsRepository extends ServiceEntityRepository
     public function lastSamples(int $page = 1): Pagerfanta
     {
         $qb= $this->createQueryBuilder('a')
+            ->andWhere('a.is_validated = 1')
             ->orderBy('a.id', 'DESC')
 
             ;
@@ -90,8 +91,11 @@ class RelationsRepository extends ServiceEntityRepository
             ->addSelect('a')
             ->innerJoin('a.idartiste', 'ar')
             ->addSelect('ar')
+            ->andWhere('s.is_validated = 1')
             ->andWhere('ar.genre = :genre')
             ->setParameter('genre', $genre)
+            ->orderBy('s.id', 'DESC')
+
             ->getQuery();
         return $querybuilder->execute();
     }
