@@ -106,13 +106,13 @@
             {% for sample in samples %}
                 <div class="p-3 bg-light m-1 border border-secondary" style="width: 183px">
 
-                    <div class="m-1">
+                    <div class="zoom m-1">
 
-                        {% if sample.sampleur.titre|length >= 15 %}
+                        {% if sample.sampleur.titre|length >= 10 %}
                             <a href="{{ path('detail-sample', {id: sample.id} ) }}">
-                                <p class="font-weight-bold text-dark">{{ sample.sampleur.titre | striptags | slice(0, 15) }}...</p>
+                                <p class="font-weight-bold text-dark">{{ sample.sampleur.titre | striptags | slice(0, 10) }}...</p>
                             </a>
-                        {% elseif sample.sampleur.titre|length < 15 %}
+                        {% elseif sample.sampleur.titre|length < 10 %}
                             <a href="{{ path('detail-sample', {id: sample.id} ) }}">
                                 <p class="font-weight-bold text-dark">{{ sample.sampleur.titre }}</p>
                             </a>
@@ -126,13 +126,13 @@
 
                     </div>
 
-                    <div class="m-1">
+                    <div class="zoom m-1">
 
-                        {% if sample.original.titre|length >= 15 %}
+                        {% if sample.original.titre|length >= 10 %}
                             <a href="{{ path('detail-sample', {id: sample.id} ) }}">
-                                <p class="font-weight-bold text-dark ">{{ sample.original.titre | striptags | slice(0, 15) }}...</p>
+                                <p class="font-weight-bold text-dark ">{{ sample.original.titre | striptags | slice(0, 10) }}...</p>
                             </a>
-                        {% elseif sample.original.titre|length < 15 %}
+                        {% elseif sample.original.titre|length < 10 %}
                             <a href="{{ path('detail-sample', {id: sample.id} ) }}">
                                 <p class="font-weight-bold text-dark">{{ sample.original.titre }}</p>
                             </a>

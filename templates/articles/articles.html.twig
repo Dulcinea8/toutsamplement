@@ -15,10 +15,10 @@
 
                     {# a chaque tour de boucle, on recupere les articles qui ici est un objet
                     pour acceder au titre artcile.title #}
-                    <div class="zoom row border m-2 p-2 test bg-white rounded border-warning mb-4">
+                    <div class="row border m-2 p-2 test bg-white rounded border-warning mb-4">
                         <article class="bg-white">
                             <a class="" href="{{ path('detail-article', {id: article.id} ) }}">
-                                <h2 class="font-weight-bold iceland">{{ article.titre }}</h2>
+                                <h2 class="zoom font-weight-bold iceland">{{ article.titre }}</h2>
                             </a>
                             <br>
                             <div class="row ">
@@ -30,7 +30,7 @@
 
                                 <div class="col-12 col-md-7 align-self-center text-justify">
                                     {{ article.content | striptags | slice(0, 300) }}...
-                                    <a class="iceland float-bottom" href="{{ path('detail-article', {id: article.id} ) }}">lire la Suite</a>
+                                        <a class="iceland float-bottom" href="{{ path('detail-article', {id: article.id} ) }}">lire la Suite</a>
                                 </div>
                             </div>
 
