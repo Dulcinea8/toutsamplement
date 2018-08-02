@@ -69,7 +69,9 @@ class InsertionController extends Controller
     		if (!$repositoryTracks->findTrackByTitre($request->request->get('titreSample'))) {
     			$trackSample= new Tracks;
     			$trackSample->setTitre($request->request->get('titreSample'));
-    			$trackSample->setLien($request->request->get('lienSample'));
+                $url=$request->request->get('lienSample');
+                $idVideo = substr($url, 32, 11);
+    			$trackSample->setLien($idVideo);
     			$trackSample->setIdalbum($albumSample);
     			$trackSample->setIsValidated(0);
     			$entityManager->persist($trackSample);
@@ -108,7 +110,9 @@ class InsertionController extends Controller
     		if (!$repositoryTracks->findTrackByTitre($request->request->get('titreSampleur'))) {
     			$trackSampleur= new Tracks;
     			$trackSampleur->setTitre($request->request->get('titreSampleur'));
-    			$trackSampleur->setLien($request->request->get('lienSampleur'));
+    			$url=$request->request->get('lienSampleur');
+                $idVideo = substr($url, 32, 11);
+                $trackSampleur->setLien($idVideo);
     			$trackSampleur->setIdalbum($albumSampleur);
     			$trackSampleur->setIsValidated(0);
     			$entityManager->persist($trackSampleur);

@@ -16,7 +16,7 @@
 			<p><strong>Artiste : </strong>{{requete.sampleur.idalbum.idartiste.nom}}</p><br>
 			<p><strong>Album : </strong>{{requete.sampleur.idalbum.nom}}</p><br>
 			<p><strong>Titre : </strong>{{requete.sampleur.titre}}</p><br>
-			<p><strong>Lien : </strong></p><a href="{{requete.original.lien}}">{{requete.sampleur.lien}}</a><br>
+			<p><strong>Lien : </strong></p><a href="https://www.youtube.com/watch?v={{requete.original.lien}}">{{requete.sampleur.lien}}</a><br>
 			<p><strong>Pochette : </strong></p><img src="{{asset(image_directory ~ requete.sampleur.idalbum.pochette)}}" width="170" height="170"><br>
 			
 		</div>
@@ -25,7 +25,7 @@
 			<p><strong>Artiste : </strong>{{requete.original.idalbum.idartiste.nom}}</p><br>
 			<p><strong>Album : </strong>{{requete.original.idalbum.nom}}</p><br>
 			<p><strong>Titre : </strong>{{requete.original.titre}}</p><br>
-			<p><strong>Lien : </strong></p><a href="{{requete.original.lien}}">{{requete.original.lien}}</a><br>
+			<p><strong>Lien : </strong></p><a href="https://www.youtube.com/watch?v={{requete.original.lien}}">{{requete.original.lien}}</a><br>
 			<p><strong>Pochette : </strong></p><img src="{{asset(image_directory ~ requete.original.idalbum.pochette)}}" width="170" height="170"><br>
 		</div>
 		<div class="col-12 text-center mt-3">
