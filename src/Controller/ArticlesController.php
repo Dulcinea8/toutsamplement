@@ -6,6 +6,7 @@ use App\Entity\Comments;
 use App\Form\ArticlesType;
 use App\Service\FileUploader;
 use App\Entity\Articles;
+use App\Entity\Relations;
 use Symfony\Component\HttpFoundation\File\File;
 use App\Entity\Users;
 use Symfony\Component\HttpFoundation\Request;
@@ -94,6 +95,7 @@ class ArticlesController extends Controller
             //on met a jour la propriété image, qui doit contenir le nom du fichier et pas le fichier lui meme
             //pour pouvoir persister l'article
             $article->setImage($fileName);
+          
 
 
             //l'utilisateur connecté est l'auteur de l'article

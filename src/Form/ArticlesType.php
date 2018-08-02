@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Users;
+use App\Entity\Relations;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -27,6 +28,11 @@ class ArticlesType extends AbstractType
                     'choice_label' => 'username'))
             ->add('image', FileType::class, array('label' => 'Ajouter une image', 'required' => false))
             ->add('video', UrlType::class, array('label' => 'Lien :', 'required' => false))
+            ->add('relations', EntityType::class,
+                    array('class' => Relations::class,
+                    'choice_label' => function($relations){
+                        return $relations->getId() .' : '. $relations->getSampleur()->getTitre() . ' - ' . $relations->getOriginal()->getTitre();
+                    }))
             ->add('ajouter', SubmitType::class, array('label' => 'Enregistrer', 'attr' => ['class' => 'btn btn-warning']));
 
     }

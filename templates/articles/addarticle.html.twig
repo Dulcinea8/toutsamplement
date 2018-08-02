@@ -29,7 +29,9 @@
 
             {{ form_row(form.image, {'label' : 'Selectionner une image', 'attr':{'class' : 'mb-5', 'placeholder': 'Selecionner une image'}})}}
 
-            {{ form_row(form.auteur_id, {'label' : 'Selectionner l\'auteur', 'attr':{'class' : 'mb-5', 'placeholder': 'Selecionner une image'}})}}
+            {{ form_row(form.auteur_id, {'label' : 'Selectionner l\'auteur', 'attr':{'class' : 'mb-2'}})}}
+
+            {{ form_row(form.relations, {'label' : 'Selectionner la relation à associer', 'attr':{'class' : 'mb-2'}})}}
 
             {{ form_end(form)}}
 
