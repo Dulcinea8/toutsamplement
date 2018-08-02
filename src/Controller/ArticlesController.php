@@ -10,7 +10,7 @@ use App\Entity\Relations;
 use Symfony\Component\HttpFoundation\File\File;
 use App\Entity\Users;
 use Symfony\Component\HttpFoundation\Request;
-
+use App\Entity\Likes;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -54,7 +54,13 @@ class ArticlesController extends Controller
             if(!$article){
                 throw $this->createNotFoundException('No article found for id' .$id);
             }
-        return $this->render('articles/detailarticle.html.twig',  array('article'=>$article, 'commentaires'=>$commentaires));
+
+        $repositoryLikes = $this->getDoctrine()->getRepository(Likes::class);
+        $likes= $repositoryLikes->findLikesOnArticle($id);
+        $compte= $repositoryLikes->compteLikes($id);
+       
+
+        return $this->render('articles/detailarticle.html.twig',  array('article'=>$article, 'commentaires'=>$commentaires, 'compte'=>$compte['COUNT(*)'], 'likes'=>$likes,));
     }
 
     /**

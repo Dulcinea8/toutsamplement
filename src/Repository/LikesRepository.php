@@ -42,6 +42,26 @@ class LikesRepository extends ServiceEntityRepository
 
     }
 
+    public function compteLikes($idArticle)
+    {
+        $connexion = $this->getEntityManager()->getConnection();
+         $requete='SELECT COUNT(*) FROM likes INNER JOIN likes_users ON likes.id = likes_users.likes_id INNER JOIN likes_articles ON likes.id = likes_articles.likes_id WHERE  likes_articles.articles_id='.$idArticle.'';
+        $select = $connexion->prepare($requete);
+        $select->execute();
+  
+        return $select->fetch();
+    }
+
+    public function findLikesOnArticle($idArticle)
+    {
+        $connexion = $this->getEntityManager()->getConnection();
+         $requete='SELECT * FROM likes INNER JOIN likes_users ON likes.id = likes_users.likes_id INNER JOIN likes_articles ON likes.id = likes_articles.likes_id WHERE  likes_articles.articles_id='.$idArticle.' AND likes_users.likes_id = likes_articles.likes_id';
+        $select = $connexion->prepare($requete);
+        $select->execute();
+  
+        return $select->fetchAll();
+    }
+
 //    /**
 //     * @return Likes[] Returns an array of Likes objects
 //     */

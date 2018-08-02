@@ -29,6 +29,29 @@
             </div>
         </div>
 
+        <div class="row">
+            {{compte}} Likes
+           
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                
+                {% set jaune = '' %}
+
+                {%for like in likes %}
+
+                    {% if like["users_id"] ==  app.user.id %}
+
+                        {% set jaune = ' notreJaune' %}
+
+                        
+                    {%endif%}
+                    
+
+                {% endfor %}
+
+                <i id="like" class="far fa-thumbs-up fa-3x{{ jaune }}"></i>
+
+            {%endif%}
+        </div>
 
         <div class="row d-flex justify-content-center mt-4 mb-4">
             {% if article.video %}
@@ -37,10 +60,6 @@
             </div>
             {% endif %}
         </div>
-
-         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-        <i id="like" class="far fa-thumbs-up fa-3x"></i>
-        {%endif%}
 
         {% if is_granted('ROLE_ADMIN') %}
             <div class="text-center d-md-flex justify-content-center">

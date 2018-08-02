@@ -30,7 +30,7 @@ class SampleController extends Controller
 
     /**
      * @Route("/samples/", defaults={"page": "1"}, methods={"GET"}, name="all-samples")
-     * @Route("/page/{page}",  requirements={"page": "[1-9]\d*"}, methods={"GET"}, name="all-samples_paginated")
+     * @Route("/pageSample/{page}",  requirements={"page": "[1-9]\d*"}, methods={"GET"}, name="all-samples_paginated")
      *
      */
     public function showAllSamples(int $page){
