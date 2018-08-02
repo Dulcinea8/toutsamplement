@@ -109,6 +109,9 @@ class AjaxController extends Controller
             $entityManager->remove($like3);
             $entityManager->flush();
 
+        $likes= $repository->findLikesOnArticle($article);
+        $compte= $repository->compteLikes($article);
+
         }else{
             $userObject = $repositoryU->findOneById($user);
             
@@ -119,12 +122,18 @@ class AjaxController extends Controller
             $entityManager->persist($like);
             $entityManager->flush();
 
+        $likes= $repository->findLikesOnArticle($article);
+        $compte= $repository->compteLikes($article);
+
         }
 
         $commentaires = $repositoryC->findByIdarticle($article);
 
         return $this->render('articles/detailarticle.html.twig',  [
             'article' => $articleObject,'commentaires' => $commentaires,
+            'likes' => $likes,
+            'compte' => $compte['COUNT(*)'],
+
         ]);
     }
 }

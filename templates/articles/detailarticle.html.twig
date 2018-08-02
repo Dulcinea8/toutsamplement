@@ -30,7 +30,14 @@
         </div>
 
         <div class="row">
-            {{compte}} Likes
+            <div class="col-6">
+                <span id="compte" class="compte">{{compte}}</span>
+                {%if compte <= 1 %}
+                <span class="">Like</span>
+                {%else%}
+                <span class="">Likes</span>
+                {%endif%}
+                <span> | </span>
            
             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                 
@@ -48,9 +55,10 @@
 
                 {% endfor %}
 
-                <i id="like" class="far fa-thumbs-up fa-3x{{ jaune }}"></i>
+                <i id="like" class="far fa-thumbs-up fa-2x{{ jaune }}"></i>
 
             {%endif%}
+            </div>
         </div>
 
         <div class="row d-flex justify-content-center mt-4 mb-4">
@@ -126,8 +134,10 @@
                     timeout: 3000,
                     dataType: 'html',
                     success: function (data) {
+                        $('#compte').empty();
+                        $('#compte').append({{compte}});
                         if ($('#like').hasClass('notreJaune')) {
-                            $('#like').removeClass('notreJaune')
+                            $('#like').removeClass('notreJaune');
                         }else{
                             $('#like').addClass('notreJaune');
                         }                       
