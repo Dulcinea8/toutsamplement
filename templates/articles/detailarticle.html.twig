@@ -38,6 +38,10 @@
             {% endif %}
         </div>
 
+         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <i id="like" class="far fa-thumbs-up fa-3x"></i>
+        {%endif%}
+
         {% if is_granted('ROLE_ADMIN') %}
             <div class="text-center d-md-flex justify-content-center">
                 <a class="" href="{{ path('admin-modifier-article', {id: article.id} ) }}"><img class="p-4" src="{{ asset('images/boutonModifier.png')}}"></a>
@@ -46,6 +50,8 @@
         {% endif %}
 
     </article>
+
+       
 
 
 
@@ -66,7 +72,7 @@
         </div>
     {% endif %}
     <div>
-        <i class="far fa-thumbs-up"></i> <i class="far fa-thumbs-down"></i>
+
         <h4 class="iceland">Les commentaires</h4>
         {%for commentaire in commentaires%}
             <p>Publié par :
@@ -89,6 +95,29 @@
 {% block js %}
     <script>
         $(function () {
+
+            $('#like').on('click', function(){
+                var user= {{ app.user.id }};
+                var article= {{article.id}};
+                var url = "{{ path('likes') }}";
+                $.ajax({
+                    type: 'post',
+                    url: url,
+                    data: "user="+user+"&article="+article,
+                    timeout: 3000,
+                    dataType: 'html',
+                    success: function (data) {
+                        if ($('#like').hasClass('notreJaune')) {
+                            $('#like').removeClass('notreJaune')
+                        }else{
+                            $('#like').addClass('notreJaune');
+                        }                       
+                    },
+                    error: function (error) {
+                        console.log(error.responseText);
+                    }
+                })
+            })
 
             $('#envoyer').on('click', function(e) {
                 e.preventDefault();

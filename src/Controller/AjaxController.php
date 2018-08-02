@@ -4,10 +4,12 @@ namespace App\Controller;
 
 use App\Entity\Albums;
 use App\Entity\Articles;
+use App\Entity\Likes;
 use App\Entity\Artistes;
 use App\Entity\Comments;
 use App\Entity\Relations;
 use App\Entity\Tracks;
+use App\Entity\Users;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -84,6 +86,45 @@ class AjaxController extends Controller
 
         return $this->render('ajax/laisserCommentaire.html.twig', [
             'commentaire' => $commentaire,
+        ]);
+    }
+
+    /**
+    *@Route("/likes", name="likes")
+    */
+    public function likes(Request $request)
+    {
+        $user = $request->request->get('user');
+        $article = $request->request->get('article');
+        $repository = $this->getDoctrine()->getRepository(Likes::class);
+        $repositoryA = $this->getDoctrine()->getRepository(Articles::class);
+        $repositoryU = $this->getDoctrine()->getRepository(Users::class);
+        $repositoryC = $this->getDoctrine()->getRepository(Comments::class);
+        $entityManager = $this->getDoctrine()->getManager();
+        $articleObject = $repositoryA->findOneById($article);
+        if ($repository->findLikes($user, $article) !=null) {
+            $like= $repository->findLikes($user, $article);
+            $like2= $like['id'];
+            $like3 = $repository->findOneById($like2);  
+            $entityManager->remove($like3);
+            $entityManager->flush();
+
+        }else{
+            $userObject = $repositoryU->findOneById($user);
+            
+            $like = new likes();
+            $like->addUser($userObject);
+            $like->addArticle($articleObject);
+
+            $entityManager->persist($like);
+            $entityManager->flush();
+
+        }
+
+        $commentaires = $repositoryC->findByIdarticle($article);
+
+        return $this->render('articles/detailarticle.html.twig',  [
+            'article' => $articleObject,'commentaires' => $commentaires,
         ]);
     }
 }

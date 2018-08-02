@@ -105,7 +105,7 @@ class Users implements UserInterface, \Serializable
 
     /**
      * @param mixed
-     * @Assert\Regex(pattern = "/(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{6,}/", message= "le mot de passe doit contenir au moins 6 caracteres et au moins une lettre mayuscule, une minuscule et un chiffre" )
+     * @Assert\Regex(pattern = "/(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{6,}/", message= "le mot de passe doit contenir au moins 6 caracteres et au moins une lettre majuscule, une minuscule et un chiffre" )
      */
     private $plainPassword;
 

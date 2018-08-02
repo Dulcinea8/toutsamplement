@@ -65,11 +65,19 @@ class Articles
      */
     private $relations;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Likes", mappedBy="article")
+     */
+    private $likes;
+
+    
+
     
 
     public function __construct()
     {
         $this->comments = new ArrayCollection();
+        $this->likes = new ArrayCollection();
     }
 
     public function getId()
@@ -194,6 +202,36 @@ class Articles
 
         return $this;
     }
+
+    /**
+     * @return Collection|Likes[]
+     */
+    public function getLikes(): Collection
+    {
+        return $this->likes;
+    }
+
+    public function addLike(Likes $like): self
+    {
+        if (!$this->likes->contains($like)) {
+            $this->likes[] = $like;
+            $like->addArticle($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLike(Likes $like): self
+    {
+        if ($this->likes->contains($like)) {
+            $this->likes->removeElement($like);
+            $like->removeArticle($this);
+        }
+
+        return $this;
+    }
+
+    
 
     
 }
