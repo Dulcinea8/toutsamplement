@@ -140,7 +140,7 @@
                 {% for sample in samples %}
                 <div class="col-12 col-md-2 p-3 p-3 bg-light m-1 border border-secondary" style="width: 183px">
 
-                    <div class="m-1">
+                    <div class="zoom m-1">
 
                         {% if sample.sampleur.titre|length >= 15 %}
                             <a href="{{ path('detail-sample', {id: sample.id} ) }}">
@@ -160,7 +160,7 @@
 
                     </div>
 
-                <div class="m-1">
+                <div class="zomm m-1">
 
                     {% if sample.original.titre|length >= 15 %}
                         <a href="{{ path('detail-sample', {id: sample.id} ) }}">
