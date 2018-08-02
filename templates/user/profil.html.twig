@@ -20,7 +20,7 @@
             <div class="d-flex d-flex flex-column justify-content-center align-items-center">
                 {% if user.avatar %}
 
-                    <img class="card-img-top" class="img-fluid" style="width: 220px; height: 220px;" src="{{asset(image_directory)}}{{user.avatar}}" alt="" />
+                    <img class="card-img-top img-fluid rounded-circle mb-4" style="width: 220px; height: 220px;" src="{{asset(image_directory)}}{{user.avatar}}" alt="" />
 
                 {% endif %}
                 <br>
@@ -136,52 +136,52 @@
 
 
 
-            <article class="d-flex justify-content-center flex-wrap text-center" >
-                {% for sample in samples %}
-                <div class="col-12 col-md-2 p-3 p-3 bg-light m-1 border border-secondary" style="width: 183px">
+        <article class="d-flex align-content-start flex-wrap text-center" >
+            {% for sample in samples %}
+                <div class="p-3 bg-light m-1 border border-secondary" style="width: 183px">
 
-                    <div class="m-1">
+                    <div class="zoom m-1">
 
-                        {% if sample.sampleur.titre|length >= 15 %}
-                            <a href="">
-                                <p class="font-weight-bold text-dark">{{ sample.sampleur.titre | striptags | slice(0, 15) }}...</p>
+                        {% if sample.sampleur.titre|length >= 10 %}
+                            <a href="{{ path('detail-sample', {id: sample.id} ) }}">
+                                <p class="font-weight-bold text-dark">{{ sample.sampleur.titre | striptags | slice(0, 10) }}...</p>
                             </a>
-                        {% elseif sample.sampleur.titre|length < 15 %}
-                            <a href="">
+                        {% elseif sample.sampleur.titre|length < 10 %}
+                            <a href="{{ path('detail-sample', {id: sample.id} ) }}">
                                 <p class="font-weight-bold text-dark">{{ sample.sampleur.titre }}</p>
                             </a>
                         {% endif %}
 
                         {% if sample.sampleur.idalbum.pochette %}
-                            <a href="">
+                            <a href="{{ path('detail-sample', {id: sample.id} ) }}">
                                 <img width="90" height="90" src="{{ asset(image_directory ~ sample.sampleur.idalbum.pochette) }}"  alt=""/>
                             </a>
                         {% endif %}
 
                     </div>
 
-                <div class="m-1">
+                    <div class="zoom m-1">
 
-                    {% if sample.original.titre|length >= 15 %}
-                        <a href="">
-                            <p class="font-weight-bold text-dark ">{{ sample.original.titre | striptags | slice(0, 15) }}...</p>
-                        </a>
-                    {% elseif sample.original.titre|length < 15 %}
-                        <a href="">
-                            <p class="font-weight-bold text-dark">{{ sample.original.titre }}</p>
-                        </a>
-                    {% endif %}
+                        {% if sample.original.titre|length >= 10 %}
+                            <a href="{{ path('detail-sample', {id: sample.id} ) }}">
+                                <p class="font-weight-bold text-dark ">{{ sample.original.titre | striptags | slice(0, 10) }}...</p>
+                            </a>
+                        {% elseif sample.original.titre|length < 10 %}
+                            <a href="{{ path('detail-sample', {id: sample.id} ) }}">
+                                <p class="font-weight-bold text-dark">{{ sample.original.titre }}</p>
+                            </a>
+                        {% endif %}
 
-                    {% if sample.original.idalbum.pochette %}
-                        <a href="">
-                            <img  width="90" height="90" src="{{ asset(image_directory ~ sample.original.idalbum.pochette) }}"  alt=""/>
-                        </a>
-                    {% endif %}
+                        {% if sample.original.idalbum.pochette %}
+                            <a href="{{ path('detail-sample', {id: sample.id} ) }}">
+                                <img  width="90" height="90" src="{{ asset(image_directory ~ sample.original.idalbum.pochette) }}"  alt=""/>
+                            </a>
+                        {% endif %}
+
+                    </div>
 
                 </div>
-
-                </div>
-                {% endfor %}
+            {% endfor %}
         </article>
 
 

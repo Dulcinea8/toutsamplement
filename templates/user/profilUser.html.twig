@@ -51,8 +51,8 @@
         </div>
         <div class="col-md-6 col-12">
             <h6><strong>Pseudo:</strong> {{ user.username }}</h6>
-            <!-- <h6><strong>Nom:</strong> {{ user.nom }}</h6>
-            <h6><strong>Prenom:</strong> {{ user.prenom }}</h6> -->
+            {# <h6><strong>Nom:</strong> {{ user.nom }}</h6>
+            <h6><strong>Prenom:</strong> {{ user.prenom }}</h6> #}
             <h6><strong>Email:</strong> {{ user.email }}</h6>
             <h6><strong>Date d'inscription:</strong> {{ user.dateinscription  |date('d/m/Y') }}</h6>
             <h6><strong>Biographie</strong> {{ user.bio }}</h6>
@@ -65,13 +65,36 @@
             <br>
 
             <div class="mb-3">
-              <!--   {% if is_granted('ROLE_USER') %}
+              {# {% if is_granted('ROLE_USER') %}
                     <a class="" href="{{ path('update_profil', {id: user.id} ) }}"><img class="m-2" src="{{ asset('images/boutonModifier.png')}}"></a>
                     <a class="" href="{{ path('supprimer-profil', {id: user.id} ) }}"><img class="m-2" src="{{ asset('images/boutonSupprimer.png')}}"></a>
-                {% endif %} -->
+                {% endif %} #}
                 {% if is_granted('ROLE_ADMIN') %}
-                    <a class="" href="{{ path('admin-update-profil', {id: user.id} ) }}"><img class="m-2" src="{{ asset('images/boutonModifier.png')}}"></a>
-                    <a class="" href="{{ path('admin-supprimer-profil', {id: user.id} ) }}"><img class="m-2" src="{{ asset('images/boutonSupprimer.png')}}"></a>
+                    <div class="d-sd-flex justify-content-center mb-3">
+                        <a class="" href="{{ path('admin-update-profil', {id: user.id} ) }}"><img class="m-2" src="{{ asset('images/boutonModifier.png')}}"></a>
+                        <a class="" href="#" data-toggle="modal" data-target="#user-{{ user.id }}"><img class="m-2" src="{{ asset('images/boutonSupprimer.png')}}"></a>
+                        <div class="modal fade" id="user-{{ user.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Suppresion Utilisateur</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Vous voulez vraiment supprimer?????
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Non</button>
+                                        <form action="{{ path('admin-supprimer-profil', {id: user.id }) }}">
+                                            <button type="submit" class="btn btn-primary">Oui</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 {% endif %}
             </div>
 
@@ -87,42 +110,42 @@
 
             <article class="d-md-flex justify-content-center flex-wrap text-center" >
                 {% for sample in samples %}
-                <div class="col-12 col-md-2 p-3 bg-light m-1 border border-secondary">
+                <div class="col-12 col-md-2 p-3 bg-light m-1 border border-secondary" style="width: 183px">
 
-                    <div class="m-1">
+                    <div class="zoom m-1">
 
-                        {% if sample.sampleur.titre|length >= 15 %}
-                            <a href="">
-                                <p class="font-weight-bold text-dark">{{ sample.sampleur.titre | striptags | slice(0, 15) }}...</p>
+                        {% if sample.sampleur.titre|length >= 10 %}
+                            <a href="{{ path('detail-sample', {id: sample.id} ) }}">
+                                <p class="font-weight-bold text-dark">{{ sample.sampleur.titre | striptags | slice(0, 10) }}...</p>
                             </a>
-                        {% elseif sample.sampleur.titre|length < 15 %}
-                            <a href="">
+                        {% elseif sample.sampleur.titre|length < 10 %}
+                            <a href="{{ path('detail-sample', {id: sample.id} ) }}">
                                 <p class="font-weight-bold text-dark">{{ sample.sampleur.titre }}</p>
                             </a>
                         {% endif %}
 
                         {% if sample.sampleur.idalbum.pochette %}
-                            <a href="">
+                            <a href="{{ path('detail-sample', {id: sample.id} ) }}">
                                 <img width="90" src="{{ asset(image_directory ~ sample.sampleur.idalbum.pochette) }}"  alt=""/>
                             </a>
                         {% endif %}
 
                     </div>
 
-                <div class="m-1">
+                <div class="zoom m-1">
 
-                    {% if sample.original.titre|length >= 15 %}
-                        <a href="">
+                    {% if sample.original.titre|length >= 10 %}
+                        <a href="{{ path('detail-sample', {id: sample.id} ) }}">
                             <p class="font-weight-bold text-dark ">{{ sample.original.titre | striptags | slice(0, 15) }}...</p>
                         </a>
-                    {% elseif sample.original.titre|length < 15 %}
-                        <a href="">
+                    {% elseif sample.original.titre|length < 10 %}
+                        <a href="{{ path('detail-sample', {id: sample.id} ) }}">
                             <p class="font-weight-bold text-dark">{{ sample.original.titre }}</p>
                         </a>
                     {% endif %}
 
                     {% if sample.original.idalbum.pochette %}
-                        <a href="">
+                        <a href="{{ path('detail-sample', {id: sample.id} ) }}">
                             <img  width="90" src="{{ asset(image_directory ~ sample.original.idalbum.pochette) }}"  alt=""/>
                         </a>
                     {% endif %}
