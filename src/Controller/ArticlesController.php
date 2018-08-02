@@ -27,13 +27,14 @@ class ArticlesController extends Controller
     }
 
     /**
-     * @Route("/articles/", name="all-articles")
+     * @Route("/articles/", defaults={"page": "1"}, methods={"GET"}, name="all-articles")
+     * @Route("/page/{page}",  requirements={"page": "[1-9]\d*"}, methods={"GET"}, name="all-articles_paginated")
      */
-    public function showLastArticles(){
+    public function showLastArticles(int $page){
 
         $repositoryArticles = $this->getDoctrine()->getRepository(Articles::class);
 
-        $articles = $repositoryArticles->lastArticles();
+        $articles = $repositoryArticles->lastArticles($page);
 
         return $this->render('articles/articles.html.twig', array('articles'=>$articles));
     }
