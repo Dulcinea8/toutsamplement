@@ -85,7 +85,7 @@
 
         {#pagination#}
         {% if samples.haveToPaginate %}
-            <div class="navigation pagi text-center">
+            <div class="navigation pagi text-center d-flex justify-content-center">
                 {{ pagerfanta(samples, 'twitter_bootstrap4', {routeName: 'all-samples_paginated'}) }}
             </div>
         {% endif %}
