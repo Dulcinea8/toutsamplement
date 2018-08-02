@@ -20,7 +20,7 @@
             <div class="d-flex d-flex flex-column justify-content-center align-items-center">
                 {% if user.avatar %}
 
-                    <img class="card-img-top" class="img-fluid" style="width: 220px; height: 220px;" src="{{asset(image_directory)}}{{user.avatar}}" alt="" />
+                    <img class="card-img-top img-fluid rounded-circle mb-4" style="width: 220px; height: 220px;" src="{{asset(image_directory)}}{{user.avatar}}" alt="" />
 
                 {% endif %}
                 <br>
