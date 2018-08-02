@@ -55,7 +55,7 @@ class AdminController extends Controller
         $repositorySamples = $this->getDoctrine()->getRepository(Relations::class);
         $samples = $repositorySamples->findByUser($id);
 
-        return $this->render('admin/profil.html.twig',  array('user'=>$user, 'samples' => $samples));
+        return $this->render('admin/profilUser.html.twig',  array('user'=>$user, 'samples' => $samples));
 
     }
 
