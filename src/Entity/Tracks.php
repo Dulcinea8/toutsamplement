@@ -44,17 +44,17 @@ class Tracks
     private $date_publi;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Comments", mappedBy="idtrack")
+     * @ORM\OneToMany(targetEntity="App\Entity\Comments", mappedBy="idtrack", orphanRemoval=true)
      */
     private $comments;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Relations", mappedBy="sampleur")
+     * @ORM\OneToMany(targetEntity="App\Entity\Relations", mappedBy="sampleur", orphanRemoval=true)
      */
     private $relations;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Relations", mappedBy="original")
+     * @ORM\OneToMany(targetEntity="App\Entity\Relations", mappedBy="original", orphanRemoval=true)
      */
     private $relations2;
 

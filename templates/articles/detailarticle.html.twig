@@ -129,6 +129,7 @@
                 {%endif%}
                 var article= {{article.id}};
                 var url = "{{ path('likes') }}";
+                var compte = {{compte}};
                 $.ajax({
                     type: 'post',
                     url: url,
@@ -136,8 +137,9 @@
                     timeout: 3000,
                     dataType: 'html',
                     success: function (data) {
+                        console.log({{compte}})
                         $('#compte').empty();
-                        $('#compte').append({{compte}});
+                        $('#compte').append(compte + 1);
                         if ($('#like').hasClass('notreJaune')) {
                             $('#like').removeClass('notreJaune');
                         }else{
