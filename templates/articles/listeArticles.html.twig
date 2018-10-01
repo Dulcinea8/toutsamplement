@@ -1,0 +1,18 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Liste d'Articles{% endblock %}
+{% block titlepage %}Modifier Article{% endblock %}
+
+
+
+{% block content %}
+
+    <div class="m-4 w-65">
+        <ul class="list-group d-flex justify-content-center">
+            {%for article in articles%}
+                <a href="{{ path('admin-modifier-article', {id: article.id} )  }}" alt="{{ article.id }}"> <li class="list-group-item">{{ article.titre }}</li></a>
+            {%endfor%}
+        </ul>
+    </div>
+
+{% endblock %}

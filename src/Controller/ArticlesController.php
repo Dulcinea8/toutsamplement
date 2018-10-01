@@ -189,7 +189,7 @@ class ArticlesController extends Controller
         //recuperation de l'entite manager
         $entityManager = $this->getDoctrine()->getManager();
 
-        //je veux supprimer cette catégorie
+        //je veux supprimer cette article
         $entityManager->remove($article);
 
         //j'execute la requete
@@ -197,11 +197,32 @@ class ArticlesController extends Controller
 
         $this->addFlash('danger', 'L\'article a bien été supprimé');
 
-        return $this->redirectToRoute('all-articles');
+        return $this->redirectToRoute('admin');
 
     }
 
+    /**
+     * @Route("/liste/articles/", name="liste-articles")
+     */
+    public function listeArticles()
+    {
+        $repository = $this->getDoctrine()->getRepository(Articles::class);
 
+        $liste=$repository->findAll();
+        return $this->render('articles/listeArticles.html.twig', array('articles'=>$liste));
+
+    }
+
+    /**
+     * @Route("/liste/article/delete/", name="show-article-delete")
+     */
+    public function listeDeleteArticles()
+    {
+        $repository = $this->getDoctrine()->getRepository(Articles::class);
+        $liste=$repository->findAll();
+        return $this->render('articles/listeArticlesSuppression.html.twig', array('articles'=>$liste));
+
+    }
 
 
 }
