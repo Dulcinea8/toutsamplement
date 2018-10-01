@@ -1,6 +1,6 @@
 {% extends 'layout.html.twig' %}
 
-{% block title %}Fiche article{% endblock %}
+{% block title %}Fiche article - ToutSamplement{% endblock %}
 
 {% block titlepage %}{{ article.titre }}{% endblock %}
 
@@ -28,7 +28,7 @@
                 {{ article.content }}
             </div>
         </div>
-
+        {#
         <div class="row">
             <div class="col-6">
                 <span id="compte" class="compte">{{compte}}</span>
@@ -60,7 +60,7 @@
             {%endif%}
             </div>
         </div>
-
+        #}
         <div class="row d-flex justify-content-center mt-4 mb-4">
             {% if article.video %}
             <div class="col-12 col-md-6 embed-responsive embed-responsive-16by9">
@@ -122,7 +122,7 @@
 {% block js %}
     <script>
         $(function () {
-
+            {#
             $('#like').on('click', function(){
                 {% if app.user %}
                 var user= {{ app.user.id }};
@@ -151,7 +151,7 @@
                     }
                 })
             })
-
+            #}
             $('#envoyer').on('click', function(e) {
                 e.preventDefault();
                 var url = "{{ path('laisser-commentaire') }}";

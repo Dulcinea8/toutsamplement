@@ -55,12 +55,12 @@ class ArticlesController extends Controller
                 throw $this->createNotFoundException('No article found for id' .$id);
             }
 
-        $repositoryLikes = $this->getDoctrine()->getRepository(Likes::class);
+        /*$repositoryLikes = $this->getDoctrine()->getRepository(Likes::class);
         $likes= $repositoryLikes->findLikesOnArticle($id);
-        $compte= $repositoryLikes->compteLikes($id);
+        $compte= $repositoryLikes->compteLikes($id);*/
        
 
-        return $this->render('articles/detailarticle.html.twig',  array('article'=>$article, 'commentaires'=>$commentaires, 'compte'=>$compte['COUNT(*)'], 'likes'=>$likes,));
+        return $this->render('articles/detailarticle.html.twig',  array('article'=>$article, 'commentaires'=>$commentaires));
     }
 
     /**
