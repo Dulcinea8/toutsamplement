@@ -222,7 +222,7 @@ nav{
 
     position:relative;
 
-    height: 4.5em;
+    height: 7em;
 
 }
 
@@ -252,9 +252,9 @@ a{
 
 
     /*text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;*/
-    font-family: 'Bafora Regular Demo' !important;
+    font-family: 'Roboto' !important;
     color: #202556 !important;
-    font-weight: bold;
+    
 }
 
 
@@ -283,11 +283,15 @@ p, label, input{
 
     border-radius: 5px;
 
-    font-size: 1.8rem;
+    font-size: 1.2rem;
 
 
 
 }
+
+.mainnav li:hover{
+    color: #F49FC4;
+    }
 
 
 
