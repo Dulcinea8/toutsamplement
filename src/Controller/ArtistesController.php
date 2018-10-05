@@ -78,6 +78,7 @@ class ArtistesController extends Controller
                     'Générique' => "Générique",
                     'Soul' => "Soul",
                     'Pop' => "Pop",
+                    'Funk' => "Funk",
                 ),
                 'label' => "Genre",
                 'required'=> true))
