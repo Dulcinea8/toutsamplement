@@ -88,14 +88,6 @@ table {
 
 header {
 
-    background-image: url("../images/header.png");
-
-    background-repeat: no-repeat;
-
-    background-size: 100%;
-
-    position:relative;
-
     height: 15em;
 
     width: 100%;
@@ -220,11 +212,15 @@ body{
 
 nav{
 
-    /*position: absolute;*/
+    background-image: url("../images/header.png");
 
-    /*bottom: 20%;*/
+    background-repeat: no-repeat;
 
-    width: 100%;
+    background-size: 100%;
+
+    position:relative;
+
+    height: 4.5em;
 
 }
 
@@ -310,7 +306,7 @@ ul{
 
 nav ul li a{
 
-    padding: 0 2%;
+    padding: 0 10%;
 
     /*color: #E3E2DC;*/
 
