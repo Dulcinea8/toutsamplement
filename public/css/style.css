@@ -166,7 +166,9 @@ body{
 
     src: url("../fonts/Inception_free.ttf");
 
+    font-family: "Bafora Regular Demo";
 
+    src: url("../fonts/Bafora Regular Demo.ttf");
 
 }
 
@@ -250,12 +252,13 @@ a{
 
 .iceland{
 
-    font-family: 'Inception', cursive !important;
 
-    color:#FFD600 !important;
+
 
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-
+    font-family: 'Bafora Regular Demo' !important;
+    color: #202556 !important;
+    font-weight: bold;
 }
 
 
@@ -475,9 +478,6 @@ input{
 @media (min-width: 0) and (max-width: 1500px) {
 
     .mainnav{
-
-
-
 
     }
 
