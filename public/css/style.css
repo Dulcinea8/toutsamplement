@@ -1,245 +1,485 @@
 html, body, div, span, applet, object, iframe,
+
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+
 a, abbr, acronym, address, big, cite, code,
+
 del, dfn, em, img, ins, kbd, q, s, samp,
+
 small, strike, strong, sub, sup, tt, var,
+
 b, u, i, center,
+
 dl, dt, dd, ol, ul, li,
+
 fieldset, form, label, legend,
+
 table, caption, tbody, tfoot, thead, tr, th, td,
+
 article, aside, canvas, details, embed,
+
 figure, figcaption, footer, header, hgroup,
+
 menu, nav, output, ruby, section, summary,
+
 time, mark, audio, video {
+
     margin: 0;
+
     padding: 0;
+
     border: 0;
+
     font-size: 100%;
+
     font: inherit;
+
     vertical-align: baseline;
+
 }
+
 /* HTML5 display-role reset for older browsers */
+
 article, aside, details, figcaption, figure,
+
 footer, header, hgroup, menu, nav, section {
+
     display: block;
+
 }
+
 body {
+
     line-height: 1;
+
 }
+
 ol, ul {
+
     list-style: none;
+
 }
+
 blockquote, q {
+
     quotes: none;
+
 }
+
 blockquote:before, blockquote:after,
+
 q:before, q:after {
+
     content: '';
+
     content: none;
+
 }
+
 table {
+
     border-collapse: collapse;
+
     border-spacing: 0;
+
 }
+
+
 
 header {
+
     background-image: url("../images/header.png");
+
     background-repeat: no-repeat;
+
     background-size: 100%;
+
     position:relative;
+
     height: 15em;
+
     width: 100%;
 
+
+
 }
+
+
 
 footer {
-    /*background-image: url("../images/footer.jpg");*/
-    background: #212121;
+
+    /*background-image: url("../images/header.png");*/
+
+    background: #508794;
+
     position:fixed;
+
     bottom:0;
+
     left:0;
+
     height: 4em;
- /*   background-repeat: repeat;*/
- color: #FFD600;
+
+    /*   background-repeat: repeat;*/
+
+    color: #F49FC4;
+
+
 
 }
+
 footer a {
-     color: #FFD600;
+
+    color: #FAC31B;
+
+
 
 }
+
 footer a:hover, footer i:hover{
-    color: #E0E0E0;
+
+    color: #202556;
+
     transform: scale(0.9);
+
 }
+
+
 
 body{
-    background-color: #424242 !important;
-   /* background-image: url("../images/body.jpg");
-    background-repeat: repeat;
-    background-attachment: fixed;*/
+
+    background-color: white !important;
+
+    /* background-image: url("../images/body.jpg");
+
+     background-repeat: repeat;
+
+     background-attachment: fixed;*/
+
 }
+
+
 
 @font-face {
-font-family: "ICELAND";
-src: url("../fonts/ICELAND PERSONAL USE.ttf");
 
-/*font-family: "Whatka!";
-src: url("../fonts/Whatka!.ttf");*/
+    font-family: "Inception";
+
+    src: url("../fonts/Inception_free.ttf");
+
+
+
 }
+
+
 
 .container{
+
     background: #EEEEEE;
+
 }
+
+
 
 .notreGris{
-    color: #EEEEEE;
+
+    color: #202556;
+
 }
+
+
 
 .fond{
-    background-color: #21212120;
+
+    background-color: #202556;
+
 }
+
+
 
 .zoom {
+
     transition: transform .2s;
+
 }
+
+
 
 .zoom:hover {
+
     transform: scale(0.9);
+
 }
+
+
 
 .requete{
+
     background: white;
+
 }
+
 nav{
+
     /*position: absolute;*/
+
     /*bottom: 20%;*/
+
     width: 100%;
+
 }
+
+
 
 h1,h2,h3,h4,h5,h6{
-   
+
+
+
 }
+
+
 
 a{
+
     text-decoration: none !important;
+
     color: unset !important;
+
 }
+
+
 
 .iceland{
-    font-family: 'ICELAND', cursive !important;
+
+    font-family: 'Inception', cursive !important;
+
     color:#FFD600 !important;
+
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+
 }
+
+
 
 p, label, input{
+
     font-family: 'Roboto', sans-serif;
+
 }
+
+
 
 .robJaune{
+
     font-family: 'Roboto', sans-serif !important;
+
     color:#FFD600 !important;
 
+
+
 }
+
+
 
 .mainnav{
-border-radius: 5px;
-font-size: 1.6rem;
+
+    border-radius: 5px;
+
+    font-size: 1.6rem;
+
+
 
 }
+
+
 
 .navbar-nav{
+
     margin-left: 10%;
 
+
+
 }
+
 ul{
+
     padding: 0 !important;
+
     margin: 0 !important;
+
 }
+
 nav ul li a{
+
     padding: 0 2%;
+
     /*color: #E3E2DC;*/
+
     color: #FFD600;
- /*   border-right: solid 1px #FFD600;*/
+
+    /*   border-right: solid 1px #FFD600;*/
+
 }
+
+
 
 nav ul li a:hover{
-    color: #E0E0E0;
+
+    color: #202556;
+
 }
+
 .test{
+
     display: flex;
+
     flex-direction: row;
+
     justify-content: right;
+
 }
+
 .bgnav{
-     background: #00000090;
+
+    background: #00000090;
+
 }
+
+
 
 .nav-link{
-    color: #FFD600 !important;
+
+    color: #508794 !important;
+
     background-color: black !important;
+
     font-size: 1.5em !important;
+
     /*margin: 0.2em;*/
+
     border-radius: 5px !important;
+
     /*margin-top: 5.5em;*/
+
 }
+
+
 
 .image_supprimer_input
+
 {
-background-image:url("../images/boutonSupprimer.png");
-background-size: cover;
-width: 7em;
-border: none;
-height: 4.5em;
+
+    background-image:url("../images/boutonSupprimer.png");
+
+    background-size: cover;
+
+    width: 7em;
+
+    border: none;
+
+    height: 4.5em;
+
 }
+
+
 
 .image_valider_input
+
 {
-background-image:url("../images/boutonValider.png");
-background-size: cover;
-width: 7em;
-height: 4.5em;
-border: none;
+
+    background-image:url("../images/boutonValider.png");
+
+    background-size: cover;
+
+    width: 7em;
+
+    height: 4.5em;
+
+    border: none;
+
 }
+
+
 
 .image_supprimer_input button{
+
     border: none;
+
 }
+
+
 
 #result{
+
     z-index: 100;
+
     width: 100%;
+
     position: absolute;
+
     top: 38px;
+
     left: 20%;
 
+
+
 }
+
+
 
 .notreJaune{
-    color: #FFD600;
+
+    color: #508794;
+
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+
 }
+
+
 
 .nosTitreJ{
-color: #FFD600;
-text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-font-family: 'Roboto', sans-serif !important;
+
+    color: #508794;
+
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+
+    font-family: 'Roboto', sans-serif !important;
+
 }
+
+
 
 input{
+
     font-size: 0.8rem !important;
+
 }
+
+
 
 .adminIcon{
-    color: #424242 !important;
+
+    color: #508794 !important;
+
 }
+
+
 
 .adminIcon a {
-    color: #424242 !important;
+
+    color: #508794 !important;
+
 }
 
+
+
 @media (min-width: 0) and (max-width: 1500px) {
+
     .mainnav{
-    font-size: 1.3rem;
+
+        font-size: 0.9rem;
+
+
 
     }
+
 }
