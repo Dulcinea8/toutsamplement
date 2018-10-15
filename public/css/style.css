@@ -48,6 +48,22 @@ footer, header, hgroup, menu, nav, section {
 
 }
 
+header {
+
+    margin: 0;
+
+    padding: 0;
+
+    border: 0;
+
+    font-size: 100%;
+
+    font: inherit;
+
+    vertical-align: baseline;
+
+}
+
 body {
 
     line-height: 1;
@@ -110,7 +126,7 @@ footer {
 
     left:0;
 
-    height: 4em;
+    height: 3.5em;
 
     /*   background-repeat: repeat;*/
 
@@ -222,7 +238,7 @@ nav{
 
     position:relative;
 
-    height: 7em;
+    height: 10em;
 
 }
 
