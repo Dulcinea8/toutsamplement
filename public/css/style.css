@@ -208,7 +208,7 @@ body{
 
 .zoom {
 
-    transition: transform .2s;
+    transition: transform 1s;
 
 }
 
@@ -216,6 +216,9 @@ body{
 
 .zoom:hover {
 
+    /*transform: scale(3,3);
+    font-weight: bold;*/
+    color: #F16D6E !important;
     transform: scale(0.9);
 
 }
@@ -324,12 +327,17 @@ ul{
     padding: 0 !important;
 
     margin: 0 !important;
+    position: relative;
+
 
 }
 
+nav ul {
+    left: 18%;
+}
 nav ul li a{
 
-    padding: 0 10%;
+    /*padding: 0 50%;*/
 
     /*color: #E3E2DC;*/
 
@@ -344,9 +352,16 @@ nav ul li a{
 nav ul li a:hover{
 
     color: #202556;
+    transform: scale(0.9);
 
 }
 
+nav ul li {
+
+    margin: 0 3%;
+    margin-bottom: 2%;
+
+}
 .test{
 
     display: flex;
@@ -437,17 +452,20 @@ nav ul li a:hover{
 
     top: 38px;
 
-    left: 20%;
+    /*left: 20%;*/
 
 
 
 }
 
+#basic-addon1{
+    display: block;
+}
 
 
 .notreJaune{
 
-    color: #508794;
+    color: #F16D6E;
 
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 
@@ -489,12 +507,79 @@ input{
 
 }
 
+#cherche{
+    margin-top: .25rem;
+}
 
 
-@media (min-width: 0) and (max-width: 1500px) {
 
-    .mainnav{
+@media (max-width: 1150px) {
+    ul{
+        left: 13%;
 
     }
+    #basic-addon1{
+        display: block;
+    }
 
+}
+
+@media (max-width: 1200px) {
+
+    #basic-addon1{
+        display: none;
+    }
+}
+
+@media (max-width: 992px) {
+    nav ul{
+        left: 0px !important;
+    }
+    #basic-addon1{
+        display: block;
+    }
+    .test{
+        margin: 0 3%;
+
+    }
+    #navbarSupportedContent1{
+        z-index: 100;
+    }
+    nav ul li {
+
+        margin: 0 3%;
+        margin-bottom: 0px;
+        /*width: 255px;
+        background-color: #508794;*/
+        color: black;
+        background-color: #508794;
+        /*font-size: 1.5em;
+        margin: 0.2em;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;*/
+        width: 30%;
+    }
+
+}
+
+@media (max-width: 576px) {
+    nav ul{
+        left: 0px !important;
+    }
+    #basic-addon1{
+        display: block;
+    }
+
+    #navbarSupportedContent1{
+        z-index: 100;
+    }
+    nav ul li {
+        margin: 0 3%;
+        margin-bottom: 0px;
+        width: 100%;
+    }
+    .test{
+        margin: 0 3%;
+
+    }
 }
