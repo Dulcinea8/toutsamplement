@@ -215,7 +215,7 @@ body{
 
     /*transform: scale(3,3);
     font-weight: bold;*/
-    color: #F16D6E !important;
+    color: #F49FC4!important;
     transform: scale(0.95);
 
 }
@@ -234,6 +234,15 @@ body{
 
 }
 
+.suite{
+    color: #F49FC4!important;
+    transition: transform .2s;
+}
+
+.suite:hover{
+    color: #508794!important;
+    transform: scale(0.95);
+}
 
 
 .requete{
@@ -277,10 +286,6 @@ a{
 
 
 .iceland{
-
-
-
-
     /*text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;*/
     font-family: 'Roboto' !important;
     color: #202556 !important;
@@ -514,7 +519,7 @@ input{
 
 .adminIcon a {
 
-    color: #508794 !important;
+    color: #508794!important;
 
 }
 
@@ -550,30 +555,31 @@ input{
 @media (max-width: 992px) {
     nav ul{
         left: 0px !important;
+        width: 15em;
+        /*box-shadow: 2.9em -0.5em #202556;*/
     }
     #basic-addon1{
         display: block;
     }
     .test{
         margin: 0 3%;
-
     }
     #navbarSupportedContent1{
         z-index: 100;
     }
     nav ul li {
-
-        margin: 0 3%;
+        
+        margin: 0%;
         margin-bottom: 0px;
+        padding-left: 3%;
         /*width: 255px;
         background-color: #508794;*/
         color: black;
-        background-color: #508794;
+        background-color:  #FFFFFF;
         /*font-size: 1.5em;
         margin: 0.2em;
         -webkit-box-orient: vertical;
         -webkit-box-direction: normal;*/
-        width: 30%;
     }
 
 }
