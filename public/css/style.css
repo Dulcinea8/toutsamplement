@@ -111,21 +111,6 @@ header {
 }
 
 
-
-
-header.active nav{
-
-    background-image: url("../images/header2.png");
-
-}
-
-header.active .btn{
-
-    margin-top: 5em;
-}
-
-
-
 footer {
 
     /*background-image: url("../images/header.png");*/
@@ -231,6 +216,22 @@ body{
     /*transform: scale(3,3);
     font-weight: bold;*/
     color: #F16D6E !important;
+    transform: scale(0.9);
+
+}
+
+.zoom2 {
+
+    transition: transform .2s;
+
+}
+
+
+
+.zoom2:hover {
+
+    /*transform: scale(3,3);
+    font-weight: bold;*/
     transform: scale(0.9);
 
 }
@@ -523,7 +524,12 @@ input{
     margin-top: .25rem;
 }
 
-
+@media (min-width: 992px) {
+    header.active nav{
+        
+    background-image: url("../images/header2.png");
+    }
+}
 
 @media (max-width: 1150px) {
     ul{
@@ -594,4 +600,6 @@ input{
         margin: 0 3%;
 
     }
+
 }
+
