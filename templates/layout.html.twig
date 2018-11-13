@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet"  href="{{ asset('css/style.css') }}">
-    <link rel="stylesheet"  href="{{ asset('css/app.css') }}">
+    {#<link rel="stylesheet"  href="{{ asset('css/app.css') }}">#}
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="icon" href="{{ asset('images/logo4.png') }}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
@@ -23,6 +23,7 @@
 <body>
 
     <header>
+<<<<<<< HEAD
         <nav class="d-flex flex-column flex-xl-row no-gutters align-bottom fixed-top pt-1 mainnav">
             <div class="col-12 col-xl-2 d-flex inline">
                 <a href="{{ path('accueil')}}" class="d-flex">
@@ -57,47 +58,74 @@
                             <a class="" href="{{ path('login') }}"> Connexion/Inscription </a>
                         </li>
                     {% endif %}
+=======
+>>>>>>> a51496498b24abc627194605db3b03197f20e7a5
 
-                    {# l'element du menu n'apparaitra que si l'utilisateur est connecté en user#}
+        <nav class="no-gutters align-bottom fixed-top pt-1 mainnav ">
 
-                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                        <li class="">
-                            <a class="" href="{{ path('profil') }}">Profil </a>
+            <button class="navbar-toggler d-lg-none d-xl-none" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1"
+        aria-expanded="false" aria-label="Toggle navigation"><span class="dark-blue-text"><i class="fa fa-bars fa-2x notreJaune"></i></span></button>
+
+            <div class="d-lg-flex  justify-content-xl-between justify-content-lg-between justify-content-between collapse show navbar-collapse" id="navbarSupportedContent1">
+                    <ul class="d-xl-flex d-lg-flex jusjustify-content-xl-center justify-content-between ">
+                        <li class="zoom">
+                            <a class="" href="{{ path('accueil')}}"> Accueil</a>
                         </li>
-                        <li class="">
-                            <a class="" href="{{ path('logout') }}"> Deconnexion </a>
+                        <li class="zoom">
+                                <a class="" href="{{ path('all-articles')}}"> Articles</a>
                         </li>
-                    {% endif %}
-
-                    {# l'element du menu n'apparaitra que si l'utilisateur est connecté en admin#}
-
-                    {% if is_granted('ROLE_ADMIN') %}
-                        <li class="">
-                            <a class="" href="{{path('admin')}}"> Administrateur </a>
+                        <li class="zoom">
+                                <a class="" href="{{ path('all-samples')}}">Samples</a>
                         </li>
-                    {% endif %}
+                        <li class="zoom">
+                                <a class="" href="{{ path('inserer')}}">Inserer</a>
+                        </li>
+                         {% if not is_granted('ROLE_ADMIN') %}
+                            <li class="zoom">
+                                <a class="" href="{{ path('contact')}}"> Contact </a>
+                            </li>
+                            {% endif %}
+
+                            {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+                            {# if not app.user #}
+                                <li class="zoom">
+                                    <a class="" href="{{ path('login') }}"> Connexion/Inscription </a>
+                                </li>
+                            {% endif %}
+
+                            {# l'element du menu n'apparaitra que si l'utilisateur est connecté en user#}
+
+                            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                                <li class="zoom">
+                                    <a class="" href="{{ path('profil') }}">Profil </a>
+                                </li>
+                                <li class="zoom">
+                                    <a class="" href="{{ path('logout') }}"> Deconnexion </a>
+                                </li>
+                            {% endif %}
+
+                            {# l'element du menu n'apparaitra que si l'utilisateur est connecté en admin#}
+                         {% if is_granted('ROLE_ADMIN') %}
+                                <li class="zoom">
+                                    <a class="" href="{{path('admin')}}"> Administrateur </a>
+                                </li>
+                            {% endif %}
+
                     </ul>
-
-            </ul>
-
-                    </div>
-
-                    <!-- <div class="col offset-xl-2"></div> -->
-                    <div class="col-12 col-lg-12 col-xl-4 ">
-        {#FORMULAIRE DE RECHERCHE#}
-        <form class="form-inline d-flex justify-content-end test  mt-4" id="cherche">
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1">Recherche</span>
-                </div>
-                <input type="text" id="recherche" name="recherche" class="form-control" placeholder="Titre ou Artiste" aria-label="Username" aria-describedby="basic-addon1">
-                <div id="result"></div>
+                                 {#FORMULAIRE DE RECHERCHE#}
+                                <form class="form-inline d-flex justify-content-end  justify-content-sm-start justify-content-md-start test " id="cherche">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon1">Recherche</span>
+                                        </div>
+                                        <input type="text" id="recherche" name="recherche" class="form-control" placeholder="Titre ou Artiste" aria-label="Username" aria-describedby="basic-addon1">
+                                        <div id="result"></div>
+                                    </div>
+                                </form>
             </div>
 
-        </form>
-    </div>
-            </ul>
         </nav>
+
     </header>
 
 
@@ -120,7 +148,7 @@
 
     <div class="d-flex mt-2 justify-content-between">
 
-        <a class="" href="{{ path('cgu')}}">Conditions d'utilisation</a>
+        <a class="" href="http://eepurl.com/dK2jbM" target="_blank">Inscription à la Newsletter</a>
 
         <div class="d-flex mt-2">
             <a href="https://twitter.com/TSamplement" target="_blank"><i class="mr-2 fab fa-twitter-square fa-lg fa-2x"></i></a>
@@ -138,8 +166,9 @@
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
+    {# script pour la cookie bar
     <script src="{{ asset('js/js.cookie.js') }}"></script>
-    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>#}
 {% block js %}{% endblock %}
 
 <script>
