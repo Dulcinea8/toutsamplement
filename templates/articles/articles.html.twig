@@ -15,7 +15,8 @@
 
                     {# a chaque tour de boucle, on recupere les articles qui ici est un objet
                     pour acceder au titre artcile.title #}
-                    <div class="row border m-2 p-2 test bg-white rounded border-warning mb-4">
+                    <div class="zoom2 row border m-2 p-2 test bg-white rounded border-warning mb-4" href="{{ path('detail-article',{'id':article.id})}}">
+
                         <article class="bg-white">
                             <a class="" href="{{ path('detail-article', {id: article.id} ) }}">
                                 <h2 class="zoom font-weight-bold iceland">{{ article.titre }}</h2>
@@ -47,7 +48,15 @@
     {% endif %}
 
 
+<script>
+    $('.test').css('cursor', 'pointer');
 
+    $('.container').on('click', '.test', function(){
+        var url= $(this).attr("href");
+        $(this).css('cursor', 'pointer');
+        window.location.href = url;
+    });
+</script>
 
 
 {% endblock %}

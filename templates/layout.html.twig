@@ -23,41 +23,6 @@
 <body>
 
     <header>
-        <nav class="d-flex flex-column flex-xl-row no-gutters align-bottom fixed-top pt-1 mainnav">
-            <div class="col-12 col-xl-2 d-flex inline">
-                <a href="{{ path('accueil')}}" class="d-flex">
-                    <!--<img src="{{ asset('images/LogoSeul.png')}}" width="100" height="90">-->
-                </a>
-            </div>
-            <div class="col-12 col-lg-12 col-xl-6 no-gutters pb-1 iceland">
-               <button class="navbar-toggler toggler-example d-lg-none d-xl-none fixed-top mt-3 btn" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1"
-        aria-expanded="false" aria-label="Toggle navigation"><span class="dark-blue-text"><i class="fa fa-bars fa-2x notreJaune"></i></span></button>
-            <ul class="d-lg-flex no-gutters justify-content-xl-between justify-content-between collapse navbar-collapse" id="navbarSupportedContent1">
-                <li class="">
-                    <a class="" href="{{ path('accueil')}}"> Accueil</a>
-                </li>
-                <li class="">
-                        <a class="" href="{{ path('all-articles')}}"> Articles</a>
-                </li>
-                <li class="">
-                        <a class="" href="{{ path('all-samples')}}">Samples</a>
-                </li>
-                <li class="">
-                        <a class="" href="{{ path('inserer')}}">Inserer</a>
-                </li>
-                 {% if not is_granted('ROLE_ADMIN') %}
-                    <li class="">
-                        <a class="" href="{{ path('contact')}}"> Contact </a>
-                    </li>
-                    {% endif %}
-
-                    {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
-                    {# if not app.user #}
-                        <li class="">
-                            <a class="" href="{{ path('login') }}"> Connexion/Inscription </a>
-                        </li>
-                    {% endif %}
-
         <nav class="no-gutters align-bottom fixed-top pt-1 mainnav ">
 
             <button class="navbar-toggler d-lg-none d-xl-none" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1"
@@ -110,7 +75,7 @@
 
                     </ul>
                                  {#FORMULAIRE DE RECHERCHE#}
-                                <form class="form-inline d-flex justify-content-end  justify-content-sm-start justify-content-md-start test " id="cherche">
+                                <form class="form-inline d-flex justify-content-end flex-end justify-content-sm-start justify-content-md-start test " id="cherche">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="basic-addon1">Recherche</span>
