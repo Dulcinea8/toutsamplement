@@ -26,27 +26,27 @@
                 <br>
                 <br>
 
-                        {% if user.score <= 10 %}
-                            <img class="" style="width: 120px; height: 120px;" src="{{ asset('images/score_debutant.png')  }}" alt="score" />
-                            <br>
-                            <h6>Niveau Debutant</h6>
-                        {% endif %}
-                        {% if user.score > 10 and user.score <=20 %}
-                            <img class="img-fluid" style="width: 120px; height: 120px;" src="{{ asset('images/sore_bronze.png')  }}" alt="score" />
-                            <br>
-                            <h6>Niveau Bronze</h6>
-                        {% endif %}
-                        {% if user.score > 20 and user.score <=30 %}
-                            <img class="img-fluid"  style="width: 120px; height: 120px;" src="{{ asset('images/score_silver.png')  }}" alt="score" />
-                            <br>
-                            <h6>Niveau Silver</h6>
-                        {% endif %}
-                        {% if user.score > 30  %}
-                            <img class="img-fluid"  style="width: 120px; height: 120px;" src="{{ asset('images/score_gold.png')  }}" alt="score" />
-                            <br>
-                            <h6>Niveau Gold</h6>
-                        {% endif %}
-                        <p class="card-title"><strong>Score: </strong>{{ user.score }}</p>
+                {% if user.score <= 10 %}
+                    <img class="" style="width: 120px; height: 120px;" src="{{ asset('images/score_debutant.png')  }}" alt="score" />
+                    <br>
+                    <h6>Niveau Débutant</h6>
+                {% endif %}
+                {% if user.score > 10 and user.score <=25 %}
+                    <img class="img-fluid" style="width: 120px; height: 120px;" src="{{ asset('images/sore_bronze.png')  }}" alt="score" />
+                    <br>
+                    <h6>Niveau Intermediare</h6>
+                {% endif %}
+                {% if user.score > 25 and user.score <=99 %}
+                    <img class="img-fluid"  style="width: 120px; height: 120px;" src="{{ asset('images/score_silver.png')  }}" alt="score" />
+                    <br>
+                    <h6>Niveau Avancé</h6>
+                {% endif %}
+                {% if user.score > 99  %}
+                    <img class="img-fluid"  style="width: 120px; height: 120px;" src="{{ asset('images/score_gold.png')  }}" alt="score" />
+                    <br>
+                    <h6>Niveau Expert</h6>
+                {% endif %}
+                <p class="card-title"><strong>Score: </strong>{{ user.score }}</p>
 
             </div>
         </div>
