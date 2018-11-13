@@ -31,14 +31,14 @@ class Users implements UserInterface, \Serializable
     private $username;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank()
+     * @ORM\Column(type="string", length=255, nullable=true)
+     *
      */
     private $nom;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank()
+     * @ORM\Column(type="string", length=255, nullable=true)
+     *
      */
     private $prenom;
 
