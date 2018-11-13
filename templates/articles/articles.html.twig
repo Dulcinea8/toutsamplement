@@ -22,16 +22,16 @@
                                 <h2 class="zoom font-weight-bold iceland">{{ article.titre }}</h2>
                             </a>
                             <br>
-                            <div class="row ">
+                            <div class="row">
                                 <div class="col-12 col-md-5">
                                     {% if article.image %}
                                         <img class="img-fluid w-50" src="{{ asset(image_directory ~ article.image) }}"  alt=""/>
                                     {% endif %}
                                 </div>
 
-                                <div class="col-12 col-md-7 align-self-center text-justify">
+                                <div class="col-12 col-md-7 align-self-center  text-justify">
                                     {{ article.content | striptags | slice(0, 300) }}...
-                                        <a class="zoom iceland float-bottom" href="{{ path('detail-article', {id: article.id} ) }}">lire la Suite</a>
+                                        <a class="zoom float-bottom suite" href="{{ path('detail-article', {id: article.id} ) }}">lire la Suite</a>
                                 </div>
                             </div>
 
