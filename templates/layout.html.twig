@@ -30,7 +30,7 @@
                 </a>
             </div>
             <div class="col-12 col-lg-12 col-xl-6 no-gutters pb-1 iceland">
-               <button class="navbar-toggler toggler-example d-lg-none d-xl-none" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1"
+               <button class="navbar-toggler toggler-example d-lg-none d-xl-none fixed-top mt-3 btn" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1"
         aria-expanded="false" aria-label="Toggle navigation"><span class="dark-blue-text"><i class="fa fa-bars fa-2x notreJaune"></i></span></button>
             <ul class="d-lg-flex no-gutters justify-content-xl-between justify-content-between collapse navbar-collapse" id="navbarSupportedContent1">
                 <li class="">
@@ -141,6 +141,20 @@
     <script src="{{ asset('js/js.cookie.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
 {% block js %}{% endblock %}
+
+<script>
+
+$(window).scroll(function() {    
+    var scroll = $(window).scrollTop();
+
+    if (scroll >= 150) {
+        $("header").addClass("active");
+    }
+    else {
+        $("header").removeClass("active");
+    }
+});
+</script>
 
     {#//ici je fait la requete Ajax pour le moteur de recherche de mon menu#}
     <script>
