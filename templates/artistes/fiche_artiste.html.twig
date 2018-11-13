@@ -12,7 +12,7 @@
         <h4 class="text-center p-2">Albums associés :</h4>
     {%for album in artiste.albums%}
     <div class="row border rounded bg-white">
-            <div class="col-6 p-3">
+            <div class="col-12 col-lg-6 col-xl-6 p-3">
                 <div class="row ml-3">
                 <h5>{{album.nom}}</h5>
                 </div>
@@ -20,9 +20,9 @@
                 <img src="{{ asset(image_directory ~ album.pochette)}}" width="220" height="220" alt="pochette d'album {{album.nom}} de {{artiste.nom}}">
                 </div>
             </div>
-            <div class="col-6 p-3">
+            <div class="col-12 col-lg-6 col-xl-6 p-lg-3 p-xl-3">
                 <h5>Titres :</h5>
-                <ul>
+                <ul style="left:0px">
                 {%for track in album.tracks%}
 
                     {%for relation in track.relations%}
@@ -32,6 +32,7 @@
                             <i class="fas fa-sync fa-1x"></i>
                             {{ relation.original.titre }}</a>
                             </li>
+                            <br>
                     {%endfor%}
 
                     {%for relation in track.relations2%}
@@ -41,6 +42,7 @@
                             <i class="fas fa-sync fa-1x"></i>
                             {{ relation.sampleur.titre }}</a>
                         </li>
+                        <br>
                     {%endfor%}
 
 
