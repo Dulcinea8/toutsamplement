@@ -216,7 +216,7 @@ body{
     /*transform: scale(3,3);
     font-weight: bold;*/
     color: #F16D6E !important;
-    transform: scale(0.9);
+    transform: scale(0.95);
 
 }
 
@@ -225,8 +225,6 @@ body{
     transition: transform .2s;
 
 }
-
-
 
 .zoom2:hover {
 
