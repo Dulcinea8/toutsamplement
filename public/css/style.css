@@ -108,8 +108,20 @@ header {
 
     width: 100%;
 
+}
 
 
+
+
+header.active nav{
+
+    background-image: url("../images/header2.png");
+
+}
+
+header.active .btn{
+
+    margin-top: 5em;
 }
 
 
@@ -208,7 +220,7 @@ body{
 
 .zoom {
 
-    transition: transform 1s;
+    transition: transform .2s;
 
 }
 

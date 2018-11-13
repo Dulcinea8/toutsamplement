@@ -20,8 +20,7 @@
                 <h5 class="font-weight-light"> Date d'ajout : {{ sample.sampleur.datepubli|date('d/m/Y') }}</h5>
                 <h5 class="font-weight-light"><a href="{{ sample.sampleur.lien }}">{{ sample.sampleur.lien }}</a></h5>
 
-                <iframe width="460" height="215" src="https://www.youtube.com/embed/5wBTdfAkqGU" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-
+                <iframe alt="video {{ sample.sampleur.titre }}" class="border embed-responsive-item" width="373" height="210" src="{{ asset(video_directory ~ sample.sampleur.lien) }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
             </article>
 
             <article class="col-5 d-flex flex-column">
@@ -35,7 +34,7 @@
                 <h5 class="font-weight-light"> Date d'ajout : {{ sample.original.datepubli|date('d/m/Y') }}</h5>
                 <h5 class="font-weight-light"><a href="{{ sample.original.lien }}">{{ sample.original.lien }}</a></h5>
 
-                <iframe width="460" height="215" src="https://www.youtube.com/embed/5wBTdfAkqGU" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                <iframe alt="video {{ sample.original.titre }}" class="border embed-responsive-item" width="373" height="210" src="{{ asset(video_directory ~ sample.original.lien) }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
             </article>
 

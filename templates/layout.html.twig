@@ -23,6 +23,43 @@
 <body>
 
     <header>
+<<<<<<< HEAD
+        <nav class="d-flex flex-column flex-xl-row no-gutters align-bottom fixed-top pt-1 mainnav">
+            <div class="col-12 col-xl-2 d-flex inline">
+                <a href="{{ path('accueil')}}" class="d-flex">
+                    <!--<img src="{{ asset('images/LogoSeul.png')}}" width="100" height="90">-->
+                </a>
+            </div>
+            <div class="col-12 col-lg-12 col-xl-6 no-gutters pb-1 iceland">
+               <button class="navbar-toggler toggler-example d-lg-none d-xl-none fixed-top mt-3 btn" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1"
+        aria-expanded="false" aria-label="Toggle navigation"><span class="dark-blue-text"><i class="fa fa-bars fa-2x notreJaune"></i></span></button>
+            <ul class="d-lg-flex no-gutters justify-content-xl-between justify-content-between collapse navbar-collapse" id="navbarSupportedContent1">
+                <li class="">
+                    <a class="" href="{{ path('accueil')}}"> Accueil</a>
+                </li>
+                <li class="">
+                        <a class="" href="{{ path('all-articles')}}"> Articles</a>
+                </li>
+                <li class="">
+                        <a class="" href="{{ path('all-samples')}}">Samples</a>
+                </li>
+                <li class="">
+                        <a class="" href="{{ path('inserer')}}">Inserer</a>
+                </li>
+                 {% if not is_granted('ROLE_ADMIN') %}
+                    <li class="">
+                        <a class="" href="{{ path('contact')}}"> Contact </a>
+                    </li>
+                    {% endif %}
+
+                    {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+                    {# if not app.user #}
+                        <li class="">
+                            <a class="" href="{{ path('login') }}"> Connexion/Inscription </a>
+                        </li>
+                    {% endif %}
+=======
+>>>>>>> a51496498b24abc627194605db3b03197f20e7a5
 
         <nav class="no-gutters align-bottom fixed-top pt-1 mainnav ">
 
@@ -133,6 +170,20 @@
     <script src="{{ asset('js/js.cookie.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>#}
 {% block js %}{% endblock %}
+
+<script>
+
+$(window).scroll(function() {    
+    var scroll = $(window).scrollTop();
+
+    if (scroll >= 150) {
+        $("header").addClass("active");
+    }
+    else {
+        $("header").removeClass("active");
+    }
+});
+</script>
 
     {#//ici je fait la requete Ajax pour le moteur de recherche de mon menu#}
     <script>
