@@ -7,38 +7,66 @@
 
 
 
-        <div class="row d-flex justify-content-around">
+    <div class="d-md-flex justify-content-md-around">
 
-            <article class="col-5 d-flex flex-column">
+        <article class="col-12 col-md-6 d-md-flex align-items-md-start flex-column">
 
-                <h2 class="text-center font-weight-bold">Le sampleur</h2>
-                <h2 class="font-weight-bold">{{ sample.sampleur.idalbum.idartiste.nom }}</h2>
+            <h2 class="font-weight-bold iceland">Le sampleur</h2>
+            <h4 class="font-weight-bold zoom"> Artiste : <a href="{{path('fiche-artiste', {id: sample.sampleur.idalbum.idartiste.id} )}}">{{ sample.sampleur.idalbum.idartiste.nom }}</a></h4>
 
-                <h3 class="font-weight-bold">{{ sample.sampleur.idalbum.nom }}</h3>
+            <h5 class="font-weight-bold"> Album : {{ sample.sampleur.idalbum.nom }}</h5>
+            <h5 class="font-weight-light"> Année :{{ sample.sampleur.idalbum.annee }}</h5>
+            <h5 class="font-weight-light"> Titre : {{ sample.sampleur.titre }}</h5>
+            <h5 class="font-weight-light"> Date d'ajout : {{ sample.sampleur.datepubli|date('d/m/Y') }}</h5>
+            <h5 class="font-weight-light"> Publié par : {{ sample.user.username }}</h5>
 
-                <h5 class="font-weight-light"> Track : {{ sample.sampleur.titre }}</h5>
-                <h5 class="font-weight-light"> Date d'ajout : {{ sample.sampleur.datepubli|date('d/m/Y') }}</h5>
-                <h5 class="font-weight-light"><a href="{{ sample.sampleur.lien }}">{{ sample.sampleur.lien }}</a></h5>
 
-                <iframe alt="video {{ sample.sampleur.titre }}" class="border embed-responsive-item" width="373" height="210" src="{{ asset(video_directory ~ sample.sampleur.lien) }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-            </article>
+            {% if sample.sampleur.lien %}
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe alt="video {{ sample.sampleur.titre }}" class="border embed-responsive-item" width="373" height="210" src="{{ asset(video_directory ~ sample.sampleur.lien) }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                </div>
+            {% endif %}
 
-            <article class="col-5 d-flex flex-column">
+        </article>
 
-                <h2 class="text-center font-weight-bold">Le samplé</h2>
-                <h2 class="font-weight-bold">{{ sample.original.idalbum.idartiste.nom }}</h2>
+        <article class="col-12 col-md-6 d-flex align-items-md-start flex-column">
 
-                <h3 class="font-weight-bold">{{ sample.original.idalbum.nom }}</h3>
+            <h2 class="font-weight-bold iceland">L'original</h2>
+            <h4 class="font-weight-bold zoom"> Artiste : <a href="{{path('fiche-artiste', {id: sample.original.idalbum.idartiste.id} )}}">{{ sample.original.idalbum.idartiste.nom }}</a></h4>
 
-                <h5 class="font-weight-light"> Track : {{ sample.original.titre }}</h5>
-                <h5 class="font-weight-light"> Date d'ajout : {{ sample.original.datepubli|date('d/m/Y') }}</h5>
-                <h5 class="font-weight-light"><a href="{{ sample.original.lien }}">{{ sample.original.lien }}</a></h5>
+            <h5 class="font-weight-bold"> Album : {{ sample.original.idalbum.nom }}</h5>
+            <h5 class="font-weight-light"> Année :{{ sample.original.idalbum.annee }}</h5>
+            <h5 class="font-weight-light"> Titre : {{ sample.original.titre }}</h5>
+            <h5 class="font-weight-light"> Date d'ajout : {{ sample.original.datepubli|date('d/m/Y') }}</h5>
+            <h5 class="font-weight-light"> Publié par : {{ sample.user.username }}</h5>
 
-                <iframe alt="video {{ sample.original.titre }}" class="border embed-responsive-item" width="373" height="210" src="{{ asset(video_directory ~ sample.original.lien) }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            {% if sample.original.lien %}
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe alt="video {{ sample.original.titre }}" class="border embed-responsive-item" width="373" height="210" src="{{ asset(video_directory ~ sample.original.lien) }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                </div>
+            {% endif %}
 
-            </article>
+        </article>
 
+    </div>
+
+    {% if sample.articles %}
+        <div class="d-flex justify-content-around mt-4">
+            <div class="col-12 col-md-10 border border-dark bg-white">
+
+                <h2 class="m-3 text-center font-weight-bold iceland">L'histoire du sample "{{ sample.sampleur.titre }}"</h2>
+                <p class="m-3 text-justify">{{ sample.articles.content }}</p>
+                <div class="row d-flex justify-content-center mt-4 mb-4">
+                    {% if sample.articles.video %}
+                        <div class="col-12 col-md-6 embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" width="560" height="315" src="{{ asset(video_directory ~ sample.articles.video) }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
         </div>
+
+    {%endif%}
 
 {% endblock %}
 

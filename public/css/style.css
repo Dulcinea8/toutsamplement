@@ -526,12 +526,17 @@ input{
 #cherche{
     margin-top: .25rem;
 }
+.logoAccueil{
+    width: 400px;
+    height: 200px;
+}
 
 @media (min-width: 992px) {
     header.active nav{
         
     background-image: url("../images/header2.png");
     }
+
 }
 
 @media (max-width: 1150px) {
@@ -581,6 +586,10 @@ input{
         -webkit-box-orient: vertical;
         -webkit-box-direction: normal;*/
     }
+    .logoAccueil{
+        width: 300px;
+        height: 150px;
+    }
 
 }
 
@@ -604,6 +613,17 @@ input{
         margin: 0 3%;
 
     }
+    .logoAccueil{
+        width: 200px;
+        height: 100px;
+    }
 
+}
+
+@media (max-width: 356px) {
+    .logoAccueil{
+        width: 100px;
+        height: 50px;
+    }
 }
 

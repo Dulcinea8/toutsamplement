@@ -24,7 +24,70 @@
 
     <header>
 
-       
+        <nav class="no-gutters align-bottom fixed-top pt-1 mainnav ">
+
+            <button class="navbar-toggler d-lg-none d-xl-none" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1"
+                    aria-expanded="false" aria-label="Toggle navigation"><span class="dark-blue-text"><i class="fa fa-bars fa-2x notreJaune"></i></span></button>
+
+            <div class="d-lg-flex  justify-content-xl-between justify-content-lg-between justify-content-between collapse show navbar-collapse" id="navbarSupportedContent1">
+                <ul class="d-xl-flex d-lg-flex jusjustify-content-xl-center justify-content-between ">
+                    <li class="zoom">
+                        <a class="" href="{{ path('accueil')}}"> Accueil</a>
+                    </li>
+                    <li class="zoom">
+                        <a class="" href="{{ path('all-articles')}}"> Articles</a>
+                    </li>
+                    <li class="zoom">
+                        <a class="" href="{{ path('all-samples')}}">Samples</a>
+                    </li>
+                    <li class="zoom">
+                        <a class="" href="{{ path('inserer')}}">Inserer</a>
+                    </li>
+                    {% if not is_granted('ROLE_ADMIN') %}
+                        <li class="zoom">
+                            <a class="" href="{{ path('contact')}}"> Contact </a>
+                        </li>
+                    {% endif %}
+
+                    {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+                        {# if not app.user #}
+                        <li class="zoom">
+                            <a class="" href="{{ path('login') }}"> Connexion/Inscription </a>
+                        </li>
+                    {% endif %}
+
+                    {# l'element du menu n'apparaitra que si l'utilisateur est connecté en user#}
+
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <li class="zoom">
+                            <a class="" href="{{ path('profil') }}">Profil </a>
+                        </li>
+                        <li class="zoom">
+                            <a class="" href="{{ path('logout') }}"> Deconnexion </a>
+                        </li>
+                    {% endif %}
+
+                    {# l'element du menu n'apparaitra que si l'utilisateur est connecté en admin#}
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <li class="zoom">
+                            <a class="" href="{{path('admin')}}"> Administrateur </a>
+                        </li>
+                    {% endif %}
+
+                </ul>
+                {#FORMULAIRE DE RECHERCHE#}
+                <form class="form-inline d-flex justify-content-end justify-content-sm-start justify-content-md-start test " id="cherche">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Recherche</span>
+                        </div>
+                        <input type="text" id="recherche" name="recherche" class="form-control" placeholder="Titre ou Artiste" aria-label="Username" aria-describedby="basic-addon1">
+                        <div id="result"></div>
+                    </div>
+                </form>
+            </div>
+
+        </nav>
 
 
     </header>
@@ -49,7 +112,7 @@
 
     <div class="d-flex mt-2 justify-content-between">
 
-        <a class="" href="http://eepurl.com/dK2jbM" target="_blank">Inscription à la Newsletter</a>
+        <a class="" href="http://eepurl.com/dK2jbM" target="_blank">Inscription Newsletter</a>
 
         <div class="d-flex mt-2">
             <a href="https://twitter.com/TSamplement" target="_blank"><i class="mr-2 fab fa-twitter-square fa-lg fa-2x"></i></a>

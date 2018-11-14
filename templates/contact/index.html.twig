@@ -4,9 +4,12 @@
 {% block titlepage %}Contact{%endblock%}
 {% block content %}
 
-	
-	{% if success %}<div class="alert alert-success">{{success}}</div>{%endif%}
-	{% if error %}<div class="alert alert-warning">{{error}}</div>{%endif%}
+
+
+
+
+		{% if success %}<div class="alert alert-success">{{success}}</div>{%endif%}
+		{% if error %}<div class="alert alert-warning">{{error}}</div>{%endif%}
 	<div>
 		<form action="{{ path('contact') }}" method="post">
 			<div class="form-group">
@@ -32,6 +35,8 @@
 				<button type="submit" class="btn btn-warning">Envoyer</button>
 		</form>
 	</div>
+
+
 
 
 {% endblock %}
