@@ -82,7 +82,7 @@ class AdminController extends Controller
 
         if($user->getAvatar()) {
             //pour pouvoir generer le formulaire, on doit transformer le nom du ficier stocké pour l'instant dans l'attribut image en instance de la classe File, (ce qui est attendu par le formulaire)
-            $user->setAvatar(new File($this->getParameter('articles_image_directory') . '/' . $user->getAvatar()));
+            $user->setAvatar(new File($this->getParameter('articles_image_directory') . '/' . $user->getAvatar())); 
         }
 
         $form = $this->createForm(UserAdminUpdateType::class, $user);
